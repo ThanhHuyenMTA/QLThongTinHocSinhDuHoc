@@ -1,0 +1,133 @@
+﻿<div class="col-md-3 left_col">
+    <div class="left_col scroll-view">
+        <div class="navbar nav_title" style="border: 0;">
+            <a href="#" class="site_title"><i class="fa fa-cloud"></i><span style="margin-left: 5px;"></span></a>
+        </div>
+
+        <div class="clearfix"></div>
+        <div class="profile">
+            <div class="profile_pic">
+                <img src="~/Content/images/logo2.png"  style="width:56px;height:42px;" alt="..." class="img-circle profile_img">
+            </div>
+            <div class="profile_info">
+                <span>Chào mừng,</span>
+                <h2>Thanh Huyền</h2>
+            </div>
+        </div>
+        <br />
+        <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+            <div class="menu_section">
+                <h3>&nbsp;</h3>
+                <ul class="nav side-menu">
+                        <li>
+                            <a>
+                                <i class="fa fa-home"></i>Quản lý học sinh<span class="fa fa-chevron-down"></span>
+                            </a>
+                            <ul class="nav child_menu">
+                                    <li>
+                                        <a href="@Url.Content("/HocSinh/Index")">Học sinh</a>
+                                    </li> 
+                            </ul>
+                        </li>
+                        <li>
+                            <a>
+                                <i class="fa fa-edit"></i>Xử lý thông tin học sinh<span class="fa fa-chevron-down"></span>
+                            </a>
+                            <ul class="nav child_menu">
+                                <li>
+                                    <a href="@Url.Content("/XulyHocSinh/Index")">Thông tin sai</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a>
+                                <i class="fa fa-edit"></i>Hệ thống<span class="fa fa-chevron-down"></span>
+                            </a>
+                            <ul class="nav child_menu">
+                                <li>
+                                    <a href="@Url.Content("/HoSo/Index")">Hồ Sơ</a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Content("/HopDong/Index")">Hợp đồng</a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Content("/LoTrinh/Index")">Lộ trình</a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Content("/BaoCaoThongKe/Index")">Báo cáo thống kê</a>
+                                </li>
+                            </ul>
+                        </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- top navigation -->
+<div class="top_nav">
+    <div class="nav_menu">
+        <nav>
+            <div class="nav toggle">
+                <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+            </div>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li class="">
+                    <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                        <img src="~/Content/images/logoNew.jpg" />                    
+                        <span class=" fa fa-angle-down"></span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-usermenu pull-right" >
+                        <li >
+                            <a href="~/QuanTri/TaiKhoan/ThongTinTaiKhoan.html" style="color:#5A738E;">Thông tin tài khoản</a>
+                        </li>
+                        <li>
+                            <a href="javascript:;" style="color:#5A738E;">
+                                <span class="badge bg-red pull-right">50%</span>
+                                <span>Cài đặt</span>
+                            </a>
+                        </li>
+                        <li><a href="javascript:;" style="color:#5A738E;">Trợ giúp</a></li>
+                        <li>
+                            <a id="lnkDangXuat" href="@Url.Content("/DangNhap/DangXuat/")" style="color:#5A738E;">
+                                <i class="fa fa-sign-out pull-right"></i>Thoát
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li role="presentation" class="dropdown">
+                    <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+                        <i class="fa fa-envelope-o"></i>
+                        <span class="badge bg-green">1</span>
+                    </a>
+                    <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
+                        <li>
+                            <a>
+                                <span class="image">
+                                    <img src="~/Content/images/logo.png" alt="Profile Image" />
+                                </span>
+                                <span>
+                                    <span>Amin</span>
+                                    <span class="time">3 phút trước</span>
+                                </span>
+                                <span class="message">
+                                    Film festivals used to be do-or-die moments for movie makers. They were where...
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <div class="text-center">
+                                <a>
+                                    <strong>Xem tất cả cảnh báo</strong>
+                                    <i class="fa fa-angle-right"></i>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
+<!-- /top navigation -->

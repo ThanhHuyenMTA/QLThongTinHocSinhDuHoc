@@ -1,0 +1,180 @@
+﻿<div class="">
+    <div class="clearfix"></div>
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Thêm mới thông tin CMT Loại 1</h2>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <form class="form-horizontal form-label-left" method="post">
+                        <div class=" item form-group">
+                             <img src="~/Content/filePDF/5.身分証明書 _CMt.pdf">
+                             <button id="btn_fileCMT1" type="button" onclick="$('#fileCMT1').click()" class="btn btn-sm btn-primary" style="width:230px;">Chọn file</button>
+                             <input type="file" id="fileCMT1" name="fileCMT1" style="display: none;" class="form-control">
+                        </div>
+                        <div class="item form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                Số chứng minh <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input class="form-control col-md-7 col-xs-12" id="SoCMT1" placeholder="Số chứng minh" name="SoCMT" type="text" />
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                Họ tên <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input class="form-control col-md-7 col-xs-12" id="HoTen1" name="HoTen" required="required" placeholder="Họ tên" type="text" />
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                Ngày sinh <span class="required"></span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input class="form-control has-feedback-left active"  name="NgaySinh" id="dtpNgaySinh1" type="date"/><span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" >
+                                Quê quán
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input class="form-control col-md-7 col-xs-12" id="QueQuan1" name="QueQuan" placeholder="Quê quán" type="text" />
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                Nơi thường trú
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input class="form-control col-md-7 col-xs-12" id="NoiThuongTru1" name="NoiThuongTru" placeholder="Nơi thường trú" type="text" />
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                Tôn giáo
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input id="TonGiao1" class="form-control col-md-7 col-xs-12" name="TonGiao" placeholder="Tôn giáo" type="text" />
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                Dân tộc 
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input id="DanToc1" class="form-control col-md-7 col-xs-12" name="DanToc" type="text" placeholder="Dân tộc" />
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                Dấu vết riêng
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <textarea id="DauVetRieng1" name="DauVetRieng" placeholder="Dấu vết riêng" class="form-control col-md-7 col-xs-12"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="item form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                Ngày cấp <span class="required"></span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input class="form-control has-feedback-left active" name="NgayCap" id="dtpNgayCap1"  type="date"/><span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                Nơi cấp
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input id="NoiCap1" class="form-control col-md-7 col-xs-12" name="NoiCap" placeholder="Nơicấp" type="text" />
+                            </div>
+                        </div>
+                        <div class="ln_solid"></div>
+                        <div class="form-group">
+                            <div class="col-md-6 col-md-offset-3">
+                                <button class="btn btn-success" type="button" onclick="SaveCMT1()">Thêm mới</button>
+                                <a href="#" class="btn btn-primary">Huỷ</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.0.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#fileCMT1").change(function () {
+            debugger;
+            var data = new FormData();
+            var files = $("#fileCMT1").get(0).files;
+            if (files.length > 0) {
+                data.append("HelpSectionFileCMT1", files[0]);
+            }
+            $.ajax({
+                url: "/CMT/UpLoadFileCMT1",
+                type: "POST",
+                processData: false,
+                contentType: false,
+                data: data,
+                success: function (data) {
+                    console.log(data);
+                },
+                error: function (er) {
+                    alert(er);
+                }
+
+            });
+        });
+    });
+    function SaveCMT1() {
+        debugger;
+        if ($("#SoCMT1").val() == "" || $("#HoTen1").val() == "" || $("#dtpNgaySinh1").val() == "" || $("#QueQuan1").val() == "" || $("#NoiThuongTru1").val() == "" || $("#TonGiao1").val() == "" || $("#DanToc1").val() == "" || $("#dtpNgayCap1").val() == "" || $("#NoiCap1").val() == "")
+            alert("Nhập đầy đủ thông tin trước khi thêm mới !");
+        else {
+            var cmt1 = {
+                SoCMT: $("#SoCMT1").val(),
+                HoTen: $("#HoTen1").val(),
+                NgaySinh: $("#dtpNgaySinh1").val(),
+                QueQuan: $("#QueQuan1").val(),
+                NoiThuongTru: $("#NoiThuongTru1").val(),
+                TonGiao: $("#TonGiao1").val(),
+                DanToc: $("#DanToc1").val(),
+                DauVetRieng: $("#DauVetRieng1").val(),
+                NgayCap: $("#dtpNgayCap1").val(),
+                NoiCap: $("#NoiCap1").val(),
+                LoaiCMT: 1,
+                fileCMT: $('#fileCMT1').val().slice(12)
+        };
+        $.ajax({
+            type: "POST",
+            url: "/CMT/Themmoi1",
+            dataType: "json",
+            data: JSON.stringify(cmt1),
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                alert(data);
+                $("#ClassCMT").css("display", "none");
+                $("#Loai1").css("display", "none");
+                $("#Loai2").css("display", "none");
+                $("#Loai3").css("display", "none");
+                var row = '';
+                row += "<h2 style='color:#0070e2;'><strong>Đã thêm thành công</strong></h2>"
+                row += ""
+                $("#ThongbaoCMT").html(row);
+            },
+            error: function (err) {
+                alert("Error: " + err.responseText);
+            }
+        });
+    }
+
+    }
+</script>

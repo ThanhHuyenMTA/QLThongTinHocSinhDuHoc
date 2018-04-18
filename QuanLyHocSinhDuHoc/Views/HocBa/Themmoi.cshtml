@@ -1,0 +1,396 @@
+﻿@* Thêm mới học bạ *@
+<div class="" id="ClassHB">
+    <div class="clearfix"></div>
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Thêm mới thông tin học bạ</h2>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <form class="form-horizontal form-label-left" method="post">
+                        <div class="row">
+                            @* Phan 1 *@
+                            <div class="col-md-6 col-sm-6 col-xs-6">
+                                <div class="item form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                        Họ tên <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
+                                        <input class="form-control col-md-7 col-xs-12" id="HoTenHB" name="HoTen" required="required" placeholder="Họ tên" type="text" />
+                                    </div>
+                                </div>
+                                <div class="item form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                        Ngày sinh <span class="required"></span>
+                                    </label>
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
+                                        <input class="form-control has-feedback-left active" name="NgaySinh" id="dtpNgaySinhHB" type="date" /><span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
+                                    </div>
+                                </div>
+                                @* Gioi tinh ?? *@
+                                <div class="item form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                        Giới tính
+                                    </label>
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
+                                        <label class="radio-inline">
+                                            <input type="radio" name="GioiTinh" value="Nam" /> Nam
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio" name="GioiTinh" value="Nữ" /> Nữ
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="item form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                        Nơi sinh
+                                    </label>
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
+                                        <input class="form-control col-md-7 col-xs-12" id="NoiSinhHB" name="NoiSinh" type="text" placeholder="Nơi sinh" />
+                                    </div>
+                                </div>
+                                <div class="item form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                        Dân tộc
+                                    </label>
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
+                                        <input class="form-control col-md-7 col-xs-12" id="DanTocHB" name="DanToc" placeholder="Dân tộc" type="text" />
+                                    </div>
+                                </div>
+                                <div class="item form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                        Nơi sống hiện tại
+                                    </label>
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
+                                        <input class="form-control col-md-7 col-xs-12" id="NoiSongHienTaiHB" name="NoiSongHienTai" type="text" placeholder="Nơi sống hiện tại" />
+                                    </div>
+                                </div>
+                             
+                            </div>
+                            @* phan 2 *@
+                            <div class="col-md-6 col-sm-6 col-xs-6">
+                                @* Bố *@
+                                <div class="item form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                        Họ tên bố <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
+                                        <input class="form-control col-md-7 col-xs-12" id="HoTenBoHB" name="HoTenBo" type="text" placeholder="Họ tên bố" />
+                                    </div>
+                                </div>
+                                <div class="item form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                       Nghề nghiệp bố
+                                    </label>
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
+                                        <input class="form-control col-md-7 col-xs-12" id="NgheNghiepBoHB" name="NgheNghiepBo" placeholder="Nghề nghiệp bố" type="text" />
+                                    </div>
+                                </div>
+
+                                @* Mẹ *@
+                                <div class="item form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                        Họ tên mẹ <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
+                                        <input class="form-control col-md-7 col-xs-12" id="HoTenMeHB" name="HoTenMe" type="text" placeholder="Họ tên mẹ" />
+                                    </div>
+                                </div>
+                                <div class="item form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                        Nghề nghiệp mẹ
+                                    </label>
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
+                                        <input class="form-control col-md-7 col-xs-12" id="NgheNghiepMeHB" name="NgheNghiepMe" placeholder="Nghề nghiệp mẹ" type="text" />
+                                    </div>
+                                </div>
+
+                                @* Người giám hộ *@
+                                <div class="item form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                        Người giám hộ
+                                    </label>
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
+                                        <input class="form-control col-md-7 col-xs-12" id="NguoiGiamHoHB" name="NguoiGiamHo" type="text" placeholder="Người giám hộ" />
+                                    </div>
+                                </div>
+                                <div class="item form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                        Nghề nghiệp người giám hộ
+                                    </label>
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
+                                        <input class="form-control col-md-7 col-xs-12" id="NgheNghiepNGHHB" name="NgheNghiepNGH" placeholder="Nghề nghiệp người giám hộ" type="text" />
+                                    </div>
+                                </div>                               
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <div class="item form-group">
+                                    <label class="control-label col-md-1 col-sm-1 col-xs-12" style="margin-left:4%;">
+                                        Ngày lập <span class="required"></span>
+                                    </label>
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
+                                        <input style="width:117.3%;" class="form-control has-feedback-left active" name="NgayLap" id="dtpNgayLapHB" type="date" /><span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="ln_solid"></div>
+                            @*chức năng*@
+                            <div class="form-group">
+                                <div class="col-md-6 col-md-offset-3">
+                                    <button class="btn btn-success" type="button" onclick="SaveHocBa()" style="margin-left:30%;">Thêm mới</button>
+                                    <a href="/HocSinh/Index" class="btn btn-primary">Huỷ</a>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="ThongBaoHB">
+
+</div>
+@* Thêm mới năm học *@
+<div id="divNamhoc" style="display:none;">
+    @Html.Action("Themmoi", "NamHoc")
+</div>
+
+<div class="">
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_content">
+                    <div id="datatable_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <table class="table table-striped table-bordered" style="overflow-x:auto;">
+                                    <thead>
+                                        <tr>
+                                            <th><div class="word-wrap">Thời gian</div></th>
+                                            <th><div class="word-wrap">Tên lớp</div></th>
+                                            <th><div class="word-wrap">Tên trường</div></th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody id="tableMonhoc">
+                                         @*hiện thị danh sách năm học*@
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <!-- Bảng dữ liệu -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@* Thêm mới điểm học từng kì học *@
+
+<script type="text/javascript">
+    function SaveHocBa() {
+        var hocba = {
+            HoTen: $("#HoTenHB").val(),
+            NgaySinh: $("#dtpNgaySinhHB").val(),
+            NoiSinh: $("#NoiSinhHB").val(),
+            GioiTinh: $('[name="GioiTinh"]:radio:checked').val(),
+            DanToc: $("#DanTocHB").val(),
+            NoiSongHienTai: $("#NoiSongHienTaiHB").val(),
+            HoTenBo: $("#HoTenBoHB").val(),
+            NgheNghiepBo: $("#NgheNghiepBoHB").val(),
+            HoTenMe: $("#HoTenMeHB").val(),
+            NgheNghiepMe: $("#NgheNghiepMeHB").val(),
+            NguoiGiamHo: $("#NguoiGiamHoHB").val(),
+            NgheNghiepNGH: $("#NgheNghiepNGHHB").val(),
+            NgayLap: $("#dtpNgayLapHB").val()
+
+        };
+        $.ajax({
+            type: "POST",
+            url: "/HocBa/Themmoi",
+            dataType: "json",
+            data: JSON.stringify(hocba),
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                if (data != "Thêm mới thất bại") {
+                    $("#ClassHB").css("display", "none");
+                    var row = '';
+                    row += "<h2 style='color:#0070e2;'><strong>Đã thêm thành công học bạ</strong></h2>"
+                    $("#ThongBaoHB").html(row);
+                    $("#divNamhoc").css("display", "block");
+                    document.getElementById("ThemmoiNamHoc").reset();
+                } else {
+                    alert("Thêm mới thất bại !");
+                }
+            },
+            error: function (err) {
+                alert("Error: " + err.responseText);
+            }
+        });
+    }
+    function SaveNamHoc()
+    {
+        var namhoc = {
+            ThoiGian: $('#ThoiGian').val(),
+            TenLop: $('#TenLop').val(),
+            TenTruong: $('#TenTruong').val()
+        };
+        //debugger;
+        $.ajax({
+            type: "POST",
+            url: "/NamHoc/ThemNamhoc",
+            dataType: "json",
+            data: JSON.stringify(namhoc),
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                var rows = '';
+                rows += '<tr><td><div class=word-wrap>' + data.ThoiGian + '</div></td>';
+                rows += '<td><div class=word-wrap>'+data.TenLop+'</td>';
+                rows += '<td><div class=word-wrap>'+data.TenTruong+'</div></td>';
+                rows += '<td class=actions>';
+                rows += '<a data-toggle=tooltip data-placement=bottom  title="Nhập điểm" href="#" onclick="NhapDiem(' + data.id + ')">';
+                rows += '<i class="fa fa-plus"></i>';
+                rows += '</a>';
+                rows += '</td></tr>';
+
+                $("#tableMonhoc").append(rows);
+
+            },
+            error: function (err) {
+                alert("Error: " + err.responseText);
+            }
+        });
+    }
+    //sử dụng nhâp điểm bình thường
+    function NhapDiem(id_namhoc) {
+        $.ajax({
+            type: "GET",
+            url: "/KyHoc/ViewNhapDiem",
+            dataType: "json",
+            data: { id: id_namhoc },//dua ra id_namhoc
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                $('#Diemhocki').css('display', 'block');
+            },
+            error: function (err) {
+                alert("Error: " + err.responseText);
+            }
+        });
+    }
+    function DiemKyI() {
+        debugger;
+        var diemkyI = {
+            TenKiHoc: 'Hkỳ I',
+            Toan: $('#ToanI').val(),
+            Ly: $('#LyI').val(),
+            Hoa: $('#HoaI').val(),
+            Sinh: $('#SinhI').val(),
+            Tin: $('#TinI').val(),
+            Van: $('#VanI').val(),
+            Su: $('#SuI').val(),
+            Dia: $('#DiaI').val(),
+            NgoaiNgu: $('#NgoaiNguI').val(),
+            CongNghe: $('#CongNgheI').val(),
+            QuocPhongAnNinh: $('#QuocPhongAnNinhI').val(),
+            TheDuc: $('#TheDucI').val(),
+            TuChon: $('#TuChonI').val(),
+            GiaoDucCongDan: $('#GiaoDucCongDanI').val(),
+            DiemTrungBinh: $('#DiemTrungBinhI').val()
+        }
+
+        $.ajax({
+            type: "POST",
+            url: "/KyHoc/NhapDiem",
+            dataType: "json",
+            data: JSON.stringify(diemkyI),
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                console.log(data);
+            },
+            error: function (err) {
+                alert("Error: " + err.responseText);
+            }
+        });
+
+    }
+    function DiemKyII() {
+        var diemkyII = {
+            TenKiHoc: 'Hkỳ II',
+            Toan: $('#ToanII').val(),
+            Ly: $('#LyII').val(),
+            Hoa: $('#HoaII').val(),
+            Sinh: $('#SinhII').val(),
+            Tin: $('#TinII').val(),
+            Van: $('#VanII').val(),
+            Su: $('#SuII').val(),
+            Dia: $('#DiaII').val(),
+            NgoaiNgu: $('#NgoaiNguII').val(),
+            CongNghe: $('#CongNgheII').val(),
+            QuocPhongAnNinh: $('#QuocPhongAnNinhII').val(),
+            TheDuc: $('#TheDucII').val(),
+            TuChon: $('#TuChonII').val(),
+            GiaoDucCongDan: $('#GiaoDucCongDanII').val(),
+            DiemTrungBinh: $('#DiemTrungBinhII').val()
+        }
+        $.ajax({
+            type: "POST",
+            url: "/KyHoc/NhapDiem",
+            dataType: "json",
+            data: JSON.stringify(diemkyII),
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                console.log(data);
+            },
+            error: function (err) {
+                alert("Error: " + err.responseText);
+            }
+        });
+
+    }
+    function DiemKyCN() {
+        var diemCN = {
+            TenKiHoc: 'CN',
+            Toan: $('#ToanCN').val(),
+            Ly: $('#LyCN').val(),
+            Hoa: $('#HoaCN').val(),
+            Sinh: $('#SinhCN').val(),
+            Tin: $('#TinCN').val(),
+            Van: $('#VanCN').val(),
+            Su: $('#SuCN').val(),
+            Dia: $('#DiaCN').val(),
+            NgoaiNgu: $('#NgoaiNguCN').val(),
+            CongNghe: $('#CongNgheCN').val(),
+            QuocPhongAnNinh: $('#QuocPhongAnNinhCN').val(),
+            TheDuc: $('#TheDucCN').val(),
+            TuChon: $('#TuChonCN').val(),
+            GiaoDucCongDan: $('#GiaoDucCongDanCN').val(),
+            DiemTrungBinh: $('#DiemTrungBinhCN').val()
+        }
+        $.ajax({
+            type: "POST",
+            url: "/KyHoc/NhapDiem",
+            dataType: "json",
+            data: JSON.stringify(diemCN),
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                console.log(data);
+            },
+            error: function (err) {
+                alert("Error: " + err.responseText);
+            }
+        });
+
+    }
+</script>

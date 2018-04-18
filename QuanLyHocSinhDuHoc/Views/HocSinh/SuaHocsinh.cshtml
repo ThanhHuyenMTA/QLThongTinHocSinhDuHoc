@@ -1,0 +1,73 @@
+﻿@model QuanLyHocSinhDuHoc.Models.Entities.HOCSINH
+@{
+    ViewBag.Title = "Suahocsinh";
+    Layout = "~/Views/Share/_LayoutTrangChu.cshtml";
+}
+<div class="">
+    <div class="clearfix"></div>
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Sửa đổi thông tin học sinh</h2>
+                    <div class="clearfix"></div>
+                </div>
+
+                <div class="x_content">
+                    <form class="form-horizontal form-label-left" method="post">
+                        <div class="row">
+                            <div class="col-md-4 col-sm-4 col-xs-4">
+                                <img src="~/Content/images/logoNew.jpg" style="width:230px;height:200px;" />
+                                <br /><br />
+                                <button id="btn_uploadanh" type="button" onclick="$('#anh').click()" class="btn btn-sm btn-primary" style="width:230px;">Thay đổi ảnh</button>
+                                <input type="file" id="anh" name="anh" style="display: none;" class="form-control">
+                            </div>
+                            <div class="col-md-8 col-sm-8 col-xs-8">
+                                <br /><br />
+                                <div class="item form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                        Tên học sinh <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <input class="form-control col-md-7 col-xs-12" name="tenHS" value="@Model.TenHS" required="required" placeholder="Tên học sinh" type="text" />
+                                    </div>
+                                </div>
+                                <div class="item form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                        Số điện thoại
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <input class="form-control col-md-7 col-xs-12" name="sdt" value="@Model.sdt" type="text" placeholder="Số điện thoại" />
+                                    </div>
+                                </div>
+                                <div class="item form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                        Email
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <input class="form-control col-md-7 col-xs-12" value="@Model.email" name="email" placeholder="Email" type="email" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="ln_solid"></div>
+                            @*chức năng*@
+                            <div class="form-group">
+                                <div class="col-md-6 col-md-offset-3">
+                                    <button class="btn btn-success" onclick="return confirm('Bạn có muốn cập nhật lại thông tin học sinh ?')" style="margin-left:30%;">Cập nhật</button>
+                                    <a href="/HocSinh/DetailChung/@Model.id" class="btn btn-primary">Huỷ</a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

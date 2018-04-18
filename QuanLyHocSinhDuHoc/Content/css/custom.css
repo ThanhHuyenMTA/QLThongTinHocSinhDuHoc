@@ -1,0 +1,231 @@
+﻿@media screen and (min-width: 768px) {
+	.rwd-break {
+		display: none;
+	}
+}
+.word-wrap {
+    max-width: 300px;
+    white-space: normal;
+    word-wrap: break-word;
+}
+.panel_toolbox {
+    min-width: 0px;
+}
+.dataTables_filter {
+    width: initial;
+}
+.btn-upload {
+    padding: 5px;
+    color: #b2008d;
+    font-size: 17px;
+}
+.btn-upload:hover {
+    background: #b2008d;
+}
+.btn-upload input[type=file] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    height: 30px;
+    width: 23px;
+    cursor: pointer;
+    font-size: 0px;
+}
+.actions {
+    font-size: 16px;
+}
+.actions a {
+    cursor: pointer;
+}
+.pagination > li > a {
+    cursor: pointer;
+}
+div.dataTables_wrapper div.dataTables_length select {
+    cursor: pointer;
+}
+.myflat {
+    cursor: pointer;
+}
+.loading-icon {
+    font-size: 60px;
+    color: #00A1AE;
+    position: fixed;
+    top: calc(50% - 30px);
+    left: calc(50% - 30px);
+    z-index: 1100;
+}
+.loading-screen {
+    background-color: #000;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 1px;
+    position: fixed;
+    opacity: 0;
+    z-index: 1099;
+    opacity: .5;
+}
+.fl {
+    float: left !important;
+}
+.fr {
+    float: right !important;
+}
+#divTimSanPham {
+    position:relative;
+}
+#divTimSanPham table {
+    display: none;
+}
+#divTimSanPham h2 {
+    display: none;
+}
+#divTimSanPham.active {
+    position: absolute;
+    right: 0px;
+    top: 200px;
+    z-index: 1100;
+}
+#divTimSanPham.active h2 {
+    display: block;
+}
+#divTimSanPham.active table {
+    display: block;
+}
+#divTimSanPham.active table tr:hover {
+    background-color: #26B99A;
+    color: white;
+    cursor: pointer;
+}
+.count_bottom {
+    display: none;
+}
+.td-table-in {
+    padding: 0 !important;
+}
+.div-table-in {
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+}
+.table-in {
+    width: 100%;
+    height: 100%;
+}
+.table-in tr {
+    width: 100%;
+    border-bottom: 1px solid #ddd;
+}
+.table-in tr:last-child {
+    border-bottom: none;
+}
+.table-in td {
+    width: 100%;
+    padding: 3px 5px;
+    height: 26px;
+    white-space: nowrap;
+}
+.table-in td a {
+    cursor: pointer;
+}
+.active-edit {
+    position: fixed;
+    top: 100px;
+    right: 0px;
+    width: 300px;
+}
+.freeze {
+}
+.freeze th {
+    background-color: white;
+}
+.nav-sm .container.body .col-md-3.left_col {
+    z-index: 1099;
+}
+
+/*CUSTOM*/
+body{
+        color: black;
+        background: #fff;
+}
+.nav_menu{
+    background :linear-gradient(to bottom, rgb(255, 178, 217) 0%, rgb(255, 178, 217) 39%, rgb(255, 178, 217) 100%)
+}
+
+ 
+
+.mp-level{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #f4f8fb;
+}
+
+.left_col{
+    background: #fff;
+}
+
+ 
+.nav li li.current-page a{
+    color: #b2008d;
+}
+
+.profile_info span{
+     color: #b2008d;
+}
+
+.nav_title{
+        background :linear-gradient(to bottom, rgb(225, 71, 145) 0%, rgb(225, 71, 145) 39%, rgb(225, 71, 145) 100%)
+
+}
+
+.main_menu span.fa{
+        color: #b2008d;
+}
+
+
+.panel_toolbox>li>a{
+        color: #b2008d;
+    font-size: 40px;
+}
+
+.main_container .top_nav{
+    margin-left : 0px;
+}
+
+.nav.side-menu>li>a, .nav.child_menu>li>a{
+            color:#0036d6;
+
+}
+
+.nav.side-menu>li.active>a{
+    background:none;
+}
+
+.nav.side-menu>li>a:hover{
+    color:none !important;
+}
+/*.nav.side-menu>li>a:hover{
+
+}
+
+.active-sm > a{
+    color: #b2008d;
+}
+.active>a{
+    color:fff;
+}
+.nav.side-menu>li>a, .nav.child_menu>li>a{
+     color: #b2008d;
+}
+
+.sidebar-footer{
+
+}*/
+
+
+/*==Style cho menu===*/
+ 

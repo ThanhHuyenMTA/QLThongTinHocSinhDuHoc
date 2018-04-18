@@ -1,0 +1,127 @@
+﻿@{
+    ViewBag.Title = "Thêm mới học sinh";
+    Layout = "~/Views/Share/_LayoutTrangChu.cshtml";
+}
+<div class="">
+    <div class="clearfix"></div>
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Thêm mới học sinh</h2>
+                    <div class="clearfix"></div>
+                </div>
+
+                <div class="x_content">
+                    <form class="form-horizontal form-label-left" method="post">
+                        <div class="row">
+                            <div class="col-md-4 col-sm-4 col-xs-4">
+                                <img src="~/Content/images/logoNew.jpg" style="width:230px;height:200px;" />
+                                <br /><br />
+                                <button id="btn_uploadanh" type="button" onclick="$('#anh').click()" class="btn btn-sm btn-primary" style="width:230px;">Chọn ảnh</button>
+                                <input type="file" id="anh" name="anh" style="display: none;" class="form-control">
+                            </div>
+                            <div class="col-md-8 col-sm-8 col-xs-8">
+                                <br /><br />
+                                <div class="item form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                        Tên học sinh <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <input class="form-control col-md-7 col-xs-12" id="tenHS" name="tenHS" required="required" placeholder="Tên học sinh" type="text" />
+                                    </div>
+                                </div>
+                                <div class="item form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                        Số điện thoại
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <input class="form-control col-md-7 col-xs-12" id="SDT" name="sdt" type="text" placeholder="Số điện thoại" />
+                                    </div>
+                                </div>
+                                <div class="item form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                        Email
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <input class="form-control col-md-7 col-xs-12" id="Email" name="email" placeholder="Email" type="email" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="ln_solid"></div>
+                            @*chức năng*@
+                            <div class="form-group">
+                                <div class="col-md-6 col-md-offset-3">
+                                    <button class="btn btn-success" type="button" onclick="ThemmoiHS()" style="margin-left:30%;">Thêm mới</button>
+                                    <a href="/HocSinh/Index" class="btn btn-primary">Huỷ</a>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#anh").change(function () {
+            debugger;
+            var data = new FormData();
+            var files = $("#anh").get(0).files;
+            if (files.length > 0) {
+                data.append("HelpSectionImages", files[0]);
+            }
+            $.ajax({
+                url: "/HocSinh/UpLoadImage",
+                type: "POST",
+                processData: false,
+                contentType: false,
+                data: data,
+                success: function (data) {
+                    console.log(data);
+                },
+                error: function (er) {
+                    alert(er);
+                }
+
+            });
+        });
+    });
+    function ThemmoiHS()
+    {
+        debugger;
+        if ($('#tenHS').val()== "" & $('#SDT').val() == "" & $('#Email').val() == "")
+            alert("Nhập đầy đủ thông tin trước khi thêm mới!");
+        else {
+            var hocsinh = {
+                TenHS: $('#tenHS').val(),
+                sdt: $('#SDT').val(),
+                email: $('#Email').val()
+            };
+            $.ajax({
+                type: "POST",
+                url: "/HocSinh/Themmoi",
+                dataType: "json",
+                data: JSON.stringify(hocsinh),
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    var result = confirm("Bạn có muốn thêm thông tin khác?");
+                    if (result) {
+                        window.location.href = "/HocSinh/ThemmoiChung/" + data;
+                    } else {
+                        window.location.href = "/HocSinh/Index";
+                    }
+                },
+                error: function (err) {
+                    alert("Error: " + err.responseText);
+                }
+            });
+        }
+        
+    }
+</script>
+

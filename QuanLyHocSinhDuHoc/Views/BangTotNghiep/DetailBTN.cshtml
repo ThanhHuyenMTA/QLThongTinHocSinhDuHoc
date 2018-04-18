@@ -1,0 +1,141 @@
+﻿@model QuanLyHocSinhDuHoc.Models.Entities.BANGTOTNGHIEP
+@{
+    if (ViewBag.ThongbaoBTN == "NO")
+    {
+        <h2 style='color:#0070e2;'><strong>Chưa cập nhật bằng tốt nghiệp</strong></h2>
+        <a href="#" class="btn btn-primary">Thêm mới bằng tốt nghiệp</a>
+    }
+    if (ViewBag.ThongbaoBTN == "OK")
+    {
+        <div class="" id="ClassBTN">
+            <div class="clearfix"></div>
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="x_panel">
+                        <div class="x_title">
+                            <h2>Thông tin chi tiết bằng tốt nghiệp</h2>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="x_content">
+                            <form class="form-horizontal form-label-left" method="post">
+                                <div class="row">
+                                    <div class="col-md-12 col-sm-12 col-xs-8">
+                                        <div class="item form-group">
+                                            <label class="control-label col-md-2 col-sm-2 col-xs-12">
+                                                Họ tên <span class="required">*</span>
+                                            </label>
+                                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                                <input class="form-control col-md-7 col-xs-12" id="HoTenBTN" name="HoTen" required="required" disabled value="@Model.HoTen" type="text" />
+                                            </div>
+                                        </div>
+                                        <div class="item form-group">
+                                            <label class="control-label col-md-2 col-sm-2 col-xs-12">
+                                                Ngày sinh <span class="required"></span>
+                                            </label>
+                                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                                <input class="form-control has-feedback-left active" name="NgaySinh" id="dtpNgaySinhBTN" value="@Model.NgaySinh.Value.ToString("yyyy-MM-dd")" disabled  /><span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
+                                            </div>
+                                        </div>
+                                        <div class="item form-group">
+                                            <label class="control-label col-md-2 col-sm-2 col-xs-12">
+                                                Nơi sinh
+                                            </label>
+                                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                                <input class="form-control col-md-7 col-xs-12" id="NoiSinhBTN" name="NoiSinh" type="text" disabled value="@Model.NoiSinh" />
+                                            </div>
+                                        </div>
+                                        <div class="item form-group">
+                                            <label class="control-label col-md-2 col-sm-2 col-xs-12">
+                                                Giới tính
+                                            </label>
+                                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                                @{
+                                                    if (Model.GioiTinh == "Nam")
+                                                    {
+                                                        <label class="radio-inline">
+                                                            <input type="radio" name="GioiTinh" checked="checked" value="Nam" /> Nam
+                                                        </label>
+                                                         <label class="radio-inline">
+                                                            <input type="radio" name="GioiTinh" value="Nữ" /> Nữ
+                                                        </label>
+                                                        }
+                                                        else
+                                                        {
+                                                             <label class="radio-inline">
+                                                                 <input type="radio" name="GioiTinh" value="Nam" /> Nam
+                                                                </label>
+                                                            <label class="radio-inline">
+                                                                <input type="radio" name="GioiTinh" checked="checked" value="Nữ" /> Nữ
+                                                            </label>
+                                                     }
+                                                }  
+                                            </div>
+                                        </div>
+                                        <div class="item form-group">
+                                            <label class="control-label col-md-2 col-sm-2 col-xs-12">
+                                                Dân tộc
+                                            </label>
+                                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                                <input class="form-control col-md-7 col-xs-12" id="DanTocBTN" name="DanToc" disabled value="@Model.DanToc" type="text" />
+                                            </div>
+                                        </div>
+                                        <div class="item form-group">
+                                            <label class="control-label col-md-2 col-sm-2 col-xs-12">
+                                                Khóa thi <span class="required"></span>
+                                            </label>
+                                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                                <input class="form-control has-feedback-left active" name="KhoaThi" id="dtpNgaySinhKT" value="@Model.KhoaThi.Value.ToString("yyyy-MM-dd")" disabled /><span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
+                                            </div>
+                                        </div>
+                                        <div class="item form-group">
+                                            <label class="control-label col-md-2 col-sm-2 col-xs-12">
+                                                Hội đồng thi
+                                            </label>
+                                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                                <input class="form-control col-md-7 col-xs-12" id="HoiDongThiBTN" name="HoiDongThi" disabled value="@Model.HoiDongThi" type="text" />
+                                            </div>
+                                        </div>
+                                        <div class="item form-group">
+                                            <label class="control-label col-md-2 col-sm-2 col-xs-12">
+                                                Ngày lập <span class="required"></span>
+                                            </label>
+                                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                                <input class="form-control has-feedback-left active" name="NgayLap" id="dtpBTNNL" value="@Model.NgayLap.Value.ToString("yyyy-MM-dd")" disabled /><span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
+                                            </div>
+                                        </div>
+                                        <div class="item form-group">
+                                            <label class="control-label col-md-2 col-sm-2 col-xs-12">
+                                                Số hiệu
+                                            </label>
+                                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                                <input class="form-control col-md-7 col-xs-12" id="SoHieuBTN" name="SoHieu" disabled value="@Model.SoHieu" type="text" />
+                                            </div>
+                                        </div>
+                                        <div class="item form-group">
+                                            <label class="control-label col-md-2 col-sm-2 col-xs-12">
+                                                Số vào số cấp bằng
+                                            </label>
+                                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                                <input class="form-control col-md-7 col-xs-12" id="SovaoSoCapBangBTN" name="SovaoSoCapBang" disabled value="@Model.SovaoSoCapBang" type="text" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="ln_solid"></div>
+                                    @*chức năng*@
+                                    <div class="form-group">
+                                        <div class="col-md-6 col-md-offset-3">
+                                            <button class="btn btn-success" type="button" onclick="CapNhatBTN()" style="margin-left:30%;">Cập nhật</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+}

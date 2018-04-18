@@ -1,0 +1,115 @@
+﻿@model QuanLyHocSinhDuHoc.CommonXuLy.LoiModel
+
+@{
+    ViewBag.Title = "Chỉnh sửa giới tính";
+    Layout = "~/Views/Share/_LayoutTrangChu.cshtml";
+}
+
+<div class="">
+    <div class="clearfix"></div>
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Chỉnh sửa nôi dung sai về <strong> @ViewBag.typeLoi</strong></h2>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <form class="form-horizontal form-label-left" method="post">
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <br /><br />
+                                @{
+                                    <input id="IdLoiGT" type="hidden" name="IdLoiGT" value="@ViewBag.idLoi" />
+
+                                    if (Model.Cmt != null)
+                                    {
+                                        <div class="item form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                                @ViewBag.typeLoi trên Chứng minh thư.  <span class="required">*</span>
+                                            </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input class="form-control col-md-7 col-xs-12" id="GioiTinhCMT" name="GioiTinhCMT" value="@Model.Cmt.GioiTinh" type="text" />
+                                            </div>
+                                        </div>
+                                    }
+                                    if (Model.Giaykhaisinh != null)
+                                    {
+                                        <div class="item form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                                @ViewBag.typeLoi trên Giấy khai sinh.  <span class="required">*</span>
+                                            </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input class="form-control col-md-7 col-xs-12" id="GioiTinhGKS" name="GioiTinhGKS" value="@Model.Giaykhaisinh.GioiTinh" type="text" />
+                                            </div>
+                                        </div>
+                                    }
+                                    if (Model.Bangtotnghiep != null)
+                                    {
+                                        <div class="item form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                                @ViewBag.typeLoi trên Bằng tốt nghiệp.  <span class="required">*</span>
+                                            </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input class="form-control col-md-7 col-xs-12" id="GioiTinhBTN" name="GioiTinhBTN" value="@Model.Bangtotnghiep.GioiTinh" type="text" />
+                                            </div>
+                                        </div>
+                                    }
+                                    if (Model.Hocba != null)
+                                    {
+                                        <div class="item form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                                @ViewBag.typeLoi trên học bạ.  <span class="required">*</span>
+                                            </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input class="form-control col-md-7 col-xs-12" id="GioiTinhHB" name="GioiTinhHB" value="@Model.Hocba.GioiTinh" type="text" />
+                                            </div>
+                                        </div>
+                                    }
+                                }
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 col-md-offset-3">
+                                <button type="button" class="btn btn-success" onclick="CapNhatGioiTinh()">Cập nhật</button>
+                                <a href="@Url.Action("Index", "XulyHocSinh")" class="btn btn-success">Hủy bỏ</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    function CapNhatGioiTinh() {
+        debugger;
+        var listName = new Array();
+        listName[0] = $("#IdLoiGT").val();
+        listName[1] = $("#GioiTinhCMT").val();
+        listName[2] = $("#GioiTinhGKS").val();
+        listName[3] = $("#GioiTinhBTN").val();
+        listName[4] = $("#GioiTinhHB").val();
+
+        var postData = { listkey: listName };
+        $.ajax({
+            type: 'POST',
+            traditional: true,
+            url: '/XulyHocSinh/ChinhSuaLoiGioiTinh',
+            dataType: "json",
+            data: '{ "listkey":' + JSON.stringify(listName) + '}',
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                window.location = "/XulyHocSinh/Index";
+            },
+            error: function (err) {
+                alert("Error: " + err.responseText);
+            }
+        });
+    }
+</script>
+
+
+
+
+

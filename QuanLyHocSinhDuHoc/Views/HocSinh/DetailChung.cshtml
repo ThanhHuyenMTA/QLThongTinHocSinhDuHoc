@@ -1,0 +1,89 @@
+﻿
+@{
+    ViewBag.Title = "DetailChung";
+    Layout = "~/Views/Share/_LayoutTrangChu.cshtml";
+}
+
+<div class="clearfix"></div>
+<div class="container">
+    <h2>Thông tin chi tiết học sinh</h2>
+    <br>
+    <ul class="nav nav-pills" role="tablist">
+        <li class="nav-item active" id="tabfirst">
+            <a class="nav-link active" data-toggle="pill" href="#hocsinh">Học Sinh</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="pill" href="#cmt">Chứng minh thư</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="pill" href="#gks">Giấy khai sinh</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="pill" href="#btn">Bằng tốt nghiệp</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="pill" href="#hb">Học bạ</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="pill" href="#ngh">Người giám hộ</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="pill" href="#gct">Giấy chứng thực</a>
+        </li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div id="hocsinh" class="container tab-pane active">
+            <br>
+            @Html.Action("DetailHocsinh", "Hocsinh")
+        </div>
+        <div id="cmt" class="container tab-pane fade">
+            <br>
+            @Html.Action("Detail","CMT")     
+        </div>
+        <div id="gks" class="container tab-pane fade">
+            @Html.Action("DetailGKS", "GiayKhaiSinh")        
+         </div>
+        <div id="btn" class="container tab-pane fade">
+            @Html.Action("DetailBTN", "BangTotNghiep")
+         </div>
+        <div id="hb" class="container tab-pane fade">
+            <br>
+            <h3>Menu 1</h3>
+            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        </div>
+        <div id="ngh" class="container tab-pane fade">
+            <br>
+            <h3>Menu 2</h3>
+            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+        </div>
+        <div id="gct" class="container tab-pane fade">
+            <br>
+            <h3>Menu 2</h3>
+            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+        </div>
+
+    </div>
+</div>
+
+<style>
+    .nav li a {
+        color: white;
+    }
+
+    .nav-pills > li.active > a, .nav-pills > li.active > a:focus, .nav-pills > li.active > a:hover {
+        color: red;
+        font-weight: bold;
+    }
+
+    .tab-content {
+        background-color: #fdf4f4;
+        min-height: 500px;
+    }
+
+    .nav-pills {
+        background-color: #365899;
+        color: white;
+    }
+</style>

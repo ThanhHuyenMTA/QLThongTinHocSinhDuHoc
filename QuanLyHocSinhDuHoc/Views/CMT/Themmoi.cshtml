@@ -1,0 +1,57 @@
+﻿<div class="row" id="ClassCMT">
+    <div class="col-sm-4 ">
+        <img src="~/Content/images/CMT_1.jpg" style="width:366px; height:300px;" /><br />
+        <a class="loaicmt" href="#" onclick="LoaiCMT(1)">Loại 1</a>
+    </div>
+    <div class="col-sm-4">
+        <img src="~/Content/images/CMT_2.jpg" style="width:366px; height:300px;" /><br />
+        <a class="loaicmt" href="#" onclick="LoaiCMT(2)">Loại 2</a>
+    </div>
+    <div class="col-sm-4">
+        <img src="~/Content/images/CMT_3.jpg" style="width:366px; height:300px;" /><br />
+        <a class="loaicmt" href="#" onclick="LoaiCMT(3)">Loại 3</a>
+    </div>
+</div>
+<div class="row"  id="Loai1" style="display:none;">
+    @Html.Action("Loai1","CMT")
+</div>
+<div class="row" id="Loai2" style="display:none;">
+    @Html.Action("Loai2", "CMT")
+</div>
+<div class="row" id="Loai3" style="display:none;">
+    @Html.Action("Loai3", "CMT")
+</div>
+
+<div id="ThongbaoCMT" style="padding:10% 10%">
+
+</div>
+<style>
+    .loaicmt{
+        color:#0094ff;
+        font-weight:bold;
+        margin-left:47%;
+    }
+</style>
+
+<script type="text/javascript">
+    function LoaiCMT(id)
+    {
+        if (id == 1)
+        {
+            $("#Loai1").css("display", "block");
+            $("#Loai2").css("display", "none");
+            $("#Loai3").css("display", "none");
+        }
+        if (id == 2) {
+            $("#Loai2").css("display", "block");
+            $("#Loai1").css("display", "none");
+            $("#Loai3").css("display", "none");
+        }
+        if (id == 3) {
+            $("#Loai3").css("display", "block");
+            $("#Loai2").css("display", "none");
+            $("#Loai1").css("display", "none");
+        }
+       
+    }
+</script>

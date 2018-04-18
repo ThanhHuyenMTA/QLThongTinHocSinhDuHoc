@@ -1,0 +1,99 @@
+﻿@model QuanLyHocSinhDuHoc.CommonXuLy.LoiModel
+
+@{
+    ViewBag.Title = "Chỉnh sửa dân tộc";
+    Layout = "~/Views/Share/_LayoutTrangChu.cshtml";
+}
+<div class="">
+    <div class="clearfix"></div>
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Chỉnh sửa nôi dung sai về <strong> @ViewBag.typeLoi</strong></h2>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <form class="form-horizontal form-label-left" method="post">
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <br /><br />
+                                @{
+                                    <input id="IdLoiDT" type="hidden" name="IdLoiDT" value="@ViewBag.idLoi" />
+                                    if (Model.Giaykhaisinh != null)
+                                    {
+                                        <div class="item form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                                @ViewBag.typeLoi trên Giấy khai sinh.  <span class="required">*</span>
+                                            </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input class="form-control col-md-7 col-xs-12" id="DanTocGKS" name="DanTocGKS" value="@Model.Giaykhaisinh.DanToc" type="text" />
+                                            </div>
+                                        </div>
+                                    }
+                                    if (Model.Bangtotnghiep != null)
+                                    {
+                                        <div class="item form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                                @ViewBag.typeLoi trên Bằng tốt nghiệp.  <span class="required">*</span>
+                                            </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input class="form-control col-md-7 col-xs-12" id="DanTocBTN" name="DanTocBTN" value="@Model.Bangtotnghiep.DanToc" type="text" />
+                                            </div>
+                                        </div>
+                                    }
+                                    if (Model.Hocba != null)
+                                    {
+                                        <div class="item form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                                @ViewBag.typeLoi trên học bạ.  <span class="required">*</span>
+                                            </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input class="form-control col-md-7 col-xs-12" id="DanTocHB" name="DanTocHB" value="@Model.Hocba.DanToc" type="text" />
+                                            </div>
+                                        </div>
+                                    }
+                                }
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 col-md-offset-3">
+                                <button type="button" class="btn btn-success" onclick="CapNhatDanToc()">Cập nhật</button>
+                                <a href="@Url.Action("Index", "XulyHocSinh")" class="btn btn-success">Hủy bỏ</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    function CapNhatDanToc() {
+        debugger;
+        var listName = new Array();
+        listName[0] = $("#IdLoiDT").val();
+        listName[1] = $("#DanTocGKS").val();
+        listName[2] = $("#DanTocBTN").val();
+        listName[3] = $("#DanTocHB").val();
+
+        var postData = { listkey: listName };
+        $.ajax({
+            type: 'POST',
+            traditional: true,
+            url: '/XulyHocSinh/ChinhSuaLoiDanToc',
+            dataType: "json",
+            data: '{ "listkey":' + JSON.stringify(listName) + '}',
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                window.location = "/XulyHocSinh/Index";
+            },
+            error: function (err) {
+                alert("Error: " + err.responseText);
+            }
+        });
+    }
+</script>
+
+
+
