@@ -1,0 +1,255 @@
+﻿
+@{
+    ViewBag.Title = "ThemmoiR";
+    Layout = "~/Views/Share/_LayoutTrangChu.cshtml";
+}
+
+<div class="" id="ClassGKS">
+    <div class="clearfix"></div>
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Thêm mới thông tin giấy khai sinh</h2>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <form class="form-horizontal form-label-left" method="post">
+                        <div class="row">
+                            @* Phan 1 *@
+                            <div class="col-md-6 col-sm-6 col-xs-6">
+                                <div class="item form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                        Họ tên <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
+                                        <input class="form-control col-md-7 col-xs-12" id="HoTenGKS" name="HoTen" required="required" placeholder="Họ tên" type="text" />
+                                    </div>
+                                </div>
+                                <div class="item form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                        Ngày sinh <span class="required"></span>
+                                    </label>
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
+                                        <input class="form-control has-feedback-left active" name="NgaySinh" id="dtpNgaySinhKS" type="date" /><span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
+                                    </div>
+                                </div>
+                                <div class="item form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                        Nơi sinh
+                                    </label>
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
+                                        <input class="form-control col-md-7 col-xs-12" id="NoiSinhGKS" name="NoiSinh" type="text" placeholder="Nơi sinh" />
+                                    </div>
+                                </div>
+                                <div class="item form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                        Quê quán
+                                    </label>
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
+                                        <input class="form-control col-md-7 col-xs-12" id="QueQuanGKS" name="QueQuan" type="text" placeholder="Quê quán" />
+                                    </div>
+                                </div>
+                                @* Gioi tinh ?? *@
+                                <div class="item form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                        Giới tính
+                                    </label>
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
+                                        <label class="radio-inline">
+                                            <input type="radio" name="GioiTinh" value="Nam" /> Nam
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio" name="GioiTinh" value="Nữ" /> Nữ
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="item form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                        Dân tộc
+                                    </label>
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
+                                        <input class="form-control col-md-7 col-xs-12" id="DanTocGKS" name="DanToc" placeholder="Dân tộc" type="text" />
+                                    </div>
+                                </div>
+                                <div class="item form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                        Quốc tịch
+                                    </label>
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
+                                        <input class="form-control col-md-7 col-xs-12" id="QuocTichGKS" name="QuocTich" placeholder="Quốc tịch" type="text" />
+                                    </div>
+                                </div>
+                                <div class="item form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                        Nơi đăng ký
+                                    </label>
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
+                                        <input class="form-control col-md-7 col-xs-12" id="NoiDangKyGKS" name="NoiDangKy" placeholder="Nơi đăng ký" type="text" />
+                                    </div>
+                                </div>
+                                <div class="item form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                        Họ tên mẹ <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
+                                        <input class="form-control col-md-7 col-xs-12" id="HoTenMeGKS" name="HoTenMe" required="required" placeholder="Họ tên mẹ" type="text" />
+                                    </div>
+                                </div>
+
+                            </div>
+                            @* phan 2 *@
+                            <div class="col-md-6 col-sm-6 col-xs-6">
+                                @* Mẹ *@
+                                <div class="item form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                        Năm sinh mẹ
+                                    </label>
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
+                                        <input class="form-control col-md-7 col-xs-12" id="NsMeGKS" name="NsMe" type="text" placeholder="Năm sinh mẹ" />
+                                    </div>
+                                </div>
+                                <div class="item form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                        Dân tộc mẹ
+                                    </label>
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
+                                        <input class="form-control col-md-7 col-xs-12" id="DanTocMeGKS" name="DanTocMe" placeholder="Dân tộc mẹ" type="text" />
+                                    </div>
+                                </div>
+                                <div class="item form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                        Quốc tịch mẹ
+                                    </label>
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
+                                        <input class="form-control col-md-7 col-xs-12" id="QuocTichMeGKS" name="QuocTichMe" placeholder=" Quốc tịch mẹ" type="text" />
+                                    </div>
+                                </div>
+                                <div class="item form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                        Nơi cư trú mẹ
+                                    </label>
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
+                                        <input class="form-control col-md-7 col-xs-12" id="NoiCuTruMeGKS" name="NoiCuTruMe" placeholder=" Nơi cư trú mẹ" type="text" />
+                                    </div>
+                                </div>
+                                @* Bố *@
+                                <div class="item form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                        Họ tên bố <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
+                                        <input class="form-control col-md-7 col-xs-12" id="HoTenBoGKS" name="HoTenBo" required="required" placeholder="Họ tên bố" type="text" />
+                                    </div>
+                                </div>
+                                <div class="item form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                        Năm sinh bố
+                                    </label>
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
+                                        <input class="form-control col-md-7 col-xs-12" id="NsBoGKS" name="NsBo" type="text" placeholder="Năm sinh bố" />
+                                    </div>
+                                </div>
+                                <div class="item form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                        Dân tộc bố
+                                    </label>
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
+                                        <input class="form-control col-md-7 col-xs-12" id="DanTocBoGKS" name="DanTocBo" placeholder="Dân tộc bố" type="text" />
+                                    </div>
+                                </div>
+                                <div class="item form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                        Quốc tịch bố
+                                    </label>
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
+                                        <input class="form-control col-md-7 col-xs-12" id="QuocTichBoGKS" name="QuocTichBo" placeholder=" Quốc tịch bố" type="text" />
+                                    </div>
+                                </div>
+                                <div class="item form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                        Nơi cư trú bố
+                                    </label>
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
+                                        <input class="form-control col-md-7 col-xs-12" id="NoiCuTruBoGKS" name="NoiCuTruBo" placeholder=" Nơi cư trú bố" type="text" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <div class="item form-group">
+                                    <label class="control-label col-md-1 col-sm-1 col-xs-12" style="margin-left:4%;">
+                                        Ngày lập <span class="required"></span>
+                                    </label>
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
+                                        <input style="width:117.3%;" class="form-control has-feedback-left active" name="NgayLap" id="dtpNgaySinhNL" type="date" /><span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="ln_solid"></div>
+                            @*chức năng*@
+                            <div class="form-group">
+                                <div class="col-md-6 col-md-offset-3">
+                                    <button class="btn btn-success" type="button" onclick="SaveGKS()" style="margin-left:30%;">Thêm mới</button>
+                                    <a href="/HocSinh/Index" class="btn btn-primary">Huỷ</a>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="ThongbaoGKS">
+
+</div>
+<script type="text/javascript">
+    function SaveGKS() {
+        debugger;
+        var gks = {
+            HoTen: $("#HoTenGKS").val(),
+            NgaySinh: $("#dtpNgaySinhKS").val(),
+            NoiSinh: $("#NoiSinhGKS").val(),
+            QueQuan: $("#QueQuanGKS").val(),
+            GioiTinh: $('[name="GioiTinh"]:radio:checked').val(),
+            DanToc: $("#DanTocGKS").val(),
+            QuocTich: $("#QuocTichGKS").val(),
+            HoTenMe: $("#HoTenMeGKS").val(),
+            NsMe: $("#NsMeGKS").val(),
+            DanTocMe: $("#DanTocMeGKS").val(),
+            QuocTichMe: $("#QuocTichMeGKS").val(),
+            NoiCuTruMe: $("#NoiCuTruMeGKS").val(),
+            HoTenBo: $("#HoTenBoGKS").val(),
+            NsBo: $("#NsBoGKS").val(),
+            DanTocBo: $("#DanTocBoGKS").val(),
+            QuocTichBo: $("#QuocTichBoGKS").val(),
+            NoiCuTruBo: $("#NoiCuTruBoGKS").val(),
+            NoiDangKy: $("#NoiDangKyGKS").val(),
+            NgayLap: $("#dtpNgaySinhNL").val(),
+        };
+        $.ajax({
+            type: "POST",
+            url: "/GiayKhaiSinh/Themmoi",
+            dataType: "json",
+            data: JSON.stringify(gks),
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                alert(data);
+                $("#ClassGKS").css("display", "none");
+                var row = '';
+                row += "<h2 style='color:#0070e2;'><strong>Đã thêm thành công</strong></h2>"
+                $("#ThongbaoGKS").html(row);
+            },
+            error: function (err) {
+                alert("Error: " + err.responseText);
+            }
+        });
+    }
+</script>
+

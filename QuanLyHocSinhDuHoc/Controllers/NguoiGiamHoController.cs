@@ -13,6 +13,10 @@ namespace QuanLyHocSinhDuHoc.Controllers
         {
             return View();
         }
+        public ActionResult ThemmoiR(int id_hs)
+        {
+            return View();
+        }
         public ActionResult Loai1()
         {
             return View();

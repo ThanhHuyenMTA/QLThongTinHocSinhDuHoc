@@ -381,6 +381,11 @@
     <Content Include="Views\XulyHocSinh\ChinhSuaLoiDanToc.cshtml" />
     <Content Include="Views\DangNhap\Dangnhap.cshtml" />
     <Content Include="Views\GiayTo\Giaynhaphoc.cshtml" />
+    <Content Include="Views\CMT\ThemmoiR.cshtml" />
+    <Content Include="Views\BangTotNghiep\ThemmoiR.cshtml" />
+    <Content Include="Views\GiayKhaiSinh\ThemmoiR.cshtml" />
+    <Content Include="Views\HocBa\ThemmoiR.cshtml" />
+    <Content Include="Views\NguoiGiamHo\ThemmoiR.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -1,0 +1,61 @@
+﻿
+@{
+    ViewBag.Title = "ThemmoiR";
+    Layout = "~/Views/Share/_LayoutTrangChu.cshtml";
+}
+
+<div class="row">
+    <div class="col-sm-4 ">
+        <img src="~/Content/images/CMT_1.jpg" style="width:366px; height:300px;" /><br />
+        <a class="loaicmt" href="#" onclick="LoaiCMTNGH(1)">Loại 1</a>
+    </div>
+    <div class="col-sm-4">
+        <img src="~/Content/images/CMT_2.jpg" style="width:366px; height:300px;" /><br />
+        <a class="loaicmt" href="#" onclick="LoaiCMTNGH(2)">Loại 2</a>
+    </div>
+    <div class="col-sm-4">
+        <img src="~/Content/images/CMT_3.jpg" style="width:366px; height:300px;" /><br />
+        <a class="loaicmt" href="#" onclick="LoaiCMTNGH(3)">Loại 3</a>
+    </div>
+</div>
+<div class="row" id="Loai1NGH" style="display:none;">
+    @Html.Action("Loai1", "NguoiGiamHo")
+</div>
+<div class="row" id="Loai2NGH" style="display:none;">
+    @Html.Action("Loai2", "NguoiGiamHo")
+</div>
+<div class="row" id="Loai3NGH" style="display:none;">
+    @Html.Action("Loai3", "NguoiGiamHo")
+</div>
+<style>
+    .loaicmt {
+        color: #0094ff;
+        font-weight: bold;
+        margin-left: 47%;
+    }
+</style>
+
+<script type="text/javascript">
+    function LoaiCMTNGH(id)
+    {
+        debugger;
+        if (id == 1)
+        {
+            $("#Loai1NGH").css("display", "block");
+            $("#Loai2NGH").css("display", "none");
+            $("#Loai3NGH").css("display", "none");
+        }
+        if (id == 2) {
+            $("#Loai2NGH").css("display", "block");
+            $("#Loai1NGH").css("display", "none");
+            $("#Loai3NGH").css("display", "none");
+        }
+        if (id == 3) {
+            $("#Loai3NGH").css("display", "block");
+            $("#Loai2NGH").css("display", "none");
+            $("#Loai1NGH").css("display", "none");
+        }
+
+    }
+</script>
+

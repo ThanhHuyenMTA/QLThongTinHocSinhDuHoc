@@ -16,6 +16,11 @@ namespace QuanLyHocSinhDuHoc.Controllers
         {
             return View();
         }
+        public ActionResult ThemmoiR(int id_hs)
+        {
+            return View();
+        }
+
         [HttpPost]
         public JsonResult Themmoi1(CMT cmt1)
         {           
