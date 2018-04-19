@@ -235,7 +235,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="CommonXuLy\DichTuDong.cs" />
     <Compile Include="CommonXuLy\LoiModel.cs" />
-    <Compile Include="CommonXuLy\ReturnID.cs" />
+    <Compile Include="CommonXuLy\Xuly.cs" />
     <Compile Include="Controllers\BangTotNghiepController.cs" />
     <Compile Include="Controllers\CMTController.cs" />
     <Compile Include="Controllers\DangNhapController.cs" />

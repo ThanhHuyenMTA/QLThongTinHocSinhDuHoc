@@ -23,5 +23,6 @@ namespace QuanLyHocSinhDuHoc.Models.Entities
         public Nullable<int> id_GKS { get; set; }
         public Nullable<int> id_BTN { get; set; }
         public Nullable<int> id_HB { get; set; }
+        public string timeStart { get; set; }
     }
 }

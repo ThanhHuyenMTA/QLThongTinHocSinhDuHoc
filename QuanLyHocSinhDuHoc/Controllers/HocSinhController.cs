@@ -15,7 +15,8 @@ namespace QuanLyHocSinhDuHoc.Controllers
         dbXulyTThsEntities db = new dbXulyTThsEntities();
         public ActionResult Index()
         {
-            return View(db.HOCSINHs.ToList());
+            var listNam = from am in db.HOCSINHs select  am.timeStart.Distinct();
+            return View(db.HOCSINHs.OrderByDescending(x => x.timeStart).ToList());
         }
         public ActionResult Themmoi()
         {
@@ -26,6 +27,8 @@ namespace QuanLyHocSinhDuHoc.Controllers
         {
             if(ModelState.IsValid)
             {
+                DateTime today =DateTime.Now;              
+                hocsinh.timeStart = today.ToString("yyyy");
                 db.HOCSINHs.Add(hocsinh);
                 db.SaveChanges();
                 int id_HS = hocsinh.id;
@@ -102,6 +105,13 @@ namespace QuanLyHocSinhDuHoc.Controllers
             Session["id_hsDetail"] = id;
             HOCSINH hocsinh = db.HOCSINHs.Find(id);
             return View(hocsinh);
+        }
+
+        //GET: sOLUONG Load san pham
+        public JsonResult SearchNam(string Namloc)
+        {
+            List<HOCSINH> list = db.HOCSINHs.Where(n => n.timeStart ==Namloc).ToList();
+            return Json(list, JsonRequestBehavior.AllowGet);
         }
 
     }

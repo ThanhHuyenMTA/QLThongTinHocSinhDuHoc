@@ -33,7 +33,6 @@ namespace QuanLyHocSinhDuHoc.Models.Entities
         public virtual DbSet<GIAYCHUNGTHUC> GIAYCHUNGTHUCs { get; set; }
         public virtual DbSet<GIAYKHAISINH> GIAYKHAISINHs { get; set; }
         public virtual DbSet<HOCBA> HOCBAs { get; set; }
-        public virtual DbSet<HOCSINH> HOCSINHs { get; set; }
         public virtual DbSet<HOPDONG> HOPDONGs { get; set; }
         public virtual DbSet<HOSOH> HOSOHS { get; set; }
         public virtual DbSet<KIHOC> KIHOCs { get; set; }
@@ -44,5 +43,6 @@ namespace QuanLyHocSinhDuHoc.Models.Entities
         public virtual DbSet<QUANTRI> QUANTRIs { get; set; }
         public virtual DbSet<QUYEN> QUYENs { get; set; }
         public virtual DbSet<TABLE_LOI> TABLE_LOI { get; set; }
+        public virtual DbSet<HOCSINH> HOCSINHs { get; set; }
     }
 }

@@ -121,12 +121,10 @@
         </div>
     </div>
 </div>
-<div id="ThongbaoBTN" style="padding:10% 10%">
-
-</div>
-
+<div><input id="id_hsGKS" value="@Model" hidden="hidden" /></div>
 <script type="text/javascript">
     function SaveBTN() {
+        var id_hs = $("#id_hsGKS").val();
         var btn = {
             HoTen: $("#HoTenBTN").val(),
             NgaySinh: $("#dtpNgaySinhBTN").val(),
@@ -147,10 +145,7 @@
             contentType: "application/json; charset=utf-8",
             success: function (data) {
                 alert(data);
-                $("#ClassBTN").css("display", "none");
-                var row = '';
-                row += "<h2 style='color:#0070e2;'><strong>Đã thêm thành công</strong></h2>"
-                $("#ThongbaoBTN").html(row);
+                window.location.href = "/HocSinh/DetailChung/" + id_hs;
             },
             error: function (err) {
                 alert("Error: " + err.responseText);

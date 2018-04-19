@@ -9,12 +9,13 @@ namespace QuanLyHocSinhDuHoc.Controllers
     public class NguoiGiamHoController : Controller
     {
         // GET: NguoiGiamHo
-        public ActionResult Themmoi()
+        public ActionResult Themmoi(int? id_hs)
         {
             return View();
         }
-        public ActionResult ThemmoiR(int id_hs)
+        public ActionResult ThemmoiR(int? id_hs)
         {
+            Session["id_HS"] = id_hs;
             return View();
         }
         public ActionResult Loai1()

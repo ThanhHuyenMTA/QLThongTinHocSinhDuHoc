@@ -1,9 +1,10 @@
 ﻿@model QuanLyHocSinhDuHoc.Models.Entities.BANGTOTNGHIEP
 @{
+    var id_hs = Request.Url.Segments.Last();
     if (ViewBag.ThongbaoBTN == "NO")
     {
         <h2 style='color:#0070e2;'><strong>Chưa cập nhật bằng tốt nghiệp</strong></h2>
-        <a href="#" class="btn btn-primary">Thêm mới bằng tốt nghiệp</a>
+        <a href="@Url.Action("ThemmoiR","BangTotNghiep", new { @id_hs =id_hs})" class="btn btn-primary">Thêm mới bằng tốt nghiệp</a>
     }
     if (ViewBag.ThongbaoBTN == "OK")
     {

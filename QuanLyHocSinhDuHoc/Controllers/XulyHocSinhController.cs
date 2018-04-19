@@ -23,7 +23,8 @@ namespace QuanLyHocSinhDuHoc.Controllers
             LoiModel chitietLoi =new LoiModel();
             TABLE_LOI tableLoi = db.TABLE_LOI.Find(id);
             string typeLoi = tableLoi.TypeLOI;
-            ViewBag.typeLoi = typeLoi;            
+            ViewBag.typeLoi = typeLoi;
+           
             if (typeLoi == "HoTen")
             {
                 return RedirectToAction("ChinhSuaLoiHoTen",new { id = id });
@@ -59,7 +60,9 @@ namespace QuanLyHocSinhDuHoc.Controllers
             TABLE_LOI tableLoi = db.TABLE_LOI.Find(id);
             string typeLoi = tableLoi.TypeLOI;
             ViewBag.typeLoi = typeLoi;
-            ViewBag.idLoi = id;     
+            ViewBag.idLoi = id;
+            Xuly xuly = new Xuly();
+            ViewBag.HocSinhLoi = xuly.ReturnHoten(id);
             int id_HS = tableLoi.id_HS ?? 0;
             int id_GKS = tableLoi.id_GKS ?? 0;
             int id_BTN = tableLoi.id_BTN ?? 0;
@@ -93,6 +96,8 @@ namespace QuanLyHocSinhDuHoc.Controllers
             TABLE_LOI tableLoi = db.TABLE_LOI.Find(id);
             string typeLoi = tableLoi.TypeLOI;
             ViewBag.typeLoi = typeLoi;
+            Xuly xuly = new Xuly();
+            ViewBag.HocSinhLoi = xuly.ReturnHoten(id);
             ViewBag.idLoi = id;   
             int id_GKS = tableLoi.id_GKS ?? 0;
             int id_BTN = tableLoi.id_BTN ?? 0;
@@ -123,6 +128,8 @@ namespace QuanLyHocSinhDuHoc.Controllers
             string typeLoi = tableLoi.TypeLOI;
             ViewBag.idLoi = id;   
             ViewBag.typeLoi = typeLoi;
+            Xuly xuly = new Xuly();
+            ViewBag.HocSinhLoi = xuly.ReturnHoten(id);
             int id_GKS = tableLoi.id_GKS ?? 0;
             int id_BTN = tableLoi.id_BTN ?? 0;
             int id_HB = tableLoi.id_HB ?? 0;
@@ -147,6 +154,8 @@ namespace QuanLyHocSinhDuHoc.Controllers
             string typeLoi = tableLoi.TypeLOI;
             ViewBag.idLoi = id;   
             ViewBag.typeLoi = typeLoi;
+            Xuly xuly = new Xuly();
+            ViewBag.HocSinhLoi = xuly.ReturnHoten(id);
             int id_GKS = tableLoi.id_GKS ?? 0;
             string so_CMT = tableLoi.So_CMT ?? null;
             if (check(id_GKS))
@@ -165,7 +174,9 @@ namespace QuanLyHocSinhDuHoc.Controllers
             TABLE_LOI tableLoi = db.TABLE_LOI.Find(id);
             string typeLoi = tableLoi.TypeLOI;
             ViewBag.typeLoi = typeLoi;
-            ViewBag.idLoi = id;   
+            ViewBag.idLoi = id;
+            Xuly xuly = new Xuly();
+            ViewBag.HocSinhLoi = xuly.ReturnHoten(id);
             int id_GKS = tableLoi.id_GKS ?? 0;
             int id_BTN = tableLoi.id_BTN ?? 0;
             int id_HB = tableLoi.id_HB ?? 0;
@@ -194,7 +205,9 @@ namespace QuanLyHocSinhDuHoc.Controllers
             TABLE_LOI tableLoi = db.TABLE_LOI.Find(id);
             string typeLoi = tableLoi.TypeLOI;
             ViewBag.typeLoi = typeLoi;
-            ViewBag.idLoi = id;   
+            ViewBag.idLoi = id;
+            Xuly xuly = new Xuly();
+            ViewBag.HocSinhLoi = xuly.ReturnHoten(id);
             int id_GKS = tableLoi.id_GKS ?? 0;
             int id_BTN = tableLoi.id_BTN ?? 0;
             int id_HB = tableLoi.id_HB ?? 0;
@@ -231,7 +244,7 @@ namespace QuanLyHocSinhDuHoc.Controllers
             string TenBTN = listKey[4];
             string TenHB = listKey[5];
             TABLE_LOI tableLoi = db.TABLE_LOI.Find(idLoi);
-            string typeLoi = tableLoi.TypeLOI;
+            string typeLoi = tableLoi.TypeLOI;           
             if(TenHS !=null)
             {
                 HOCSINH hocsinh = db.HOCSINHs.Find(tableLoi.id_HS);
@@ -270,37 +283,35 @@ namespace QuanLyHocSinhDuHoc.Controllers
         {
             LoiModel chitietLoi = new LoiModel();
             int idLoi = Int32.Parse(listKey[0]);
-            DateTime NgaySinhCMT =DateTime.Parse(listKey[1]);
-            DateTime NgaySinhGKS = DateTime.Parse(listKey[2]);
-            DateTime NgaySinhBTN = DateTime.Parse(listKey[3]);
-            DateTime NgaySinhHB = DateTime.Parse(listKey[4]);
-
             TABLE_LOI tableLoi = db.TABLE_LOI.Find(idLoi);
             string typeLoi = tableLoi.TypeLOI;
-            if (NgaySinhCMT != null)
-            {
+            if(listKey[1]!=null){
+                DateTime NgaySinhCMT =DateTime.Parse(listKey[1]);
                 CMT cmt = db.CMTs.Find(tableLoi.So_CMT);
-                cmt.NgaySinh =NgaySinhCMT;
+                cmt.NgaySinh = NgaySinhCMT;
                 db.Entry(cmt).State = System.Data.Entity.EntityState.Modified;
             }
-            if (NgaySinhGKS != null)
-            {
-                GIAYKHAISINH gks = db.GIAYKHAISINHs.Find(tableLoi.id_GKS);
-                gks.NgaySinh = NgaySinhGKS;
-                db.Entry(gks).State = System.Data.Entity.EntityState.Modified;
-            }
-            if (NgaySinhBTN != null)
-            {
-                BANGTOTNGHIEP btn = db.BANGTOTNGHIEPs.Find(tableLoi.id_BTN);
-                btn.NgaySinh = NgaySinhBTN;
-                db.Entry(btn).State = System.Data.Entity.EntityState.Modified;
-            }
-            if (NgaySinhHB != null)
-            {
-                HOCBA hocba = db.HOCBAs.Find(tableLoi.id_HB);
-                hocba.NgaySinh = NgaySinhHB;
-                db.Entry(hocba).State = System.Data.Entity.EntityState.Modified;
-            }
+                
+             if(listKey[2]!=null){
+                 DateTime NgaySinhGKS = DateTime.Parse(listKey[2]);
+                 GIAYKHAISINH gks = db.GIAYKHAISINHs.Find(tableLoi.id_GKS);
+                 gks.NgaySinh = NgaySinhGKS;
+                 db.Entry(gks).State = System.Data.Entity.EntityState.Modified;
+             }
+                 
+             if(listKey[3]!=null){
+                 DateTime NgaySinhBTN = DateTime.Parse(listKey[3]);
+                 BANGTOTNGHIEP btn = db.BANGTOTNGHIEPs.Find(tableLoi.id_BTN);
+                 btn.NgaySinh = NgaySinhBTN;
+                 db.Entry(btn).State = System.Data.Entity.EntityState.Modified;
+             }
+
+             if (listKey[4] != null) { 
+                 DateTime NgaySinhHB = DateTime.Parse(listKey[4]);
+                 HOCBA hocba = db.HOCBAs.Find(tableLoi.id_HB);
+                 hocba.NgaySinh = NgaySinhHB;
+                 db.Entry(hocba).State = System.Data.Entity.EntityState.Modified;
+             }   
             db.SaveChanges();
             return Json(true, JsonRequestBehavior.AllowGet);
         }
@@ -431,5 +442,7 @@ namespace QuanLyHocSinhDuHoc.Controllers
              db.SaveChanges();
              return Json(true, JsonRequestBehavior.AllowGet);
          }
+
+     
     }
 }

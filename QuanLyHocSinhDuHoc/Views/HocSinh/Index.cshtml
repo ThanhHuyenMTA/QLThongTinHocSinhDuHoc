@@ -19,6 +19,18 @@
                     <div id="datatable_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
                         <div class="row">
                             <div class="col-sm-6">
+                                <div class="dataTables_length" id="datatable_length">
+                                    <label>
+                                        Hiện học sinh năm
+                                        <select id="LocHSNam" name="datatable_length" ng-model="soKetQua" aria-controls="datatable" class="form-control input-sm">
+                                            <option value="2018">2018</option>
+                                            <option value="2017">2017</option>
+                                            <option value="2016">2016</option>
+                                            <option value="2015">2015</option>
+                                        </select>
+                                        kết quả
+                                    </label>
+                                </div>
                             </div>
                             <div class="col-sm-6">
                                 <form method="post" action="@Url.Action("Timkiem","HocSinh")">
@@ -37,6 +49,7 @@
                                     <thead>
                                         <tr>
                                             <th><div class="word-wrap">STT</div></th>
+                                            <th><div class="word-wrap">Năm gia nhập</div></th>
                                             <th><div class="word-wrap">Tên học sinh</div></th>
                                             <th><div class="word-wrap">Số điện thoại</div></th>
                                             <th><div class="word-wrap">Email</div></th>
@@ -44,7 +57,7 @@
                                         </tr>
                                     </thead>
 
-                                    <tbody>
+                                    <tbody id="listHS">
                                         @{
                                             if (Model != null)
                                             {
@@ -53,6 +66,7 @@
                                                 {
                                                     <tr>
                                                         <td><div class="word-wrap">@i</div></td>
+                                                        <td><div class="word-wrap">@item.timeStart</div></td>
                                                         <td><div class="word-wrap">@item.TenHS</div></td>
                                                         <td><div class="word-wrap">@item.sdt</div></td>
                                                         <td><div class="word-wrap">@item.email</div></td>
@@ -87,3 +101,44 @@
     </div>
 </div>
 
+<script type="text/javascript">
+    $(document).ready(function () {
+        //Lọc theo số lượng sản phẩm
+        $("#LocHSNam").change(function () {
+            var Namloc = $("#LocHSNam").val();
+            $.ajax({
+                type: "GET",
+                url: "/HocSinh/SearchNam",
+                dataType: "json",
+                data: { Namloc: Namloc },
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    console.log(data);
+                    var row = '';
+                    $.each(data, function (i, item) {
+                        $("#listHS").empty();
+                        row += '<tr>';
+                        row += '<td><div class="word-wrap">'+item.id+'</div></td>';
+                        row += '<td><div class="word-wrap">'+item.timeStart+'</div></td>';
+                        row += '<td><div class="word-wrap">'+item.TenHS+'</div></td>';
+                        row += '<td><div class="word-wrap">'+item.sdt+'</div></td>';
+                        row += '<td><div class="word-wrap">'+item.email+'</div></td>';
+                        row += '<td class="actions">';
+                        row += '<a data-toggle="tooltip" data-placement="bottom" target="_blank" title="Sửa" href="#">';
+                        row += '<i class="fa fa-edit"></i>';
+                        row += ' </a>';
+                        row += '<a data-toggle="tooltip" data-placement="bottom" target="_blank" title="Detail" href="#">';
+                        row += '<i class="fa fa-slideshare"></i>';
+                        row += ' </a>';                    
+                        row += '  </td>';
+                        row += '  </tr>';      
+                    });
+                    $("#listHS").html(row);
+                },
+                error: function (err) {
+                    alert("Error: " + err.responseText);
+                }
+            });
+        });
+    });
+</script>

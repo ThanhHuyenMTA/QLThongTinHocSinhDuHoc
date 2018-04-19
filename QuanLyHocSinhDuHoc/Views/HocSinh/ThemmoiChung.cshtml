@@ -30,28 +30,30 @@
         <a class="nav-link" data-toggle="pill" href="#" onclick="Thoat()">Thoát</a>
         </li>
     </ul>
-
+    @{
+        var id_hs = Request.Url.Segments.Last();
+    }
     <!-- Tab panes -->
     <div class="tab-content">
         <div id="cmt" class="container tab-pane active">
             <br>
-            @Html.Action("Themmoi", "CMT")
+            @Html.Action("Themmoi", "CMT", new {@id_hs =id_hs })
         </div>
         <div id="gks" class="container tab-pane fade">
             <br>
-            @Html.Action("Themmoi","GiayKhaiSinh")
+            @Html.Action("Themmoi", "GiayKhaiSinh", new { @id_hs = id_hs })
             </div>
         <div id="btn" class="container tab-pane fade">
             <br>
-            @Html.Action("Themmoi", "BangTotNghiep")
+            @Html.Action("Themmoi", "BangTotNghiep", new { @id_hs = id_hs })
         </div>
         <div id="hb" class="container tab-pane fade">
             <br>
-            @Html.Action("Themmoi", "HocBa")
+            @Html.Action("Themmoi", "HocBa", new { @id_hs = id_hs })
            </div>
         <div id="ngh" class="container tab-pane fade">
             <br>
-            @Html.Action("Themmoi", "NguoiGiamHo")
+            @Html.Action("Themmoi", "NguoiGiamHo", new { @id_hs = id_hs })
         </div>
         <div id="gct" class="container tab-pane fade">
             <br>

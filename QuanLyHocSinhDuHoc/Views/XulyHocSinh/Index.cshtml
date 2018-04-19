@@ -1,5 +1,6 @@
 ﻿@model  IEnumerable<QuanLyHocSinhDuHoc.Models.Entities.TABLE_LOI>
 @using QuanLyHocSinhDuHoc.Models.Entities
+@using QuanLyHocSinhDuHoc.CommonXuLy
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Share/_LayoutTrangChu.cshtml";
@@ -10,7 +11,7 @@
         <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="x_panel">
                 <div class="x_title">
-                    <h2>Danh sách học sinh</h2>
+                    <h2>Danh sách sai sót thông tin học sinh</h2>
                     <ul class="nav navbar-right panel_toolbox">
                         <li><a title="Thêm" data-toggle="tooltip" data-placement="bottom" class="dropdown-toggle" href="@Url.Content("/HocSinh/Themmoi")"><i class="fa fa-plus"></i></a></li>
                     </ul>
@@ -57,15 +58,11 @@
                                                         <td style="text-align:center;">
                                                             <div class="word-wrap" style="text-align:center;">
                                                                 @{
-                                                                    dbXulyTThsEntities db = new dbXulyTThsEntities();
-                                                                    List<HOCSINH> hs = db.HOCSINHs.Where(n => n.id == item.id_HS || n.id_GKS == item.id_GKS || n.id_BTN == item.id_BTN || n.id_HB == item.id_HB||n.SoCMT ==item.So_CMT).ToList();
-                                                                    if (hs.Count>0)
-                                                                    {
-                                                                        <p>Sai thông tin về <strong>@item.TypeLOI</strong> từ học sinh: @hs[0].TenHS</p> 
-                                                                    }
-
-                                                                }
-                                                                @{
+                                                                     Xuly xuly = new Xuly();
+                                                                     var LoiHocSinh = xuly.ReturnHoten(item.id);
+                                                                     <p>Sai thông tin về <strong>@item.TypeLOI</strong> từ học sinh: @LoiHocSinh</p>
+                                                                 }
+                                                     @{
                                                     if (item.id_HS > 0)
                                                     {
                                                         <p style="text-align:center;">Mã học sinh - <strong>@item.id_HS</strong></p>
@@ -102,12 +99,11 @@
                                                             </a>
                                                         </td>
                                                     </tr>
+                                            
                                                     i = @i + 1;
                                                 }
                                             }
                                         }
-
-
                                     </tbody>
                                 </table>
                             </div>

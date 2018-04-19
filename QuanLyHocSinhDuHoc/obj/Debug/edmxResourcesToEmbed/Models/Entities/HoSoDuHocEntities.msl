@@ -133,21 +133,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="HOCSINHs">
-      <EntityTypeMapping TypeName="dbXulyTThsModel.HOCSINH">
-        <MappingFragment StoreEntitySet="HOCSINH">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="TenHS" ColumnName="TenHS" />
-          <ScalarProperty Name="SoCMT" ColumnName="SoCMT" />
-          <ScalarProperty Name="sdt" ColumnName="sdt" />
-          <ScalarProperty Name="email" ColumnName="email" />
-          <ScalarProperty Name="anh" ColumnName="anh" />
-          <ScalarProperty Name="id_GKS" ColumnName="id_GKS" />
-          <ScalarProperty Name="id_BTN" ColumnName="id_BTN" />
-          <ScalarProperty Name="id_HB" ColumnName="id_HB" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="HOPDONGs">
       <EntityTypeMapping TypeName="dbXulyTThsModel.HOPDONG">
         <MappingFragment StoreEntitySet="HOPDONG">
@@ -285,6 +270,22 @@
           <ScalarProperty Name="TypeLOI" ColumnName="TypeLOI" />
           <ScalarProperty Name="TimeStart" ColumnName="TimeStart" />
           <ScalarProperty Name="TimeEnd" ColumnName="TimeEnd" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HOCSINHs">
+      <EntityTypeMapping TypeName="dbXulyTThsModel.HOCSINH">
+        <MappingFragment StoreEntitySet="HOCSINH">
+          <ScalarProperty Name="timeStart" ColumnName="timeStart" />
+          <ScalarProperty Name="id_HB" ColumnName="id_HB" />
+          <ScalarProperty Name="id_BTN" ColumnName="id_BTN" />
+          <ScalarProperty Name="id_GKS" ColumnName="id_GKS" />
+          <ScalarProperty Name="anh" ColumnName="anh" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="sdt" ColumnName="sdt" />
+          <ScalarProperty Name="SoCMT" ColumnName="SoCMT" />
+          <ScalarProperty Name="TenHS" ColumnName="TenHS" />
+          <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -12,13 +12,14 @@ namespace QuanLyHocSinhDuHoc.Controllers
     {
         dbXulyTThsEntities db = new dbXulyTThsEntities();
         // GET: CMT
-        public ActionResult Themmoi()
+        public ActionResult Themmoi(int? id_hs)
         {
             return View();
         }
-        public ActionResult ThemmoiR(int id_hs)
+        public ActionResult ThemmoiR(int? id_hs)
         {
-            return View();
+            Session["id_HS"] = id_hs;
+            return View(id_hs);
         }
 
         [HttpPost]

@@ -3,7 +3,6 @@
     ViewBag.Title = "ThemmoiR";
     Layout = "~/Views/Share/_LayoutTrangChu.cshtml";
 }
-
 <div class="" id="ClassGKS">
     <div class="clearfix"></div>
     <div class="row">
@@ -205,13 +204,10 @@
         </div>
     </div>
 </div>
-
-<div id="ThongbaoGKS">
-
-</div>
+<div><input id="id_hsGKS" value="@Model" hidden="hidden"/></div>
 <script type="text/javascript">
     function SaveGKS() {
-        debugger;
+        var id_hs =$("#id_hsGKS").val();        
         var gks = {
             HoTen: $("#HoTenGKS").val(),
             NgaySinh: $("#dtpNgaySinhKS").val(),
@@ -241,10 +237,7 @@
             contentType: "application/json; charset=utf-8",
             success: function (data) {
                 alert(data);
-                $("#ClassGKS").css("display", "none");
-                var row = '';
-                row += "<h2 style='color:#0070e2;'><strong>Đã thêm thành công</strong></h2>"
-                $("#ThongbaoGKS").html(row);
+                window.location.href = "/HocSinh/DetailChung/" + id_hs;
             },
             error: function (err) {
                 alert("Error: " + err.responseText);

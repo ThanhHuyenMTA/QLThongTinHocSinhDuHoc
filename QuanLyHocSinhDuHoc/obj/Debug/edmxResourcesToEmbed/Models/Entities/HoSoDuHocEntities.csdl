@@ -126,20 +126,6 @@
     <Property Name="NgayLap" Type="DateTime" Precision="3" />
     <Property Name="fileHB" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
   </EntityType>
-  <EntityType Name="HOCSINH">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="TenHS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="SoCMT" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="sdt" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="anh" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="id_GKS" Type="Int32" />
-    <Property Name="id_BTN" Type="Int32" />
-    <Property Name="id_HB" Type="Int32" />
-  </EntityType>
   <EntityType Name="HOPDONG">
     <Key>
       <PropertyRef Name="id" />
@@ -279,7 +265,6 @@
     <EntitySet Name="GIAYCHUNGTHUCs" EntityType="Self.GIAYCHUNGTHUC" />
     <EntitySet Name="GIAYKHAISINHs" EntityType="Self.GIAYKHAISINH" />
     <EntitySet Name="HOCBAs" EntityType="Self.HOCBA" />
-    <EntitySet Name="HOCSINHs" EntityType="Self.HOCSINH" />
     <EntitySet Name="HOPDONGs" EntityType="Self.HOPDONG" />
     <EntitySet Name="HOSOHS" EntityType="Self.HOSOH" />
     <EntitySet Name="KIHOCs" EntityType="Self.KIHOC" />
@@ -290,5 +275,21 @@
     <EntitySet Name="QUANTRIs" EntityType="Self.QUANTRI" />
     <EntitySet Name="QUYENs" EntityType="Self.QUYEN" />
     <EntitySet Name="TABLE_LOI" EntityType="Self.TABLE_LOI" />
+    <EntitySet Name="HOCSINHs" EntityType="dbXulyTThsModel.HOCSINH" />
   </EntityContainer>
+  <EntityType Name="HOCSINH">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenHS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SoCMT" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="sdt" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="anh" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="id_GKS" Type="Int32" />
+    <Property Name="id_BTN" Type="Int32" />
+    <Property Name="id_HB" Type="Int32" />
+    <Property Name="timeStart" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+  </EntityType>
 </Schema>

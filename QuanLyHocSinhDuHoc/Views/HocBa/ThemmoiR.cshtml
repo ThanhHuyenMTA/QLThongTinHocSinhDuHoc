@@ -161,10 +161,7 @@
         </div>
     </div>
 </div>
-
-<div id="ThongBaoHB">
-
-</div>
+<div><input id="id_hsGKS" value="@Model" hidden="hidden" /></div>
 @* Thêm mới năm học *@
 <div id="divNamhoc" style="display:none;">
     @Html.Action("Themmoi", "NamHoc")
@@ -207,6 +204,7 @@
 
 <script type="text/javascript">
     function SaveHocBa() {
+        var id_hs = $("#id_hsGKS").val();
         var hocba = {
             HoTen: $("#HoTenHB").val(),
             NgaySinh: $("#dtpNgaySinhHB").val(),

@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="a2d78fcb41b84c55b5b55e08453a4b71" Name="Diagram1">
+      <Diagram DiagramId="a2d78fcb41b84c55b5b55e08453a4b71" Name="Diagram1" ZoomLevel="88">
         <EntityTypeShape EntityType="dbXulyTThsModel.BANGTOTNGHIEP" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="dbXulyTThsModel.BAOCAOTHONGKE" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="dbXulyTThsModel.CMT" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
@@ -13,7 +13,6 @@
         <EntityTypeShape EntityType="dbXulyTThsModel.GIAYCHUNGTHUC" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="dbXulyTThsModel.GIAYKHAISINH" Width="1.5" PointX="6.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="dbXulyTThsModel.HOCBA" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="dbXulyTThsModel.HOCSINH" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
         <EntityTypeShape EntityType="dbXulyTThsModel.HOPDONG" Width="1.5" PointX="2.75" PointY="8.75" IsExpanded="true" />
         <EntityTypeShape EntityType="dbXulyTThsModel.HOSOH" Width="1.5" PointX="8.75" PointY="5.75" IsExpanded="true" />
         <EntityTypeShape EntityType="dbXulyTThsModel.KIHOC" Width="1.5" PointX="8.75" PointY="8.75" IsExpanded="true" />
@@ -24,6 +23,7 @@
         <EntityTypeShape EntityType="dbXulyTThsModel.QUANTRI" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="dbXulyTThsModel.QUYEN" Width="1.5" PointX="0.75" PointY="12.75" IsExpanded="true" />
         <EntityTypeShape EntityType="dbXulyTThsModel.TABLE_LOI" Width="1.5" PointX="2.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbXulyTThsModel.HOCSINH" Width="1.5" PointX="5.375" PointY="12.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -139,6 +139,7 @@
     <Property Name="id_GKS" Type="int" />
     <Property Name="id_BTN" Type="int" />
     <Property Name="id_HB" Type="int" />
+    <Property Name="timeStart" Type="varchar" MaxLength="4" />
   </EntityType>
   <EntityType Name="HOPDONG">
     <Key>

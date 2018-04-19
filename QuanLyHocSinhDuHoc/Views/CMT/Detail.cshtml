@@ -1,13 +1,17 @@
 ﻿@model QuanLyHocSinhDuHoc.Models.Entities.CMT
 @{
-    if(Model ==null)
+    var id_hs = Request.Url.Segments.Last();
+
+    if (Model == null)
     {
-        <h2>Thông tin chứng minh thư còn trống ----><strong>Thêm mới</strong></h2>
+        <h2 style='color:#0070e2;'><strong>Chưa cập nhật chứng minh thư</strong></h2>
+        <a class="btn btn-primary" href="@Url.Action("ThemmoiR", "CMT", new {@id_hs =id_hs })">Thêm mới Chứng minh thư</a>
     }
-    else{
-    
-       if(Model.LoaiCMT ==1)
-       {
+    else
+    {
+
+        if (Model.LoaiCMT == 1)
+        {
            @* Loại 1 *@
         <div class="">
             <div class="clearfix"></div>
@@ -41,7 +45,7 @@
                                         Ngày sinh <span class="required"></span>
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <input class="form-control has-feedback-left active" value="@Model.NgaySinh" disabled name="NgaySinh" id="dtpNgaySinh1" /><span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
+                                        <input class="form-control has-feedback-left active" value="@Model.NgaySinh.Value.ToString("yyyy-MM-dd")" disabled name="NgaySinh" id="dtpNgaySinh1" /><span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
                                     </div>
                                 </div>
                                 <div class="item form-group">
@@ -90,7 +94,7 @@
                                         Ngày cấp <span class="required"></span>
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <input class="form-control has-feedback-left active" disabled value="@Model.NgayCap" name="NgayCap" id="dtpNgayCap1" /><span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
+                                        <input class="form-control has-feedback-left active" disabled value="@Model.NgayCap.Value.ToString("yyyy-MM-dd")" name="NgayCap" id="dtpNgayCap1" /><span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
                                     </div>
                                 </div>
                                 <div class="item form-group">
