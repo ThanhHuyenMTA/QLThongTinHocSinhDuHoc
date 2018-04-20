@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using QuanLyHocSinhDuHoc.Models.Entities;
 using System.Data.Entity;
 using System.IO;
+using QuanLyHocSinhDuHoc.CommonXuLy;
 
 namespace QuanLyHocSinhDuHoc.Controllers
 {
@@ -15,7 +16,15 @@ namespace QuanLyHocSinhDuHoc.Controllers
         dbXulyTThsEntities db = new dbXulyTThsEntities();
         public ActionResult Index()
         {
-            var listNam = from am in db.HOCSINHs select  am.timeStart.Distinct();
+            Xuly xuly = new Xuly();
+            List<string> listNam = new List<string>();
+            List<HOCSINH> lisths = db.HOCSINHs.OrderByDescending(x => x.timeStart).ToList();
+            foreach(var item in lisths)
+            {
+                if(!xuly.checkTrungTimeStart(item.timeStart)) //chưa tồn tại trong list thì thêm vào list
+                    listNam.Add(item.timeStart);
+            }
+            ViewBag.listNam = listNam;
             return View(db.HOCSINHs.OrderByDescending(x => x.timeStart).ToList());
         }
         public ActionResult Themmoi()

@@ -23,10 +23,14 @@
                                     <label>
                                         Hiện học sinh năm
                                         <select id="LocHSNam" name="datatable_length" ng-model="soKetQua" aria-controls="datatable" class="form-control input-sm">
-                                            <option value="2018">2018</option>
-                                            <option value="2017">2017</option>
-                                            <option value="2016">2016</option>
-                                            <option value="2015">2015</option>
+                                            @*load all nam gia nhap => dữ liệu từ học sinh*@
+                                            @{
+                                                foreach (var item in @ViewBag.listNam)
+                                                {
+                                                    <option value="@item">@item</option>
+                                                }
+                                            }
+                                           
                                         </select>
                                         kết quả
                                     </label>
@@ -124,10 +128,10 @@
                         row += '<td><div class="word-wrap">'+item.sdt+'</div></td>';
                         row += '<td><div class="word-wrap">'+item.email+'</div></td>';
                         row += '<td class="actions">';
-                        row += '<a data-toggle="tooltip" data-placement="bottom" target="_blank" title="Sửa" href="#">';
+                        row += '<a data-toggle="tooltip" data-placement="bottom" target="_blank" title="Sửa" href="@Url.Action("SuaHocsinh","HocSinh")?id='+item.id+'">';
                         row += '<i class="fa fa-edit"></i>';
                         row += ' </a>';
-                        row += '<a data-toggle="tooltip" data-placement="bottom" target="_blank" title="Detail" href="#">';
+                        row += '<a data-toggle="tooltip" data-placement="bottom" target="_blank" title="Detail" href="@Url.Action("DetailHocsinh", "HocSinh")?id=' + item.id + '">';
                         row += '<i class="fa fa-slideshare"></i>';
                         row += ' </a>';                    
                         row += '  </td>';
