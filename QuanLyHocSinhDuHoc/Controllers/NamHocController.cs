@@ -15,6 +15,11 @@ namespace QuanLyHocSinhDuHoc.Controllers
         {
             return View();
         }
+        public ActionResult ThemmoiR(int id_hb)
+        {
+            Session["id_hocba"] = id_hb;
+            return View(id_hb);
+        }
         [HttpPost]
         public JsonResult ThemNamhoc(NAMHOC namhoc)
         {
@@ -26,6 +31,11 @@ namespace QuanLyHocSinhDuHoc.Controllers
                 return Json(namhoc, JsonRequestBehavior.AllowGet);
             }
             return Json("Thêm mới thất bại", JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult listNamHoc(int id_hb)
+        {
+            var model = db.NAMHOCs.Where(n => n.id_HB == id_hb).ToList();
+            return View(model);
         }
     }
 }

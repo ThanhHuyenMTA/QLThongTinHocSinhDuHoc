@@ -54,6 +54,9 @@ namespace QuanLyHocSinhDuHoc.Controllers
         public ActionResult SuaGKS( int id)
         {
             GIAYKHAISINH gks = db.GIAYKHAISINHs.Find(id);
+            HOCSINH hs = db.HOCSINHs.SingleOrDefault(n => n.id_GKS == id);
+            ViewBag.id_hs = hs.id;
+            Session["chuyenTab"] = 3;
             return View(gks);
         }
         [HttpPost]

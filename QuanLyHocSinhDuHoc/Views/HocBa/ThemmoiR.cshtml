@@ -162,13 +162,12 @@
         </div>
     </div>
 </div>
-<div><input id="id_hsGKS" value="@Model" hidden="hidden" /></div>
-@* Thêm mới năm học *@
+<div><input id="id_hsHB" value="@Model" hidden="hidden" /></div>
 <div id="divNamhoc" style="display:none;">
     @Html.Action("Themmoi", "NamHoc")
 </div>
-
-<div class="">
+@* Phần hiện thị năm học trong học bạ *@
+<div class="" id="loadNamHoc" style="display:none;">
     <div class="row">
         <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="x_panel">
@@ -205,14 +204,15 @@
 
 <script type="text/javascript">
     function SaveHocBa() {
-        var inputs = document.getElementsByTagName('input');
-        for (var i = 0; i < inputs.length; i++) {
-            if (inputs[i].value == "") {
+        debugger;
+        if ($("#HoTenHB").val() =="" || $("#dtpNgaySinhHB").val() =="" || $("#NoiSinhHB").val() =="" || 
+            $("#DanTocHB").val() ==""|| $('[name="GioiTinh"]:radio:checked').val() =="" ||$("#NoiSongHienTaiHB").val() ==""||
+            $("#HoTenBoHB").val() ==""||$("#NgheNghiepBoHB").val()=="" || $("#NgheNghiepMeHB").val() =="" || $("#dtpNgayLapHB").val()=="")
+             {
                 $("#messThemRHB").text("*****Thông tin không được để trống");
                 return false;
-            }
-        }
-        var id_hs = $("#id_hsGKS").val();
+            }        
+        var id_hs = $("#id_hsHB").val();
         var hocba = {
             HoTen: $("#HoTenHB").val(),
             NgaySinh: $("#dtpNgaySinhHB").val(),
@@ -242,6 +242,7 @@
                     row += "<h2 style='color:#0070e2;'><strong>Đã thêm thành công học bạ</strong></h2>"
                     $("#ThongBaoHB").html(row);
                     $("#divNamhoc").css("display", "block");
+                    $("#loadNamHoc").css("display", "block");
                     document.getElementById("ThemmoiNamHoc").reset();
                 } else {
                     alert("Thêm mới thất bại !");
@@ -278,7 +279,9 @@
                 rows += '</td></tr>';
 
                 $("#tableMonhoc").append(rows);
-
+                $('#ThoiGian').val('');
+                $('#TenLop').val('');
+                $('#TenTruong').val('');
             },
             error: function (err) {
                 alert("Error: " + err.responseText);
@@ -294,7 +297,8 @@
             data: { id: id_namhoc },//dua ra id_namhoc
             contentType: "application/json; charset=utf-8",
             success: function (data) {
-                $('#Diemhocki').css('display', 'block');
+                $('#Diemhocki').css('display', 'block');              
+                $("#table_mon input[type=text]").css("text-align", "center");
             },
             error: function (err) {
                 alert("Error: " + err.responseText);

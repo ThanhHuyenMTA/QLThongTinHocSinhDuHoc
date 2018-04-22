@@ -125,6 +125,7 @@ namespace QuanLyHocSinhDuHoc.Controllers
             ViewBag.LoaiCMT = loaiCMT;
             HOCSINH hs = db.HOCSINHs.SingleOrDefault(n => n.SoCMT == soCMT);
             ViewBag.id_hs = hs.id;
+            Session["chuyenTab"] = 2;
             return View(cmt);
         }
         [HttpPost]

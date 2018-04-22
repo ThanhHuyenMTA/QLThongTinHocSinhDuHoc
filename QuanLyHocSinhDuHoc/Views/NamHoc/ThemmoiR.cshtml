@@ -1,4 +1,9 @@
 ﻿
+@{
+    ViewBag.Title = "ThemmoiR";
+    Layout = "~/Views/Share/_LayoutTrangChu.cshtml";
+}
+@* form thêm năm học *@
 <div class="">
     <div class="clearfix"></div>
     <div class="row">
@@ -41,6 +46,7 @@
                                         <input class="form-control col-md-7 col-xs-12" id="TenTruong" name="TenTruong" required="required" placeholder="Tên trường" type="text" />
                                     </div>
                                 </div>
+                                <p id="messNamH" style="color:red;font-weight:bold;"></p>
                             </div>
                         </div>
                         <div class="row">
@@ -54,6 +60,38 @@
                             </div>
                         </div>
                     </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@* Phần hiện thị năm học trong học bạ *@
+<div class="" id="loadNamHoc">
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_content">
+                    <div id="datatable_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <table class="table table-striped table-bordered" style="overflow-x:auto;">
+                                    <thead>
+                                        <tr>
+                                            <th><div class="word-wrap">Thời gian</div></th>
+                                            <th><div class="word-wrap">Tên lớp</div></th>
+                                            <th><div class="word-wrap">Tên trường</div></th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody id="tableMonhoc">
+                                        @*hiện thị danh sách năm học*@
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <!-- Bảng dữ liệu -->
+                    </div>
                 </div>
             </div>
         </div>
@@ -133,7 +171,6 @@
                             <th><input name="SuI" id="SuI" type="text" /></th>
                             <th><input name="SuII" id="SuII" type="text" /></th>
                             <th><input name="SuCN" id="SuCN" type="text" /></th>
-
                         </tr>
                         <tr>
                             <th><input name="DiaI" id="DiaI" type="text" /></th>
@@ -189,3 +226,174 @@
         </div>
     </div>
 </div>
+<style>
+    #table_mon thead tr td{
+        height:43px;
+    }
+</style>
+<script type="text/javascript">
+    function SaveNamHoc() {
+        if ($('#ThoiGian').val() == "" || $('#TenLop').val() == "" || $('#TenTruong').val() == "")
+        {
+            $("#messNamH").text("Thông tin không được để rỗng!");
+            return false;
+        }
+        var namhoc = {
+            ThoiGian: $('#ThoiGian').val(),
+            TenLop: $('#TenLop').val(),
+            TenTruong: $('#TenTruong').val()
+        };
+        debugger;
+        $.ajax({
+            type: "POST",
+            url: "/NamHoc/ThemNamhoc",
+            dataType: "json",
+            data: JSON.stringify(namhoc),
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                var rows = '';
+                rows += '<tr><td><div class=word-wrap>' + data.ThoiGian + '</div></td>';
+                rows += '<td><div class=word-wrap>' + data.TenLop + '</td>';
+                rows += '<td><div class=word-wrap>' + data.TenTruong + '</div></td>';
+                rows += '<td class=actions>';
+                rows += '<a data-toggle=tooltip data-placement=bottom  title="Nhập điểm" href="#" onclick="NhapDiem(' + data.id + ')">';
+                rows += '<i class="fa fa-plus"></i>';
+                rows += '</a>';
+                rows += '</td></tr>';
+
+                $("#tableMonhoc").append(rows);
+
+                $('#ThoiGian').val('');
+                $('#TenLop').val('');
+                $('#TenTruong').val('');
+            },
+            error: function (err) {
+                alert("Error: " + err.responseText);
+            }
+        });
+    }
+    //sử dụng nhâp điểm bình thường
+    function NhapDiem(id_namhoc) {
+        debugger;
+        $.ajax({
+            type: "GET",
+            url: "/KyHoc/ViewNhapDiem",
+            dataType: "json",
+            data: { id: id_namhoc },//dua ra id_namhoc
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                $('#Diemhocki').css('display', 'block');
+                $("#table_mon input[type=text]").css("text-align", "center");
+            },
+            error: function (err) {
+                alert("Error: " + err.responseText);
+            }
+        });
+    }
+    function DiemKyI() {
+        debugger;
+        var diemkyI = {
+            TenKiHoc: 'Hkỳ I',
+            Toan: $('#ToanI').val(),
+            Ly: $('#LyI').val(),
+            Hoa: $('#HoaI').val(),
+            Sinh: $('#SinhI').val(),
+            Tin: $('#TinI').val(),
+            Van: $('#VanI').val(),
+            Su: $('#SuI').val(),
+            Dia: $('#DiaI').val(),
+            NgoaiNgu: $('#NgoaiNguI').val(),
+            CongNghe: $('#CongNgheI').val(),
+            QuocPhongAnNinh: $('#QuocPhongAnNinhI').val(),
+            TheDuc: $('#TheDucI').val(),
+            TuChon: $('#TuChonI').val(),
+            GiaoDucCongDan: $('#GiaoDucCongDanI').val(),
+            DiemTrungBinh: $('#DiemTrungBinhI').val()
+        }
+
+        $.ajax({
+            type: "POST",
+            url: "/KyHoc/NhapDiem",
+            dataType: "json",
+            data: JSON.stringify(diemkyI),
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                console.log(data);
+            },
+            error: function (err) {
+                alert("Error: " + err.responseText);
+            }
+        });
+
+    }
+    function DiemKyII() {
+        debugger;
+        var diemkyII = {
+            TenKiHoc: 'Hkỳ II',
+            Toan: $('#ToanII').val(),
+            Ly: $('#LyII').val(),
+            Hoa: $('#HoaII').val(),
+            Sinh: $('#SinhII').val(),
+            Tin: $('#TinII').val(),
+            Van: $('#VanII').val(),
+            Su: $('#SuII').val(),
+            Dia: $('#DiaII').val(),
+            NgoaiNgu: $('#NgoaiNguII').val(),
+            CongNghe: $('#CongNgheII').val(),
+            QuocPhongAnNinh: $('#QuocPhongAnNinhII').val(),
+            TheDuc: $('#TheDucII').val(),
+            TuChon: $('#TuChonII').val(),
+            GiaoDucCongDan: $('#GiaoDucCongDanII').val(),
+            DiemTrungBinh: $('#DiemTrungBinhII').val()
+        }
+        $.ajax({
+            type: "POST",
+            url: "/KyHoc/NhapDiem",
+            dataType: "json",
+            data: JSON.stringify(diemkyII),
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                console.log(data);
+            },
+            error: function (err) {
+                alert("Error: " + err.responseText);
+            }
+        });
+
+    }
+    function DiemKyCN() {
+        debugger;
+        var diemCN = {
+            TenKiHoc: 'CN',
+            Toan: $('#ToanCN').val(),
+            Ly: $('#LyCN').val(),
+            Hoa: $('#HoaCN').val(),
+            Sinh: $('#SinhCN').val(),
+            Tin: $('#TinCN').val(),
+            Van: $('#VanCN').val(),
+            Su: $('#SuCN').val(),
+            Dia: $('#DiaCN').val(),
+            NgoaiNgu: $('#NgoaiNguCN').val(),
+            CongNghe: $('#CongNgheCN').val(),
+            QuocPhongAnNinh: $('#QuocPhongAnNinhCN').val(),
+            TheDuc: $('#TheDucCN').val(),
+            TuChon: $('#TuChonCN').val(),
+            GiaoDucCongDan: $('#GiaoDucCongDanCN').val(),
+            DiemTrungBinh: $('#DiemTrungBinhCN').val()
+        }
+        $.ajax({
+            type: "POST",
+            url: "/KyHoc/NhapDiem",
+            dataType: "json",
+            data: JSON.stringify(diemCN),
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                console.log(data);
+            },
+            error: function (err) {
+                alert("Error: " + err.responseText);
+            }
+        });
+
+    }
+</script>

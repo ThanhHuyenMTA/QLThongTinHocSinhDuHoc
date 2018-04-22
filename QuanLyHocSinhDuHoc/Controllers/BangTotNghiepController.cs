@@ -58,6 +58,7 @@ namespace QuanLyHocSinhDuHoc.Controllers
             BANGTOTNGHIEP btn = db.BANGTOTNGHIEPs.Find(id);
             HOCSINH hs = db.HOCSINHs.SingleOrDefault(n => n.id_BTN == btn.id);
             ViewBag.id_hs = hs.id;
+            Session["chuyenTab"] = 4;
             return View(btn);
         }
         [HttpPost]

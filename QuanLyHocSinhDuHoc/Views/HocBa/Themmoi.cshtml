@@ -266,7 +266,9 @@
                 rows += '</td></tr>';
 
                 $("#tableMonhoc").append(rows);
-
+                $('#ThoiGian').val('');
+                $('#TenLop').val('');
+                $('#TenTruong').val('');
             },
             error: function (err) {
                 alert("Error: " + err.responseText);

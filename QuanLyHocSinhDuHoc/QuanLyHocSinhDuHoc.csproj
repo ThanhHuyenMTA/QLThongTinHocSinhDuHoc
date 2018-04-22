@@ -234,6 +234,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="CommonXuLy\DichTuDong.cs" />
+    <Compile Include="CommonXuLy\DiemKyHoc.cs" />
     <Compile Include="CommonXuLy\LoiModel.cs" />
     <Compile Include="CommonXuLy\Paging.cs" />
     <Compile Include="CommonXuLy\Xuly.cs" />
@@ -395,6 +396,7 @@
     <Content Include="Views\GiayKhaiSinh\SuaGKS.cshtml" />
     <Content Include="Views\BangTotNghiep\SuaBTN.cshtml" />
     <Content Include="Views\HocBa\SuaHB.cshtml" />
+    <Content Include="Views\NamHoc\ThemmoiR.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -406,7 +408,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Content\filePDF\" />
     <Folder Include="Content\images\profile\" />
-    <Folder Include="Views\KyHoc\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

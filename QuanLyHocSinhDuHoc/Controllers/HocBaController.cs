@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using QuanLyHocSinhDuHoc.Models.Entities;
+using QuanLyHocSinhDuHoc.CommonXuLy;
 
 namespace QuanLyHocSinhDuHoc.Controllers
 {
@@ -49,7 +50,24 @@ namespace QuanLyHocSinhDuHoc.Controllers
             {
                 ViewBag.ThongbaoHB = "OK";
                 HOCBA hb = db.HOCBAs.Find(hocsinh.id_HB);
+                List<NAMHOC> listNamHoc = db.NAMHOCs.Where(n => n.id_HB == hocsinh.id_HB).ToList();
+                ViewBag.listNamHoc = listNamHoc; //load nam hoc               
+                List<DiemKyHoc> listDiem = new List<DiemKyHoc>();
+                if(listNamHoc.Count >0)
+                {
+                    foreach(var item in listNamHoc)
+                    {
+                        List<KIHOC> listKH = db.KIHOCs.Where(n => n.id_NAMHOC == item.id).ToList();
+                        if (listKH.Count >0)
+                        {
+                            DiemKyHoc a = new DiemKyHoc(item,listKH);
+                            listDiem.Add(a);
+                        }
+                    }
+                }
+                ViewBag.listKiHoc = listDiem;
                 return View(hb);
+
             }
             ViewBag.ThongbaoHB = "NO";
             return View();
@@ -57,6 +75,9 @@ namespace QuanLyHocSinhDuHoc.Controllers
         public ActionResult SuaHB(int id)
         {
             HOCBA hb = db.HOCBAs.Find(id);
+            HOCSINH hs = db.HOCSINHs.SingleOrDefault(n => n.id_HB == id);
+            ViewBag.id_hs = hs.id;
+            Session["chuyenTab"] = 5;			
             return View(hb);
         }
         [HttpPost]
