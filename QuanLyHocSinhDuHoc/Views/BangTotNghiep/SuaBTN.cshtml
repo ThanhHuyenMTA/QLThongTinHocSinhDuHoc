@@ -1,10 +1,16 @@
-﻿<div class="" id="ClassBTN">
+﻿@model QuanLyHocSinhDuHoc.Models.Entities.BANGTOTNGHIEP
+@{
+    ViewBag.Title = "SuaBTN";
+    Layout = "~/Views/Share/_LayoutTrangChu.cshtml";
+}
+
+<div class="" id="ClassBTN">
     <div class="clearfix"></div>
     <div class="row">
         <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="x_panel">
                 <div class="x_title">
-                    <h2>Thêm mới thông tin bằng tốt nghiệp</h2>
+                    <h2>Thông tin chi tiết bằng tốt nghiệp</h2>
                     <div class="clearfix"></div>
                 </div>
                 <div class="x_content">
@@ -16,7 +22,7 @@
                                         Họ tên <span class="required">*</span>
                                     </label>
                                     <div class="col-md-9 col-sm-9 col-xs-12">
-                                        <input class="form-control col-md-7 col-xs-12" id="HoTenBTN" name="HoTen" required="required" placeholder="Họ tên" type="text" />
+                                        <input class="form-control col-md-7 col-xs-12" id="HoTenBTN" name="HoTen" required="required"  value="@Model.HoTen" type="text" />
                                     </div>
                                 </div>
                                 <div class="item form-group">
@@ -24,7 +30,7 @@
                                         Ngày sinh <span class="required"></span>
                                     </label>
                                     <div class="col-md-9 col-sm-9 col-xs-12">
-                                        <input class="form-control has-feedback-left active" name="NgaySinh" id="dtpNgaySinhBTN" /><span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
+                                        <input class="form-control has-feedback-left active dateLoad" type="date" name="NgaySinh" id="dtpNgaySinhBTN" value="@Model.NgaySinh.ToString("yyyy-MM-dd")" /><span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
                                     </div>
                                 </div>
                                 <div class="item form-group">
@@ -32,7 +38,7 @@
                                         Nơi sinh
                                     </label>
                                     <div class="col-md-9 col-sm-9 col-xs-12">
-                                        <input class="form-control col-md-7 col-xs-12" id="NoiSinhBTN" name="NoiSinh" type="text" placeholder="Nơi sinh" />
+                                        <input class="form-control col-md-7 col-xs-12" id="NoiSinhBTN" name="NoiSinh" type="text"  value="@Model.NoiSinh" />
                                     </div>
                                 </div>
                                 <div class="item form-group">
@@ -40,12 +46,26 @@
                                         Giới tính
                                     </label>
                                     <div class="col-md-9 col-sm-9 col-xs-12">
-                                        <label class="radio-inline">
-                                            <input type="radio" name="GioiTinh"  value="Nam" /> Nam
-                                        </label>
-                                        <label class="radio-inline">
-                                            <input type="radio" name="GioiTinh"  value="Nữ" /> Nữ
-                                        </label>
+                                        @{
+                                            if (Model.GioiTinh == "Nam")
+                                            {
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="GioiTinh" checked="checked" value="Nam" /> Nam
+                                                </label>
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="GioiTinh" value="Nữ" /> Nữ
+                                                </label>
+                                            }
+                                            else
+                                            {
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="GioiTinh" value="Nam" /> Nam
+                                                </label>
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="GioiTinh" checked="checked" value="Nữ" /> Nữ
+                                                </label>
+                                            }
+                                        }
                                     </div>
                                 </div>
                                 <div class="item form-group">
@@ -53,7 +73,7 @@
                                         Dân tộc
                                     </label>
                                     <div class="col-md-9 col-sm-9 col-xs-12">
-                                        <input class="form-control col-md-7 col-xs-12" id="DanTocBTN" name="DanToc" placeholder="Dân tộc" type="text" />
+                                        <input class="form-control col-md-7 col-xs-12" id="DanTocBTN" name="DanToc"  value="@Model.DanToc" type="text" />
                                     </div>
                                 </div>
                                 <div class="item form-group">
@@ -61,7 +81,7 @@
                                         Khóa thi <span class="required"></span>
                                     </label>
                                     <div class="col-md-9 col-sm-9 col-xs-12">
-                                        <input class="form-control has-feedback-left active" name="KhoaThi" id="dtpNgaySinhKT" type="date"/><span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
+                                        <input class="form-control has-feedback-left active dateLoad" type="date" name="KhoaThi" id="dtpNgaySinhKT" value="@Model.KhoaThi.Value.ToString("yyyy-MM-dd")" /><span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
                                     </div>
                                 </div>
                                 <div class="item form-group">
@@ -69,7 +89,7 @@
                                         Hội đồng thi
                                     </label>
                                     <div class="col-md-9 col-sm-9 col-xs-12">
-                                        <input class="form-control col-md-7 col-xs-12" id="HoiDongThiBTN" name="HoiDongThi" placeholder="Hội đồng thi" type="text" />
+                                        <input class="form-control col-md-7 col-xs-12" id="HoiDongThiBTN" name="HoiDongThi"  value="@Model.HoiDongThi" type="text" />
                                     </div>
                                 </div>
                                 <div class="item form-group">
@@ -77,7 +97,7 @@
                                         Ngày lập <span class="required"></span>
                                     </label>
                                     <div class="col-md-9 col-sm-9 col-xs-12">
-                                        <input class="form-control has-feedback-left active" name="NgayLap" id="dtpBTNNL" type="date"/><span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
+                                        <input class="form-control has-feedback-left active dateLoad" type="date" name="NgayLap" id="dtpBTNNL" value="@Model.NgayLap.ToString("yyyy-MM-dd")" /><span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
                                     </div>
                                 </div>
                                 <div class="item form-group">
@@ -85,7 +105,7 @@
                                         Số hiệu
                                     </label>
                                     <div class="col-md-9 col-sm-9 col-xs-12">
-                                        <input class="form-control col-md-7 col-xs-12" id="SoHieuBTN" name="SoHieu" placeholder="Số hiệu" type="text" />
+                                        <input class="form-control col-md-7 col-xs-12" id="SoHieuBTN" name="SoHieu"  value="@Model.SoHieu" type="text" />
                                     </div>
                                 </div>
                                 <div class="item form-group">
@@ -93,11 +113,10 @@
                                         Số vào số cấp bằng
                                     </label>
                                     <div class="col-md-9 col-sm-9 col-xs-12">
-                                        <input class="form-control col-md-7 col-xs-12" id="SovaoSoCapBangBTN" name="SovaoSoCapBang" placeholder="Số vào số cấp bằng" type="text" />
+                                        <input class="form-control col-md-7 col-xs-12" id="SovaoSoCapBangBTN" name="SovaoSoCapBang"  value="@Model.SovaoSoCapBang" type="text" />
                                     </div>
                                 </div>
-
-                                <p id="messThemBTN" style="color:red;font-weight:bold;"></p>
+                                <p id="messSuaBTN" style="color:red;font-weight:bold;"></p>
                             </div>
                         </div>
 
@@ -106,9 +125,9 @@
                             @*chức năng*@
                             <div class="form-group">
                                 <div class="col-md-6 col-md-offset-3">
-                                    <button class="btn btn-success" type="button" onclick="SaveBTN()" style="margin-left:30%;">Thêm mới</button>
-                                    <a href="/HocSinh/Index" class="btn btn-primary">Huỷ</a>
-                                </div>
+                                    <button id="submitEditBTN" class="btn btn-success" type="submit" style="margin-left:-16%;">Lưu thông tin</button>
+                                    <a href="/HocSinh/DetailChung/@ViewBag.id_hs" class="btn btn-primary">Huỷ</a>
+                                 </div>
                             </div>
                         </div>
                     </form>
@@ -117,47 +136,21 @@
         </div>
     </div>
 </div>
-<div id="ThongbaoBTN" style="padding:10% 10%">
-
-</div>
-
 <script type="text/javascript">
-    function SaveBTN() {
-        if ($("#HoTenBTN").val() == "" || $("#dtpNgaySinhBTN").val() == "" || $("#NoiSinhBTN").val() == "" ||
-            $("#DanTocBTN").val() == "" || $("#dtpNgaySinhKT").val() == "" || $("#HoiDongThiBTN").val() == "" ||
-            $("#dtpBTNNL").val() == "" || $("#SoHieuBTN").val() == "" || $("#SovaoSoCapBangBTN").val() == "")
-            $("#messThemBTN").text("Thông tin không được để trống");
-        else {
-            var btn = {
-                HoTen: $("#HoTenBTN").val(),
-                NgaySinh: $("#dtpNgaySinhBTN").val(),
-                NoiSinh: $("#NoiSinhBTN").val(),
-                GioiTinh: $('[name="GioiTinh"]:radio:checked').val(),
-                DanToc: $("#DanTocBTN").val(),
-                KhoaThi: $("#dtpNgaySinhKT").val(),
-                HoiDongThi: $("#HoiDongThiBTN").val(),
-                NgayLap: $("#dtpBTNNL").val(),
-                SoHieu: $("#SoHieuBTN").val(),
-                SovaoSoCapBang: $("#SovaoSoCapBangBTN").val()
-            };
-            $.ajax({
-                type: "POST",
-                url: "/BangTotNghiep/Themmoi",
-                dataType: "json",
-                data: JSON.stringify(btn),
-                contentType: "application/json; charset=utf-8",
-                success: function (data) {
-                    alert(data);
-                    $("#ClassBTN").css("display", "none");
-                    var row = '';
-                    row += "<h2 style='color:#0070e2;'><strong>Đã thêm thành công</strong></h2>"
-                    $("#ThongbaoBTN").html(row);
-                },
-                error: function (err) {
-                    alert("Error: " + err.responseText);
-                }
-            });
+    $(document).ready(function () {
+        var time = $(".dateLoad").val();
+        var dateControl = document.querySelector('input[type="date"]'); dateControl.value = time;
+    });
+    $("#submitEditBTN").click(function () {
+        debugger;
+        var inputs = document.getElementsByTagName('input');
+        for (var i = 0; i < inputs.length; i++) {
+            if (inputs[i].value == "") {
+                $("#messSuaBTN").text("*****Thông tin không được để trống");
+                return false;
+            }
         }
-    }
+    });
 </script>
+
 

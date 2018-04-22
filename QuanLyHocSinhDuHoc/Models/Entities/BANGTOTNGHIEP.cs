@@ -16,13 +16,13 @@ namespace QuanLyHocSinhDuHoc.Models.Entities
     {
         public int id { get; set; }
         public string HoTen { get; set; }
-        public Nullable<System.DateTime> NgaySinh { get; set; }
+        public System.DateTime NgaySinh { get; set; }
         public string NoiSinh { get; set; }
         public string GioiTinh { get; set; }
         public string DanToc { get; set; }
         public Nullable<System.DateTime> KhoaThi { get; set; }
         public string HoiDongThi { get; set; }
-        public Nullable<System.DateTime> NgayLap { get; set; }
+        public System.DateTime NgayLap { get; set; }
         public string SoHieu { get; set; }
         public string SovaoSoCapBang { get; set; }
         public string fileBTN { get; set; }

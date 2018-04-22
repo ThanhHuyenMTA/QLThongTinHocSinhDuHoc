@@ -7,6 +7,7 @@ using QuanLyHocSinhDuHoc.Models.Entities;
 using System.Data.Entity;
 using System.IO;
 using QuanLyHocSinhDuHoc.CommonXuLy;
+using System.Data.SqlClient;
 
 namespace QuanLyHocSinhDuHoc.Controllers
 {
@@ -14,19 +15,47 @@ namespace QuanLyHocSinhDuHoc.Controllers
     {
         // GET: HocSinh
         dbXulyTThsEntities db = new dbXulyTThsEntities();
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
+            Session["chuyenTab"] = null;
             Xuly xuly = new Xuly();
             List<string> listNam = new List<string>();
-            List<HOCSINH> lisths = db.HOCSINHs.OrderByDescending(x => x.timeStart).ToList();
-            foreach(var item in lisths)
+            List<HOCSINH> lisths = db.HOCSINHs.OrderByDescending(n=>n.timeStart).ToList();
+            foreach (var item in lisths)
             {
-                if(!xuly.checkTrungTimeStart(item.timeStart)) //chưa tồn tại trong list thì thêm vào list
+                if (!xuly.checkTrungTimeStart(item.timeStart, listNam)) //chưa tồn tại trong list thì thêm vào list
                     listNam.Add(item.timeStart);
             }
             ViewBag.listNam = listNam;
-            return View(db.HOCSINHs.OrderByDescending(x => x.timeStart).ToList());
+            int count = db.HOCSINHs.ToList().Count;
+            ViewBag.All = count;
+            Session["chiasotrang"] = count % 10 == 0 ? count / 10 : count / 10 + 1;
+            page = page ?? 1;
+            int lineStart = (int)(page - 1) * 10; //dòng bắt đầu
+            int soBanGhi = 10; //số bản ghi cần hiện thị mỗi trang
+            Session["trangdangload"] = page;
+
+            var idParam1 = new SqlParameter
+            {
+                ParameterName = "LineStart",
+                Value = lineStart
+            };
+            var idParam2 = new SqlParameter
+            {
+                ParameterName = "soBanGhi",
+                Value = soBanGhi
+            };
+            var list = db.Database.SqlQuery<HOCSINH>("exec PhanTrang @LineStart,@soBanGhi ", idParam1, idParam2).ToList<HOCSINH>();
+
+            return View(list);
         }
+        //xử lý phân trang ve cuoi cung     
+        public JsonResult XulyPhanTrangVeCuoicung()
+        {
+            int trangcuoi = (int)Session["chiasotrang"];
+            return Json(trangcuoi, JsonRequestBehavior.AllowGet);
+        }
+        
         public ActionResult Themmoi()
         {
            return View();
@@ -99,6 +128,7 @@ namespace QuanLyHocSinhDuHoc.Controllers
                 hocsinhupdate.email = hocsinh.email;
                 db.Entry(hocsinhupdate).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
+                Session["chuyenTab"] = null;
                 return RedirectToAction("DetailChung/"+hocsinhupdate.id);
             }
             return View(hocsinh);
@@ -120,6 +150,11 @@ namespace QuanLyHocSinhDuHoc.Controllers
         public JsonResult SearchNam(string Namloc)
         {
             List<HOCSINH> list = db.HOCSINHs.Where(n => n.timeStart ==Namloc).ToList();
+            return Json(list, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult SearchKeyName(string keySearch)
+        {
+            List<HOCSINH> list = db.HOCSINHs.Where(n => n.TenHS.Contains(keySearch)).ToList();
             return Json(list, JsonRequestBehavior.AllowGet);
         }
 

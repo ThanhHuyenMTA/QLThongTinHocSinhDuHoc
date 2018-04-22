@@ -12,6 +12,8 @@ namespace QuanLyHocSinhDuHoc.Models.Entities
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class dbXulyTThsEntities : DbContext
     {
@@ -44,5 +46,18 @@ namespace QuanLyHocSinhDuHoc.Models.Entities
         public virtual DbSet<QUYEN> QUYENs { get; set; }
         public virtual DbSet<TABLE_LOI> TABLE_LOI { get; set; }
         public virtual DbSet<HOCSINH> HOCSINHs { get; set; }
+    
+        public virtual ObjectResult<PhanTrang_Result> PhanTrang(Nullable<int> lineStart, Nullable<int> soBanGhi)
+        {
+            var lineStartParameter = lineStart.HasValue ?
+                new ObjectParameter("LineStart", lineStart) :
+                new ObjectParameter("LineStart", typeof(int));
+    
+            var soBanGhiParameter = soBanGhi.HasValue ?
+                new ObjectParameter("soBanGhi", soBanGhi) :
+                new ObjectParameter("soBanGhi", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PhanTrang_Result>("PhanTrang", lineStartParameter, soBanGhiParameter);
+        }
     }
 }

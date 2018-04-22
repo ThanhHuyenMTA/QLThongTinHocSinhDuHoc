@@ -53,9 +53,8 @@ namespace QuanLyHocSinhDuHoc.CommonXuLy
             return null;
         }
 
-        public bool checkTrungTimeStart(string nam)
+        public bool checkTrungTimeStart(string nam,List<string> listNam )
         {
-            List<string> listNam = new List<string>();
             foreach(var item in listNam)
             {
                 if (nam == item)

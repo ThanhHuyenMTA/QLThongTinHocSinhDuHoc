@@ -13,10 +13,12 @@ namespace QuanLyHocSinhDuHoc.Controllers
         // GET: BangTotNghiep
         public ActionResult Themmoi(int? id_hs)
         {
+           
             return View();
         }
         public ActionResult ThemmoiR(int? id_hs)
         {
+            Session["chuyenTab"] = 4;
             Session["id_HS"] = id_hs;
             return View(id_hs);
         }
@@ -50,5 +52,31 @@ namespace QuanLyHocSinhDuHoc.Controllers
             ViewBag.ThongbaoBTN = "NO";
             return View();
         }
+
+        public ActionResult SuaBTN(int id)
+        {
+            BANGTOTNGHIEP btn = db.BANGTOTNGHIEPs.Find(id);
+            HOCSINH hs = db.HOCSINHs.SingleOrDefault(n => n.id_BTN == btn.id);
+            ViewBag.id_hs = hs.id;
+            return View(btn);
+        }
+        [HttpPost]
+        public ActionResult SuaBTN(BANGTOTNGHIEP btn)
+        {
+
+            if (ModelState.IsValid)
+            {
+                HOCSINH hs = db.HOCSINHs.SingleOrDefault(n => n.id_BTN == btn.id);
+                db.Entry(btn).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
+                Session["chuyenTab"] = 4;
+                return RedirectToAction("DetailChung/" + hs.id, "HocSinh");
+
+            }
+            return View(btn);
+        }
+
+
+
     }
 }

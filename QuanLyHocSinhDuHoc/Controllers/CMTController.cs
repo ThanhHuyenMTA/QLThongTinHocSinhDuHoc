@@ -18,6 +18,7 @@ namespace QuanLyHocSinhDuHoc.Controllers
         }
         public ActionResult ThemmoiR(int? id_hs)
         {
+            Session["chuyenTab"] = 2;
             Session["id_HS"] = id_hs;
             return View(id_hs);
         }
@@ -112,9 +113,33 @@ namespace QuanLyHocSinhDuHoc.Controllers
         }
         public ActionResult Detail()
         {
+            
             int id_hs = (int)Session["id_hsDetail"];
             HOCSINH hocsinh = db.HOCSINHs.Find(id_hs);
             CMT cmt = db.CMTs.SingleOrDefault(n => n.SoCMT == hocsinh.SoCMT);
+            return View(cmt);
+        }
+        public ActionResult SuaCMT(string soCMT,int loaiCMT)
+        {
+            CMT cmt = db.CMTs.Find(soCMT);
+            ViewBag.LoaiCMT = loaiCMT;
+            HOCSINH hs = db.HOCSINHs.SingleOrDefault(n => n.SoCMT == soCMT);
+            ViewBag.id_hs = hs.id;
+            return View(cmt);
+        }
+        [HttpPost]
+        public ActionResult SuaCMT(CMT cmt)
+        {
+            
+            if (ModelState.IsValid)
+            {
+                HOCSINH hs = db.HOCSINHs.SingleOrDefault(n => n.SoCMT == cmt.SoCMT);
+                db.Entry(cmt).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
+                Session["chuyenTab"] = 2;
+                return RedirectToAction("DetailChung/" + hs.id,"HocSinh");
+
+            }
             return View(cmt);
         }
     }

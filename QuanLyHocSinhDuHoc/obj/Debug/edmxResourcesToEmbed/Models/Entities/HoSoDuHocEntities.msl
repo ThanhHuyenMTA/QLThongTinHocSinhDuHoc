@@ -289,5 +289,21 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="PhanTrang" FunctionName="dbXulyTThsModel.Store.PhanTrang">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="dbXulyTThsModel.PhanTrang_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="TenHS" ColumnName="TenHS" />
+          <ScalarProperty Name="SoCMT" ColumnName="SoCMT" />
+          <ScalarProperty Name="sdt" ColumnName="sdt" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="anh" ColumnName="anh" />
+          <ScalarProperty Name="id_GKS" ColumnName="id_GKS" />
+          <ScalarProperty Name="id_BTN" ColumnName="id_BTN" />
+          <ScalarProperty Name="id_HB" ColumnName="id_HB" />
+          <ScalarProperty Name="timeStart" ColumnName="timeStart" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>

@@ -110,7 +110,7 @@
                                 <input id="NoiCap3" class="form-control col-md-7 col-xs-12" name="NoiCap" placeholder="Nơicấp" type="text" />
                             </div>
                         </div>
-
+                        <p id="messThemCMT3" style="color:red;font-weight:bold;"></p>
                         <div class="ln_solid"></div>
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-3">
@@ -127,42 +127,48 @@
 
 <script type="text/javascript">
     function SaveCMT3() {
-        debugger;
-        var cmt3 = {
-            SoCMT: $("#SoCMT3").val(),
-            HoTen: $("#HoTen3").val(),
-            TenGoiKhac: $("#TenGoiKhac3").val(),
-            NgaySinh: $("#dtpNgaySinh3").val(),
-            QueQuan: $("#QueQuan3").val(),
-            NoiThuongTru: $("#NoiThuongTru3").val(),
-            GioiTinh:  $('[name="GioiTinh"]:radio:checked').val(),
-            QuocTich :$("#QuocTich3").val(),
-            GiaTriDen: $("#dtpGiaTriDen3").val(),
-            DanToc: $("#DanToc3").val(),
-            DauVetRieng: $("#DauVetRieng3").val(),
-            NgayCap: $("#dtpNgayCap3").val(),
-            NoiCap: $("#NoiCap3").val(),
-            LoaiCMT: 3
-        };
-        $.ajax({
-            type: "POST",
-            url: "/CMT/Themmoi3",
-            dataType: "json",
-            data: JSON.stringify(cmt3),
-            contentType: "application/json; charset=utf-8",
-            success: function (data) {
-                alert(data);
-                $("#ClassCMT").css("display", "none");
-                $("#Loai1").css("display", "none");
-                $("#Loai2").css("display", "none");
-                $("#Loai3").css("display", "none");
-                var row = '';
-                row += "<h2 style='color:#0070e2;'><strong>Đã thêm thành công</strong></h2>"
-                $("#ThongbaoCMT").html(row);
-            },
-            error: function (err) {
-                alert("Error: " + err.responseText);
-            }
-        });
+        if ($("#SoCMT3").val() == "" || $("#HoTen3").val() == "" || $("#dtpNgaySinh3").val() == "" || $("#QueQuan3").val() == "" ||
+            $("#NoiThuongTru3").val() == "" || $("#QuocTich3").val() == "" || $("#dtpGiaTriDen3").val() == "" || $("#DanToc3").val() == "" ||
+            $("#DauVetRieng3").val() == "" || $("#dtpNgayCap3").val() == "" || $("#NoiCap3").val() == "")
+            $("#messThemCMT3").text("Thông tin không được để trống");
+        else {
+            $("#messThemCMT3").text("");
+            var cmt3 = {
+                SoCMT: $("#SoCMT3").val(),
+                HoTen: $("#HoTen3").val(),
+                TenGoiKhac: $("#TenGoiKhac3").val(),
+                NgaySinh: $("#dtpNgaySinh3").val(),
+                QueQuan: $("#QueQuan3").val(),
+                NoiThuongTru: $("#NoiThuongTru3").val(),
+                GioiTinh: $('[name="GioiTinh"]:radio:checked').val(),
+                QuocTich: $("#QuocTich3").val(),
+                GiaTriDen: $("#dtpGiaTriDen3").val(),
+                DanToc: $("#DanToc3").val(),
+                DauVetRieng: $("#DauVetRieng3").val(),
+                NgayCap: $("#dtpNgayCap3").val(),
+                NoiCap: $("#NoiCap3").val(),
+                LoaiCMT: 3
+            };
+            $.ajax({
+                type: "POST",
+                url: "/CMT/Themmoi3",
+                dataType: "json",
+                data: JSON.stringify(cmt3),
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    alert(data);
+                    $("#ClassCMT").css("display", "none");
+                    $("#Loai1").css("display", "none");
+                    $("#Loai2").css("display", "none");
+                    $("#Loai3").css("display", "none");
+                    var row = '';
+                    row += "<h2 style='color:#0070e2;'><strong>Đã thêm thành công</strong></h2>"
+                    $("#ThongbaoCMT").html(row);
+                },
+                error: function (err) {
+                    alert("Error: " + err.responseText);
+                }
+            });
+        }
     }
 </script>

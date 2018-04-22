@@ -5,16 +5,16 @@
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="HoTen" Type="nvarchar" MaxLength="50" />
-    <Property Name="NgaySinh" Type="datetime" />
-    <Property Name="NoiSinh" Type="nvarchar" MaxLength="50" />
-    <Property Name="GioiTinh" Type="nvarchar" MaxLength="3" />
-    <Property Name="DanToc" Type="nvarchar" MaxLength="50" />
+    <Property Name="HoTen" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="NgaySinh" Type="datetime" Nullable="false" />
+    <Property Name="NoiSinh" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="GioiTinh" Type="nvarchar" MaxLength="3" Nullable="false" />
+    <Property Name="DanToc" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="KhoaThi" Type="datetime" />
     <Property Name="HoiDongThi" Type="nvarchar" MaxLength="150" />
-    <Property Name="NgayLap" Type="datetime" />
-    <Property Name="SoHieu" Type="nvarchar" MaxLength="20" />
-    <Property Name="SovaoSoCapBang" Type="nvarchar" MaxLength="20" />
+    <Property Name="NgayLap" Type="datetime" Nullable="false" />
+    <Property Name="SoHieu" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="SovaoSoCapBang" Type="nvarchar" MaxLength="20" Nullable="false" />
     <Property Name="fileBTN" Type="ntext" />
   </EntityType>
   <EntityType Name="BAOCAOTHONGKE">
@@ -33,16 +33,16 @@
     <Property Name="SoCMT" Type="varchar" MaxLength="20" Nullable="false" />
     <Property Name="HoTen" Type="nvarchar" MaxLength="50" />
     <Property Name="TenGoiKhac" Type="nvarchar" MaxLength="50" />
-    <Property Name="NgaySinh" Type="datetime" />
+    <Property Name="NgaySinh" Type="datetime" Nullable="false" />
     <Property Name="GioiTinh" Type="nvarchar" MaxLength="3" />
     <Property Name="QuocTich" Type="nvarchar" MaxLength="50" />
-    <Property Name="QueQuan" Type="nvarchar" MaxLength="200" />
-    <Property Name="NoiThuongTru" Type="nvarchar" MaxLength="200" />
+    <Property Name="QueQuan" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="NoiThuongTru" Type="nvarchar" MaxLength="200" Nullable="false" />
     <Property Name="GiaTriDen" Type="datetime" />
     <Property Name="DanToc" Type="nvarchar" MaxLength="50" />
     <Property Name="TonGiao" Type="nvarchar" MaxLength="50" />
     <Property Name="DauVetRieng" Type="ntext" />
-    <Property Name="NgayCap" Type="datetime" />
+    <Property Name="NgayCap" Type="datetime" Nullable="false" />
     <Property Name="NoiCap" Type="nvarchar" MaxLength="200" />
     <Property Name="LoaiCMT" Type="int" />
     <Property Name="fileCMT" Type="ntext" />
@@ -85,12 +85,12 @@
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="HoTen" Type="nvarchar" MaxLength="50" />
-    <Property Name="NgaySinh" Type="datetime" />
-    <Property Name="NoiSinh" Type="nvarchar" MaxLength="200" />
-    <Property Name="QueQuan" Type="nvarchar" MaxLength="200" />
-    <Property Name="GioiTinh" Type="nvarchar" MaxLength="3" />
-    <Property Name="DanToc" Type="nvarchar" MaxLength="50" />
+    <Property Name="HoTen" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="NgaySinh" Type="datetime" Nullable="false" />
+    <Property Name="NoiSinh" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="QueQuan" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="GioiTinh" Type="nvarchar" MaxLength="3" Nullable="false" />
+    <Property Name="DanToc" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="QuocTich" Type="nvarchar" MaxLength="50" />
     <Property Name="HoTenMe" Type="nvarchar" MaxLength="50" />
     <Property Name="NsMe" Type="nvarchar" MaxLength="4" />
@@ -103,7 +103,7 @@
     <Property Name="QuocTichBo" Type="nvarchar" MaxLength="50" />
     <Property Name="NoiCuTruBo" Type="nvarchar" MaxLength="200" />
     <Property Name="NoiDangKy" Type="nvarchar" MaxLength="50" />
-    <Property Name="NgayLap" Type="datetime" />
+    <Property Name="NgayLap" Type="datetime" Nullable="false" />
     <Property Name="fileGKS" Type="ntext" />
   </EntityType>
   <EntityType Name="HOCBA">
@@ -111,19 +111,19 @@
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="HoTen" Type="nvarchar" MaxLength="50" />
-    <Property Name="NgaySinh" Type="datetime" />
-    <Property Name="NoiSinh" Type="nvarchar" MaxLength="200" />
-    <Property Name="GioiTinh" Type="nvarchar" MaxLength="3" />
-    <Property Name="DanToc" Type="nvarchar" MaxLength="50" />
-    <Property Name="NoiSongHienTai" Type="nvarchar" MaxLength="200" />
+    <Property Name="HoTen" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="NgaySinh" Type="datetime" Nullable="false" />
+    <Property Name="NoiSinh" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="GioiTinh" Type="nvarchar" MaxLength="3" Nullable="false" />
+    <Property Name="DanToc" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="NoiSongHienTai" Type="nvarchar" MaxLength="200" Nullable="false" />
     <Property Name="HoTenBo" Type="nvarchar" MaxLength="50" />
     <Property Name="NgheNghiepBo" Type="nvarchar" MaxLength="50" />
     <Property Name="HoTenMe" Type="nvarchar" MaxLength="50" />
     <Property Name="NgheNghiepMe" Type="nvarchar" MaxLength="50" />
     <Property Name="NguoiGiamHo" Type="nvarchar" MaxLength="50" />
     <Property Name="NgheNghiepNGH" Type="nvarchar" MaxLength="50" />
-    <Property Name="NgayLap" Type="datetime" />
+    <Property Name="NgayLap" Type="datetime" Nullable="false" />
     <Property Name="fileHB" Type="ntext" />
   </EntityType>
   <EntityType Name="HOCSINH">
@@ -210,18 +210,18 @@
       <PropertyRef Name="SoCMT" />
     </Key>
     <Property Name="SoCMT" Type="varchar" MaxLength="20" Nullable="false" />
-    <Property Name="HoTen" Type="nvarchar" MaxLength="50" />
-    <Property Name="TenGoiKhac" Type="nvarchar" MaxLength="50" />
+    <Property Name="HoTen" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="TenGoiKhac" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="NgaySinh" Type="datetime" />
     <Property Name="GioiTinh" Type="nvarchar" MaxLength="3" />
     <Property Name="QuocTich" Type="nvarchar" MaxLength="50" />
-    <Property Name="QueQuan" Type="nvarchar" MaxLength="200" />
-    <Property Name="NoiThuongTru" Type="nvarchar" MaxLength="200" />
+    <Property Name="QueQuan" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="NoiThuongTru" Type="nvarchar" MaxLength="200" Nullable="false" />
     <Property Name="GiaTriDen" Type="datetime" />
     <Property Name="DanToc" Type="nvarchar" MaxLength="50" />
     <Property Name="TonGiao" Type="nvarchar" MaxLength="50" />
-    <Property Name="DauVetRieng" Type="ntext" />
-    <Property Name="NgayCap" Type="datetime" />
+    <Property Name="DauVetRieng" Type="ntext" Nullable="false" />
+    <Property Name="NgayCap" Type="datetime" Nullable="false" />
     <Property Name="NoiCap" Type="nvarchar" MaxLength="200" />
     <Property Name="LoaiCMT" Type="int" />
     <Property Name="id_HSinh" Type="int" />
@@ -271,6 +271,10 @@
     <Property Name="TimeStart" Type="datetime" />
     <Property Name="TimeEnd" Type="datetime" />
   </EntityType>
+  <Function Name="PhanTrang" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="LineStart" Type="int" Mode="In" />
+    <Parameter Name="soBanGhi" Type="int" Mode="In" />
+  </Function>
   <EntityContainer Name="dbXulyTThsModelStoreContainer">
     <EntitySet Name="BANGTOTNGHIEP" EntityType="Self.BANGTOTNGHIEP" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="BAOCAOTHONGKE" EntityType="Self.BAOCAOTHONGKE" Schema="dbo" store:Type="Tables" />

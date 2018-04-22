@@ -45,7 +45,7 @@
                                         Ngày sinh <span class="required"></span>
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <input class="form-control has-feedback-left active" value="@Model.NgaySinh.Value.ToString("yyyy-MM-dd")" disabled name="NgaySinh" id="dtpNgaySinh1" /><span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
+                                        <input class="form-control has-feedback-left active" value="@Model.NgaySinh.ToString("yyyy-MM-dd")" disabled name="NgaySinh" id="dtpNgaySinh1" /><span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
                                     </div>
                                 </div>
                                 <div class="item form-group">
@@ -94,7 +94,7 @@
                                         Ngày cấp <span class="required"></span>
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <input class="form-control has-feedback-left active" disabled value="@Model.NgayCap.Value.ToString("yyyy-MM-dd")" name="NgayCap" id="dtpNgayCap1" /><span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
+                                        <input class="form-control has-feedback-left active" disabled value="@Model.NgayCap.ToString("yyyy-MM-dd")" name="NgayCap" id="dtpNgayCap1" /><span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
                                     </div>
                                 </div>
                                 <div class="item form-group">
@@ -108,7 +108,7 @@
                                 <div class="ln_solid"></div>
                                 <div class="form-group">
                                     <div class="col-md-6 col-md-offset-3">
-                                        <button class="btn btn-success" onclick="ChinhsuaCMT(@Model.SoCMT)">Cập nhật</button>
+                                        <a class="btn btn-success" href="@Url.Action("SuaCMT", "CMT", new {@soCMT =@Model.SoCMT,@loaiCMT =@Model.LoaiCMT })">Cập nhật</a>
                                     </div>
                                 </div>
                             </form>
@@ -251,8 +251,7 @@
                                 <div class="ln_solid"></div>
                                 <div class="form-group">
                                     <div class="col-md-6 col-md-offset-3">
-                                        <button class="btn btn-success" onclick="ChinhsuaCMT(@Model.SoCMT)">Cập nhật</button>
-                                        <a href="#" class="btn btn-primary">Huỷ</a>
+                                        <a class="btn btn-success" href="@Url.Action("SuaCMT", "CMT", new {@soCMT =@Model.SoCMT,@loaiCMT =@Model.LoaiCMT })">Cập nhật</a>
                                     </div>
                                 </div>
                             </form>
@@ -395,8 +394,8 @@
                                 <div class="ln_solid"></div>
                                 <div class="form-group">
                                     <div class="col-md-6 col-md-offset-3">
-                                        <button class="btn btn-success" onclick="ChinhsuaCMT(@Model.SoCMT)">Cập nhật</button>
-                                        <a href="#" class="btn btn-primary">Huỷ</a>
+                                        <a class="btn btn-success" href="@Url.Action("SuaCMT", "CMT", new {@soCMT =@Model.SoCMT,@loaiCMT =@Model.LoaiCMT })">Cập nhật</a>
+
                                     </div>
                                 </div>
                             </form>

@@ -142,6 +142,7 @@
                                         <input style="width:117.3%;" class="form-control has-feedback-left active" name="NgayLap" id="dtpNgayLapHB" type="date" /><span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
                                     </div>
                                 </div>
+                                <p id="messThemRHB" style="color:red;font-weight:bold;"></p>
                             </div>
                         </div>
 
@@ -151,7 +152,7 @@
                             <div class="form-group">
                                 <div class="col-md-6 col-md-offset-3">
                                     <button class="btn btn-success" type="button" onclick="SaveHocBa()" style="margin-left:30%;">Thêm mới</button>
-                                    <a href="/HocSinh/Index" class="btn btn-primary">Huỷ</a>
+                                    <a href="@Url.Action("DetailChung", "HocSinh", new { @id = @Model })" class="btn btn-primary">Huỷ</a>
                                 </div>
                             </div>
                         </div>
@@ -204,6 +205,13 @@
 
 <script type="text/javascript">
     function SaveHocBa() {
+        var inputs = document.getElementsByTagName('input');
+        for (var i = 0; i < inputs.length; i++) {
+            if (inputs[i].value == "") {
+                $("#messThemRHB").text("*****Thông tin không được để trống");
+                return false;
+            }
+        }
         var id_hs = $("#id_hsGKS").val();
         var hocba = {
             HoTen: $("#HoTenHB").val(),

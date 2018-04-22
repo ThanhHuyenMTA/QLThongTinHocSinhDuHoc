@@ -26,7 +26,7 @@ namespace QuanLyHocSinhDuHoc.Models.Entities
         public string DanToc { get; set; }
         public string TonGiao { get; set; }
         public string DauVetRieng { get; set; }
-        public Nullable<System.DateTime> NgayCap { get; set; }
+        public System.DateTime NgayCap { get; set; }
         public string NoiCap { get; set; }
         public Nullable<int> LoaiCMT { get; set; }
         public Nullable<int> id_HSinh { get; set; }

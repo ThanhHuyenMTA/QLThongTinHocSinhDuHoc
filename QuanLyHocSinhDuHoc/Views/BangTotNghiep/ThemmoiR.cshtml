@@ -30,7 +30,7 @@
                                         Ngày sinh <span class="required"></span>
                                     </label>
                                     <div class="col-md-9 col-sm-9 col-xs-12">
-                                        <input class="form-control has-feedback-left active" name="NgaySinh" id="dtpNgaySinhBTN" /><span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
+                                        <input class="form-control has-feedback-left active" name="NgaySinh" id="dtpNgaySinhBTN" type="date" /><span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
                                     </div>
                                 </div>
                                 <div class="item form-group">
@@ -102,6 +102,7 @@
                                         <input class="form-control col-md-7 col-xs-12" id="SovaoSoCapBangBTN" name="SovaoSoCapBang" placeholder="Số vào số cấp bằng" type="text" />
                                     </div>
                                 </div>
+                                <p id="messThemRBTN" style="color:red;font-weight:bold;"></p>
                             </div>
                         </div>
 
@@ -110,8 +111,8 @@
                             @*chức năng*@
                             <div class="form-group">
                                 <div class="col-md-6 col-md-offset-3">
-                                    <button class="btn btn-success" type="button" onclick="SaveBTN()" style="margin-left:30%;">Thêm mới</button>
-                                    <a href="/HocSinh/Index" class="btn btn-primary">Huỷ</a>
+                                    <button class="btn btn-success" type="button" onclick="SaveBTN()" style="margin-left:30%;">Thêm mới</button>                                  
+                                     <a href="@Url.Action("DetailChung","HocSinh", new { @id = @Model })" class="btn btn-primary">Huỷ</a>
                                 </div>
                             </div>
                         </div>
@@ -121,10 +122,17 @@
         </div>
     </div>
 </div>
-<div><input id="id_hsGKS" value="@Model" hidden="hidden" /></div>
+<div><input id="id_hsBTN" value="@Model" hidden="hidden" /></div>
 <script type="text/javascript">
     function SaveBTN() {
-        var id_hs = $("#id_hsGKS").val();
+        var inputs = document.getElementsByTagName('input');
+        for (var i = 0; i < inputs.length; i++) {
+            if (inputs[i].value == "") {
+                $("#messThemRBTN").text("*****Thông tin không được để trống");
+                return false;
+            }
+        }
+        var id_hs = $("#id_hsBTN").val();
         var btn = {
             HoTen: $("#HoTenBTN").val(),
             NgaySinh: $("#dtpNgaySinhBTN").val(),

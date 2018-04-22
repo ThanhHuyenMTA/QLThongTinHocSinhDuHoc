@@ -10,16 +10,16 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="HoTen" Type="nvarchar" MaxLength="50" />
-          <Property Name="NgaySinh" Type="datetime" />
-          <Property Name="NoiSinh" Type="nvarchar" MaxLength="50" />
-          <Property Name="GioiTinh" Type="nvarchar" MaxLength="3" />
-          <Property Name="DanToc" Type="nvarchar" MaxLength="50" />
+          <Property Name="HoTen" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="NgaySinh" Type="datetime" Nullable="false" />
+          <Property Name="NoiSinh" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="GioiTinh" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="DanToc" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="KhoaThi" Type="datetime" />
           <Property Name="HoiDongThi" Type="nvarchar" MaxLength="150" />
-          <Property Name="NgayLap" Type="datetime" />
-          <Property Name="SoHieu" Type="nvarchar" MaxLength="20" />
-          <Property Name="SovaoSoCapBang" Type="nvarchar" MaxLength="20" />
+          <Property Name="NgayLap" Type="datetime" Nullable="false" />
+          <Property Name="SoHieu" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="SovaoSoCapBang" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="fileBTN" Type="ntext" />
         </EntityType>
         <EntityType Name="BAOCAOTHONGKE">
@@ -38,16 +38,16 @@
           <Property Name="SoCMT" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="HoTen" Type="nvarchar" MaxLength="50" />
           <Property Name="TenGoiKhac" Type="nvarchar" MaxLength="50" />
-          <Property Name="NgaySinh" Type="datetime" />
+          <Property Name="NgaySinh" Type="datetime" Nullable="false" />
           <Property Name="GioiTinh" Type="nvarchar" MaxLength="3" />
           <Property Name="QuocTich" Type="nvarchar" MaxLength="50" />
-          <Property Name="QueQuan" Type="nvarchar" MaxLength="200" />
-          <Property Name="NoiThuongTru" Type="nvarchar" MaxLength="200" />
+          <Property Name="QueQuan" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="NoiThuongTru" Type="nvarchar" MaxLength="200" Nullable="false" />
           <Property Name="GiaTriDen" Type="datetime" />
           <Property Name="DanToc" Type="nvarchar" MaxLength="50" />
           <Property Name="TonGiao" Type="nvarchar" MaxLength="50" />
           <Property Name="DauVetRieng" Type="ntext" />
-          <Property Name="NgayCap" Type="datetime" />
+          <Property Name="NgayCap" Type="datetime" Nullable="false" />
           <Property Name="NoiCap" Type="nvarchar" MaxLength="200" />
           <Property Name="LoaiCMT" Type="int" />
           <Property Name="fileCMT" Type="ntext" />
@@ -90,12 +90,12 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="HoTen" Type="nvarchar" MaxLength="50" />
-          <Property Name="NgaySinh" Type="datetime" />
-          <Property Name="NoiSinh" Type="nvarchar" MaxLength="200" />
-          <Property Name="QueQuan" Type="nvarchar" MaxLength="200" />
-          <Property Name="GioiTinh" Type="nvarchar" MaxLength="3" />
-          <Property Name="DanToc" Type="nvarchar" MaxLength="50" />
+          <Property Name="HoTen" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="NgaySinh" Type="datetime" Nullable="false" />
+          <Property Name="NoiSinh" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="QueQuan" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="GioiTinh" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="DanToc" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="QuocTich" Type="nvarchar" MaxLength="50" />
           <Property Name="HoTenMe" Type="nvarchar" MaxLength="50" />
           <Property Name="NsMe" Type="nvarchar" MaxLength="4" />
@@ -108,7 +108,7 @@
           <Property Name="QuocTichBo" Type="nvarchar" MaxLength="50" />
           <Property Name="NoiCuTruBo" Type="nvarchar" MaxLength="200" />
           <Property Name="NoiDangKy" Type="nvarchar" MaxLength="50" />
-          <Property Name="NgayLap" Type="datetime" />
+          <Property Name="NgayLap" Type="datetime" Nullable="false" />
           <Property Name="fileGKS" Type="ntext" />
         </EntityType>
         <EntityType Name="HOCBA">
@@ -116,19 +116,19 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="HoTen" Type="nvarchar" MaxLength="50" />
-          <Property Name="NgaySinh" Type="datetime" />
-          <Property Name="NoiSinh" Type="nvarchar" MaxLength="200" />
-          <Property Name="GioiTinh" Type="nvarchar" MaxLength="3" />
-          <Property Name="DanToc" Type="nvarchar" MaxLength="50" />
-          <Property Name="NoiSongHienTai" Type="nvarchar" MaxLength="200" />
+          <Property Name="HoTen" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="NgaySinh" Type="datetime" Nullable="false" />
+          <Property Name="NoiSinh" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="GioiTinh" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="DanToc" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="NoiSongHienTai" Type="nvarchar" MaxLength="200" Nullable="false" />
           <Property Name="HoTenBo" Type="nvarchar" MaxLength="50" />
           <Property Name="NgheNghiepBo" Type="nvarchar" MaxLength="50" />
           <Property Name="HoTenMe" Type="nvarchar" MaxLength="50" />
           <Property Name="NgheNghiepMe" Type="nvarchar" MaxLength="50" />
           <Property Name="NguoiGiamHo" Type="nvarchar" MaxLength="50" />
           <Property Name="NgheNghiepNGH" Type="nvarchar" MaxLength="50" />
-          <Property Name="NgayLap" Type="datetime" />
+          <Property Name="NgayLap" Type="datetime" Nullable="false" />
           <Property Name="fileHB" Type="ntext" />
         </EntityType>
         <EntityType Name="HOCSINH">
@@ -215,18 +215,18 @@
             <PropertyRef Name="SoCMT" />
           </Key>
           <Property Name="SoCMT" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="HoTen" Type="nvarchar" MaxLength="50" />
-          <Property Name="TenGoiKhac" Type="nvarchar" MaxLength="50" />
+          <Property Name="HoTen" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TenGoiKhac" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="NgaySinh" Type="datetime" />
           <Property Name="GioiTinh" Type="nvarchar" MaxLength="3" />
           <Property Name="QuocTich" Type="nvarchar" MaxLength="50" />
-          <Property Name="QueQuan" Type="nvarchar" MaxLength="200" />
-          <Property Name="NoiThuongTru" Type="nvarchar" MaxLength="200" />
+          <Property Name="QueQuan" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="NoiThuongTru" Type="nvarchar" MaxLength="200" Nullable="false" />
           <Property Name="GiaTriDen" Type="datetime" />
           <Property Name="DanToc" Type="nvarchar" MaxLength="50" />
           <Property Name="TonGiao" Type="nvarchar" MaxLength="50" />
-          <Property Name="DauVetRieng" Type="ntext" />
-          <Property Name="NgayCap" Type="datetime" />
+          <Property Name="DauVetRieng" Type="ntext" Nullable="false" />
+          <Property Name="NgayCap" Type="datetime" Nullable="false" />
           <Property Name="NoiCap" Type="nvarchar" MaxLength="200" />
           <Property Name="LoaiCMT" Type="int" />
           <Property Name="id_HSinh" Type="int" />
@@ -276,6 +276,10 @@
           <Property Name="TimeStart" Type="datetime" />
           <Property Name="TimeEnd" Type="datetime" />
         </EntityType>
+        <Function Name="PhanTrang" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="LineStart" Type="int" Mode="In" />
+          <Parameter Name="soBanGhi" Type="int" Mode="In" />
+        </Function>
         <EntityContainer Name="dbXulyTThsModelStoreContainer">
           <EntitySet Name="BANGTOTNGHIEP" EntityType="Self.BANGTOTNGHIEP" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BAOCAOTHONGKE" EntityType="Self.BAOCAOTHONGKE" Schema="dbo" store:Type="Tables" />
@@ -306,16 +310,16 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="HoTen" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="NgaySinh" Type="DateTime" Precision="3" />
-          <Property Name="NoiSinh" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="GioiTinh" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
-          <Property Name="DanToc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HoTen" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NgaySinh" Type="DateTime" Precision="3" Nullable="false" />
+          <Property Name="NoiSinh" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="GioiTinh" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DanToc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="KhoaThi" Type="DateTime" Precision="3" />
           <Property Name="HoiDongThi" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="NgayLap" Type="DateTime" Precision="3" />
-          <Property Name="SoHieu" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="SovaoSoCapBang" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="NgayLap" Type="DateTime" Precision="3" Nullable="false" />
+          <Property Name="SoHieu" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SovaoSoCapBang" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="fileBTN" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="BAOCAOTHONGKE">
@@ -334,16 +338,16 @@
           <Property Name="SoCMT" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="HoTen" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="TenGoiKhac" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="NgaySinh" Type="DateTime" Precision="3" />
+          <Property Name="NgaySinh" Type="DateTime" Precision="3" Nullable="false" />
           <Property Name="GioiTinh" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
           <Property Name="QuocTich" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="QueQuan" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="NoiThuongTru" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="QueQuan" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NoiThuongTru" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="GiaTriDen" Type="DateTime" Precision="3" />
           <Property Name="DanToc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="TonGiao" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="DauVetRieng" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="NgayCap" Type="DateTime" Precision="3" />
+          <Property Name="NgayCap" Type="DateTime" Precision="3" Nullable="false" />
           <Property Name="NoiCap" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="LoaiCMT" Type="Int32" />
           <Property Name="fileCMT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -386,12 +390,12 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="HoTen" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="NgaySinh" Type="DateTime" Precision="3" />
-          <Property Name="NoiSinh" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="QueQuan" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="GioiTinh" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
-          <Property Name="DanToc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HoTen" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NgaySinh" Type="DateTime" Precision="3" Nullable="false" />
+          <Property Name="NoiSinh" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="QueQuan" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="GioiTinh" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DanToc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="QuocTich" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="HoTenMe" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="NsMe" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
@@ -404,7 +408,7 @@
           <Property Name="QuocTichBo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="NoiCuTruBo" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="NoiDangKy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="NgayLap" Type="DateTime" Precision="3" />
+          <Property Name="NgayLap" Type="DateTime" Precision="3" Nullable="false" />
           <Property Name="fileGKS" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="HOCBA">
@@ -412,19 +416,19 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="HoTen" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="NgaySinh" Type="DateTime" Precision="3" />
-          <Property Name="NoiSinh" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="GioiTinh" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
-          <Property Name="DanToc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="NoiSongHienTai" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="HoTen" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NgaySinh" Type="DateTime" Precision="3" Nullable="false" />
+          <Property Name="NoiSinh" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="GioiTinh" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DanToc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NoiSongHienTai" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="HoTenBo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="NgheNghiepBo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="HoTenMe" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="NgheNghiepMe" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="NguoiGiamHo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="NgheNghiepNGH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="NgayLap" Type="DateTime" Precision="3" />
+          <Property Name="NgayLap" Type="DateTime" Precision="3" Nullable="false" />
           <Property Name="fileHB" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="HOPDONG">
@@ -496,18 +500,18 @@
             <PropertyRef Name="SoCMT" />
           </Key>
           <Property Name="SoCMT" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="HoTen" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="TenGoiKhac" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HoTen" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TenGoiKhac" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="NgaySinh" Type="DateTime" Precision="3" />
           <Property Name="GioiTinh" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
           <Property Name="QuocTich" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="QueQuan" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="NoiThuongTru" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="QueQuan" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NoiThuongTru" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="GiaTriDen" Type="DateTime" Precision="3" />
           <Property Name="DanToc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="TonGiao" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="DauVetRieng" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="NgayCap" Type="DateTime" Precision="3" />
+          <Property Name="DauVetRieng" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NgayCap" Type="DateTime" Precision="3" Nullable="false" />
           <Property Name="NoiCap" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="LoaiCMT" Type="Int32" />
           <Property Name="id_HSinh" Type="Int32" />
@@ -577,6 +581,10 @@
           <EntitySet Name="QUYENs" EntityType="Self.QUYEN" />
           <EntitySet Name="TABLE_LOI" EntityType="Self.TABLE_LOI" />
           <EntitySet Name="HOCSINHs" EntityType="dbXulyTThsModel.HOCSINH" />
+          <FunctionImport Name="PhanTrang" ReturnType="Collection(dbXulyTThsModel.PhanTrang_Result)">
+            <Parameter Name="LineStart" Mode="In" Type="Int32" />
+            <Parameter Name="soBanGhi" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <EntityType Name="HOCSINH">
           <Key>
@@ -593,6 +601,18 @@
           <Property Name="id_HB" Type="Int32" />
           <Property Name="timeStart" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
         </EntityType>
+        <ComplexType Name="PhanTrang_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="TenHS" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="SoCMT" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="sdt" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="email" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="anh" Nullable="true" MaxLength="Max" />
+          <Property Type="Int32" Name="id_GKS" Nullable="true" />
+          <Property Type="Int32" Name="id_BTN" Nullable="true" />
+          <Property Type="Int32" Name="id_HB" Nullable="true" />
+          <Property Type="String" Name="timeStart" Nullable="true" MaxLength="4" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -887,6 +907,22 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="PhanTrang" FunctionName="dbXulyTThsModel.Store.PhanTrang">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="dbXulyTThsModel.PhanTrang_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="TenHS" ColumnName="TenHS" />
+                <ScalarProperty Name="SoCMT" ColumnName="SoCMT" />
+                <ScalarProperty Name="sdt" ColumnName="sdt" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="anh" ColumnName="anh" />
+                <ScalarProperty Name="id_GKS" ColumnName="id_GKS" />
+                <ScalarProperty Name="id_BTN" ColumnName="id_BTN" />
+                <ScalarProperty Name="id_HB" ColumnName="id_HB" />
+                <ScalarProperty Name="timeStart" ColumnName="timeStart" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

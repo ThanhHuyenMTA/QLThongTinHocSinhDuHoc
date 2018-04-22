@@ -108,7 +108,6 @@
     <Content Include="Content\images\ship_wheel_icon.png" />
     <Content Include="Content\js\bootstrap.min.js" />
     <Content Include="Content\js\daterangepicker.js" />
-    <Content Include="Content\js\formatDate.js" />
     <Content Include="Content\js\gentelella-custom.min.js" />
     <Content Include="Content\js\jquery.min.js" />
     <Content Include="Content\js\moment.min.js" />
@@ -229,12 +228,14 @@
     <Content Include="Scripts\locales\bootstrap-datepicker.vi.min.js" />
     <Content Include="Scripts\locales\bootstrap-datepicker.zh-CN.min.js" />
     <Content Include="Scripts\locales\bootstrap-datepicker.zh-TW.min.js" />
+    <Content Include="Scripts\Validation.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="CommonXuLy\DichTuDong.cs" />
     <Compile Include="CommonXuLy\LoiModel.cs" />
+    <Compile Include="CommonXuLy\Paging.cs" />
     <Compile Include="CommonXuLy\Xuly.cs" />
     <Compile Include="Controllers\BangTotNghiepController.cs" />
     <Compile Include="Controllers\CMTController.cs" />
@@ -315,6 +316,9 @@
     <Compile Include="Models\Entities\NHANVIEN.cs">
       <DependentUpon>HoSoDuHocEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Entities\PhanTrang_Result.cs">
+      <DependentUpon>HoSoDuHocEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Entities\QUANTRI.cs">
       <DependentUpon>HoSoDuHocEntities.tt</DependentUpon>
     </Compile>
@@ -386,6 +390,11 @@
     <Content Include="Views\GiayKhaiSinh\ThemmoiR.cshtml" />
     <Content Include="Views\HocBa\ThemmoiR.cshtml" />
     <Content Include="Views\NguoiGiamHo\ThemmoiR.cshtml" />
+    <Content Include="Views\HocBa\DetailHB.cshtml" />
+    <Content Include="Views\CMT\SuaCMT.cshtml" />
+    <Content Include="Views\GiayKhaiSinh\SuaGKS.cshtml" />
+    <Content Include="Views\BangTotNghiep\SuaBTN.cshtml" />
+    <Content Include="Views\HocBa\SuaHB.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

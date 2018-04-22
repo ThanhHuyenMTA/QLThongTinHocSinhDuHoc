@@ -1,4 +1,5 @@
 ﻿@model  IEnumerable<QuanLyHocSinhDuHoc.Models.Entities.HOCSINH>
+@using QuanLyHocSinhDuHoc.CommonXuLy
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Share/_LayoutTrangChu.cshtml";
@@ -13,19 +14,19 @@
                     <ul class="nav navbar-right panel_toolbox">
                         <li><a title="Thêm" data-toggle="tooltip" data-placement="bottom" class="dropdown-toggle" href="@Url.Content("/HocSinh/Themmoi")"><i class="fa fa-plus"></i></a></li>
                     </ul>
-                    <div class="clearfix"></div>
+                    <div class="clearfix" onclick="SelectAll()"></div>
                 </div>
                 <div class="x_content">
                     <div id="datatable_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
                         <div class="row">
-                            <div class="col-sm-6">
+                            <div class="col-sm-6"  >
                                 <div class="dataTables_length" id="datatable_length">
                                     <label>
                                         Hiện học sinh năm
                                         <select id="LocHSNam" name="datatable_length" ng-model="soKetQua" aria-controls="datatable" class="form-control input-sm">
                                             @*load all nam gia nhap => dữ liệu từ học sinh*@
                                             @{
-                                                foreach (var item in @ViewBag.listNam)
+                                                 foreach (var item in @ViewBag.listNam)
                                                 {
                                                     <option value="@item">@item</option>
                                                 }
@@ -37,13 +38,11 @@
                                 </div>
                             </div>
                             <div class="col-sm-6">
-                                <form method="post" action="@Url.Action("Timkiem","HocSinh")">
                                     <div id="datatable_filter" class="dataTables_filter form-group pull-right top_search">
                                         <label>
-                                            Tìm kiếm:<input name="MaHoaDon" type="search" id="keyDonHang" ng-keypress="TimKiem($event);" ng-model="tuKhoa" class="form-control input-sm" placeholder="Nhập từ khóa" aria-controls="datatable" />
+                                            Tìm kiếm:<input name="KeyTenHS" type="text" id="KeyTenHS" class="form-control input-sm" placeholder="Nhập từ khóa" aria-controls="datatable" />
                                         </label>
                                     </div>
-                                </form>
                             </div>
                         </div>
                         <!-- Bảng dữ liệu -->
@@ -65,7 +64,8 @@
                                         @{
                                             if (Model != null)
                                             {
-                                                var i=1;
+                                                var i=((int)Session["trangdangload"]-1) *10 +1;
+                                                
                                                 foreach (var item in Model)
                                                 {
                                                     <tr>
@@ -105,6 +105,61 @@
     </div>
 </div>
 
+@*phan trang*@
+<div id="phantrang">
+    <div class="pagination-container">
+        <ul class="pagination" style="margin-top:-20px;">
+
+            @{
+                int? page;
+                page = (int)Session["trangdangload"];
+                int currentPage = page ?? 1;
+                Paging paging = new Paging(currentPage, (int)Session["chiasotrang"]);
+
+                if (paging.hasPrev2)
+                {
+                    <li><a class="fa fa-angle-double-left" href="/HocSinh/Index?page=1"></a></li>
+                }
+                if (paging.hasPrev1)
+                {
+                    <li><a class="fa fa-angle-left" href="#" onclick="Quaylai(@Session["trangdangload"])"></a></li>
+                }
+                if (paging.prevPage2 > 0)
+                {
+                    <li><a href="/HocSinh/Index?page=@paging.prevPage2"> @paging.prevPage2</a></li>
+                }
+                if (paging.prevPage1 > 0)
+                {
+                    <li><a href="/HocSinh/Index?page=@paging.prevPage1"> @paging.prevPage1</a></li>
+                }
+                if (paging.currentPage > 0)
+                {
+                    <li><a href="/HocSinh/Index?page=@paging.currentPage" style="font-weight:bold;color:red"> @paging.currentPage</a></li>
+                }
+                if (paging.nextPage1 > 0 & paging.nextPage1 <= (int)Session["chiasotrang"])
+                {
+                    <li><a href="/HocSinh/Index?page=@paging.nextPage1"> @paging.nextPage1</a></li>
+                }
+                if (paging.nextPage2 > 0 & paging.nextPage2 <= (int)Session["chiasotrang"])
+                {
+                    <li><a href="/HocSinh/Index?page=@paging.nextPage2"> @paging.nextPage2</a></li>
+                }
+
+                if (paging.hasNext1 & paging.nextPage2 != (int)Session["chiasotrang"])
+                {
+                    <li><a class="fa fa-angle-right" onclick="Tieptheo(@Session["trangdangload"])"></a></li>
+                }
+
+                if (paging.hasNext2 & paging.nextPage2 != (int)Session["chiasotrang"])
+                {
+                    <li><a class="fa fa-angle-double-right" href="#" onclick="CuoiCung()"></a></li>
+
+                }
+            }
+        </ul>
+    </div>
+</div>
+
 <script type="text/javascript">
     $(document).ready(function () {
         //Lọc theo số lượng sản phẩm
@@ -119,10 +174,11 @@
                 success: function (data) {
                     console.log(data);
                     var row = '';
+                    var STT = 1;
                     $.each(data, function (i, item) {
                         $("#listHS").empty();
                         row += '<tr>';
-                        row += '<td><div class="word-wrap">'+item.id+'</div></td>';
+                        row += '<td><div class="word-wrap">' + STT + '</div></td>';
                         row += '<td><div class="word-wrap">'+item.timeStart+'</div></td>';
                         row += '<td><div class="word-wrap">'+item.TenHS+'</div></td>';
                         row += '<td><div class="word-wrap">'+item.sdt+'</div></td>';
@@ -131,11 +187,51 @@
                         row += '<a data-toggle="tooltip" data-placement="bottom" target="_blank" title="Sửa" href="@Url.Action("SuaHocsinh","HocSinh")?id='+item.id+'">';
                         row += '<i class="fa fa-edit"></i>';
                         row += ' </a>';
-                        row += '<a data-toggle="tooltip" data-placement="bottom" target="_blank" title="Detail" href="@Url.Action("DetailHocsinh", "HocSinh")?id=' + item.id + '">';
+                        row += '<a data-toggle="tooltip" data-placement="bottom" target="_blank" title="Detail" href="@Url.Action("DetailChung", "HocSinh")?id=' + item.id + '">';
                         row += '<i class="fa fa-slideshare"></i>';
                         row += ' </a>';                    
                         row += '  </td>';
-                        row += '  </tr>';      
+                        row += '  </tr>';
+                        STT++;
+                    });
+                    $("#listHS").html(row);
+                    $("#phantrang").css("display", "none");
+                },
+                error: function (err) {
+                    alert("Error: " + err.responseText);
+                }
+            });
+        });      
+        $("#KeyTenHS").keyup(function () {
+            var key = $("#KeyTenHS").val();
+            $.ajax({
+                type: "GET",
+                url: "/HocSinh/SearchKeyName",
+                dataType: "json",
+                data: { keySearch: key },
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    console.log(data);
+                    var row = '';
+                    var STT = 1;
+                    $.each(data, function (i, item) {
+                        $("#listHS").empty();
+                        row += '<tr>';
+                        row += '<td><div class="word-wrap">' + STT + '</div></td>';
+                        row += '<td><div class="word-wrap">' + item.timeStart + '</div></td>';
+                        row += '<td><div class="word-wrap">' + item.TenHS + '</div></td>';
+                        row += '<td><div class="word-wrap">' + item.sdt + '</div></td>';
+                        row += '<td><div class="word-wrap">' + item.email + '</div></td>';
+                        row += '<td class="actions">';
+                        row += '<a data-toggle="tooltip" data-placement="bottom" target="_blank" title="Sửa" href="@Url.Action("SuaHocsinh","HocSinh")?id=' + item.id + '">';
+                        row += '<i class="fa fa-edit"></i>';
+                        row += ' </a>';
+                        row += '<a data-toggle="tooltip" data-placement="bottom" target="_blank" title="Detail" href="@Url.Action("DetailChung", "HocSinh")?id=' + item.id + '">';
+                        row += '<i class="fa fa-slideshare"></i>';
+                        row += ' </a>';
+                        row += '  </td>';
+                        row += '  </tr>';
+                        STT++;
                     });
                     $("#listHS").html(row);
                 },
@@ -145,4 +241,38 @@
             });
         });
     });
+    function SelectAll() {
+        window.location.href = '/HocSinh/Index?page=' + 1;
+    };
+    //phân trang
+    function Tieptheo(page) {
+        var pagecuoi = page + 1;
+        window.location.href = '/HocSinh/Index?page=' + pagecuoi;
+    };
+    function Quaylai(page) {
+        var pagecuoi = 1;
+        if (page == 1  || page == 0)
+            pagecuoi = 1;
+        else
+            pagecuoi = page - 1;
+        window.location.href = '/HocSinh/Index?page=' + pagecuoi;
+    };
+    function CuoiCung() {
+        $.ajax({
+            type: "GET",
+            url: "/HocSinh/XulyPhanTrangVeCuoiCung",
+            datatype: "json",
+            data: {},
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+
+                window.location.href = '/HocSinh/Index?page=' + data;
+            },
+            error: function (err) {
+                alert("Error: " + err.responseText);
+            }
+        });
+    };
+
+
 </script>

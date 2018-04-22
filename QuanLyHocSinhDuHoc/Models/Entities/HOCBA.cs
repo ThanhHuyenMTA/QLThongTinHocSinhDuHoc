@@ -16,7 +16,7 @@ namespace QuanLyHocSinhDuHoc.Models.Entities
     {
         public int id { get; set; }
         public string HoTen { get; set; }
-        public Nullable<System.DateTime> NgaySinh { get; set; }
+        public System.DateTime NgaySinh { get; set; }
         public string NoiSinh { get; set; }
         public string GioiTinh { get; set; }
         public string DanToc { get; set; }
@@ -27,7 +27,7 @@ namespace QuanLyHocSinhDuHoc.Models.Entities
         public string NgheNghiepMe { get; set; }
         public string NguoiGiamHo { get; set; }
         public string NgheNghiepNGH { get; set; }
-        public Nullable<System.DateTime> NgayLap { get; set; }
+        public System.DateTime NgayLap { get; set; }
         public string fileHB { get; set; }
     }
 }

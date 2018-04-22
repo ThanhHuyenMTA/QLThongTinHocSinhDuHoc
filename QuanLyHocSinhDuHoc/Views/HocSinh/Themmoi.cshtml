@@ -29,6 +29,7 @@
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <input class="form-control col-md-7 col-xs-12" id="tenHS" name="tenHS" required="required" placeholder="Tên học sinh" type="text" />
+                                       
                                     </div>
                                 </div>
                                 <div class="item form-group">
@@ -37,6 +38,7 @@
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <input class="form-control col-md-7 col-xs-12" id="SDT" name="sdt" type="text" placeholder="Số điện thoại" />
+                                       
                                     </div>
                                 </div>
                                 <div class="item form-group">
@@ -45,8 +47,10 @@
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <input class="form-control col-md-7 col-xs-12" id="Email" name="email" placeholder="Email" type="email" />
+                                        
                                     </div>
                                 </div>
+                                <p id="messThemHS" style="color:red;font-weight:bold;"></p>
                             </div>
                         </div>
 
@@ -93,9 +97,8 @@
     });
     function ThemmoiHS()
     {
-        debugger;
-        if ($('#tenHS').val()== "" & $('#SDT').val() == "" & $('#Email').val() == "")
-            alert("Nhập đầy đủ thông tin trước khi thêm mới!");
+        if ($("#tenHS").val() == "" || $("#tenSDT").val() == "" || $("#tenEmail").val() == "")
+            $("#messThemHS").text("Thông tin không được để trống");
         else {
             var hocsinh = {
                 TenHS: $('#tenHS').val(),

@@ -17,6 +17,7 @@ namespace QuanLyHocSinhDuHoc.Controllers
         }
         public ActionResult ThemmoiR(int? id_hs)
         {
+            Session["chuyenTab"] = 3;
             Session["id_HS"] = id_hs;
             return View(id_hs);
         }
@@ -44,11 +45,31 @@ namespace QuanLyHocSinhDuHoc.Controllers
             if(hocsinh.id_GKS >0)
             {
                 ViewBag.ThongbaoGKS = "OK";
-                GIAYKHAISINH gks = db.GIAYKHAISINHs.SingleOrDefault(n => n.id == hocsinh.id_GKS);
+                GIAYKHAISINH gks = db.GIAYKHAISINHs.Find(hocsinh.id_GKS);
                 return View(gks);
             }
             ViewBag.ThongbaoGKS = "NO";
             return View();
+        }
+        public ActionResult SuaGKS( int id)
+        {
+            GIAYKHAISINH gks = db.GIAYKHAISINHs.Find(id);
+            return View(gks);
+        }
+        [HttpPost]
+        public ActionResult SuaGKS(GIAYKHAISINH gks)
+        {
+
+            if (ModelState.IsValid)
+            {
+                HOCSINH hs = db.HOCSINHs.SingleOrDefault(n => n.id_GKS == gks.id);
+                db.Entry(gks).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
+                Session["chuyenTab"] = 3;
+                return RedirectToAction("DetailChung/" + hs.id, "HocSinh");
+
+            }
+            return View(gks);
         }
     }
 }
