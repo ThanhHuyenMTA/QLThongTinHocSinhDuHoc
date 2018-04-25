@@ -11,7 +11,7 @@
         <div class="" id="ClassGKS">
             <div class="clearfix"></div>
             <div class="row">
-                <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="col-md-7 col-sm-7 col-xs-7">
                     <div class="x_panel">
                         <div class="x_title">
                             <h2>Thêm mới thông tin giấy khai sinh</h2>
@@ -19,9 +19,7 @@
                         </div>
                         <div class="x_content">
                             <form class="form-horizontal form-label-left" method="post">
-                                <div class="row">
                                     @* Phan 1 *@
-                                    <div class="col-md-6 col-sm-6 col-xs-6">
                                         <div class="item form-group">
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">
                                                 Họ tên <span class="required">*</span>
@@ -113,11 +111,7 @@
                                             <div class="col-md-9 col-sm-9 col-xs-12">
                                                 <input class="form-control col-md-7 col-xs-12" id="HoTenMeGKS" name="HoTenMe" required="required" disabled value="@Model.HoTenMe" type="text" />
                                             </div>
-                                        </div>
-
-                                    </div>
-                                    @* phan 2 *@
-                                    <div class="col-md-6 col-sm-6 col-xs-6">
+                                        </div>                                     
                                         @* Mẹ *@
                                         <div class="item form-group">
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">
@@ -192,22 +186,16 @@
                                                 <input class="form-control col-md-7 col-xs-12" id="NoiCuTruBoGKS" name="NoiCuTruBo" disabled value="@Model.NoiCuTruBo" type="text" />
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12 col-sm-12 col-xs-12">
                                         <div class="item form-group">
-                                            <label class="control-label col-md-1 col-sm-1 col-xs-12" style="margin-left:4%;">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">
                                                 Ngày lập <span class="required"></span>
                                             </label>
                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                <input style="width:117.3%;" class="form-control has-feedback-left active" value="@Model.NgayLap.ToString("yyyy-MM-dd")" disabled name="NgayLap" id="dtpNgaySinhNL" /><span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
+                                                <input class="form-control has-feedback-left active" value="@Model.NgayLap.ToString("yyyy-MM-dd")" disabled name="NgayLap" id="dtpNgaySinhNL" /><span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-
-                                <div class="row">
+                                    @* phan 2 *@
+                                  
                                     <div class="ln_solid"></div>
                                     @*chức năng*@
                                     <div class="form-group">
@@ -215,13 +203,31 @@
                                             <a class="btn btn-success" href="@Url.Action("SuaGKS", "GiayKhaiSinh", new {@id =@Model.id })" style="margin-left:-25%;">Cập nhật</a>
                                         </div>
                                     </div>
-                                </div>
                             </form>
                         </div>
                     </div>
                 </div>
+                <div class="col-md-5 col-sm-5 col-xs-5">
+                    @if (@Model.fileGKS != null)
+                    {
+                        <br />
+                        <a class="btn btn-success" href="@Url.Action("TestPdf", "XuLyHocSinh", new { @url  =@Model.fileGKS})" target="iframe_gks" id="clickHienGKS">Hiện thị file</a>
+                        <iframe allowfullscreen height="800px" width="100%" name="iframe_gks" hidden id="hienGKS"></iframe>
+                    }
+                    else
+                    {
+                        <br />
+                        <a class="btn btn-success" href="#" target="_blank">Cập nhật file</a>
+                    }
+                </div>
+                
             </div>
         </div>
 
     }
 }
+<script type="text/javascript">
+    $("#clickHienGKS").click(function () {
+        $("#hienGKS").show();
+    });
+</script>

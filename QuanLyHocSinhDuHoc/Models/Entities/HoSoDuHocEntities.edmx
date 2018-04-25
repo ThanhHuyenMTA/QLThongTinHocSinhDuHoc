@@ -36,7 +36,7 @@
             <PropertyRef Name="SoCMT" />
           </Key>
           <Property Name="SoCMT" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="HoTen" Type="nvarchar" MaxLength="50" />
+          <Property Name="HoTen" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="TenGoiKhac" Type="nvarchar" MaxLength="50" />
           <Property Name="NgaySinh" Type="datetime" Nullable="false" />
           <Property Name="GioiTinh" Type="nvarchar" MaxLength="3" />
@@ -48,8 +48,8 @@
           <Property Name="TonGiao" Type="nvarchar" MaxLength="50" />
           <Property Name="DauVetRieng" Type="ntext" />
           <Property Name="NgayCap" Type="datetime" Nullable="false" />
-          <Property Name="NoiCap" Type="nvarchar" MaxLength="200" />
-          <Property Name="LoaiCMT" Type="int" />
+          <Property Name="NoiCap" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="LoaiCMT" Type="int" Nullable="false" />
           <Property Name="fileCMT" Type="ntext" />
         </EntityType>
         <EntityType Name="CT_BCTK">
@@ -242,25 +242,23 @@
           <Property Name="SoDT" Type="nvarchar" MaxLength="50" />
           <Property Name="TenDangNhap" Type="nvarchar" MaxLength="50" />
           <Property Name="MatKhau" Type="text" />
-          <Property Name="id_Quyen" Type="int" />
         </EntityType>
-        <EntityType Name="QUANTRI">
+        <EntityType Name="PHANQUYEN">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="id_nv" />
+            <PropertyRef Name="id_quyen" />
           </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="HoTen" Type="nvarchar" MaxLength="50" />
-          <Property Name="GioiTinh" Type="nvarchar" MaxLength="3" />
-          <Property Name="NgaySinh" Type="datetime" />
-          <Property Name="TenDangNhap" Type="nvarchar" MaxLength="50" />
-          <Property Name="MatKhau" Type="text" />
+          <Property Name="id_nv" Type="int" Nullable="false" />
+          <Property Name="id_quyen" Type="int" Nullable="false" />
+          <Property Name="MoTa" Type="ntext" />
         </EntityType>
-        <EntityType Name="QUYEN">
+        <EntityType Name="QUYENTRUYCAP">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TenQuyen" Type="nvarchar" MaxLength="50" />
+          <Property Name="LinkTruy Cap" Type="ntext" />
         </EntityType>
         <EntityType Name="TABLE_LOI">
           <Key>
@@ -297,8 +295,8 @@
           <EntitySet Name="NAMHOC" EntityType="Self.NAMHOC" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NGUOIGIAMHO" EntityType="Self.NGUOIGIAMHO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NHANVIEN" EntityType="Self.NHANVIEN" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="QUANTRI" EntityType="Self.QUANTRI" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="QUYEN" EntityType="Self.QUYEN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PHANQUYEN" EntityType="Self.PHANQUYEN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="QUYENTRUYCAP" EntityType="Self.QUYENTRUYCAP" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TABLE_LOI" EntityType="Self.TABLE_LOI" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -336,7 +334,7 @@
             <PropertyRef Name="SoCMT" />
           </Key>
           <Property Name="SoCMT" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="HoTen" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HoTen" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="TenGoiKhac" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="NgaySinh" Type="DateTime" Precision="3" Nullable="false" />
           <Property Name="GioiTinh" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
@@ -348,8 +346,8 @@
           <Property Name="TonGiao" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="DauVetRieng" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="NgayCap" Type="DateTime" Precision="3" Nullable="false" />
-          <Property Name="NoiCap" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="LoaiCMT" Type="Int32" />
+          <Property Name="NoiCap" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LoaiCMT" Type="Int32" Nullable="false" />
           <Property Name="fileCMT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="CT_BCTK">
@@ -516,37 +514,6 @@
           <Property Name="LoaiCMT" Type="Int32" />
           <Property Name="id_HSinh" Type="Int32" />
         </EntityType>
-        <EntityType Name="NHANVIEN">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="HoTen" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="GioiTinh" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
-          <Property Name="DiaChi" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="SoDT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="TenDangNhap" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="MatKhau" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="id_Quyen" Type="Int32" />
-        </EntityType>
-        <EntityType Name="QUANTRI">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="HoTen" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="GioiTinh" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
-          <Property Name="NgaySinh" Type="DateTime" Precision="3" />
-          <Property Name="TenDangNhap" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="MatKhau" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="QUYEN">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="TenQuyen" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-        </EntityType>
         <EntityType Name="TABLE_LOI">
           <Key>
             <PropertyRef Name="id" />
@@ -576,15 +543,15 @@
           <EntitySet Name="LOTRINHs" EntityType="Self.LOTRINH" />
           <EntitySet Name="NAMHOCs" EntityType="Self.NAMHOC" />
           <EntitySet Name="NGUOIGIAMHOes" EntityType="Self.NGUOIGIAMHO" />
-          <EntitySet Name="NHANVIENs" EntityType="Self.NHANVIEN" />
-          <EntitySet Name="QUANTRIs" EntityType="Self.QUANTRI" />
-          <EntitySet Name="QUYENs" EntityType="Self.QUYEN" />
           <EntitySet Name="TABLE_LOI" EntityType="Self.TABLE_LOI" />
           <EntitySet Name="HOCSINHs" EntityType="dbXulyTThsModel.HOCSINH" />
           <FunctionImport Name="PhanTrang" ReturnType="Collection(dbXulyTThsModel.PhanTrang_Result)">
             <Parameter Name="LineStart" Mode="In" Type="Int32" />
             <Parameter Name="soBanGhi" Mode="In" Type="Int32" />
           </FunctionImport>
+          <EntitySet Name="QUYENTRUYCAPs" EntityType="dbXulyTThsModel.QUYENTRUYCAP" />
+          <EntitySet Name="NHANVIENs" EntityType="dbXulyTThsModel.NHANVIEN" />
+          <EntitySet Name="PHANQUYENs" EntityType="dbXulyTThsModel.PHANQUYEN" />
         </EntityContainer>
         <EntityType Name="HOCSINH">
           <Key>
@@ -613,6 +580,35 @@
           <Property Type="Int32" Name="id_HB" Nullable="true" />
           <Property Type="String" Name="timeStart" Nullable="true" MaxLength="4" />
         </ComplexType>
+        <EntityType Name="QUYENTRUYCAP">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenQuyen" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LinkTruy_Cap" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="NHANVIEN">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HoTen" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GioiTinh" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="DiaChi" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="SoDT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TenDangNhap" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MatKhau" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="PHANQUYEN">
+          <Key>
+            <PropertyRef Name="id_nv" />
+            <PropertyRef Name="id_quyen" />
+          </Key>
+          <Property Name="id_nv" Type="Int32" Nullable="false" />
+          <Property Name="id_quyen" Type="Int32" Nullable="false" />
+          <Property Name="MoTa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -842,40 +838,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="NHANVIENs">
-            <EntityTypeMapping TypeName="dbXulyTThsModel.NHANVIEN">
-              <MappingFragment StoreEntitySet="NHANVIEN">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="HoTen" ColumnName="HoTen" />
-                <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
-                <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
-                <ScalarProperty Name="SoDT" ColumnName="SoDT" />
-                <ScalarProperty Name="TenDangNhap" ColumnName="TenDangNhap" />
-                <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
-                <ScalarProperty Name="id_Quyen" ColumnName="id_Quyen" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="QUANTRIs">
-            <EntityTypeMapping TypeName="dbXulyTThsModel.QUANTRI">
-              <MappingFragment StoreEntitySet="QUANTRI">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="HoTen" ColumnName="HoTen" />
-                <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
-                <ScalarProperty Name="NgaySinh" ColumnName="NgaySinh" />
-                <ScalarProperty Name="TenDangNhap" ColumnName="TenDangNhap" />
-                <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="QUYENs">
-            <EntityTypeMapping TypeName="dbXulyTThsModel.QUYEN">
-              <MappingFragment StoreEntitySet="QUYEN">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="TenQuyen" ColumnName="TenQuyen" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="TABLE_LOI">
             <EntityTypeMapping TypeName="dbXulyTThsModel.TABLE_LOI">
               <MappingFragment StoreEntitySet="TABLE_LOI">
@@ -923,6 +885,37 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="QUYENTRUYCAPs">
+            <EntityTypeMapping TypeName="dbXulyTThsModel.QUYENTRUYCAP">
+              <MappingFragment StoreEntitySet="QUYENTRUYCAP">
+                <ScalarProperty Name="LinkTruy_Cap" ColumnName="LinkTruy Cap" />
+                <ScalarProperty Name="TenQuyen" ColumnName="TenQuyen" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NHANVIENs">
+            <EntityTypeMapping TypeName="dbXulyTThsModel.NHANVIEN">
+              <MappingFragment StoreEntitySet="NHANVIEN">
+                <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
+                <ScalarProperty Name="TenDangNhap" ColumnName="TenDangNhap" />
+                <ScalarProperty Name="SoDT" ColumnName="SoDT" />
+                <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+                <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
+                <ScalarProperty Name="HoTen" ColumnName="HoTen" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PHANQUYENs">
+            <EntityTypeMapping TypeName="dbXulyTThsModel.PHANQUYEN">
+              <MappingFragment StoreEntitySet="PHANQUYEN">
+                <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+                <ScalarProperty Name="id_quyen" ColumnName="id_quyen" />
+                <ScalarProperty Name="id_nv" ColumnName="id_nv" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -12,13 +12,10 @@ namespace QuanLyHocSinhDuHoc.Models.Entities
     using System;
     using System.Collections.Generic;
     
-    public partial class QUANTRI
+    public partial class QUYENTRUYCAP
     {
         public int id { get; set; }
-        public string HoTen { get; set; }
-        public string GioiTinh { get; set; }
-        public Nullable<System.DateTime> NgaySinh { get; set; }
-        public string TenDangNhap { get; set; }
-        public string MatKhau { get; set; }
+        public string TenQuyen { get; set; }
+        public string LinkTruy_Cap { get; set; }
     }
 }

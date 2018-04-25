@@ -5,15 +5,30 @@ using System.Web;
 using System.Web.Mvc;
 using QuanLyHocSinhDuHoc.Models.Entities;
 using QuanLyHocSinhDuHoc.CommonXuLy;
+using System.IO;
+using PaymentSystem.Controllers;
 
 namespace QuanLyHocSinhDuHoc.Controllers
 {
-    
-    public class XulyHocSinhController : Controller
+
+    public class XulyHocSinhController : BaseController
     {
         dbXulyTThsEntities db = new dbXulyTThsEntities();
         List<string> list = new List<string>();
         // GET: XulyHocSinh
+        //load file 
+        public ActionResult TestPdf(string url)
+        {
+            string[] arrListStr = url.Split('.');//tách trong chuỗi str trên khi gặp ký tự '.'
+            string type = arrListStr[arrListStr.Length - 1];
+            var path = Path.Combine(Server.MapPath("~/Content/filePDF"), url);
+            if (type == "pdf")
+            {
+                ViewBag.tbHien = "YES";
+                return File(path, "application/pdf");
+            }
+            else return View();
+        }
         public ActionResult Index()
         {
             return View(db.TABLE_LOI.ToList());

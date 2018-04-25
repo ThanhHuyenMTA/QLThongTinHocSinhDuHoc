@@ -41,11 +41,11 @@ namespace QuanLyHocSinhDuHoc.Models.Entities
         public virtual DbSet<LOTRINH> LOTRINHs { get; set; }
         public virtual DbSet<NAMHOC> NAMHOCs { get; set; }
         public virtual DbSet<NGUOIGIAMHO> NGUOIGIAMHOes { get; set; }
-        public virtual DbSet<NHANVIEN> NHANVIENs { get; set; }
-        public virtual DbSet<QUANTRI> QUANTRIs { get; set; }
-        public virtual DbSet<QUYEN> QUYENs { get; set; }
         public virtual DbSet<TABLE_LOI> TABLE_LOI { get; set; }
         public virtual DbSet<HOCSINH> HOCSINHs { get; set; }
+        public virtual DbSet<QUYENTRUYCAP> QUYENTRUYCAPs { get; set; }
+        public virtual DbSet<NHANVIEN> NHANVIENs { get; set; }
+        public virtual DbSet<PHANQUYEN> PHANQUYENs { get; set; }
     
         public virtual ObjectResult<PhanTrang_Result> PhanTrang(Nullable<int> lineStart, Nullable<int> soBanGhi)
         {

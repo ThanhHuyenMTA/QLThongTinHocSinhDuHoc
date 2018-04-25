@@ -5,10 +5,11 @@ using System.Web;
 using System.Web.Mvc;
 using QuanLyHocSinhDuHoc.Models.Entities;
 using QuanLyHocSinhDuHoc.CommonXuLy;
+using PaymentSystem.Controllers;
 
 namespace QuanLyHocSinhDuHoc.Controllers
 {
-    public class HocBaController : Controller
+    public class HocBaController : BaseController
     {
         dbXulyTThsEntities db = new dbXulyTThsEntities();
         // GET: HocBa

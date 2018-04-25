@@ -4,16 +4,21 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using QuanLyHocSinhDuHoc.Models.Entities;
+using QuanLyHocSinhDuHoc.CommonXuLy;
+using System.IO;
+using PaymentSystem.Controllers;
 
 namespace QuanLyHocSinhDuHoc.Controllers
 {
-    public class BangTotNghiepController : Controller
+    public class BangTotNghiepController : BaseController
     {
+
+         
         dbXulyTThsEntities db = new dbXulyTThsEntities();
+        
         // GET: BangTotNghiep
         public ActionResult Themmoi(int? id_hs)
-        {
-           
+        {          
             return View();
         }
         public ActionResult ThemmoiR(int? id_hs)
@@ -52,7 +57,7 @@ namespace QuanLyHocSinhDuHoc.Controllers
             ViewBag.ThongbaoBTN = "NO";
             return View();
         }
-
+       
         public ActionResult SuaBTN(int id)
         {
             BANGTOTNGHIEP btn = db.BANGTOTNGHIEPs.Find(id);

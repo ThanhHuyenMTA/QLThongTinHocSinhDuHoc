@@ -5,10 +5,11 @@ using System.Web;
 using System.Web.Mvc;
 using QuanLyHocSinhDuHoc.CommonXuLy;
 using QuanLyHocSinhDuHoc.Models.Entities;
+using PaymentSystem.Controllers;
 
 namespace QuanLyHocSinhDuHoc.Controllers
 {
-    public class GiayToController : Controller
+    public class GiayToController : BaseController
     {
         dbXulyTThsEntities db = new dbXulyTThsEntities();
         DichTuDong dich = new DichTuDong();

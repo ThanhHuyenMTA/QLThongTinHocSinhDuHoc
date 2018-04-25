@@ -12,9 +12,10 @@ namespace QuanLyHocSinhDuHoc.Models.Entities
     using System;
     using System.Collections.Generic;
     
-    public partial class QUYEN
+    public partial class PHANQUYEN
     {
-        public int id { get; set; }
-        public string TenQuyen { get; set; }
+        public int id_nv { get; set; }
+        public int id_quyen { get; set; }
+        public string MoTa { get; set; }
     }
 }

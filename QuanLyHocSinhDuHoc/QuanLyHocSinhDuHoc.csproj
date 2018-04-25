@@ -228,7 +228,7 @@
     <Content Include="Scripts\locales\bootstrap-datepicker.vi.min.js" />
     <Content Include="Scripts\locales\bootstrap-datepicker.zh-CN.min.js" />
     <Content Include="Scripts\locales\bootstrap-datepicker.zh-TW.min.js" />
-    <Content Include="Scripts\Validation.js" />
+    <Content Include="Scripts\NhapDiem.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -239,6 +239,7 @@
     <Compile Include="CommonXuLy\Paging.cs" />
     <Compile Include="CommonXuLy\Xuly.cs" />
     <Compile Include="Controllers\BangTotNghiepController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CMTController.cs" />
     <Compile Include="Controllers\DangNhapController.cs" />
     <Compile Include="Controllers\GiayKhaiSinhController.cs" />
@@ -317,13 +318,13 @@
     <Compile Include="Models\Entities\NHANVIEN.cs">
       <DependentUpon>HoSoDuHocEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Entities\PHANQUYEN.cs">
+      <DependentUpon>HoSoDuHocEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Entities\PhanTrang_Result.cs">
       <DependentUpon>HoSoDuHocEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Entities\QUANTRI.cs">
-      <DependentUpon>HoSoDuHocEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\QUYEN.cs">
+    <Compile Include="Models\Entities\QUYENTRUYCAP.cs">
       <DependentUpon>HoSoDuHocEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Entities\TABLE_LOI.cs">
@@ -397,6 +398,11 @@
     <Content Include="Views\BangTotNghiep\SuaBTN.cshtml" />
     <Content Include="Views\HocBa\SuaHB.cshtml" />
     <Content Include="Views\NamHoc\ThemmoiR.cshtml" />
+    <Content Include="Views\KyHoc\ThemmoiDiem.cshtml" />
+    <Content Include="Content\filePDF\GKS.pdf" />
+    <Content Include="Content\filePDF\BTN.pdf" />
+    <Content Include="Content\filePDF\HB.pdf" />
+    <Content Include="Content\filePDF\SHK.pdf" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -406,7 +412,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\filePDF\" />
     <Folder Include="Content\images\profile\" />
   </ItemGroup>
   <ItemGroup>

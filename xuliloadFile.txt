@@ -1,0 +1,31 @@
+<a href="@Url.Action("TestPdf", "KhachHang", new { @url = "testHien.pdf" })" target="iframe_a" id="clickHien">hien file pdf </a>
+ <iframe height="300px" width="100%" src="demo_iframe.htm" name="iframe_a" id="hien" style="display:none;"></iframe>
+
+
+
+<script type="text/javascript">
+    $("#clickHien").click(function () {
+        $("#hien").css("display", "block");
+    });
+</script>
+
+ public ActionResult TestPdf(string url)
+        {
+            string[] arrListStr = url.Split('.');//tách trong chuỗi str trên khi gặp ký tự '.'
+            string type = arrListStr[arrListStr.Length-1];
+            var path = Path.Combine(Server.MapPath("~/image"), url);
+            if(type =="pdf")
+            {
+                ViewBag.tbHien = "YES";
+                return File(path, "application/pdf");
+
+            }
+               
+            if (type == "docx")
+            {
+                return View();
+                //return File(path, "application/docx");
+            }
+                
+            else return View();
+        }

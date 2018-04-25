@@ -5,10 +5,11 @@ using System.Web;
 using System.Web.Mvc;
 using QuanLyHocSinhDuHoc.Models.Entities;
 using System.IO;
+using PaymentSystem.Controllers;
 
 namespace QuanLyHocSinhDuHoc.Controllers
 {
-    public class CMTController : Controller
+    public class CMTController : BaseController
     {
         dbXulyTThsEntities db = new dbXulyTThsEntities();
         // GET: CMT
@@ -113,7 +114,6 @@ namespace QuanLyHocSinhDuHoc.Controllers
         }
         public ActionResult Detail()
         {
-            
             int id_hs = (int)Session["id_hsDetail"];
             HOCSINH hocsinh = db.HOCSINHs.Find(id_hs);
             CMT cmt = db.CMTs.SingleOrDefault(n => n.SoCMT == hocsinh.SoCMT);

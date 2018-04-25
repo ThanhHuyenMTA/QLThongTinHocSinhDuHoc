@@ -28,7 +28,7 @@ namespace QuanLyHocSinhDuHoc.Models.Entities
         public string DauVetRieng { get; set; }
         public System.DateTime NgayCap { get; set; }
         public string NoiCap { get; set; }
-        public Nullable<int> LoaiCMT { get; set; }
+        public int LoaiCMT { get; set; }
         public string fileCMT { get; set; }
     }
 }

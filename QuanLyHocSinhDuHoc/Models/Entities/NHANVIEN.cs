@@ -21,6 +21,5 @@ namespace QuanLyHocSinhDuHoc.Models.Entities
         public string SoDT { get; set; }
         public string TenDangNhap { get; set; }
         public string MatKhau { get; set; }
-        public Nullable<int> id_Quyen { get; set; }
     }
 }

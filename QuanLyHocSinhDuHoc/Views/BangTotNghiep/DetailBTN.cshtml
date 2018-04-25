@@ -20,7 +20,7 @@
                         <div class="x_content">
                             <form class="form-horizontal form-label-left" method="post">
                                 <div class="row">
-                                    <div class="col-md-12 col-sm-12 col-xs-8">
+                                    <div class="col-md-7 col-sm-7 col-xs-8">
                                         <div class="item form-group">
                                             <label class="control-label col-md-2 col-sm-2 col-xs-12">
                                                 Họ tên <span class="required">*</span>
@@ -121,8 +121,18 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-
+                                    <div class="col-md-5 col-sm-5 col-xs-8">
+                                        @if (@Model.fileBTN != null)
+                                        {
+                                            <a class="btn btn-success" href="@Url.Action("TestPdf", "XuLyHocSinh", new { @url  =@Model.fileBTN})" target="iframe_btn" id="clickHienBTN">Hiện thị file</a>
+                                            <iframe allowfullscreen frameborder="1" height="400px" width="100%" name="iframe_btn" hidden id="hienBTN"></iframe>
+                                        }
+                                        else
+                                        {
+                                            <a class="btn btn-success" href="#" target="_blank">Cập nhật file</a>
+                                        }
+                                    </div>  
+                                 </div>
                                 <div class="row">
                                     <div class="ln_solid"></div>
                                     @*chức năng*@
@@ -135,8 +145,14 @@
                             </form>
                         </div>
                     </div>
-                </div>
+                </div>                
             </div>
         </div>
     }
 }
+
+<script type="text/javascript">
+    $("#clickHienBTN").click(function () {
+        $("#hienBTN").show();
+    });
+</script>

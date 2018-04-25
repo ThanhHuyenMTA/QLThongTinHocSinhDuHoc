@@ -4,10 +4,11 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using QuanLyHocSinhDuHoc.Models.Entities;
+using PaymentSystem.Controllers;
 
 namespace QuanLyHocSinhDuHoc.Controllers
 {
-    public class KyHocController : Controller
+    public class KyHocController : BaseController
     {
         dbXulyTThsEntities db = new dbXulyTThsEntities();
         // GET: KyHoc
@@ -29,6 +30,12 @@ namespace QuanLyHocSinhDuHoc.Controllers
                 return Json(kihoc, JsonRequestBehavior.AllowGet);
             }
             return Json(kihoc, JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult ThemmoiDiem(int id_hb)
+        {
+            var model = db.NAMHOCs.Where(n => n.id_HB == id_hb).ToList();
+            if (model.Count > 0) return View(model);
+            else return RedirectToAction("ThemmoiR", "NamHoc", id_hb);
         }
     }
 }

@@ -8,10 +8,11 @@ using System.Data.Entity;
 using System.IO;
 using QuanLyHocSinhDuHoc.CommonXuLy;
 using System.Data.SqlClient;
+using PaymentSystem.Controllers;
 
 namespace QuanLyHocSinhDuHoc.Controllers
 {
-    public class HocSinhController : Controller
+    public class HocSinhController : BaseController
     {
         // GET: HocSinh
         dbXulyTThsEntities db = new dbXulyTThsEntities();

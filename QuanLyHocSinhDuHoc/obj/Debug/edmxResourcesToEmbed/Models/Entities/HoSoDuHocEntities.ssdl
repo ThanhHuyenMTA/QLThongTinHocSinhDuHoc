@@ -31,7 +31,7 @@
       <PropertyRef Name="SoCMT" />
     </Key>
     <Property Name="SoCMT" Type="varchar" MaxLength="20" Nullable="false" />
-    <Property Name="HoTen" Type="nvarchar" MaxLength="50" />
+    <Property Name="HoTen" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="TenGoiKhac" Type="nvarchar" MaxLength="50" />
     <Property Name="NgaySinh" Type="datetime" Nullable="false" />
     <Property Name="GioiTinh" Type="nvarchar" MaxLength="3" />
@@ -43,8 +43,8 @@
     <Property Name="TonGiao" Type="nvarchar" MaxLength="50" />
     <Property Name="DauVetRieng" Type="ntext" />
     <Property Name="NgayCap" Type="datetime" Nullable="false" />
-    <Property Name="NoiCap" Type="nvarchar" MaxLength="200" />
-    <Property Name="LoaiCMT" Type="int" />
+    <Property Name="NoiCap" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="LoaiCMT" Type="int" Nullable="false" />
     <Property Name="fileCMT" Type="ntext" />
   </EntityType>
   <EntityType Name="CT_BCTK">
@@ -237,25 +237,23 @@
     <Property Name="SoDT" Type="nvarchar" MaxLength="50" />
     <Property Name="TenDangNhap" Type="nvarchar" MaxLength="50" />
     <Property Name="MatKhau" Type="text" />
-    <Property Name="id_Quyen" Type="int" />
   </EntityType>
-  <EntityType Name="QUANTRI">
+  <EntityType Name="PHANQUYEN">
     <Key>
-      <PropertyRef Name="id" />
+      <PropertyRef Name="id_nv" />
+      <PropertyRef Name="id_quyen" />
     </Key>
-    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="HoTen" Type="nvarchar" MaxLength="50" />
-    <Property Name="GioiTinh" Type="nvarchar" MaxLength="3" />
-    <Property Name="NgaySinh" Type="datetime" />
-    <Property Name="TenDangNhap" Type="nvarchar" MaxLength="50" />
-    <Property Name="MatKhau" Type="text" />
+    <Property Name="id_nv" Type="int" Nullable="false" />
+    <Property Name="id_quyen" Type="int" Nullable="false" />
+    <Property Name="MoTa" Type="ntext" />
   </EntityType>
-  <EntityType Name="QUYEN">
+  <EntityType Name="QUYENTRUYCAP">
     <Key>
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="TenQuyen" Type="nvarchar" MaxLength="50" />
+    <Property Name="LinkTruy Cap" Type="ntext" />
   </EntityType>
   <EntityType Name="TABLE_LOI">
     <Key>
@@ -292,8 +290,8 @@
     <EntitySet Name="NAMHOC" EntityType="Self.NAMHOC" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="NGUOIGIAMHO" EntityType="Self.NGUOIGIAMHO" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="NHANVIEN" EntityType="Self.NHANVIEN" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="QUANTRI" EntityType="Self.QUANTRI" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="QUYEN" EntityType="Self.QUYEN" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PHANQUYEN" EntityType="Self.PHANQUYEN" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="QUYENTRUYCAP" EntityType="Self.QUYENTRUYCAP" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TABLE_LOI" EntityType="Self.TABLE_LOI" Schema="dbo" store:Type="Tables" />
   </EntityContainer>
 </Schema>

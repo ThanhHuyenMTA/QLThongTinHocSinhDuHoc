@@ -9,14 +9,13 @@
     }
     else
     {
-
         if (Model.LoaiCMT == 1)
         {
            @* Loại 1 *@
         <div class="">
             <div class="clearfix"></div>
             <div class="row">
-                <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="col-md-7 col-sm-7 col-xs-7">
                     <div class="x_panel">
                         <div class="x_title">
                             <h2>Thêm mới thông tin CMT Loại 1</h2>
@@ -24,11 +23,12 @@
                         </div>
                         <div class="x_content">
                             <form class="form-horizontal form-label-left" method="post">
+                                <input id="fileCMT" name="fileCMT" value="@Model.fileCMT" hidden />
                                 <div class="item form-group" hidden="hidden">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12">
                                         Số chứng minh <span class="required">*</span>
                                     </label>
-                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
                                         <input class="form-control col-md-7 col-xs-12" name="SoCMT" value=@Model.SoCMT disabled type="text" />
                                     </div>
                                 </div>
@@ -36,7 +36,7 @@
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12">
                                         Họ tên <span class="required">*</span>
                                     </label>
-                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
                                         <input class="form-control col-md-7 col-xs-12" name="HoTen" value="@Model.HoTen" disabled required="required" type="text" />
                                     </div>
                                 </div>
@@ -44,7 +44,7 @@
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12">
                                         Ngày sinh <span class="required"></span>
                                     </label>
-                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
                                         <input class="form-control has-feedback-left active" value="@Model.NgaySinh.ToString("yyyy-MM-dd")" disabled name="NgaySinh" id="dtpNgaySinh1" /><span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
                                     </div>
                                 </div>
@@ -52,7 +52,7 @@
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12">
                                         Quê quán
                                     </label>
-                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
                                         <input class="form-control col-md-7 col-xs-12" value="@Model.QueQuan" name="QueQuan" disabled  type="text" />
                                     </div>
                                 </div>
@@ -60,7 +60,7 @@
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12">
                                         Nơi thường trú
                                     </label>
-                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
                                         <input class="form-control col-md-7 col-xs-12" disabled value="@Model.NoiThuongTru" name="NoiThuongTru"  type="text" />
                                     </div>
                                 </div>
@@ -68,7 +68,7 @@
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12">
                                         Tôn giáo
                                     </label>
-                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
                                         <input id="name" class="form-control col-md-7 col-xs-12" disabled value="@Model.TonGiao" name="TonGiao"  type="text" />
                                     </div>
                                 </div>
@@ -76,7 +76,7 @@
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12">
                                         Dân tộc
                                     </label>
-                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
                                         <input id="name" class="form-control col-md-7 col-xs-12" disabled value="@Model.DanToc" name="DanToc" type="text"  />
                                     </div>
                                 </div>
@@ -84,7 +84,7 @@
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12">
                                         Dấu vết riêng
                                     </label>
-                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
                                         <textarea id="textarea" name="DauVetRieng" disabled class="form-control col-md-7 col-xs-12">@Model.DauVetRieng</textarea>
                                     </div>
                                 </div>
@@ -93,7 +93,7 @@
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12">
                                         Ngày cấp <span class="required"></span>
                                     </label>
-                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
                                         <input class="form-control has-feedback-left active" disabled value="@Model.NgayCap.ToString("yyyy-MM-dd")" name="NgayCap" id="dtpNgayCap1" /><span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
                                     </div>
                                 </div>
@@ -101,7 +101,7 @@
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12">
                                         Nơi cấp
                                     </label>
-                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
                                         <input id="name" class="form-control col-md-7 col-xs-12" disabled value="@Model.NoiCap" name="NoiCap"  type="text" />
                                     </div>
                                 </div>
@@ -114,8 +114,15 @@
                             </form>
                         </div>
                     </div>
-                </div>
-            </div>
+                </div>                   
+                <div class="col-md-5 col-sm-5 col-xs-5">
+                    @if (@Model.fileCMT != null)
+                    {
+                        <a class="btn btn-success" href="@Url.Action("TestPdf", "XuLyHocSinh", new { @url = @Model.fileCMT })" target="iframe_a" id="clickHien">Hiện thị file</a>
+                        <iframe allowfullscreen height="450px" width="100%" name="iframe_a" hidden id="hien"></iframe>
+                    }
+                </div>           
+            </div>        
         </div>
        }
        if (Model.LoaiCMT == 2)
@@ -124,7 +131,7 @@
         <div class="">
             <div class="clearfix"></div>
             <div class="row">
-                <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="col-md-7 col-sm-7 col-xs-7">
                     <div class="x_panel">
                         <div class="x_title">
                             <h2>Thêm mới thông tin CMT Loại 2</h2>
@@ -136,7 +143,7 @@
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12">
                                         Số chứng minh <span class="required">*</span>
                                     </label>
-                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
                                         <input class="form-control col-md-7 col-xs-12" disabled value="@Model.SoCMT" name="SoCMT" type="text" />
                                     </div>
                                 </div>
@@ -144,7 +151,7 @@
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12">
                                         Họ tên <span class="required">*</span>
                                     </label>
-                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
                                         <input class="form-control col-md-7 col-xs-12" name="HoTen" disabled value="@Model.HoTen" required="required" placeholder="Họ tên" type="text" />
                                     </div>
                                 </div>
@@ -152,7 +159,7 @@
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12">
                                         Tên gọi khác <span class="required">*</span>
                                     </label>
-                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
                                         <input class="form-control col-md-7 col-xs-12" name="TenGoiKhac" disabled value="@Model.TenGoiKhac" required="required"  type="text" />
                                     </div>
                                 </div>
@@ -160,7 +167,7 @@
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12">
                                         Ngày sinh <span class="required"></span>
                                     </label>
-                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
                                         <input class="form-control has-feedback-left active" name="NgaySinh" disabled value="@Model.NgaySinh" id="dtpNgaySinh2" /><span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
                                     </div>
                                 </div>
@@ -168,7 +175,7 @@
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12">
                                         Quê quán
                                     </label>
-                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
                                         <input class="form-control col-md-7 col-xs-12" disabled value="@Model.QueQuan" name="QueQuan"  type="text" />
                                     </div>
                                 </div>
@@ -176,7 +183,7 @@
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12">
                                         Nơi thường trú
                                     </label>
-                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
                                         <input class="form-control col-md-7 col-xs-12" disabled value="@Model.NoiThuongTru" name="NoiThuongTru"  type="text" />
                                     </div>
                                 </div>
@@ -184,7 +191,7 @@
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12">
                                         Giới tính
                                     </label>
-                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
                                    @{
                                        if (Model.GioiTinh == "Nam")
                                        {
@@ -211,7 +218,7 @@
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12">
                                         Dân tộc
                                     </label>
-                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
                                         <input id="name" class="form-control col-md-7 col-xs-12" disabled value="@Model.DanToc" name="DanToc" type="text" placeholder="Dân tộc" />
                                     </div>
                                 </div>
@@ -219,7 +226,7 @@
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12">
                                         Gía trị đến <span class="required"></span>
                                     </label>
-                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
                                         <input class="form-control has-feedback-left active" disabled value="@Model.GiaTriDen" name="GiaTriDen" id="dtpGiaTriDen2" /><span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
                                     </div>
                                 </div>
@@ -227,7 +234,7 @@
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12">
                                         Dấu vết riêng
                                     </label>
-                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
                                         <textarea id="textarea" name="DauVetRieng" disabled class="form-control col-md-7 col-xs-12">@Model.DauVetRieng</textarea>
                                     </div>
                                 </div>
@@ -235,7 +242,7 @@
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12">
                                         Ngày cấp <span class="required"></span>
                                     </label>
-                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
                                         <input class="form-control has-feedback-left active" disabled value="@Model.NgayCap" name="NgayCap" id="dtpNgayCap2" /><span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
                                     </div>
                                 </div>
@@ -243,7 +250,7 @@
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12">
                                         Nơi cấp
                                     </label>
-                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
                                         <input id="name" class="form-control col-md-7 col-xs-12" name="NoiCap" disabled value="@Model.NoiCap" type="text" />
                                     </div>
                                 </div>
@@ -258,6 +265,19 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-md-5 col-sm-5 col-xs-5">
+                    @if (@Model.fileCMT != null)
+                    {
+                        <a class="btn btn-success" href="@Url.Action("TestPdf", "XuLyHocSinh", new { @url = @Model.fileCMT })" target="iframe_a" id="clickHien">Hiện thị file</a>
+                        <iframe allowfullscreen height="540px" width="100%" name="iframe_a" hidden id="hien"></iframe>
+                    }
+                    else
+                    {
+                        <a class="btn btn-success" href="#" target="_blank">Cập nhật file</a>
+                    }
+
+
+                </div>  
             </div>
         </div>
        }
@@ -267,7 +287,7 @@
         <div class="">
             <div class="clearfix"></div>
             <div class="row">
-                <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="col-md-7 col-sm-7 col-xs-12">
                     <div class="x_panel">
                         <div class="x_title">
                             <h2>Thêm mới thông tin CMT Loại 3</h2>
@@ -279,7 +299,7 @@
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12">
                                         Số chứng minh <span class="required">*</span>
                                     </label>
-                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
                                         <input class="form-control col-md-7 col-xs-12" disabled value="@Model.SoCMT" name="SoCMT" type="text" />
                                     </div>
                                 </div>
@@ -287,7 +307,7 @@
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12">
                                         Họ tên <span class="required">*</span>
                                     </label>
-                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
                                         <input class="form-control col-md-7 col-xs-12" name="HoTen" disabled value="@Model.HoTen" required="required"  type="text" />
                                     </div>
                                 </div>
@@ -295,7 +315,7 @@
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12">
                                         Tên gọi khác <span class="required">*</span>
                                     </label>
-                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
                                         <input class="form-control col-md-7 col-xs-12" disabled value="@Model.TenGoiKhac" name="TenGoiKhac" required="required"  type="text" />
                                     </div>
                                 </div>
@@ -303,7 +323,7 @@
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12">
                                         Ngày sinh <span class="required"></span>
                                     </label>
-                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
                                         <input class="form-control has-feedback-left active" disabled value="@Model.NgaySinh" name="NgaySinh" id="dtpNgaySinh3" /><span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
                                     </div>
                                 </div>
@@ -311,7 +331,7 @@
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12">
                                         Quê quán
                                     </label>
-                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
                                         <input class="form-control col-md-7 col-xs-12" name="QueQuan" disabled value="@Model.QueQuan" type="text" />
                                     </div>
                                 </div>
@@ -319,7 +339,7 @@
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12">
                                         Nơi thường trú
                                     </label>
-                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
                                         <input class="form-control col-md-7 col-xs-12" name="NoiThuongTru" disabled value="@Model.NoiThuongTru" type="text" />
                                     </div>
                                 </div>
@@ -327,7 +347,7 @@
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12">
                                         Giới tính
                                     </label>
-                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
                                         @{
                                            if (Model.GioiTinh == "Nam")
                                            {
@@ -354,7 +374,7 @@
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12">
                                         Quốc tịch
                                     </label>
-                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
                                         <input id="name" class="form-control col-md-7 col-xs-12" name="QuocTich" type="text" disabled value="@Model.QuocTich" />
                                     </div>
                                 </div>
@@ -362,7 +382,7 @@
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12">
                                         Gía trị đến <span class="required"></span>
                                     </label>
-                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
                                         <input class="form-control has-feedback-left active" disabled value="@Model.GiaTriDen" name="GiaTriDen" id="dtpGiaTriDen3" /><span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
                                     </div>
                                 </div>
@@ -370,7 +390,7 @@
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12">
                                         Dấu vết riêng
                                     </label>
-                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
                                         <textarea id="textarea" name="DauVetRieng" disabled class="form-control col-md-7 col-xs-12">@Model.DauVetRieng</textarea>
                                     </div>
                                 </div>
@@ -378,7 +398,7 @@
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12">
                                         Ngày cấp <span class="required"></span>
                                     </label>
-                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
                                         <input class="form-control has-feedback-left active" disabled value="@Model.NgayCap" name="NgayCap" id="dtpNgayCap3" /><span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
                                     </div>
                                 </div>
@@ -386,7 +406,7 @@
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12">
                                         Nơi cấp
                                     </label>
-                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
                                         <input id="name" class="form-control col-md-7 col-xs-12" name="NoiCap" disabled value="@Model.NoiCap" type="text" />
                                     </div>
                                 </div>
@@ -395,15 +415,27 @@
                                 <div class="form-group">
                                     <div class="col-md-6 col-md-offset-3">
                                         <a class="btn btn-success" href="@Url.Action("SuaCMT", "CMT", new {@soCMT =@Model.SoCMT,@loaiCMT =@Model.LoaiCMT })">Cập nhật</a>
-
                                     </div>
                                 </div>
                             </form>
                         </div>
                     </div>
                 </div>
+                <div class="col-md-5 col-sm-5 col-xs-12">
+                    @if (@Model.fileCMT != null)
+                    {
+                        <a class="btn btn-success" href="@Url.Action("TestPdf", "XuLyHocSinh", new { @url = @Model.fileCMT })" target="iframe_a" id="clickHien">Hiện thị file</a>
+                        <iframe allowfullscreen height="540px" width="100%" name="iframe_a" hidden id="hien"></iframe>
+                    }
+                </div>  
             </div>
         </div>
        }
     }
 }
+
+<script type="text/javascript">
+    $("#clickHien").click(function () {
+        $("#hien").show();
+    });
+</script>
