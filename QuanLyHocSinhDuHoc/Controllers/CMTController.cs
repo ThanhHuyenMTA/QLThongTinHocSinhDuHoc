@@ -15,10 +15,12 @@ namespace QuanLyHocSinhDuHoc.Controllers
         // GET: CMT
         public ActionResult Themmoi(int? id_hs)
         {
+            Session["file"] = null;
             return View();
         }
         public ActionResult ThemmoiR(int? id_hs)
         {
+            Session["file"] = null;
             Session["chuyenTab"] = 2;
             Session["id_HS"] = id_hs;
             return View(id_hs);
@@ -29,6 +31,8 @@ namespace QuanLyHocSinhDuHoc.Controllers
         {           
             if (ModelState.IsValid)
             {
+                if (Session["file"] != null)
+                    cmt1.fileCMT = (string)Session["file"];
                 db.CMTs.Add(cmt1);
                 db.SaveChanges();
                 //Cập nhật lại bảng học sinh
@@ -46,6 +50,8 @@ namespace QuanLyHocSinhDuHoc.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (Session["file"] != null)
+                    cmt2.fileCMT = (string)Session["file"];
                 db.CMTs.Add(cmt2);
                  db.SaveChanges();
                  //Cập nhật lại bảng học sinh
@@ -63,6 +69,8 @@ namespace QuanLyHocSinhDuHoc.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (Session["file"] != null)
+                    cmt3.fileCMT =(string)Session["file"];
                 db.CMTs.Add(cmt3);
                  db.SaveChanges();
                  //Cập nhật lại bảng học sinh
@@ -75,31 +83,7 @@ namespace QuanLyHocSinhDuHoc.Controllers
             }
             return Json("Thêm thất bại!", JsonRequestBehavior.AllowGet);
         }
-        [HttpPost]
-        public JsonResult UpLoadFileCMT1()
-        {
-            if (System.Web.HttpContext.Current.Request.Files.AllKeys.Any())
-            {
-                var file = Request.Files["HelpSectionFileCMT1"];
-                //lưu tên file
-                var fileName = Path.GetFileName(file.FileName);
-                //lưu đường dẫn
-                var path = Path.Combine(Server.MapPath("~/Content/filePDF"), fileName);
-                // file is uploaded
-                var type = file.ContentType;
-                if (System.IO.File.Exists(path))
-                {
-                    ViewBag.Thongbao = "File đã tồn tại";
-                }
-                else
-                {
-                    if (type == "application/docx" || type == "application/pdf")
-                        file.SaveAs(path);
-                }
-                return Json(fileName, JsonRequestBehavior.AllowGet);
-            }
-            return Json("Khong", JsonRequestBehavior.AllowGet);
-        }
+        
         public ActionResult Loai1()
         {
             return View();
@@ -121,6 +105,7 @@ namespace QuanLyHocSinhDuHoc.Controllers
         }
         public ActionResult SuaCMT(string soCMT,int loaiCMT)
         {
+            Session["file"] = null;
             CMT cmt = db.CMTs.Find(soCMT);
             ViewBag.LoaiCMT = loaiCMT;
             HOCSINH hs = db.HOCSINHs.SingleOrDefault(n => n.SoCMT == soCMT);
@@ -134,6 +119,8 @@ namespace QuanLyHocSinhDuHoc.Controllers
             
             if (ModelState.IsValid)
             {
+                if (Session["file"] != null)
+                    cmt.fileCMT = (string)Session["file"];
                 HOCSINH hs = db.HOCSINHs.SingleOrDefault(n => n.SoCMT == cmt.SoCMT);
                 db.Entry(cmt).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();

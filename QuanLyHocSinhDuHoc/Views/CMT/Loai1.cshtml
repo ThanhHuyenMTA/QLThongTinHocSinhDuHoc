@@ -110,30 +110,7 @@
 </div>
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.0.min.js"></script>
 <script type="text/javascript">
-    $(document).ready(function () {
-        $("#fileCMT1").change(function () {
-            debugger;
-            var data = new FormData();
-            var files = $("#fileCMT1").get(0).files;
-            if (files.length > 0) {
-                data.append("HelpSectionFileCMT1", files[0]);
-            }
-            $.ajax({
-                url: "/CMT/UpLoadFileCMT1",
-                type: "POST",
-                processData: false,
-                contentType: false,
-                data: data,
-                success: function (data) {
-                    console.log(data);
-                },
-                error: function (er) {
-                    alert(er);
-                }
-
-            });
-        });
-    });
+   
     function SaveCMT1() {
         if ($("#SoCMT1").val() == "" || $("#HoTen1").val() == "" || $("#dtpNgaySinh1").val() == "" || $("#QueQuan1").val() == "" || $("#NoiThuongTru1").val() == "" || $("#TonGiao1").val() == "" || $("#DanToc1").val() == "" || $("#dtpNgayCap1").val() == "" || $("#NoiCap1").val() == "")
                 $("#messThemCMT1").text("Thông tin không được để trống !");

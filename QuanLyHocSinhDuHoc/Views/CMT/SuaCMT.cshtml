@@ -20,6 +20,10 @@
                             <div class="x_content">
                                 <form class="form-horizontal form-label-left" method="post">
                                     <p id="messEditCMT" style="color:red;font-weight:bold;"></p>
+                                    <div class=" item form-group">
+                                        <button id="btn_fileCMT1Edit" type="button" onclick="$('#fileCMT1Edit').click()" class="btn btn-sm btn-primary" style="width:230px;">Chọn file</button>
+                                        <input type="file" id="fileCMT1Edit" name="fileCMT1Edit" style="display: none;" class="form-control">
+                                    </div>
                                     <div class="item form-group" >
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12">
                                             Số chứng minh <span class="required">*</span>
@@ -130,6 +134,10 @@
                             <div class="x_content">
                                 <form class="form-horizontal form-label-left" method="post">
                                     <p id="messEditCMT" style="color:red;font-weight:bold;"></p>
+                                    <div class=" item form-group">
+                                        <button id="btn_fileCMT2Edit" type="button" onclick="$('#fileCMT2Edit').click()" class="btn btn-sm btn-primary" style="width:230px;">Chọn file</button>
+                                        <input type="file" id="fileCMT2Edit" name="fileCMT2Edit" style="display: none;" class="form-control">
+                                    </div>
                                     <div class="item form-group" >
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12">
                                             Số chứng minh <span class="required">*</span>
@@ -276,6 +284,10 @@
                             <div class="x_content">
                                 <form class="form-horizontal form-label-left" method="post">
                                     <p id="messEditCMT" style="color:red;font-weight:bold;"></p>
+                                    <div class=" item form-group">
+                                        <button id="btn_fileCMT3Edit" type="button" onclick="$('#fileCMT3Edit').click()" class="btn btn-sm btn-primary" style="width:230px;">Chọn file</button>
+                                        <input type="file" id="fileCMT3Edit" name="fileCMT3Edit" style="display: none;" class="form-control">
+                                    </div>
                                     <div class="item form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12">
                                             Số chứng minh <span class="required">*</span>
@@ -409,6 +421,75 @@
        
 } 
 <script type="text/javascript">
+    $(document).ready(function () {
+        $("#fileCMT1Edit").change(function () {
+            debugger;
+            var data = new FormData();
+            var files = $("#fileCMT1Edit").get(0).files;
+            if (files.length > 0) {
+                data.append("HelpSectionFile", files[0]);
+            }
+            $.ajax({
+                url: "/CMT/UpLoadFileCMT1",
+                type: "POST",
+                processData: false,
+                contentType: false,
+                data: data,
+                success: function (data) {
+                    console.log(data);
+                },
+                error: function (er) {
+                    alert(er);
+                }
+
+            });
+        });
+        $("#fileCMT2Edit").change(function () {
+            debugger;
+            var data = new FormData();
+            var files = $("#fileCMT2Edit").get(0).files;
+            if (files.length > 0) {
+                data.append("HelpSectionFile", files[0]);
+            }
+            $.ajax({
+                url: "/CMT/UpLoadFileCMT1",
+                type: "POST",
+                processData: false,
+                contentType: false,
+                data: data,
+                success: function (data) {
+                    console.log(data);
+                },
+                error: function (er) {
+                    alert(er);
+                }
+
+            });
+        });
+        $("#fileCMT3Edit").change(function () {
+            debugger;
+            var data = new FormData();
+            var files = $("#fileCMT3Edit").get(0).files;
+            if (files.length > 0) {
+                data.append("HelpSectionFile", files[0]);
+            }
+            $.ajax({
+                url: "/CMT/UpLoadFileCMT1",
+                type: "POST",
+                processData: false,
+                contentType: false,
+                data: data,
+                success: function (data) {
+                    console.log(data);
+                },
+                error: function (er) {
+                    alert(er);
+                }
+
+            });
+        });
+    });
+
     $(document).ready(function () {
         var time = $(".dateLoad").val();
         var dateControl = document.querySelector('input[type="date"]'); dateControl.value = time;

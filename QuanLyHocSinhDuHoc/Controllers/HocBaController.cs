@@ -15,10 +15,12 @@ namespace QuanLyHocSinhDuHoc.Controllers
         // GET: HocBa
         public ActionResult Themmoi(int? id_hs)
         {
+            Session["file"] = null;
             return View();
         }
         public ActionResult ThemmoiR(int? id_hs)
         {
+            Session["file"] = null;
             Session["chuyenTab"] = 5;
             Session["id_HS"] = id_hs;
             return View(id_hs);
@@ -28,6 +30,8 @@ namespace QuanLyHocSinhDuHoc.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (Session["file"] != null)
+                    hocba.fileHB = (string)Session["file"];
                 db.HOCBAs.Add(hocba);
                 db.SaveChanges();
                 //Cập nhật lại bảng học sinh

@@ -11,6 +11,10 @@
                     <form class="form-horizontal form-label-left" method="post">
                         <div class="row">
                             <div class="col-md-12 col-sm-12 col-xs-8">
+                                <div class=" item form-group">
+                                    <button id="btn_fileBTN" type="button" onclick="$('#filebtn').click()" class="btn btn-sm btn-primary" style="width:230px;">Chọn file</button>
+                                    <input type="file" id="filebtn" name="filebtn" style="display: none;" class="form-control">
+                                </div>
                                 <div class="item form-group">
                                     <label class="control-label col-md-2 col-sm-2 col-xs-12">
                                         Họ tên <span class="required">*</span>
@@ -122,6 +126,30 @@
 </div>
 
 <script type="text/javascript">
+    $(document).ready(function () {
+        $("#filebtn").change(function () {
+            debugger;
+            var data = new FormData();
+            var files = $("#filebtn").get(0).files;
+            if (files.length > 0) {
+                data.append("HelpSectionFile", files[0]);
+            }
+            $.ajax({
+                url: "/XulyHocSinh/UpLoadFile",
+                type: "POST",
+                processData: false,
+                contentType: false,
+                data: data,
+                success: function (data) {
+                    console.log(data);
+                },
+                error: function (er) {
+                    alert(er);
+                }
+
+            });
+        });
+    });
     function SaveBTN() {
         if ($("#HoTenBTN").val() == "" || $("#dtpNgaySinhBTN").val() == "" || $("#NoiSinhBTN").val() == "" ||
             $("#DanTocBTN").val() == "" || $("#dtpNgaySinhKT").val() == "" || $("#HoiDongThiBTN").val() == "" ||

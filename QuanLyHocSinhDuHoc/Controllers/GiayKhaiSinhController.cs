@@ -14,10 +14,12 @@ namespace QuanLyHocSinhDuHoc.Controllers
         // GET: GiayKhaiSinh
         public ActionResult Themmoi(int? id_hs)
         {
+            Session["file"] = null;
             return View();
         }
         public ActionResult ThemmoiR(int? id_hs)
         {
+            Session["file"] = null;
             Session["chuyenTab"] = 3;
             Session["id_HS"] = id_hs;
             return View(id_hs);
@@ -27,6 +29,8 @@ namespace QuanLyHocSinhDuHoc.Controllers
         {
             if(ModelState.IsValid)
             {
+                Session["file"] = null;
+                gks.fileGKS = (string)Session["file"];
                 db.GIAYKHAISINHs.Add(gks);
                 db.SaveChanges();
                 //Cập nhật lại bảng học sinh

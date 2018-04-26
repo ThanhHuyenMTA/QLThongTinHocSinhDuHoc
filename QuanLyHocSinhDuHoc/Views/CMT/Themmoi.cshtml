@@ -34,6 +34,30 @@
 </style>
 
 <script type="text/javascript">
+    $(document).ready(function () {
+        $("#fileCMT1").change(function () {
+            debugger;
+            var data = new FormData();
+            var files = $("#fileCMT1").get(0).files;
+            if (files.length > 0) {
+                data.append("HelpSectionFile", files[0]);
+            }
+            $.ajax({
+                url: "/CMT/UpLoadFileCMT1",
+                type: "POST",
+                processData: false,
+                contentType: false,
+                data: data,
+                success: function (data) {
+                    console.log(data);
+                },
+                error: function (er) {
+                    alert(er);
+                }
+
+            });
+        });
+    });
     function LoaiCMT(id)
     {
         if (id == 1)

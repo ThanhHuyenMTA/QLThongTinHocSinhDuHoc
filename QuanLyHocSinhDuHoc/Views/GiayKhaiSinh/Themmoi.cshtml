@@ -10,6 +10,14 @@
                 <div class="x_content">
                     <form class="form-horizontal form-label-left" method="post">
                         <div class="row">
+                            <div class="col-md-6 col-sm-6 col-xs-6">
+                                <div class=" item form-group">
+                                    <button id="btn_fileGKS" type="button" onclick="$('#filegks').click()" class="btn btn-sm btn-primary" style="width:230px;">Chọn file</button>
+                                    <input type="file" id="filegks" name="filegks" style="display: none;" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
                             @* Phan 1 *@
                             <div class="col-md-6 col-sm-6 col-xs-6">       
                                 <p id="messThemGKS" style="color:red;font-weight:bold;"></p>                        
@@ -205,7 +213,30 @@
 
 </div>
 <script type="text/javascript">
+    $(document).ready(function () {
+        $("#filegks").change(function () {
+            debugger;
+            var data = new FormData();
+            var files = $("#filegks").get(0).files;
+            if (files.length > 0) {
+                data.append("HelpSectionFile", files[0]);
+            }
+            $.ajax({
+                url: "/XulyHocSinh/UpLoadFile",
+                type: "POST",
+                processData: false,
+                contentType: false,
+                data: data,
+                success: function (data) {
+                    console.log(data);
+                },
+                error: function (er) {
+                    alert(er);
+                }
 
+            });
+        });
+    });
     function SaveGKS() {
         var inputs = document.getElementsByTagName('input');
         for (var i = 0; i < inputs.length; i++) {

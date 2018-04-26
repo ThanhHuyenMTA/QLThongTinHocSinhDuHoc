@@ -18,11 +18,13 @@ namespace QuanLyHocSinhDuHoc.Controllers
         
         // GET: BangTotNghiep
         public ActionResult Themmoi(int? id_hs)
-        {          
+        {
+            Session["file"] = null;
             return View();
         }
         public ActionResult ThemmoiR(int? id_hs)
         {
+            Session["file"] = null;
             Session["chuyenTab"] = 4;
             Session["id_HS"] = id_hs;
             return View(id_hs);
@@ -32,6 +34,8 @@ namespace QuanLyHocSinhDuHoc.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (Session["file"] != null)
+                    btn.fileBTN = (string)Session["file"];
                 db.BANGTOTNGHIEPs.Add(btn);
                 db.SaveChanges();
                 //Cập nhật lại bảng học sinh
@@ -60,6 +64,7 @@ namespace QuanLyHocSinhDuHoc.Controllers
        
         public ActionResult SuaBTN(int id)
         {
+            Session["file"] = null;
             BANGTOTNGHIEP btn = db.BANGTOTNGHIEPs.Find(id);
             HOCSINH hs = db.HOCSINHs.SingleOrDefault(n => n.id_BTN == btn.id);
             ViewBag.id_hs = hs.id;
@@ -72,6 +77,8 @@ namespace QuanLyHocSinhDuHoc.Controllers
 
             if (ModelState.IsValid)
             {
+                if( Session["file"] != null)
+                    btn.fileBTN = (string)Session["file"];
                 HOCSINH hs = db.HOCSINHs.SingleOrDefault(n => n.id_BTN == btn.id);
                 db.Entry(btn).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();

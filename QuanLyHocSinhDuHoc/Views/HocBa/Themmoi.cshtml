@@ -11,6 +11,14 @@
                 <div class="x_content">
                     <form class="form-horizontal form-label-left" method="post">
                         <div class="row">
+                            <div class="col-md-6 col-sm-6 col-xs-6">
+                                <div class=" item form-group">
+                                    <button id="btn_fileHB" type="button" onclick="$('#filehb').click()" class="btn btn-sm btn-primary" style="width:230px;">Chọn file</button>
+                                    <input type="file" id="filehb" name="filehb" style="display: none;" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
                             @* Phan 1 *@
                             <div class="col-md-6 col-sm-6 col-xs-6">
                                 <div class="item form-group">
@@ -200,6 +208,30 @@
 @* Thêm mới điểm học từng kì học *@
 
 <script type="text/javascript">
+    $(document).ready(function () {
+        $("#filehb").change(function () {
+            debugger;
+            var data = new FormData();
+            var files = $("#filehb").get(0).files;
+            if (files.length > 0) {
+                data.append("HelpSectionFile", files[0]);
+            }
+            $.ajax({
+                url: "/XulyHocSinh/UpLoadFile",
+                type: "POST",
+                processData: false,
+                contentType: false,
+                data: data,
+                success: function (data) {
+                    console.log(data);
+                },
+                error: function (er) {
+                    alert(er);
+                }
+
+            });
+        });
+    });
     function SaveHocBa() {
         var hocba = {
             HoTen: $("#HoTenHB").val(),
