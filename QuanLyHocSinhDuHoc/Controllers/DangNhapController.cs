@@ -31,16 +31,12 @@ namespace QuanLyHocSinhDuHoc.Controllers
                 {
                     Session["DangNhap"] = "OK";
                     Session["thongbaoDN"] = null;
-                    int id_nv = nv.id;
-                    List<PHANQUYEN> listPQ = db.PHANQUYENs.Where(n => n.id_nv == id_nv).ToList();
-                    List<string> listQuyenTC = new List<string>();
-                    foreach (var item in listPQ)
-                    {
-                        QUYENTRUYCAP quyenTruycap = db.QUYENTRUYCAPs.Find(item.id_quyen);//luu quyen khac
-                        listQuyenTC.Add(quyenTruycap.LinkTruy_Cap);
-                    }
-                    Session["ListLinkQuyen"] = listQuyenTC;
+                   
+                    Session["NguoiDung"] = nv.TenDangNhap;
+                 
+                    listTb();
                     return RedirectToAction("Index", "Home");
+
                 }
                 Session["DangNhap"] = "NO";
                 Session["thongbaoDN"] = "Đăng nhập thất bại";
@@ -55,5 +51,44 @@ namespace QuanLyHocSinhDuHoc.Controllers
                
             }         
         }
+
+        public void listTb()
+        {
+            List<TABLE_LOI> listVang = new List<TABLE_LOI>();
+            List<TABLE_LOI> listDo = new List<TABLE_LOI>();
+            List<TABLE_LOI> listXanh = new List<TABLE_LOI>();
+
+            DateTime today = DateTime.Now;
+            var listLoi = db.TABLE_LOI.ToList();
+            foreach (var i in listLoi)
+            {
+                if (i.TimeEnd > today)
+                {
+                    TimeSpan a = ((DateTime)i.TimeEnd).Subtract(today);
+                    double day = a.TotalDays;
+                    if (day > 5)
+                    {
+                        i.TrangThai = "1"; //mức xanh
+                        listXanh.Add(i);
+                    }
+                    else
+                    {
+
+                        i.TrangThai = "2";//mức vàng
+                        listVang.Add(i);
+                    }
+                }
+                else
+                {
+                    i.TrangThai = "3"; //mức đỏ
+                    listDo.Add(i);
+                }
+            }
+            Session["ThongBaoVang"] = listVang;
+            Session["ThongBaoDo"] = listDo;
+            Session["ThongBaoXanh"] = listXanh;
+            db.SaveChanges();
+        }
+        
     }
 }

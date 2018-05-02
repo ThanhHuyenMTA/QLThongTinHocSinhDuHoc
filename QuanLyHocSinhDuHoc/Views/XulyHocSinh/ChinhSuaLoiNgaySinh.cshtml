@@ -28,7 +28,7 @@
                                                 @ViewBag.typeLoi trên Chứng minh thư.  <span class="required">*</span>
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input class="form-control col-md-7 col-xs-12" id="NgaySinhCMT" name="NgaySinhCMT" value=@Model.Cmt.NgaySinh.Value.ToString("yyyy-MM-dd") type="date" />
+                                                <input class="form-control col-md-7 col-xs-12" id="NgaySinhCMT" name="NgaySinhCMT" value=@Model.Cmt.NgaySinh.ToString("yyyy-MM-dd") type="date" />
                                             </div>
                                         </div>
                                     }
@@ -39,7 +39,7 @@
                                                 @ViewBag.typeLoi trên Giấy khai sinh.  <span class="required">*</span>
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input class="form-control col-md-7 col-xs-12" id="NgaySinhGKS" name="NgaySinhGKS" value=@Model.Giaykhaisinh.NgaySinh.Value.ToString("yyyy-MM-dd") type="date" />
+                                                <input class="form-control col-md-7 col-xs-12" id="NgaySinhGKS" name="NgaySinhGKS" value=@Model.Giaykhaisinh.NgaySinh.ToString("yyyy-MM-dd") type="date" />
                                             </div>
                                         </div>
                                     }
@@ -50,7 +50,7 @@
                                                 @ViewBag.typeLoi trên Bằng tốt nghiệp.  <span class="required">*</span>
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input class="form-control col-md-7 col-xs-12" id="NgaySinhBTN" name="NgaySinhBTN" value=@Model.Bangtotnghiep.NgaySinh.Value.ToString("yyyy-MM-dd") type="date" />
+                                                <input class="form-control col-md-7 col-xs-12" id="NgaySinhBTN" name="NgaySinhBTN" value=@Model.Bangtotnghiep.NgaySinh.ToString("yyyy-MM-dd") type="date" />
                                             </div>
                                         </div>
                                     }
@@ -61,7 +61,7 @@
                                                 @ViewBag.typeLoi trên học bạ.  <span class="required">*</span>
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input class="form-control col-md-7 col-xs-12" id="NgaySinhHB" name="NgaySinhHB" value=@Model.Hocba.NgaySinh.Value.ToString("yyyy-MM-dd") type="date" />
+                                                <input class="form-control col-md-7 col-xs-12" id="NgaySinhHB" name="NgaySinhHB" value=@Model.Hocba.NgaySinh.ToString("yyyy-MM-dd") type="date" />
                                             </div>
                                         </div>
                                     }
@@ -79,9 +79,67 @@
             </div>
         </div>
     </div>
+
+    <div class="row" id="TuLieuDT">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+
+            @{
+                if (Model.Cmt != null)
+                {
+                    if (Model.Cmt.fileCMT != null)
+                    {
+                        <a class="btn btn-success" href="@Url.Action("TestPdf", "XuLyHocSinh", new { @url = @Model.Cmt.fileCMT })" target="iframe_CMT4" id="clickHienCMT4">Hiện thị file CMT</a>
+                    }
+                }
+                if (Model.Giaykhaisinh != null)
+                {
+                    if (Model.Giaykhaisinh.fileGKS != null)
+                    {
+                        <a class="btn btn-success" href="@Url.Action("TestPdf", "XuLyHocSinh", new { @url = @Model.Giaykhaisinh.fileGKS })" target="iframe_GKS4" id="clickHienGKS4">Hiện thị file GKS</a>
+                    }
+                }
+                if (Model.Bangtotnghiep != null)
+                {
+                    if (Model.Bangtotnghiep.fileBTN != null)
+                    {
+                        <a class="btn btn-success" href="@Url.Action("TestPdf", "XuLyHocSinh", new { @url = @Model.Bangtotnghiep.fileBTN })" target="iframe_BTN4" id="clickHienBTN4">Hiện thị file BTN</a>
+                    }
+                }
+                if (Model.Hocba != null)
+                {
+                    if (Model.Hocba.fileHB != null)
+                    {
+                        <a class="btn btn-success" href="@Url.Action("TestPdf", "XuLyHocSinh", new { @url = @Model.Hocba.fileHB })" target="iframe_HB4" id="clickHienHB4">Hiện thị file HB</a>
+                    }
+                }
+                <br /><br />
+                <iframe allowfullscreen height="450px" width="45%" name="iframe_CMT4" hidden id="hienCMT4"></iframe>
+                <iframe allowfullscreen height="450px" width="45%" name="iframe_GKS4" hidden id="hienGKS4"></iframe>
+                <iframe allowfullscreen height="450px" width="45%" name="iframe_BTN4" hidden id="hienBTN4"></iframe>
+                <iframe allowfullscreen height="450px" width="45%" name="iframe_HB4" hidden id="hienHB4"></iframe>
+
+            }
+        </div>
+    </div>
+
+
 </div>
 
 <script type="text/javascript">
+    $("#clickHienHB4").click(function () {
+        $("#hienHB4").show();
+    });
+    $("#clickHienBTN4").click(function () {
+        $("#hienBTN4").show();
+    });
+    $("#clickHienGKS4").click(function () {
+        $("#hienGKS4").show();
+    });
+    $("#clickHienCMT4").click(function () {
+        $("#hienCMT4").show();
+    });
+
+
     function CapNhatNgaySinh() {
         debugger;
         var listName = new Array();
@@ -90,7 +148,6 @@
         listName[2] = $("#NgaySinhGKS").val();
         listName[3] = $("#NgaySinhBTN").val();
         listName[4] = $("#NgaySinhHB").val();
-
         var postData = { listkey: listName };
         $.ajax({
             type: 'POST',
@@ -100,6 +157,7 @@
             data: '{ "listkey":' + JSON.stringify(listName) + '}',
             contentType: "application/json; charset=utf-8",
             success: function (data) {
+                alert("Đã chỉnh sửa thành công");
                 window.location = "/XulyHocSinh/Index";
             },
             error: function (err) {

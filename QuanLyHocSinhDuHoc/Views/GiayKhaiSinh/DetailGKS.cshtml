@@ -1,7 +1,7 @@
 ﻿@model QuanLyHocSinhDuHoc.Models.Entities.GIAYKHAISINH
 
 @{
-    var id_hs = Request.Url.Segments.Last();
+    var id_hs = Request["id"];
     if (ViewBag.ThongbaoGKS == "NO")
     {
         <h2 style='color:#0070e2;'><strong>Chưa cập nhật Giấy khai sinh</strong></h2>
@@ -217,7 +217,10 @@
                     else
                     {
                         <br />
-                        <a class="btn btn-success" href="#" target="_blank">Cập nhật file</a>
+                        <div class=" item form-group">
+                            <button id="btn_fileGKSCN" type="button" onclick="$('#filegksCapNhat').click()" class="btn btn-sm btn-primary" style="width:230px;">Cập nhật file</button>
+                            <input type="file" id="filegksCapNhat" name="filegksCapNhat" style="display: none;" class="form-control">
+                        </div>
                     }
                 </div>
                 
@@ -230,4 +233,27 @@
     $("#clickHienGKS").click(function () {
         $("#hienGKS").show();
     });
+    $("#filegksCapNhat").change(function () {
+        var data = new FormData();
+        var files = $("#filegksCapNhat").get(0).files;
+        if (files.length > 0) {
+            data.append("HelpSectionFile", files[0]);
+        }
+        $.ajax({
+            url: "/GiayKhaiSinh/UpLoadFileGKS",
+            type: "POST",
+            processData: false,
+            contentType: false,
+            data: data,
+            success: function (data) {
+                window.location.href = "?id=" + data;
+            },
+            error: function (er) {
+                alert(er);
+            }
+
+        });
+    });
+
+
 </script>

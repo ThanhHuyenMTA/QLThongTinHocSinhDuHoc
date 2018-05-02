@@ -155,7 +155,7 @@ namespace QuanLyHocSinhDuHoc.Controllers
         }
         public JsonResult SearchKeyName(string keySearch)
         {
-            List<HOCSINH> list = db.HOCSINHs.Where(n => n.TenHS.Contains(keySearch)).ToList();
+            List<HOCSINH> list = db.HOCSINHs.Where(n => n.TenHS.Contains(keySearch) || n.sdt.Contains(keySearch) || n.email.Contains(keySearch)).ToList();
             return Json(list, JsonRequestBehavior.AllowGet);
         }
 

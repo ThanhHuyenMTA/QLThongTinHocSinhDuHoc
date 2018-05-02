@@ -41,3 +41,4 @@ D:\QLThongTinHocSinhDuHoc\QuanLyHocSinhDuHoc\bin\System.Web.Mvc.xml
 D:\QLThongTinHocSinhDuHoc\QuanLyHocSinhDuHoc\obj\Debug\QuanLyHocSinhDuHoc.csprojResolveAssemblyReference.cache
 D:\QLThongTinHocSinhDuHoc\QuanLyHocSinhDuHoc\obj\Debug\QuanLyHocSinhDuHoc.dll
 D:\QLThongTinHocSinhDuHoc\QuanLyHocSinhDuHoc\obj\Debug\QuanLyHocSinhDuHoc.pdb
+D:\A.DoAn\BailamWeb\QuanLyHocSinhDuHoc\QuanLyHocSinhDuHoc\obj\Debug\QuanLyHocSinhDuHoc.csprojResolveAssemblyReference.cache

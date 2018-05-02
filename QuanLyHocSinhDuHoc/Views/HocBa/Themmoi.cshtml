@@ -15,6 +15,7 @@
                                 <div class=" item form-group">
                                     <button id="btn_fileHB" type="button" onclick="$('#filehb').click()" class="btn btn-sm btn-primary" style="width:230px;">Chọn file</button>
                                     <input type="file" id="filehb" name="filehb" style="display: none;" class="form-control">
+                                    <p id="messThemHB" style="color:red;font-weight:bold;"></p>
                                 </div>
                             </div>
                         </div>
@@ -233,6 +234,12 @@
         });
     });
     function SaveHocBa() {
+        if ($("#HoTenHB").val() == "" || $("#dtpNgaySinhHB").val() == "" || $("#NoiSinhHB").val() == "" || $('[name="GioiTinh"]:radio:checked').val()=="" ||
+            $("#DanTocHB").val() == "" || $("#NoiSongHienTaiHB").val() == "" || $("#HoTenBoHB").val() == "" || $("#NgheNghiepBoHB").val()=="" ||
+             $("#HoTenMeHB").val() == "" || $("#NgheNghiepMeHB").val() == "" || $("#dtpNgayLapHB").val()=="") {
+                $("#messThemHB").text("*****Thông tin không được để trống");
+                return false;
+        }
         var hocba = {
             HoTen: $("#HoTenHB").val(),
             NgaySinh: $("#dtpNgaySinhHB").val(),

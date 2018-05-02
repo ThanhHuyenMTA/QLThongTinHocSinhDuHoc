@@ -1,0 +1,146 @@
+﻿@model IEnumerable<QuanLyHocSinhDuHoc.Models.Entities.QUYEN>
+@{
+    ViewBag.Title = "Thêm mới người dùng";
+    Layout = "~/Views/Share/_LayoutTrangChu.cshtml";
+}
+<div class="">
+    <div class="clearfix"></div>
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Thêm mới người dùng</h2>
+                    <div class="clearfix"></div>
+                </div>
+
+                <div class="x_content">
+                    <form class="form-horizontal form-label-left" method="post" id="formAddND">
+                        <div class="row">                           
+                            <div class="col-md-10 col-sm-10 col-xs-10">
+                                <br /><br />
+                                <div class="item form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                        Tên người dùng <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
+                                        <input class="form-control col-md-7 col-xs-12" id="HoTenND" name="HoTen" required="required" placeholder="Tên người dùng" type="text" />
+                                    </div>
+                                </div>
+                                <div class="item form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                        Địa chỉ
+                                    </label>
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
+                                        <input class="form-control col-md-7 col-xs-12" id="DiaChi" name="DiaChi" required="required" placeholder="Địa chỉ" type="text" />
+                                    </div>
+                                </div>
+                                <div class="item form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                        Số điện thoại
+                                    </label>
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
+                                        <input class="form-control col-md-7 col-xs-12" id="SoDT" name="SoDT" type="text" placeholder="Số điện thoại" />
+                                        <p id="messphone" style="color:red;font-weight:bold;"></p>
+                                    </div>
+                                </div>
+                                <div class="item form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                        Tên đăng nhập 
+                                    </label>
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
+                                        <input class="form-control col-md-7 col-xs-12" id="TenDangNhap" name="TenDangNhap" required="required" placeholder="Tên đăng nhập" type="text" />
+                                    </div>
+                                </div>                         
+                                <div class="item form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                        Mật khẩu
+                                    </label>
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
+                                        <input class="form-control col-md-7 col-xs-12" id="MatKhauND" name="MatKhau" required="required" placeholder="Mật khẩu" type="password" />
+                                    </div>
+                                </div>
+                                <div class="item form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                        Nhập lại mật khẩu
+                                    </label>
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                        <input class="form-control col-md-7 col-xs-12" id="MatKhauNDNL" name="MatKhauNL" required="required" placeholder="Mật khẩu" type="password" />                                
+                                    </div>
+                                    <label class="control-label col-md-1 col-sm-1 col-xs-12"><i id="CheckMK"></i></label>
+                                </div>
+                                <div class="item form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                        Nhóm quyền
+                                    </label>
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
+                                        <select id="id_Quyen" name="id_Quyen" class="form-control col-md-7 col-xs-12">
+                                            <option value="">Chọn quyền</option>
+                                            @{
+                                                if (Model != null)
+                                                {
+                                                    foreach (var item in Model)
+                                                    {
+                                                        <option value=@item.Id>@item.Ten</option>
+                                                    }
+                                                }
+                                            }
+
+                                        </select>
+                                    </div>
+                                </div>
+                                <p id="messThemND" style="color:red;font-weight:bold;"></p>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="ln_solid"></div>
+                            @*chức năng*@
+                            <div class="form-group">
+                                <div class="col-md-6 col-md-offset-3">
+                                    <button class="btn btn-success" id="Sublmit" type="submit" style="margin-left:30%;">Thêm mới</button>
+                                    <a href="/NguoiDung/Index" class="btn btn-primary">Huỷ</a>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+
+    $("#MatKhauNDNL").blur(function () {
+        var mkOld = $("#MatKhauND").val();
+        var mkNew = $("#MatKhauNDNL").val();
+        if(mkOld ==mkNew)
+        {
+            $("#CheckMK").removeClass("fa fa-close");           
+            $("#CheckMK").addClass("fa fa-check");
+            $("#CheckMK").css("color", "blue");
+        } else {
+            $("#CheckMK").removeClass("fa fa-check");
+            $("#CheckMK").addClass("fa fa-close");
+            $("#CheckMK").css("color", "red");
+        }
+    });
+    $("#Sublmit").click(function(){
+        if (validatePhone("SoDT") == false)
+        {
+            $("#messphone").text("Nhập lại số điện thoại");
+            return false;
+        }           
+        else $("#messphone").text("");
+       
+    });
+    function validatePhone(txtPhone) {
+        var a = document.getElementById(txtPhone).value;
+        var filter = /^[0-9-+]+$/;
+        if (filter.test(a)) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+</script>

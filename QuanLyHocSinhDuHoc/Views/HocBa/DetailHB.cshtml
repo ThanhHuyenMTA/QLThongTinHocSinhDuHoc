@@ -1,6 +1,6 @@
 ﻿@model QuanLyHocSinhDuHoc.Models.Entities.HOCBA
 @{
-    var id_hs = Request.Url.Segments.Last();
+    var id_hs = Request["id"];
     if (ViewBag.ThongbaoHB == "NO")
     {
         <h2 style='color:#0070e2;'><strong>Chưa cập nhật học bạ</strong></h2>

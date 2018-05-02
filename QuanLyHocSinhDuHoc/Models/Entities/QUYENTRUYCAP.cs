@@ -15,7 +15,7 @@ namespace QuanLyHocSinhDuHoc.Models.Entities
     public partial class QUYENTRUYCAP
     {
         public int id { get; set; }
-        public string TenQuyen { get; set; }
+        public string Ten { get; set; }
         public string LinkTruy_Cap { get; set; }
     }
 }

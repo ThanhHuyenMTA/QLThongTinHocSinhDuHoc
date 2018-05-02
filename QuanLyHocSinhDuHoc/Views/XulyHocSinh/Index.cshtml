@@ -11,10 +11,7 @@
         <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="x_panel">
                 <div class="x_title">
-                    <h2>Danh sách sai sót thông tin học sinh</h2>
-                    <ul class="nav navbar-right panel_toolbox">
-                        <li><a title="Thêm" data-toggle="tooltip" data-placement="bottom" class="dropdown-toggle" href="@Url.Content("/HocSinh/Themmoi")"><i class="fa fa-plus"></i></a></li>
-                    </ul>
+                    <h2>Danh sách sai sót thông tin học sinh</h2>                  
                     <div class="clearfix"></div>
                 </div>
                 <div class="x_content">
@@ -23,10 +20,10 @@
                             <div class="col-sm-6">
                             </div>
                             <div class="col-sm-6">
-                                <form method="post" action="">
+                                <form method="post" action="@Url.Action("SearchLoi", "XulyHocSinh")">
                                     <div id="datatable_filter" class="dataTables_filter form-group pull-right top_search">
                                         <label>
-                                            Tìm kiếm:<input name="MaHoaDon" type="search" id="keyDonHang" ng-keypress="TimKiem($event);" ng-model="tuKhoa" class="form-control input-sm" placeholder="Nhập từ khóa" aria-controls="datatable" />
+                                            Tìm kiếm:<input name="keySearchLoi" type="text" id="keySearchLoi"  class="form-control input-sm" placeholder="Nhập từ khóa" aria-controls="datatable" />
                                         </label>
                                     </div>
                                 </form>
@@ -35,34 +32,36 @@
                         <!-- Bảng dữ liệu -->
                         <div class="row">
                             <div class="col-sm-12">
-                                <table class="table table-striped table-bordered" style="overflow-x:auto;">
+                                <table id="TableListLoi" class="table table-striped table-bordered" style="overflow-x:auto;">
                                     <thead>
                                         <tr>
                                             <th><div class="word-wrap">STT</div></th>
                                             <th><div class="word-wrap">Loại lỗi</div></th>
+                                            <th><div class="word-wrap">Học sinh</div></th>
                                             <th><div class="word-wrap">Nội dung lỗi</div></th>
                                             <th></th>
                                         </tr>
                                     </thead>
 
-                                    <tbody>
+                                    <tbody id="TableListLoiBody">
                                         @{
                                             if (Model != null)
                                             {
-                                                var i = 1;
+                                                var i = ((int)Session["trangdangload"] - 1) * 10 + 1;                                             
                                                 foreach (var item in Model)
                                                 {
+                                                    Xuly xuLy = new Xuly();
+                                                    var tenHS = xuLy.ReturnHoten(item.id);
                                                     <tr>
                                                         <td><div class="word-wrap">@i</div></td>
                                                         <td><div class="word-wrap">@item.TypeLOI</div></td>
+                                                        <td><div class="word-wrap">@tenHS</div></td>
                                                         <td style="text-align:center;">
                                                             <div class="word-wrap" style="text-align:center;">
+
+                                                                <p>Sai thông tin về <strong>@item.TypeLOI</strong> từ học sinh: @tenHS</p>
+
                                                                 @{
-                                                                     Xuly xuly = new Xuly();
-                                                                     var LoiHocSinh = xuly.ReturnHoten(item.id);
-                                                                     <p>Sai thông tin về <strong>@item.TypeLOI</strong> từ học sinh: @LoiHocSinh</p>
-                                                                 }
-                                                     @{
                                                     if (item.id_HS > 0)
                                                     {
                                                         <p style="text-align:center;">Mã học sinh - <strong>@item.id_HS</strong></p>
@@ -89,22 +88,31 @@
                                                                 }
                                                             </div>
                                                         </td>
-                                                       
+
                                                         <td class="actions">
+                                                            @{
+
+                                                    if (item.TrangThai == "1")
+                                                    {<i class="fa fa-snapchat" title="Thông báo cần thiết" style="color:#00ff21;"></i> }
+                                                    if (item.TrangThai == "2")
+                                                    { <i class="fa fa-snapchat" title="Thông báo rất cần thiết" style="color:#ffd800;"></i>}
+                                                    if (item.TrangThai == "3")
+                                                    {<i class="fa fa-snapchat" title="Mức tb cực kì cần thiết" style="color:#ff0000;"></i> }
+                                                            }
+
                                                             <a data-toggle="tooltip" data-placement="bottom" target="_blank" title="Sửa" href="@Url.Action("ChinhSua", "XulyHocSinh", new {@id=@item.id})">
                                                                 <i class="fa fa-edit"></i>
                                                             </a>
-                                                            <a data-toggle="tooltip" data-placement="bottom" target="_blank" title="Detail" href="@Url.Action("DetailLoi", "XulyHocSinh", new { @id = @item.id })">
-                                                                <i class="fa fa-slideshare"></i>
-                                                            </a>
+
                                                         </td>
                                                     </tr>
-                                            
+
                                                     i = @i + 1;
                                                 }
                                             }
                                         }
                                     </tbody>
+
                                 </table>
                             </div>
                         </div>
@@ -116,4 +124,91 @@
     </div>
 </div>
 
+@*phan trang*@
+<div id="phantrang">
+    <div class="pagination-container">
+        <ul class="pagination" style="margin-top:-20px;">
 
+            @{
+                int? page;
+                page = (int)Session["trangdangload"];
+                int currentPage = page ?? 1;
+                Paging paging = new Paging(currentPage, (int)Session["chiasotrang"]);
+
+                if (paging.hasPrev2)
+                {
+                    <li><a class="fa fa-angle-double-left" href="/XulyHocSinh/Index?page=1"></a></li>
+                }
+                if (paging.hasPrev1)
+                {
+                    <li><a class="fa fa-angle-left" href="#" onclick="Quaylai(@Session["trangdangload"])"></a></li>
+                }
+                if (paging.prevPage2 > 0)
+                {
+                    <li><a href="/XulyHocSinh/Index?page=@paging.prevPage2"> @paging.prevPage2</a></li>
+                }
+                if (paging.prevPage1 > 0)
+                {
+                    <li><a href="/XulyHocSinh/Index?page=@paging.prevPage1"> @paging.prevPage1</a></li>
+                }
+                if (paging.currentPage > 0)
+                {
+                    <li><a href="/XulyHocSinh/Index?page=@paging.currentPage" style="font-weight:bold;color:red"> @paging.currentPage</a></li>
+                }
+                if (paging.nextPage1 > 0 & paging.nextPage1 <= (int)Session["chiasotrang"])
+                {
+                    <li><a href="/XulyHocSinh/Index?page=@paging.nextPage1"> @paging.nextPage1</a></li>
+                }
+                if (paging.nextPage2 > 0 & paging.nextPage2 <= (int)Session["chiasotrang"])
+                {
+                    <li><a href="/XulyHocSinh/Index?page=@paging.nextPage2"> @paging.nextPage2</a></li>
+                }
+
+                if (paging.hasNext1 & paging.nextPage2 != (int)Session["chiasotrang"])
+                {
+                    <li><a class="fa fa-angle-right" onclick="Tieptheo(@Session["trangdangload"])"></a></li>
+                }
+
+                if (paging.hasNext2 & paging.nextPage2 != (int)Session["chiasotrang"])
+                {
+                    <li><a class="fa fa-angle-double-right" href="#" onclick="CuoiCung()"></a></li>
+
+                }
+            }
+        </ul>
+    </div>
+</div>
+
+<script type="text/javascript">
+    function SelectAll() {
+        window.location.href = '/XulyHocSinh/Index?page=' + 1;
+    };
+    //phân trang
+    function Tieptheo(page) {
+        var pagecuoi = page + 1;
+        window.location.href = '/XulyHocSinh/Index?page=' + pagecuoi;
+    };
+    function Quaylai(page) {
+        var pagecuoi = 1;
+        if (page == 1 || page == 0)
+            pagecuoi = 1;
+        else
+            pagecuoi = page - 1;
+        window.location.href = '/XulyHocSinh/Index?page=' + pagecuoi;
+    };
+    function CuoiCung() {
+        $.ajax({
+            type: "GET",
+            url: "/XulyHocSinh/XulyPhanTrangVeCuoiCung",
+            datatype: "json",
+            data: {},
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                window.location.href = '/XulyHocSinh/Index?page=' + data;
+            },
+            error: function (err) {
+                alert("Error: " + err.responseText);
+            }
+        });
+    };
+</script>

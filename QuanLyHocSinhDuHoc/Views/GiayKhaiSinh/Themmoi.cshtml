@@ -14,13 +14,14 @@
                                 <div class=" item form-group">
                                     <button id="btn_fileGKS" type="button" onclick="$('#filegks').click()" class="btn btn-sm btn-primary" style="width:230px;">Chọn file</button>
                                     <input type="file" id="filegks" name="filegks" style="display: none;" class="form-control">
+                                    <p id="messThemGKS" style="color:red;font-weight:bold;"></p>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             @* Phan 1 *@
                             <div class="col-md-6 col-sm-6 col-xs-6">       
-                                <p id="messThemGKS" style="color:red;font-weight:bold;"></p>                        
+                                                        
                                 <div class="item form-group">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12">
                                         Họ tên <span class="required">*</span>
@@ -191,7 +192,6 @@
                                 </div>
                             </div>
                             </div>
-
                         <div class="row">
                             <div class="ln_solid"></div>
                             @*chức năng*@
@@ -238,13 +238,14 @@
         });
     });
     function SaveGKS() {
-        var inputs = document.getElementsByTagName('input');
-        for (var i = 0; i < inputs.length; i++) {
-            if (inputs[i].value == "") {
-                $("#messThemRGKS").text("*****Thông tin không được để trống");
-                return false;
-            }
-        }
+        debugger;
+        //var inputs = document.getElementsByTagName('input');
+        //for (var i = 0; i < inputs.length; i++) {
+        //    if (inputs[i].value == "") {
+        //        $("#messThemGKS").text("*****Thông tin không được để trống");
+        //        return false;
+        //    }
+        //}
         var gks = {
             HoTen: $("#HoTenGKS").val(),
             NgaySinh: $("#dtpNgaySinhKS").val(),

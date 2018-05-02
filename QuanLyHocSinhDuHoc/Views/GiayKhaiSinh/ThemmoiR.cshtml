@@ -208,13 +208,17 @@
 <div><input id="id_hsGKS" value="@Model" hidden="hidden"/></div>
 <script type="text/javascript">
     function SaveGKS() {
-        var inputs = document.getElementsByTagName('input');
-        for (var i = 0; i < inputs.length; i++) {
-            if (inputs[i].value == "") {
+        //var inputs = document.getElementsByTagName('input');
+       // for (var i = 1; i < inputs.length; i++) {
+        if ($("#HoTenGKS").val() == "" || $("#dtpNgaySinhKS").val() == "" || $("#NoiSinhGKS").val() == "" || $("#QueQuanGKS").val()==""||
+            $('[name="GioiTinh"]:radio:checked').val() == "" || $("#DanTocGKS").val() == "" || $("#QuocTichGKS").val() == "" || $("#HoTenMeGKS").val()=="" || 
+            $("#NsMeGKS").val() == "" || $("#DanTocMeGKS").val() == ""|| $("#HoTenBoGKS").val() == "" || $("#NsBoGKS").val()=="" || 
+            $("#DanTocBoGKS").val() == "" || $("#QuocTichBoGKS").val() == "" || $("#NoiCuTruBoGKS").val() == "" || $("#NoiDangKyGKS").val() == ""||
+            $("#dtpNgaySinhNL").val() == "")
+            {
                 $("#messThemRGKS").text("*****Thông tin không được để trống");
                 return false;
             }
-        }
         var id_hs =$("#id_hsGKS").val();        
         var gks = {
             HoTen: $("#HoTenGKS").val(),

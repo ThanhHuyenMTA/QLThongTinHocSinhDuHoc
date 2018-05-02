@@ -80,8 +80,62 @@
             </div>
         </div>
     </div>
+
+    <div class="row" id="TuLieuDT">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+
+            @{
+                if (Model.Cmt != null)
+                {
+                    if (Model.Cmt.fileCMT != null)
+                    {
+                        <a class="btn btn-success" href="@Url.Action("TestPdf", "XuLyHocSinh", new { @url = @Model.Cmt.fileCMT })" target="iframe_CMT2" id="clickHienCMT2">Hiện thị file CMT</a>
+                     }
+                }
+                if (Model.Giaykhaisinh != null)
+                {
+                    if (Model.Giaykhaisinh.fileGKS != null)
+                    {
+                        <a class="btn btn-success" href="@Url.Action("TestPdf", "XuLyHocSinh", new { @url = @Model.Giaykhaisinh.fileGKS })" target="iframe_GKS2" id="clickHienGKS2">Hiện thị file GKS</a>
+                   }
+                }
+                if (Model.Bangtotnghiep != null)
+                {
+                    if (Model.Bangtotnghiep.fileBTN != null)
+                    {
+                        <a class="btn btn-success" href="@Url.Action("TestPdf", "XuLyHocSinh", new { @url = @Model.Bangtotnghiep.fileBTN })" target="iframe_BTN2" id="clickHienBTN2">Hiện thị file BTN</a>
+                    }
+                }
+                if (Model.Hocba != null)
+                {
+                    if (Model.Hocba.fileHB != null)
+                    {
+                        <a class="btn btn-success" href="@Url.Action("TestPdf", "XuLyHocSinh", new { @url = @Model.Hocba.fileHB })" target="iframe_HB2" id="clickHienHB2">Hiện thị file HB</a>
+                   }
+                }
+                <br /><br />
+                 <iframe allowfullscreen height="450px" width="45%" name="iframe_CMT2" hidden id="hienCMT2"></iframe>
+                 <iframe allowfullscreen height="450px" width="45%" name="iframe_GKS2" hidden id="hienGKS2"></iframe>
+                 <iframe allowfullscreen height="450px" width="45%" name="iframe_BTN2" hidden id="hienBTN2"></iframe>
+                 <iframe allowfullscreen height="450px" width="45%" name="iframe_HB2" hidden id="hienHB2"></iframe>
+}
+        </div>
+    </div>
+
 </div>
 <script type="text/javascript">
+    $("#clickHienHB2").click(function () {
+        $("#hienHB2").show();
+    });
+    $("#clickHienBTN2").click(function () {
+        $("#hienBTN2").show();
+    });
+    $("#clickHienGKS2").click(function () {
+        $("#hienGKS2").show();
+    });
+    $("#clickHienCMT2").click(function () {
+        $("#hienCMT2").show();
+    });
     function CapNhatGioiTinh() {
         debugger;
         var listName = new Array();
@@ -100,6 +154,7 @@
             data: '{ "listkey":' + JSON.stringify(listName) + '}',
             contentType: "application/json; charset=utf-8",
             success: function (data) {
+                alert("Đã chỉnh sửa thành công");
                 window.location = "/XulyHocSinh/Index";
             },
             error: function (err) {

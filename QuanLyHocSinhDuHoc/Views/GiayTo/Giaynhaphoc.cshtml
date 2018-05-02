@@ -1,363 +1,786 @@
-﻿@{
+﻿@using QuanLyHocSinhDuHoc.CommonXuLy
+@model  QuanLyHocSinhDuHoc.Models.Entities.GiayNhapHoc
+@{
     Layout = null;
 }
-<!DOCTYPE html>
+<!DOCTYPE>
 <html>
 <head>
-    <meta name="viewport" content="width=device-width" />
+    
+    <title>Giấy nhập học</title>
     <link href="~/Content/css/bootstrap3.7.min.css" rel="stylesheet" />
 </head>
 <body>
-    <div class="container">
-        <h2 style="text-align:center">東京ワールド日本語学校入学願書及び履歴書</h2>
-        <h4 style="text-align:center">TOKYO WORLD JAPANESE LANGUAGE SCHOOL APPLICATION FORM AND CURRICULUM VITAE</h4>
-        <div class="row">
-            <div class="col-lg-10">
-                <p>1. 漢字氏名：<input style="width:300px" /><span style="margin-left:10%"> 英字：@ViewBag.tenhs</span><span style="margin-left:10%"> (<input type="checkbox" /> 男<input type="checkbox" />女 )</span></p>
-                <p><span style="margin-left:2%">(Name in Chinese characters)</span><span style="margin-left:30%">(Alphabet letters)</span>  <span style="margin-left:17%">(Male/Female)</span></p>
-                <p>2．生年月日：　(năm) 　 <span style="margin-left:5%"> 年　(tháng)</span><span style="margin-left:5%">月</span>(ngày)<span style="margin-left:5%">日</span><span style="margin-left:5%">(満年齢：(tuổi)</span></p>
-                <p><span style="margin-left:2%">(Date of Birth)</span> <span style="margin-left:10%">(year)</span> <span style="margin-left:7%">(month)</span><span style="margin-left:7%">(day)</span><span style="margin-left:7%">(Age)</span> </p>
-                <p>3．国籍：　　　　ベトナム<span style="margin-left:30%">4．配偶者の有無：<input type="checkbox" />有<input type="checkbox" />無　</span></p>
-                <p><span style="margin-left:2%">(Nationality)</span><span style="margin-left:35%"> (Marital Status)</span><span style="margin-left:3%">(Married/single)</span></p>
-                <p>5. 電話番号：@ViewBag.sdt<span style="margin-left:25%"> 6．職業： 留学準備</span></p>
-                <p><span style="margin-left:2%">(Telephone No.)</span><span style="margin-left:40%"> (Occupation)</span></p>
-                <p>7．旅券番号：<input /><span style="margin-left:18%">有効期限：</span><span style="margin-left:5%"><input style="width:5%" />年</span><span style="margin-left:5%"><input style="width:3%" />月</span><span style="margin-left:5%"><input style="width:3%" />日</span> </p>
-                <p><span style="margin-left:2%">(Passport No.)</span><span style="margin-left:35%">(Valid until)</span><span style="margin-left:10%">(year)</span><span style="margin-left:5%">(month)</span><span style="margin-left:5%">(day)</span></p>
-            </div>
-            <div class="col-lg-2">
-                <table border="1" style="height:200px;width:150px;margin-top:20px;">
-                    <tr><td></td></tr>
-                </table>
-            </div>
-        </div>
-        <div class="row">
-            <p>8．出生地:　@ViewBag.noisinh</p>
-            <p><span style="margin-left:2%">(Place of Birth)</span></p>
-            <p>9．現住所：<input style="width:80%" />　</p>
-            <p><span style="margin-left:2%">(Current Address)</span></p>
-            <p><span style="margin-left:2%">戸籍住所 : @ViewBag.noithuongtru </span>　</p>
-            <p>10．学歴（小学校から最終学歴まで順次記入して下さい。）<p>
-            <p><span style="margin-left:2%">(Educational Background : Please indicate from primary school onwards)</span></p>
-        </div>
-        <div class="row">
-            <table border="1" style="height:300px;width:100%">
-                <tr>
-                    <td width="20%">
-                        <center>学　　校　　名</center><br />
-                        <center>   School Name</center>
-                    </td>
-                    <td width="40%">
-                        <center>所　　　在　　　地</center><br />
-                        <center>Location</center>
-                    </td>
-                    <td width="15%">
-                        <center>入学年月日</center><br />
-                        <center>Admission Date</center>
-                    </td>
-                    <td width="15%">
-                        <center>卒業年月日</center><br />
-                        <center>Graduation Date</center>
-                    </td>
-                    <td width="10%">
-                        <center>年数</center><br />
-                        <center>Total Years</center>
-                    </td>
-                </tr>
-                <tr>
-                    <td><input style="margin-left:2%;width:210px" /></td>
-                    <td><input style="margin-left:2%;width:440px" /></td>
-                    <td><input style="margin-left:2%;width:150px" /></td>
-                    <td><input style="margin-left:2%;width:150px" /></td>
-                    <td><input style="margin-left:2%;width:100px" /></td>
-                </tr>
-                <tr>
-                    <td><input style="margin-left:2%;width:210px" /></td>
-                    <td><input style="margin-left:2%;width:440px" /></td>
-                    <td><input style="margin-left:2%;width:150px" /></td>
-                    <td><input style="margin-left:2%;width:150px" /></td>
-                    <td><input style="margin-left:2%;width:100px" /></td>
-                </tr>
-                <tr>
-                    <td><input style="margin-left:2%;width:210px" /></td>
-                    <td><input style="margin-left:2%;width:440px" /></td>
-                    <td><input style="margin-left:2%;width:150px" /></td>
-                    <td><input style="margin-left:2%;width:150px" /></td>
-                    <td><input style="margin-left:2%;width:100px" /></td>
-                </tr>
-                <tr>
-                    <td><input style="margin-left:2%;width:210px" /></td>
-                    <td><input style="margin-left:2%;width:440px" /></td>
-                    <td><input style="margin-left:2%;width:150px" /></td>
-                    <td><input style="margin-left:2%;width:150px" /></td>
-                    <td><input style="margin-left:2%;width:100px" /></td>
-                </tr>
-                <tr>
-                    <td><input style="margin-left:2%;width:210px" /></td>
-                    <td><input style="margin-left:2%;width:440px" /></td>
-                    <td><input style="margin-left:2%;width:150px" /></td>
-                    <td><input style="margin-left:2%;width:150px" /></td>
-                    <td><input style="margin-left:2%;width:100px" /></td>
-                </tr>
-            </table>
-        </div>
-        <div class="row">
-            <p>11．日本語学習歴</p>
-            <p><span style="margin-left:2%">(Previous Japanese Learning Experience : Japanese language school(s) attended)</span></p>
-            <table border="1" style="height:300px;width:100%">
-                <tr>
-                    <td width="40%">
-                        <center>学　　校　　名</center><br />
-                        <center>   School Name</center>
-                    </td>
-                    <td width="30%">
-                        <center>所　　　在　　　地</center><br />
-                        <center>Location</center>
-                    </td>
-                    <td width="15%">
-                        <center>入学年月日</center><br />
-                        <center>Admission Date</center>
-                    </td>
-                    <td width="15%">
-                        <center>卒業年月日</center><br />
-                        <center>Graduation Date</center>
-                    </td>
-                </tr>
-                <tr>
-                    <td><input style="margin-left:2%;width:430px" /></td>
-                    <td><input style="margin-left:2%;width:320px" /></td>
-                    <td><input style="margin-left:2%;width:155px" /></td>
-                    <td><input style="margin-left:2%;width:155px" /></td>
-                </tr>
-                <tr>
-                    <td><input style="margin-left:2%;width:430px" /></td>
-                    <td><input style="margin-left:2%;width:320px" /></td>
-                    <td><input style="margin-left:2%;width:155px" /></td>
-                    <td><input style="margin-left:2%;width:155px" /></td>
-                </tr>
-                <tr>
-                    <td><input style="margin-left:2%;width:430px" /></td>
-                    <td><input style="margin-left:2%;width:320px" /></td>
-                    <td><input style="margin-left:2%;width:155px" /></td>
-                    <td><input style="margin-left:2%;width:155px" /></td>
-                </tr>
-                <tr>
-                    <td><input style="margin-left:2%;width:430px" /></td>
-                    <td><input style="margin-left:2%;width:320px" /></td>
-                    <td><input style="margin-left:2%;width:155px" /></td>
-                    <td><input style="margin-left:2%;width:155px" /></td>
-                </tr>
-            </table>
-        </div>
-        <div class="row">
-            <p>12. 職歴（就職年月日順に記入して下さい。）</p>
-            <p><span style="margin-left:2%">(Work Experience : Please list in chronological order with the most recent job last)</span></p>
-            <table border="1" style="height:150px;width:100%">
-                <tr>
-                    <td width="35%">
-                        <center>勤　務　先　名</center><br />
-                        <center>   Company name</center>
-                    </td>
-                    <td width="35%">
-                        <center>所　　　在　　　地</center><br />
-                        <center>Location</center>
-                    </td>
-                    <td width="15%">
-                        <center>就職年月日</center><br />
-                        <center>Date Joined</center>
-                    </td>
-                    <td width="15%">
-                        <center>退職年月日</center><br />
-                        <center>Date Left</center>
-                    </td>
-                </tr>
-                <tr>
-                    <td><input style="margin-left:2%;width:390px" /></td>
-                    <td><input style="margin-left:2%;width:390px" /></td>
-                    <td><input style="margin-left:2%;width:155px" /></td>
-                    <td><input style="margin-left:2%;width:155px" /></td>
+    @{
+        if (@Model != null)
+        {
+            <div class="container">
+                <h2 style="text-align:center">東京ワールド日本語学校入学願書及び履歴書</h2>
+                <h4 style="text-align:center">TOKYO WORLD JAPANESE LANGUAGE SCHOOL APPLICATION FORM AND CURRICULUM VITAE</h4>
+                <form class="form-horizontal form-label-left" method="post" action="@Url.Action("Giaynhaphoc", "GiayTo")">
+                    <div class="row">
+                        <div class="col-lg-10">
+                            <input hidden name="id_hs" value="@ViewBag.id_hsss" />
+                            <p>
+                                1. 漢字氏名：<input style="width:300px" name="Ten" value="@Model.Ten"/><span style="margin-left:10%"> 英字：@ViewBag.tenhs</span><span style="margin-left:10%">
+                                    (
+                                     @{
+                                        if (@ViewBag.gioiTinh != null)
+                                        {
+                                            if (@ViewBag.gioiTinh == "Nam")
+                                            {
+                                                <input type="checkbox" checked="checked" /> <label> 男</label><input type="checkbox" /><label> 女</label>
+                                            }
+                                            if (@ViewBag.gioiTinh == "Nữ")
+                                            {
+                                                <input type="checkbox" /> <label> 男</label><input type="checkbox" checked="checked" /><label> 女</label>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <input type="checkbox" /> <label> 男</label><input type="checkbox" /><label> 女</label>
+                                        }
+                                    })
+                                </span>
+                            </p>
+                            <p><span style="margin-left:2%">(Name in Chinese characters)</span><span style="margin-left:30%">(Alphabet letters)</span>  <span style="margin-left:17%">(Male/Female)</span></p>
+                            @{
+                                    if (@ViewBag.ngaySinh != null)
+                                    {
+                                        DateTime day = @ViewBag.ngaySinh;
+                                        var tuoi = DateTime.Now.Year - day.Year;
+                                        <p>2．生年月日：　@day.Year 　 <span style="margin-left:5%"> 年　@day.Month</span><span style="margin-left:5%">月</span>  @day.Day<span style="margin-left:5%">日</span><span style="margin-left:5%">(満年齢： @tuoi )</span></p>
 
-                </tr>
-                <tr>
-                    <td><input style="margin-left:2%;width:390px" /></td>
-                    <td><input style="margin-left:2%;width:390px" /></td>
-                    <td><input style="margin-left:2%;width:155px" /></td>
-                    <td><input style="margin-left:2%;width:155px" /></td>
+                                    }
+                            }
+                            <p><span style="margin-left:2%">(Date of Birth)</span> <span style="margin-left:10%">(year)</span> <span style="margin-left:7%">(month)</span><span style="margin-left:7%">(day)</span><span style="margin-left:7%">(Age)</span> </p>
+                            <p>3．国籍：　　　　ベトナム<span style="margin-left:30%">4．配偶者の有無：<input type="checkbox" name="TinhTrangHn" value="Ket hon" />有<input type="checkbox" value="Chua ket hon" name="TinhTrangHn" />無　</span></p>
+                            <p><span style="margin-left:2%">(Nationality)</span><span style="margin-left:35%"> (Marital Status)</span><span style="margin-left:3%">(Married/single)</span></p>
+                            <p>5. 電話番号：@ViewBag.sdt<span style="margin-left:25%"> 6．職業： 留学準備</span></p>
+                            <p><span style="margin-left:2%">(Telephone No.)</span><span style="margin-left:40%"> (Occupation)</span></p>
+                            <p>7．旅券番号：<input name="HoChieu" value="@Model.HoChieu" /><span style="margin-left:18%">有効期限：<input name="NamHc" style="width:50px;" value="@Model.NamHc" />年</span><span style="margin-left:5%"><input style="width:5%" name="ThangHc" value="@Model.ThangHc" />月</span><span style="margin-left:5%"><input style="width:3%" name="NgayHc"  value="@Model.NgayHc"/>日</span></p>
+                            <p><span style="margin-left:2%">(Passport No.)</span><span style="margin-left:35%">(Valid until)</span><span style="margin-left:5%">(year)</span><span style="margin-left:5%">(month)</span><span style="margin-left:5%">(day)</span></p>
+                        </div>
+                        <div class="col-lg-2">
+                            <table border="1" style="height:200px;width:150px;margin-top:20px;">
+                                <tr><td></td></tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <p>8．出生地:　@ViewBag.noisinh</p>
+                        <p><span style="margin-left:2%">(Place of Birth)</span></p>
+                        <p>9．現住所：<input style="width:80%" name="NoiOHienTai" value="@Model.NoiOHienTai" />　</p>
+                        <p><span style="margin-left:2%">(Current Address)</span></p>
+                        <p><span style="margin-left:2%">戸籍住所 : @ViewBag.noithuongtru </span>　</p>
+                        <p>10．学歴（小学校から最終学歴まで順次記入して下さい。）<p>
+                        <p><span style="margin-left:2%">(Educational Background : Please indicate from primary school onwards)</span></p>
+                    </div>
+                    <div class="row">
+                        <table border="1" style="height:300px;width:100%">
+                            <tr>
+                                <td width="20%">
+                                    <center>学　　校　　名</center><br />
+                                    <center>   School Name</center>
+                                </td>
+                                <td width="40%">
+                                    <center>所　　　在　　　地</center><br />
+                                    <center>Location</center>
+                                </td>
+                                <td width="15%">
+                                    <center>入学年月日</center><br />
+                                    <center>Admission Date</center>
+                                </td>
+                                <td width="15%">
+                                    <center>卒業年月日</center><br />
+                                    <center>Graduation Date</center>
+                                </td>
+                                <td width="10%">
+                                    <center>年数</center><br />
+                                    <center>Total Years</center>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><input style="margin-left:2%;width:210px" name="TruongC1"  value="@Model.TruongC1"/></td>
+                                <td><input style="margin-left:2%;width:440px" name="DiaChiC1" value="@Model.DiaChiC1"/></td>
+                                <td><input style="margin-left:2%;width:150px" name="Ngaybd1" value="@Model.Ngaybd1" /></td>
+                                <td><input style="margin-left:2%;width:150px" name="Ngaykt1" value="@Model.Ngaykt1"/></td>
+                                <td><input style="margin-left:2%;width:100px" name="Tong1" value="@Model.Tong1" /></td>
+                            </tr>
+                            <tr>
+                                <td><input style="margin-left:2%;width:210px" name="TruongC2" value="@Model.TruongC2" /></td>
+                                <td><input style="margin-left:2%;width:440px" name="DiaChiC2" value="@Model.DiaChiC2" /></td>
+                                <td><input style="margin-left:2%;width:150px" name="Ngaybd2" value="@Model.Ngaybd2" /></td>
+                                <td><input style="margin-left:2%;width:150px" name="Ngaykt2" value="@Model.Ngaykt2" /></td>
+                                <td><input style="margin-left:2%;width:100px" name="Tong2" value="@Model.Tong2" /></td>
+                            </tr>
+                            <tr>
+                                <td><input style="margin-left:2%;width:210px" name="TruongC3" value="@Model.TruongC3" /></td>
+                                <td><input style="margin-left:2%;width:440px" name="DiaChiC3" value="@Model.DiaChiC3" /></td>
+                                <td><input style="margin-left:2%;width:150px" name="Ngaybd3" value="@Model.Ngaybd3" /></td>
+                                <td><input style="margin-left:2%;width:150px" name="Ngaykt3" value="@Model.Ngaykt3" /></td>
+                                <td><input style="margin-left:2%;width:100px" name="Tong3" value="@Model.Tong3" /></td>
+                            </tr>
+                            <tr>
+                                <td><input style="margin-left:2%;width:210px" /></td>
+                                <td><input style="margin-left:2%;width:440px" /></td>
+                                <td><input style="margin-left:2%;width:150px" /></td>
+                                <td><input style="margin-left:2%;width:150px" /></td>
+                                <td><input style="margin-left:2%;width:100px" /></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="row">
+                        <p>11．日本語学習歴</p>
+                        <p><span style="margin-left:2%">(Previous Japanese Learning Experience : Japanese language school(s) attended)</span></p>
+                        <table border="1" style="height:300px;width:100%">
+                            <tr>
+                                <td width="40%">
+                                    <center>学　　校　　名</center><br />
+                                    <center>   School Name</center>
+                                </td>
+                                <td width="30%">
+                                    <center>所　　　在　　　地</center><br />
+                                    <center>Location</center>
+                                </td>
+                                <td width="15%">
+                                    <center>入学年月日</center><br />
+                                    <center>Admission Date</center>
+                                </td>
+                                <td width="15%">
+                                    <center>卒業年月日</center><br />
+                                    <center>Graduation Date</center>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><input style="margin-left:2%;width:430px" name="TenTrungTam1" value="@Model.TenTrungTam1"/></td>
+                                <td><input style="margin-left:2%;width:320px" name="DiaChitt1" value="@Model.DiaChitt1"/></td>
+                                <td><input style="margin-left:2%;width:155px" name="NgayNhapHoc1" value="@Model.NgayNhapHoc1"/></td>
+                                <td><input style="margin-left:2%;width:155px" name="NgayThoiHoc1" value="@Model.NgayThoiHoc1" /></td>
+                            </tr>
+                            <tr>
+                                <td><input style="margin-left:2%;width:430px" name="TenTrungTam2" value="@Model.TenTrungTam2" /></td>
+                                <td><input style="margin-left:2%;width:320px" name="DiaChitt2" value="@Model.DiaChitt2" /></td>
+                                <td><input style="margin-left:2%;width:155px" name="NgayNhapHoc2" value="@Model.NgayNhapHoc2" /></td>
+                                <td><input style="margin-left:2%;width:155px" name="NgayThoiHoc2" value="@Model.NgayThoiHoc2" /></td>
+                            </tr>
+                            <tr>
+                                <td><input style="margin-left:2%;width:430px" name="TenTrungTam3" value="@Model.TenTrungTam3" /></td>
+                                <td><input style="margin-left:2%;width:320px" name="DiaChitt3" value="@Model.Diachitt3" /></td>
+                                <td><input style="margin-left:2%;width:155px" name="NgayNhapHoc3" value="@Model.NgayNhapHoc3" /></td>
+                                <td><input style="margin-left:2%;width:155px" name="NgayThoiHoc3" value="@Model.NgayThoiHoc3" /></td>
+                            </tr>
+                            <tr>
+                                <td><input style="margin-left:2%;width:430px" /></td>
+                                <td><input style="margin-left:2%;width:320px" /></td>
+                                <td><input style="margin-left:2%;width:155px" /></td>
+                                <td><input style="margin-left:2%;width:155px" /></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="row">
+                        <p>12. 職歴（就職年月日順に記入して下さい。）</p>
+                        <p><span style="margin-left:2%">(Work Experience : Please list in chronological order with the most recent job last)</span></p>
+                        <table border="1" style="height:150px;width:100%">
+                            <tr>
+                                <td width="35%">
+                                    <center>勤　務　先　名</center><br />
+                                    <center>   Company name</center>
+                                </td>
+                                <td width="35%">
+                                    <center>所　　　在　　　地</center><br />
+                                    <center>Location</center>
+                                </td>
+                                <td width="15%">
+                                    <center>就職年月日</center><br />
+                                    <center>Date Joined</center>
+                                </td>
+                                <td width="15%">
+                                    <center>退職年月日</center><br />
+                                    <center>Date Left</center>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><input style="margin-left:2%;width:390px" name="TenCty" value="@Model.TenCty"/></td>
+                                <td><input style="margin-left:2%;width:390px" name="DiaChiCty" value="@Model.DiaChiCty"/></td>
+                                <td><input style="margin-left:2%;width:155px" name="NgayVaoCty" value="@Model.NgayVaoCty" /></td>
+                                <td><input style="margin-left:2%;width:155px" name="NgayRaCty" value="@Model.NgayRaCty" /></td>
 
-                </tr>
-            </table>
-        </div>
-        <div class="row">
-            <p>13. 日本国出入国歴　　※短期間、長期間に関わらず全ての出入国について漏れなく記入して下さい。</p>
-            <p><span style="margin-left:2%">(Previous stay in Japan : Please include both short-term and long-term stays.)</span></p>
-            <table border="1" style="height:150px;width:100%">
-                <tr>
-                    <td width="5%"></td>
-                    <td width="24%">
-                        <center>入　国　年　月　日</center><br />
-                        <center>Date of Entry</center>
-                    </td>
-                    <td width="24%">
-                        <center>出　国　年　月　日</center><br />
-                        <center>Date of Departure</center>
-                    </td>
-                    <td width="24%">
-                        <center>在　留　資　格</center><br />
-                        <center>Visa Status</center>
-                    </td>
-                    <td width="25%">
-                        <center>入　国　目　的</center><br />
-                        <center>Purpose of Entry</center>
-                    </td>
-                </tr>
-                <tr>
-                    <td><p style="text-align:center">1</p></td>
-                    <td><input style="margin-left:2%;width:250px" /></td>
-                    <td><input style="margin-left:2%;width:250px" /></td>
-                    <td><input style="margin-left:2%;width:250px" /></td>
-                    <td><input style="margin-left:2%;width:260px" /></td>
-                </tr>
-                <tr>
-                    <td><p style="text-align:center">2</p></td>
-                    <td><input style="margin-left:2%;width:250px" /></td>
-                    <td><input style="margin-left:2%;width:250px" /></td>
-                    <td><input style="margin-left:2%;width:250px" /></td>
-                    <td><input style="margin-left:2%;width:260px" /></td>
-                </tr>
-            </table>
-        </div>
-        <div class="row">
-            <p>14. 家族(在日家族含む)</p>
-            <p><span style="margin-left:2%">(Family Details, including family in Japan)</span></p>
-            <table border="1" style="height:300px;width:100%">
-                <tr>
-                    <td width="15%">
-                        <center>続柄</center><br />
-                        <center>Relationship</center>
-                    </td>
-                    <td width="20%">
-                        <center>氏　　　名</center><br />
-                        <center>Name</center>
-                    </td>
-                    <td width="10%">
-                        <center>国　籍</center><br />
-                        <center>Nationality</center>
-                    </td>
-                    <td width="10%">
-                        <center>年齢</center><br />
-                        <center>Age</center>
-                    </td>
-                    <td width="25%">
-                        <center>住　　　　　　所</center><br />
-                        <center>Address</center>
-                    </td>
-                    <td width="15%">
-                        <center>職　　業</center><br />
-                        <center>Occupation</center>
-                    </td>
-                </tr>
-                <tr>
-                    <td><input style="margin-left:2%;width:170px" /></td>
-                    <td><input style="margin-left:2%;width:220px" /></td>
-                    <td><input style="margin-left:2%;width:100px" /></td>
-                    <td><input style="margin-left:2%;width:100px" /></td>
-                    <td><input style="margin-left:2%;width:300px" /></td>
-                    <td><input style="margin-left:2%;width:180px" /></td>
-                </tr>
-                <tr>
-                    <td><input style="margin-left:2%;width:170px" /></td>
-                    <td><input style="margin-left:2%;width:220px" /></td>
-                    <td><input style="margin-left:2%;width:100px" /></td>
-                    <td><input style="margin-left:2%;width:100px" /></td>
-                    <td><input style="margin-left:2%;width:300px" /></td>
-                    <td><input style="margin-left:2%;width:180px" /></td>
-                </tr>
-                <tr>
-                    <td><input style="margin-left:2%;width:170px" /></td>
-                    <td><input style="margin-left:2%;width:220px" /></td>
-                    <td><input style="margin-left:2%;width:100px" /></td>
-                    <td><input style="margin-left:2%;width:100px" /></td>
-                    <td><input style="margin-left:2%;width:300px" /></td>
-                    <td><input style="margin-left:2%;width:180px" /></td>
-                </tr>
-                <tr>
-                    <td><input style="margin-left:2%;width:170px" /></td>
-                    <td><input style="margin-left:2%;width:220px" /></td>
-                    <td><input style="margin-left:2%;width:100px" /></td>
-                    <td><input style="margin-left:2%;width:100px" /></td>
-                    <td><input style="margin-left:2%;width:300px" /></td>
-                    <td><input style="margin-left:2%;width:180px" /></td>
-                </tr>
-                <tr>
-                    <td><input style="margin-left:2%;width:170px" /></td>
-                    <td><input style="margin-left:2%;width:220px" /></td>
-                    <td><input style="margin-left:2%;width:100px" /></td>
-                    <td><input style="margin-left:2%;width:100px" /></td>
-                    <td><input style="margin-left:2%;width:300px" /></td>
-                    <td><input style="margin-left:2%;width:180px" /></td>
-                </tr>
-                <tr>
-                    <td><input style="margin-left:2%;width:170px" /></td>
-                    <td><input style="margin-left:2%;width:220px" /></td>
-                    <td><input style="margin-left:2%;width:100px" /></td>
-                    <td><input style="margin-left:2%;width:100px" /></td>
-                    <td><input style="margin-left:2%;width:300px" /></td>
-                    <td><input style="margin-left:2%;width:180px" /></td>
-                </tr>
-            </table>
-        </div>
-        <div class="row">
-            <p>15. 修学理由書</p>
-            <p><span style="margin-left:2%">(Purpose of study)</span></p>
-            <table border="1" style="height:300px; width:100%">
-                <tr>
-                    <td width="15%"><center>添付ファイルをご覧ください。</center><br /> 	</td>
-                </tr>
-                <tr><td><input style="margin-left:2%;width:96%" /></td></tr>
-                <tr><td><input style="margin-left:2%;width:96%" /></td></tr>
-                <tr><td><input style="margin-left:2%;width:96%" /></td></tr>
-                <tr><td><input style="margin-left:2%;width:96%" /></td></tr>
-                <tr><td><input style="margin-left:2%;width:96%" /></td></tr>
-                <tr><td><input style="margin-left:2%;width:96%" /></td></tr>
-                <tr><td><input style="margin-left:2%;width:96%" /></td></tr>
-            </table>
-        </div>
-        <div class="row">
-            <p>16. 卒業後の予定(Plan after completing study)</p>
-            <span style="margin-left:2%"><input type="checkbox" />日本での進学</span>
-            <span span style="margin-left:5%">進学志望校名及び志望学科：<input style="width:500px" /></span>
-            <p><span style="margin-left:2%">(Further studies in Japan)</span> <span span style="margin-left:5%">(Name of school you wish to study in & course)</span> </p>
-            <span style="margin-left:2%"><input type="checkbox" />日本での就職</span>
-            <span style="margin-left:5%"><input type="checkbox" />帰国</span>
-            <span style="margin-left:10%"><input type="checkbox" />その他<input style="width:300px;" /></span>
-            <p><span style="margin-left:2%">(Get a job in Japan)</span><span style="margin-left:2%">(Return to home country)</span><span style="margin-left:2%">(Others)</span></p>
-            <p>17. 東京ワールド日本語学校での修学予定期間：<input style="width:50px"></input> 年 <input style="width:50px"></input>ヶ月</p>
-            <p><span style="margin-left:2%">(Intended length of study at TWJLS)</span></p>
-            <p>18. あなたは、日本から強制退去や日本への上陸を拒否されたことがありますか。</p>
-            <p><span style="margin-left:2%">(Have you ever been refused entry into or deported from Japan?)</span></p>
-            <span style="margin-left:2%"><input type="checkbox" />はい(Yes)</span>
-            <span style="margin-left:15%"><input type="checkbox" />いいえ(No)</span>
-            <p>19. あなたは、就学又は留学ビザを申請したことがありますか</p>
-            <p><span style="margin-left:2%">(Have you ever applied for a pre-college student visa or college student visa?)</span></p>
-            <span style="margin-left:2%"><input type="checkbox" />はい(Yes)</span>
-            <span style="margin-left:15%"><input type="checkbox" />いいえ(No)</span>
-            <p>20. あなたは、日本国又は日本国以外の国において刑事事件で有罪判決を受けたことがありますか。</p>
-            <p><span style="margin-left:2%">(Have you ever been convicted of a crime in a court of law in Japan or in any other country?)</span></p>
-            <span style="margin-left:2%"><input type="checkbox" />はい(Yes)</span>
-            <span style="margin-left:15%"><input type="checkbox" />いいえ(No)</span>
-            <p>上記の内容は事実であり、私　<span style="margin-left:2%">@ViewBag.tenhs</span><span style="margin-left:5%">が直筆したものです。</span></p>
-            <p>(I filled in this form myself and I declare that all information I have given on this application is true and correct)</p>
-            <p>作成年月日：<span style="margin-left:2%"><input style="width:50px"></input>年</span><span style="margin-left:2%"><input style="width:50px"></input>月</span><span style="margin-left:2%"><input style="width:50px"></input>日</span><span style="margin-left:2%">本人署名：</span><input style="width:100px"></input></p>
-            <p><span style="margin-left:2%">(Application Date)</span><span style="margin-left:20%">(Signature of Applicant)</span></p>
-        </div>
-        <div class="row">
-            <div class="col-lg-6"></div>
-            <div class="col-lg-6" style="margin-left:800px;">
-                <strong>東京ワールド日本語学校</strong>
-                <p>〒169-0073東京都新宿区百人町1-13-24</p>
-                <p>電話：03-5332-3531　FAX:03-5332-3530</p>
+                            </tr>
+                            <tr>
+                                <td><input style="margin-left:2%;width:390px" /></td>
+                                <td><input style="margin-left:2%;width:390px" /></td>
+                                <td><input style="margin-left:2%;width:155px" /></td>
+                                <td><input style="margin-left:2%;width:155px" /></td>
+
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="row">
+                        <p>13. 日本国出入国歴　　※短期間、長期間に関わらず全ての出入国について漏れなく記入して下さい。</p>
+                        <p><span style="margin-left:2%">(Previous stay in Japan : Please include both short-term and long-term stays.)</span></p>
+                        <table border="1" style="height:150px;width:100%">
+                            <tr>
+                                <td width="5%"></td>
+                                <td width="24%">
+                                    <center>入　国　年　月　日</center><br />
+                                    <center>Date of Entry</center>
+                                </td>
+                                <td width="24%">
+                                    <center>出　国　年　月　日</center><br />
+                                    <center>Date of Departure</center>
+                                </td>
+                                <td width="24%">
+                                    <center>在　留　資　格</center><br />
+                                    <center>Visa Status</center>
+                                </td>
+                                <td width="25%">
+                                    <center>入　国　目　的</center><br />
+                                    <center>Purpose of Entry</center>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><p style="text-align:center">1</p></td>
+                                <td><input style="margin-left:2%;width:250px" name="NgayNhapCanh" value="@Model.NgayNhapCanh" /></td>
+                                <td><input style="margin-left:2%;width:250px" name="NgayKhoiHanh" value="@Model.NgayKhoiHanh" /></td>
+                                <td><input style="margin-left:2%;width:250px" name="TinhTrang" value="@Model.TinhTrang"/></td>
+                                <td><input style="margin-left:2%;width:260px" name="MucDichNhapCanh" value="@Model.MucDichNhapCanh"/></td>
+                            </tr>
+                            <tr>
+                                <td><p style="text-align:center">2</p></td>
+                                <td><input style="margin-left:2%;width:250px" /></td>
+                                <td><input style="margin-left:2%;width:250px" /></td>
+                                <td><input style="margin-left:2%;width:250px" /></td>
+                                <td><input style="margin-left:2%;width:260px" /></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="row">
+                        <p>14. 家族(在日家族含む)</p>
+                        <p><span style="margin-left:2%">(Family Details, including family in Japan)</span></p>
+                        <table border="1" style="width:100%">
+                            <thead>
+                                <tr>
+                                    <td width="15%">
+                                        <center>続柄</center><br />
+                                        <center>Relationship</center>
+                                    </td>
+                                    <td width="20%">
+                                        <center>氏　　　名</center><br />
+                                        <center>Name</center>
+                                    </td>
+                                    <td width="10%">
+                                        <center>国　籍</center><br />
+                                        <center>Nationality</center>
+                                    </td>
+                                    <td width="10%">
+                                        <center>年齢</center><br />
+                                        <center>Age</center>
+                                    </td>
+                                    <td width="25%">
+                                        <center>住　　　　　　所</center><br />
+                                        <center>Address</center>
+                                    </td>
+                                    <td width="15%">
+                                        <center>職　　業</center><br />
+                                        <center>Occupation</center>
+                                    </td>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                @{ foreach (var item in ViewBag.dstv as IEnumerable<QuanLyHocSinhDuHoc.Models.Entities.HoKhau>)
+                                 {
+                                     DichTuDong dich = new DichTuDong();
+                                    <tr>
+                                        <td><center>@item.QuanHe</center></td>
+                                        <td><center>@dich.ReplaceUnicode(@item.HoTen)</center></td>
+                                        <td><center>@dich.ReplaceUnicode(@item.QuocTich)</center></td>
+                                        <td><center>@item.Tuoi</center></td>
+                                        <td><center>@dich.ReplaceUnicode(@item.DiaChi)</center></td>
+                                        <td><center>@item.NgheNghiep</center></td>
+                                    </tr>
+
+                                 }
+
+
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="row">
+                        <p>15. 修学理由書</p>
+                        <p><span style="margin-left:2%">(Purpose of study)</span></p>
+                        <table border="1" style="width:100%">
+                            <tr>
+                                <td width="15%"><center>添付ファイルをご覧ください。</center><br /> 	</td>
+                            </tr>
+                            <tr><td><textarea style="width:100%;height:100px;" value="@Model.MucDichDuHoc" name="MucDichDuHoc"></textarea></td></tr>
+                        </table>
+                    </div>
+                    <div class="row">
+                        <p>16. 卒業後の予定(Plan after completing study)</p>
+                        @{
+                                    if (Model.KeHoachSauHoc == "Nghien cuwu sau o nhat")
+                                    {
+                                        <span style="margin-left:2%"><input type="checkbox" name="KeHoachSauHoc" value="Nghien cuu sau o nhat" checked="checked" />日本での進学</span>
+                                                    <span span style="margin-left:5%">進学志望校名及び志望学科：<input style="width:500px" name="KeHoachSauHoc" /></span>
+                                                    <p><span style="margin-left:2%">(Further studies in Japan)</span> <span span style="margin-left:5%">(Name of school you wish to study in & course)</span> </p>
+                                                    <span style="margin-left:2%"><input type="checkbox" name="KeHoachSauHoc" value="Tim cv o Nhat" />日本での就職</span>
+                                                    <span style="margin-left:5%"><input type="checkbox" name="KeHoachSauHoc" value="Ve nuoc" />帰国</span>
+                                                    <span style="margin-left:10%"><input type="checkbox" name="KeHoachSauHoc" />その他<input style="width:300px;" name="KeHoachSauHoc" /></span>
+                                                    <p><span style="margin-left:2%">(Get a job in Japan)</span><span style="margin-left:2%">(Return to home country)</span><span style="margin-left:2%">(Others)</span></p>
+
+                                    }
+                                    if (Model.KeHoachSauHoc == "Tim cv o Nhat")
+                                    {
+                                        <span style="margin-left:2%"><input type="checkbox" name="KeHoachSauHoc" value="Nghien cuwu sau o nhat" />日本での進学</span>
+                                                    <span span style="margin-left:5%">進学志望校名及び志望学科：<input style="width:500px" name="KeHoachSauHoc" /></span>
+                                                    <p><span style="margin-left:2%">(Further studies in Japan)</span> <span span style="margin-left:5%">(Name of school you wish to study in & course)</span> </p>
+                                                    <span style="margin-left:2%"><input type="checkbox" name="KeHoachSauHoc" value="Tim cv o Nhat" checked="checked" />日本での就職</span>
+                                                    <span style="margin-left:5%"><input type="checkbox" name="KeHoachSauHoc" value="Ve nuoc" />帰国</span>
+                                                    <span style="margin-left:10%"><input type="checkbox" name="KeHoachSauHoc" />その他<input style="width:300px;" name="KeHoachSauHoc" /></span>
+                                                    <p><span style="margin-left:2%">(Get a job in Japan)</span><span style="margin-left:2%">(Return to home country)</span><span style="margin-left:2%">(Others)</span></p>
+
+                                    }
+                                    if (Model.KeHoachSauHoc == "Ve nuoc")
+                                    {
+                                        <span style="margin-left:2%"><input type="checkbox" name="KeHoachSauHoc" value="Nghien cuwu sau o nhat" />日本での進学</span>
+                                                    <span span style="margin-left:5%">進学志望校名及び志望学科：<input style="width:500px" name="KeHoachSauHoc" /></span>
+                                                    <p><span style="margin-left:2%">(Further studies in Japan)</span> <span span style="margin-left:5%">(Name of school you wish to study in & course)</span> </p>
+                                                    <span style="margin-left:2%"><input type="checkbox" name="KeHoachSauHoc" value="Tim cv o Nhat" />日本での就職</span>
+                                                    <span style="margin-left:5%"><input type="checkbox" name="KeHoachSauHoc" value="Ve nuoc" checked="checked" />帰国</span>
+                                                    <span style="margin-left:10%"><input type="checkbox" name="KeHoachSauHoc" />その他<input style="width:300px;" name="KeHoachSauHoc" /></span>
+                                                    <p><span style="margin-left:2%">(Get a job in Japan)</span><span style="margin-left:2%">(Return to home country)</span><span style="margin-left:2%">(Others)</span></p>
+
+                                    }
+
+                        }
+
+                   
+                        <p>17. 東京ワールド日本語学校での修学予定期間：<input style="width:50px" name="ThoiLuongHoc" />
+                        <p><span style="margin-left:2%">(Intended length of study at TWJLS)</span></p>
+                       
+                        @{
+                                    if (@Model.TinhTrangBiTuChoi == "co")
+                                    {
+                                        <p>18. あなたは、日本から強制退去や日本への上陸を拒否されたことがありますか。</p>
+                                                    <p><span style="margin-left:2%">(Have you ever been refused entry into or deported from Japan?)</span></p>
+                                                    <span style="margin-left:2%"><input type="checkbox" name="TinhTrangBiTuChoi" value="co" checked="checked" />はい(Yes)</span>
+                                                    <span style="margin-left:15%"><input type="checkbox" name="TinhTrangBituChoi" value="Khong" />いいえ(No)</span>
+
+                                    }
+                                    if (@Model.TinhTrangBiTuChoi =="Khong")
+                                    {
+                                        <p>18. あなたは、日本から強制退去や日本への上陸を拒否されたことがありますか。</p>
+                                        <p><span style="margin-left:2%">(Have you ever been refused entry into or deported from Japan?)</span></p>
+                                        <span style="margin-left:2%"><input type="checkbox" name="TinhTrangBiTuChoi" value="co" />はい(Yes)</span>
+                                        <span style="margin-left:15%"><input type="checkbox" name="TinhTrangBituChoi" value="Khong" checked="checked"/>いいえ(No)</span>
+
+                                    }
+                        }
+                        @{
+                                if (@Model.TinhTrangXinVisa == "co")
+                                {
+                                    <p>19. あなたは、就学又は留学ビザを申請したことがありますか</p>
+                                                <p><span style="margin-left:2%">(Have you ever applied for a pre-college student visa or college student visa?)</span></p>
+                                                <span style="margin-left:2%"><input type="checkbox" name="TinhTrangXinVisa" value="co" checked="checked" />はい(Yes)</span>
+                                                <span style="margin-left:15%"><input type="checkbox" name="TinhTrangXinVisa" value="khong" />いいえ(No)</span>
+
+                                }
+                                if (@Model.TinhTrangXinVisa == "khong")
+                                {
+                                    <p>19. あなたは、就学又は留学ビザを申請したことがありますか</p>
+                                    <p><span style="margin-left:2%">(Have you ever applied for a pre-college student visa or college student visa?)</span></p>
+                                    <span style="margin-left:2%"><input type="checkbox" name="TinhTrangXinVisa" value="co" />はい(Yes)</span>
+                                    <span style="margin-left:15%"><input type="checkbox" name="TinhTrangXinVisa" value="khong" checked="checked"/>いいえ(No)</span>
+
+                                }
+                                if (@Model.ViPham == "co")
+                                {
+                                    <p>20. あなたは、日本国又は日本国以外の国において刑事事件で有罪判決を受けたことがありますか。</p>
+                                    <p><span style="margin-left:2%">(Have you ever been convicted of a crime in a court of law in Japan or in any other country?)</span></p>
+                                    <span style="margin-left:2%"><input type="checkbox" name="ViPham" value="co" checked="checked" />はい(Yes)</span>
+                                    <span style="margin-left:15%"><input type="checkbox" name="ViPham" value="khong" />いいえ(No)</span>
+
+                                }
+                                if (@Model.ViPham == "khong")
+                                {
+                                    <p>20. あなたは、日本国又は日本国以外の国において刑事事件で有罪判決を受けたことがありますか。</p>
+                                    <p><span style="margin-left:2%">(Have you ever been convicted of a crime in a court of law in Japan or in any other country?)</span></p>
+                                    <span style="margin-left:2%"><input type="checkbox" name="ViPham" value="co" />はい(Yes)</span>
+                                    <span style="margin-left:15%"><input type="checkbox" name="ViPham" value="khong" checked="checked" />いいえ(No)</span>
+
+                                }
+                            }
+                        
+                          <p>上記の内容は事実であり、私　<span style="margin-left:2%">@ViewBag.tenhs</span><span style="margin-left:5%">が直筆したものです。</span></p>
+                        <p>(I filled in this form myself and I declare that all information I have given on this application is true and correct)</p>
+                        <p>作成年月日：<span style="margin-left:2%"><input style="width:50px" name="NamLap" value="@Model.NamLap" />年</span><span style="margin-left:2%"><input style="width:50px" name="ThangLap" value="@Model.ThangLap" />月</span><span style="margin-left:2%"><input style="width:50px" name="NgayLap" value="@Model.NgayLap">日</span><span style="margin-left:2%">本人署名：</span><input style="width:100px" name="NguoiLap" value="@Model.NguoiLap" /></p>
+                        <p><span style="margin-left:2%">(Application Date)</span><span style="margin-left:20%">(Signature of Applicant)</span></p>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-6"></div>
+                        <div class="col-lg-6" style="margin-left:800px;">
+                            <strong>東京ワールド日本語学校</strong>
+                            <p>〒169-0073東京都新宿区百人町1-13-24</p>
+                            <p>電話：03-5332-3531　FAX:03-5332-3530</p>
+                        </div>
+                    </div>
+                    <button class="btn btn-success" type="submit" style="margin-left:400px;width:150px;">Tao giay nhap hoc</button>
+                </form>
             </div>
-        </div>
-    </div>
+        }
+        else
+        {
+            <div class="container">
+                <h2 style="text-align:center">東京ワールド日本語学校入学願書及び履歴書</h2>
+                <h4 style="text-align:center">TOKYO WORLD JAPANESE LANGUAGE SCHOOL APPLICATION FORM AND CURRICULUM VITAE</h4>
+                <form class="form-horizontal form-label-left" method="post" action="@Url.Action("Giaynhaphoc", "GiayTo")">
+                    <div class="row">
+                        <div class="col-lg-10">
+                            <input hidden name="id_hs" value="@ViewBag.id_hsss" />
+                            <p>
+                                1. 漢字氏名：<input style="width:300px" name="Ten" /><span style="margin-left:10%"> 英字：@ViewBag.tenhs</span><span style="margin-left:10%">
+                                    (
+                                    @{
+            if (@ViewBag.gioiTinh != null)
+            {
+                if (@ViewBag.gioiTinh == "Nam")
+                {
+                    <input type="checkbox" checked="checked" /> <label> 男</label><input type="checkbox" /><label> 女</label>
+                }
+                if (@ViewBag.gioiTinh == "Nữ")
+                {
+                    <input type="checkbox" /> <label> 男</label><input type="checkbox" checked="checked" /><label> 女</label>
+                }
+            }
+            else
+            {
+                <input type="checkbox" /> <label> 男</label><input type="checkbox" /><label> 女</label>
+            }
+                                    })
+                                </span>
+                            </p>
+                            <p><span style="margin-left:2%">(Name in Chinese characters)</span><span style="margin-left:30%">(Alphabet letters)</span>  <span style="margin-left:17%">(Male/Female)</span></p>
+                            @{
+            if (@ViewBag.ngaySinh != null)
+            {
+                DateTime day = @ViewBag.ngaySinh;
+                var tuoi = DateTime.Now.Year - day.Year;
+                <p>2．生年月日：　@day.Year 　 <span style="margin-left:5%"> 年　@day.Month</span><span style="margin-left:5%">月</span>  @day.Day<span style="margin-left:5%">日</span><span style="margin-left:5%">(満年齢： @tuoi )</span></p>
+
+            }
+                            }
+                            <p><span style="margin-left:2%">(Date of Birth)</span> <span style="margin-left:10%">(year)</span> <span style="margin-left:7%">(month)</span><span style="margin-left:7%">(day)</span><span style="margin-left:7%">(Age)</span> </p>
+                            <p>3．国籍：　　　　ベトナム<span style="margin-left:30%">4．配偶者の有無：<input type="checkbox" name="TinhTrangHn" value="Ket hon" />有<input type="checkbox" value="Chua ket hon" name="TinhTrangHn" />無　</span></p>
+                            <p><span style="margin-left:2%">(Nationality)</span><span style="margin-left:35%"> (Marital Status)</span><span style="margin-left:3%">(Married/single)</span></p>
+                            <p>5. 電話番号：@ViewBag.sdt<span style="margin-left:25%"> 6．職業： 留学準備</span></p>
+                            <p><span style="margin-left:2%">(Telephone No.)</span><span style="margin-left:40%"> (Occupation)</span></p>
+                            <p>7．旅券番号：<input name="HoChieu" /><span style="margin-left:18%">有効期限：<input name="NamHc" style="width:50px;" />年</span><span style="margin-left:5%"><input style="width:5%" name="ThangHc" />月</span><span style="margin-left:5%"><input style="width:3%" name="NgayHc" />日</span></p>
+                            <p><span style="margin-left:2%">(Passport No.)</span><span style="margin-left:35%">(Valid until)</span><span style="margin-left:5%">(year)</span><span style="margin-left:5%">(month)</span><span style="margin-left:5%">(day)</span></p>
+                        </div>
+                        <div class="col-lg-2">
+                            <table border="1" style="height:200px;width:150px;margin-top:20px;">
+                                <tr><td></td></tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <p>8．出生地:　@ViewBag.noisinh</p>
+                        <p><span style="margin-left:2%">(Place of Birth)</span></p>
+                        <p>9．現住所：<input style="width:80%" name="NoiOHienTai" />　</p>
+                        <p><span style="margin-left:2%">(Current Address)</span></p>
+                        <p><span style="margin-left:2%">戸籍住所 : @ViewBag.noithuongtru </span>　</p>
+                        <p>10．学歴（小学校から最終学歴まで順次記入して下さい。）<p>
+                        <p><span style="margin-left:2%">(Educational Background : Please indicate from primary school onwards)</span></p>
+                    </div>
+                    <div class="row">
+                        <table border="1" style="height:300px;width:100%">
+                            <tr>
+                                <td width="20%">
+                                    <center>学　　校　　名</center><br />
+                                    <center>   School Name</center>
+                                </td>
+                                <td width="40%">
+                                    <center>所　　　在　　　地</center><br />
+                                    <center>Location</center>
+                                </td>
+                                <td width="15%">
+                                    <center>入学年月日</center><br />
+                                    <center>Admission Date</center>
+                                </td>
+                                <td width="15%">
+                                    <center>卒業年月日</center><br />
+                                    <center>Graduation Date</center>
+                                </td>
+                                <td width="10%">
+                                    <center>年数</center><br />
+                                    <center>Total Years</center>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><input style="margin-left:2%;width:210px" name="TruongC1" /></td>
+                                <td><input style="margin-left:2%;width:440px" name="DiaChiC1" /></td>
+                                <td><input style="margin-left:2%;width:150px" name="Ngaybd1" /></td>
+                                <td><input style="margin-left:2%;width:150px" name="Ngaykt1" /></td>
+                                <td><input style="margin-left:2%;width:100px" name="Tong1" /></td>
+                            </tr>
+                            <tr>
+                                <td><input style="margin-left:2%;width:210px" name="TruongC2" /></td>
+                                <td><input style="margin-left:2%;width:440px" name="DiaChiC2" /></td>
+                                <td><input style="margin-left:2%;width:150px" name="Ngaybd2" /></td>
+                                <td><input style="margin-left:2%;width:150px" name="Ngaykt2" /></td>
+                                <td><input style="margin-left:2%;width:100px" name="Tong2" /></td>
+                            </tr>
+                            <tr>
+                                <td><input style="margin-left:2%;width:210px" name="TruongC3" /></td>
+                                <td><input style="margin-left:2%;width:440px" name="DiaChiC3" /></td>
+                                <td><input style="margin-left:2%;width:150px" name="Ngaybd3" /></td>
+                                <td><input style="margin-left:2%;width:150px" name="Ngaykt3" /></td>
+                                <td><input style="margin-left:2%;width:100px" name="Tong3" /></td>
+                            </tr>
+                            <tr>
+                                <td><input style="margin-left:2%;width:210px" /></td>
+                                <td><input style="margin-left:2%;width:440px" /></td>
+                                <td><input style="margin-left:2%;width:150px" /></td>
+                                <td><input style="margin-left:2%;width:150px" /></td>
+                                <td><input style="margin-left:2%;width:100px" /></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="row">
+                        <p>11．日本語学習歴</p>
+                        <p><span style="margin-left:2%">(Previous Japanese Learning Experience : Japanese language school(s) attended)</span></p>
+                        <table border="1" style="height:300px;width:100%">
+                            <tr>
+                                <td width="40%">
+                                    <center>学　　校　　名</center><br />
+                                    <center>   School Name</center>
+                                </td>
+                                <td width="30%">
+                                    <center>所　　　在　　　地</center><br />
+                                    <center>Location</center>
+                                </td>
+                                <td width="15%">
+                                    <center>入学年月日</center><br />
+                                    <center>Admission Date</center>
+                                </td>
+                                <td width="15%">
+                                    <center>卒業年月日</center><br />
+                                    <center>Graduation Date</center>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><input style="margin-left:2%;width:430px" name="TenTrungTam1" /></td>
+                                <td><input style="margin-left:2%;width:320px" name="DiaChitt1" /></td>
+                                <td><input style="margin-left:2%;width:155px" name="NgayNhapHoc1" /></td>
+                                <td><input style="margin-left:2%;width:155px" name="NgayThoiHoc1" /></td>
+                            </tr>
+                            <tr>
+                                <td><input style="margin-left:2%;width:430px" name="TenTrungTam2" /></td>
+                                <td><input style="margin-left:2%;width:320px" name="DiaChitt2" /></td>
+                                <td><input style="margin-left:2%;width:155px" name="NgayNhapHoc2" /></td>
+                                <td><input style="margin-left:2%;width:155px" name="NgayThoiHoc2" /></td>
+                            </tr>
+                            <tr>
+                                <td><input style="margin-left:2%;width:430px" name="TenTrungTam3" /></td>
+                                <td><input style="margin-left:2%;width:320px" name="DiaChitt3" /></td>
+                                <td><input style="margin-left:2%;width:155px" name="NgayNhapHoc3" /></td>
+                                <td><input style="margin-left:2%;width:155px" name="NgayThoiHoc3" /></td>
+                            </tr>
+                            <tr>
+                                <td><input style="margin-left:2%;width:430px" /></td>
+                                <td><input style="margin-left:2%;width:320px" /></td>
+                                <td><input style="margin-left:2%;width:155px" /></td>
+                                <td><input style="margin-left:2%;width:155px" /></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="row">
+                        <p>12. 職歴（就職年月日順に記入して下さい。）</p>
+                        <p><span style="margin-left:2%">(Work Experience : Please list in chronological order with the most recent job last)</span></p>
+                        <table border="1" style="height:150px;width:100%">
+                            <tr>
+                                <td width="35%">
+                                    <center>勤　務　先　名</center><br />
+                                    <center>   Company name</center>
+                                </td>
+                                <td width="35%">
+                                    <center>所　　　在　　　地</center><br />
+                                    <center>Location</center>
+                                </td>
+                                <td width="15%">
+                                    <center>就職年月日</center><br />
+                                    <center>Date Joined</center>
+                                </td>
+                                <td width="15%">
+                                    <center>退職年月日</center><br />
+                                    <center>Date Left</center>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><input style="margin-left:2%;width:390px" name="TenCty" /></td>
+                                <td><input style="margin-left:2%;width:390px" name="DiaChiCty" /></td>
+                                <td><input style="margin-left:2%;width:155px" name="NgayVaoCty" /></td>
+                                <td><input style="margin-left:2%;width:155px" name="NgayRaCty" /></td>
+
+                            </tr>
+                            <tr>
+                                <td><input style="margin-left:2%;width:390px" /></td>
+                                <td><input style="margin-left:2%;width:390px" /></td>
+                                <td><input style="margin-left:2%;width:155px" /></td>
+                                <td><input style="margin-left:2%;width:155px" /></td>
+
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="row">
+                        <p>13. 日本国出入国歴　　※短期間、長期間に関わらず全ての出入国について漏れなく記入して下さい。</p>
+                        <p><span style="margin-left:2%">(Previous stay in Japan : Please include both short-term and long-term stays.)</span></p>
+                        <table border="1" style="height:150px;width:100%">
+                            <tr>
+                                <td width="5%"></td>
+                                <td width="24%">
+                                    <center>入　国　年　月　日</center><br />
+                                    <center>Date of Entry</center>
+                                </td>
+                                <td width="24%">
+                                    <center>出　国　年　月　日</center><br />
+                                    <center>Date of Departure</center>
+                                </td>
+                                <td width="24%">
+                                    <center>在　留　資　格</center><br />
+                                    <center>Visa Status</center>
+                                </td>
+                                <td width="25%">
+                                    <center>入　国　目　的</center><br />
+                                    <center>Purpose of Entry</center>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><p style="text-align:center">1</p></td>
+                                <td><input style="margin-left:2%;width:250px" name="NgayNhapCanh" /></td>
+                                <td><input style="margin-left:2%;width:250px" name="NgayKhoiHanh" /></td>
+                                <td><input style="margin-left:2%;width:250px" name="TinhTrang" /></td>
+                                <td><input style="margin-left:2%;width:260px" name="MucDichNhapCanh" /></td>
+                            </tr>
+                            <tr>
+                                <td><p style="text-align:center">2</p></td>
+                                <td><input style="margin-left:2%;width:250px" /></td>
+                                <td><input style="margin-left:2%;width:250px" /></td>
+                                <td><input style="margin-left:2%;width:250px" /></td>
+                                <td><input style="margin-left:2%;width:260px" /></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="row">
+                        <p>14. 家族(在日家族含む)</p>
+                        <p><span style="margin-left:2%">(Family Details, including family in Japan)</span></p>
+                        <table border="1" style="width:100%">
+                            <thead>
+                                <tr>
+                                    <td width="15%">
+                                        <center>続柄</center><br />
+                                        <center>Relationship</center>
+                                    </td>
+                                    <td width="20%">
+                                        <center>氏　　　名</center><br />
+                                        <center>Name</center>
+                                    </td>
+                                    <td width="10%">
+                                        <center>国　籍</center><br />
+                                        <center>Nationality</center>
+                                    </td>
+                                    <td width="10%">
+                                        <center>年齢</center><br />
+                                        <center>Age</center>
+                                    </td>
+                                    <td width="25%">
+                                        <center>住　　　　　　所</center><br />
+                                        <center>Address</center>
+                                    </td>
+                                    <td width="15%">
+                                        <center>職　　業</center><br />
+                                        <center>Occupation</center>
+                                    </td>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                @{ foreach (var item in ViewBag.dstv as IEnumerable<QuanLyHocSinhDuHoc.Models.Entities.HoKhau>)
+                                 {
+                                     DichTuDong dich = new DichTuDong();
+                                    <tr>
+                                        <td><center>@item.QuanHe</center></td>
+                                        <td><center>@dich.ReplaceUnicode(@item.HoTen)</center></td>
+                                        <td><center>@dich.ReplaceUnicode(@item.QuocTich)</center></td>
+                                        <td><center>@item.Tuoi</center></td>
+                                        <td><center>@dich.ReplaceUnicode(@item.DiaChi)</center></td>
+                                        <td><center>@item.NgheNghiep</center></td>
+                                    </tr>
+
+                                 }
+
+
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="row">
+                        <p>15. 修学理由書</p>
+                        <p><span style="margin-left:2%">(Purpose of study)</span></p>
+                        <table border="1" style="width:100%">
+                            <tr>
+                                <td width="15%"><center>添付ファイルをご覧ください。</center><br /> 	</td>
+                            </tr>
+                            <tr><td><textarea style="width:100%;height:100px;" name="MucDichDuHoc"></textarea></td></tr>
+                        </table>
+                    </div>
+                    <div class="row">
+                        <p>16. 卒業後の予定(Plan after completing study)</p>
+                        <span style="margin-left:2%"><input type="checkbox" name="KeHoachSauHoc" value="Nghien cuwu sau o nhat" />日本での進学</span>
+                        <span span style="margin-left:5%">進学志望校名及び志望学科：<input style="width:500px" name="KeHoachSauHoc" /></span>
+                        <p><span style="margin-left:2%">(Further studies in Japan)</span> <span span style="margin-left:5%">(Name of school you wish to study in & course)</span> </p>
+                        <span style="margin-left:2%"><input type="checkbox" name="KeHoachSauHoc" value="Tim cv o Nhat" />日本での就職</span>
+                        <span style="margin-left:5%"><input type="checkbox" name="KeHoachSauHoc" value="Ve nuoc" />帰国</span>
+                        <span style="margin-left:10%"><input type="checkbox" name="KeHoachSauHoc" />その他<input style="width:300px;" name="KeHoachSauHoc" /></span>
+                        <p><span style="margin-left:2%">(Get a job in Japan)</span><span style="margin-left:2%">(Return to home country)</span><span style="margin-left:2%">(Others)</span></p>
+                        <p>17. 東京ワールド日本語学校での修学予定期間：<input style="width:50px" name="ThoiLuongHoc" />
+                        <p><span style="margin-left:2%">(Intended length of study at TWJLS)</span></p>
+                        <p>18. あなたは、日本から強制退去や日本への上陸を拒否されたことがありますか。</p>
+                        <p><span style="margin-left:2%">(Have you ever been refused entry into or deported from Japan?)</span></p>
+                        <span style="margin-left:2%"><input type="checkbox" name="TinhTrangBiTuChoi" value="co" />はい(Yes)</span>
+                        <span style="margin-left:15%"><input type="checkbox" name="TinhTrangBituChoi" value="Khong" />いいえ(No)</span>
+                        <p>19. あなたは、就学又は留学ビザを申請したことがありますか</p>
+                        <p><span style="margin-left:2%">(Have you ever applied for a pre-college student visa or college student visa?)</span></p>
+                        <span style="margin-left:2%"><input type="checkbox" name="TinhTrangXinVisa" value="co" />はい(Yes)</span>
+                        <span style="margin-left:15%"><input type="checkbox" name="TinhTrangXinVisa" value="khong" />いいえ(No)</span>
+                        <p>20. あなたは、日本国又は日本国以外の国において刑事事件で有罪判決を受けたことがありますか。</p>
+                        <p><span style="margin-left:2%">(Have you ever been convicted of a crime in a court of law in Japan or in any other country?)</span></p>
+                        <span style="margin-left:2%"><input type="checkbox" name="ViPham" value="co" />はい(Yes)</span>
+                        <span style="margin-left:15%"><input type="checkbox" name="ViPham" value="khong" />いいえ(No)</span>
+                        <p>上記の内容は事実であり、私　<span style="margin-left:2%">@ViewBag.tenhs</span><span style="margin-left:5%">が直筆したものです。</span></p>
+                        <p>(I filled in this form myself and I declare that all information I have given on this application is true and correct)</p>
+                        <p>作成年月日：<span style="margin-left:2%"><input style="width:50px" name="NamLap" />年</span><span style="margin-left:2%"><input style="width:50px" name="ThangLap" />月</span><span style="margin-left:2%"><input style="width:50px" name="NgayLap">日</span><span style="margin-left:2%">本人署名：</span><input style="width:100px" name="NguoiLap" /></p>
+                        <p><span style="margin-left:2%">(Application Date)</span><span style="margin-left:20%">(Signature of Applicant)</span></p>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6"></div>
+                        <div class="col-lg-6" style="margin-left:800px;">
+                            <strong>東京ワールド日本語学校</strong>
+                            <p>〒169-0073東京都新宿区百人町1-13-24</p>
+                            <p>電話：03-5332-3531　FAX:03-5332-3530</p>
+                        </div>
+                    </div>
+                    <button class="btn btn-success" type="submit" style="margin-left:400px;width:150px;">Tao giay nhap hoc</button>
+                </form>
+            </div>
+        }
+    }
+
+  
 </body>
 </html>
 

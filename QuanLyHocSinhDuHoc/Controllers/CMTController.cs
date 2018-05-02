@@ -130,5 +130,48 @@ namespace QuanLyHocSinhDuHoc.Controllers
             }
             return View(cmt);
         }
+        //upload File -> them file trong phan chi tiet
+        [HttpPost]
+        public JsonResult UpLoadFileCMT()
+        {
+            if (System.Web.HttpContext.Current.Request.Files.AllKeys.Any())
+            {
+                var file = Request.Files["HelpSectionFile"];
+                //lưu tên file
+                var fileName = Path.GetFileName(file.FileName);
+                //lưu đường dẫn
+                var path = Path.Combine(Server.MapPath("~/Content/filePDF"), fileName);
+                // file is uploaded
+                var type = file.ContentType;
+                if (System.IO.File.Exists(path))
+                {
+                    ViewBag.Thongbao = "File đã tồn tại";
+                }
+                else
+                {
+                    if (type == "application/docx" || type == "application/pdf")
+                        file.SaveAs(path);
+                }
+                Session["file"] = fileName;
+                if(Session["id_hsDetail"] !=null)
+                {
+                    int id_hs = (int)Session["id_hsDetail"];
+                    HOCSINH hocsinh = db.HOCSINHs.Find(id_hs);
+                    if (hocsinh.SoCMT!=null)
+                    {
+                            CMT cmt = db.CMTs.Find(hocsinh.SoCMT);
+                            cmt.fileCMT = fileName;
+                            db.Entry(cmt).State = System.Data.Entity.EntityState.Modified;
+                            Session["chuyenTab"] = 2;
+                            db.SaveChanges();
+                            return Json(hocsinh.id, JsonRequestBehavior.AllowGet);
+                    }
+                }
+                return Json(fileName, JsonRequestBehavior.AllowGet);
+            }
+            Session["file"] = null;
+            return Json("Khong", JsonRequestBehavior.AllowGet);
+        }
+
     }
 }

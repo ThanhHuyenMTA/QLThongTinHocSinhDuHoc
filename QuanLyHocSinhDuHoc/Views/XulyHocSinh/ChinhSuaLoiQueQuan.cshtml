@@ -57,9 +57,45 @@
             </div>
         </div>
     </div>
+
+    <div class="row" id="TuLieuDT">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+
+            @{
+                if (Model.Cmt != null)
+                {
+                    if (Model.Cmt.fileCMT != null)
+                    {
+                        <a class="btn btn-success" href="@Url.Action("TestPdf", "XuLyHocSinh", new { @url = @Model.Cmt.fileCMT })" target="iframe_CMT6" id="clickHienCMT6">Hiện thị file CMT</a>
+                    }
+                }
+                if (Model.Giaykhaisinh != null)
+                {
+                    if (Model.Giaykhaisinh.fileGKS != null)
+                    {
+                        <a class="btn btn-success" href="@Url.Action("TestPdf", "XuLyHocSinh", new { @url = @Model.Giaykhaisinh.fileGKS })" target="iframe_GKS6" id="clickHienGKS6">Hiện thị file GKS</a>
+                    }
+                }
+              
+               
+                <br /><br />
+                <iframe allowfullscreen height="450px" width="45%" name="iframe_CMT6" hidden id="hienCMT6"></iframe>
+                <iframe allowfullscreen height="450px" width="45%" name="iframe_GKS6" hidden id="hienGKS6"></iframe>
+
+}
+        </div>
+    </div>
+
+
 </div>
 
 <script type="text/javascript">
+    $("#clickHienGKS6").click(function () {
+        $("#hienGKS6").show();
+    });
+    $("#clickHienCMT6").click(function () {
+        $("#hienCMT6").show();
+    });
     function CapNhatQueQuan() {
         debugger;
         var listName = new Array();
@@ -75,6 +111,7 @@
             data: '{ "listkey":' + JSON.stringify(listName) + '}',
             contentType: "application/json; charset=utf-8",
             success: function (data) {
+                alert("Đã chỉnh sửa thành công");
                 window.location = "/XulyHocSinh/Index";
             },
             error: function (err) {

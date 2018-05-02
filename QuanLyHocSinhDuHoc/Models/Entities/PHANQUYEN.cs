@@ -14,8 +14,8 @@ namespace QuanLyHocSinhDuHoc.Models.Entities
     
     public partial class PHANQUYEN
     {
-        public int id_nv { get; set; }
         public int id_quyen { get; set; }
+        public int id_truycap { get; set; }
         public string MoTa { get; set; }
     }
 }

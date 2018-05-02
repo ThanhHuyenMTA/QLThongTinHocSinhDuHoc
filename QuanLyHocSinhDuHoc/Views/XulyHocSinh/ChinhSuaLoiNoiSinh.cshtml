@@ -68,11 +68,57 @@
             </div>
         </div>
     </div>
+
+    <div class="row" id="TuLieuDT">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+
+            @{                
+                if (Model.Giaykhaisinh != null)
+                {
+                    if (Model.Giaykhaisinh.fileGKS != null)
+                    {
+                        <a class="btn btn-success" href="@Url.Action("TestPdf", "XuLyHocSinh", new { @url = @Model.Giaykhaisinh.fileGKS })" target="iframe_GKS5" id="clickHienGKS5">Hiện thị file GKS</a>
+                    }
+                }
+                if (Model.Bangtotnghiep != null)
+                {
+                    if (Model.Bangtotnghiep.fileBTN != null)
+                    {
+                        <a class="btn btn-success" href="@Url.Action("TestPdf", "XuLyHocSinh", new { @url = @Model.Bangtotnghiep.fileBTN })" target="iframe_BTN5" id="clickHienBTN5">Hiện thị file BTN</a>
+                    }
+                }
+                if (Model.Hocba != null)
+                {
+                    if (Model.Hocba.fileHB != null)
+                    {
+                        <a class="btn btn-success" href="@Url.Action("TestPdf", "XuLyHocSinh", new { @url = @Model.Hocba.fileHB })" target="iframe_HB5" id="clickHienHB5">Hiện thị file HB</a>
+                    }
+                }
+                <br /><br />
+                <iframe allowfullscreen height="450px" width="30%" name="iframe_GKS5" hidden id="hienGKS5"></iframe>
+                <iframe allowfullscreen height="450px" width="30%" name="iframe_BTN5" hidden id="hienBTN5"></iframe>
+                <iframe allowfullscreen height="450px" width="30%" name="iframe_HB5" hidden id="hienHB5"></iframe>
+
+            }
+        </div>
+    </div>
+
+
 </div>
 
 
 
 <script type="text/javascript">
+    $("#clickHienHB5").click(function () {
+        $("#hienHB5").show();
+    });
+    $("#clickHienBTN5").click(function () {
+        $("#hienBTN5").show();
+    });
+    $("#clickHienGKS5").click(function () {
+        $("#hienGKS5").show();
+    });
+
     function CapNhatNoiSinh()
     {
         var listName = new Array();
@@ -90,6 +136,7 @@
             data: '{ "listkey":' + JSON.stringify(listName) + '}',
             contentType: "application/json; charset=utf-8",
             success: function (data) {
+                alert("Đã chỉnh sửa thành công");
                 window.location = "/XulyHocSinh/Index";
             },
             error: function (err) {

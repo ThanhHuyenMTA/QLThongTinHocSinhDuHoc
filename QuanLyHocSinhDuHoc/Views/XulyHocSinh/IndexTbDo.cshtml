@@ -1,0 +1,112 @@
+﻿
+@model  IEnumerable<QuanLyHocSinhDuHoc.Models.Entities.TABLE_LOI>
+@using QuanLyHocSinhDuHoc.Models.Entities
+@using QuanLyHocSinhDuHoc.CommonXuLy
+@{
+    ViewBag.Title = "Danh sách lỗi";
+    Layout = "~/Views/Share/_LayoutTrangChu.cshtml";
+}
+
+<div class="">
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Danh sách sai sót thông tin học sinh</h2>
+                   
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <div id="datatable_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+                       
+                        <!-- Bảng dữ liệu -->
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <table class="table table-striped table-bordered" style="overflow-x:auto;">
+                                    <thead>
+                                        <tr>
+                                            <th><div class="word-wrap">STT</div></th>
+                                            <th><div class="word-wrap">Loại lỗi</div></th>
+                                            <th><div class="word-wrap">Học sinh</div></th>
+                                            <th><div class="word-wrap">Nội dung lỗi</div></th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        @{
+                                            if (Model != null)
+                                            {
+                                                var i = 1;
+                                                foreach (var item in Model)
+                                                {
+                                                    Xuly xuLy = new Xuly();
+                                                    var tenHS = xuLy.ReturnHoten(item.id);
+                                                    <tr>
+                                                        <td><div class="word-wrap">@i</div></td>
+                                                        <td><div class="word-wrap">@item.TypeLOI</div></td>
+                                                        <td><div class="word-wrap">@tenHS</div></td>
+                                                        <td style="text-align:center;">
+                                                            <div class="word-wrap" style="text-align:center;">
+
+                                                                <p>Sai thông tin về <strong>@item.TypeLOI</strong> từ học sinh: @tenHS</p>
+
+                                                                @{
+                                                    if (item.id_HS > 0)
+                                                    {
+                                                        <p style="text-align:center;">Mã học sinh - <strong>@item.id_HS</strong></p>
+                                                    }
+                                                    else
+                                                    {
+                                                        if (item.So_CMT != null)
+                                                        {
+                                                            <p style="float:left;text-align:center;">Số cmt - <strong>@item.So_CMT</strong></p>
+                                                        }
+                                                        if (item.id_GKS > 0)
+                                                        {
+                                                            <p>Mã giấy khai sinh - <strong> @item.id_GKS </strong></p>
+                                                        }
+                                                        if (item.id_BTN > 0)
+                                                        {
+                                                            <p style="float:left;">Mã bằng tốt nghiệp - <strong> @item.id_BTN </strong></p>
+                                                        }
+                                                        if (item.id_HB > 0)
+                                                        {
+                                                            <p>Mã học bạ - <strong> @item.id_HB </strong></p>
+                                                        }
+                                                    }
+                                                                }
+                                                            </div>
+                                                        </td>
+
+                                                        <td class="actions">
+                                                            <i class="fa fa-snapchat" title="Mức tb cực kì cần thiết" style="color:#ff0000;"></i>
+                                                            <a data-toggle="tooltip" data-placement="bottom" target="_blank" title="Sửa" href="@Url.Action("ChinhSua", "XulyHocSinh", new {@id=@item.id})">
+                                                                <i class="fa fa-edit"></i>
+                                                            </a>
+                                                            
+                                                        </td>
+                                                    </tr>
+                                                    i = @i + 1;
+                                                }
+                                            }
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <!-- Bảng dữ liệu -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+    });
+</script>
+

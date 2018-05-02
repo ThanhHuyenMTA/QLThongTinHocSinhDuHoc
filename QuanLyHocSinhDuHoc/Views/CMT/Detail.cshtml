@@ -1,6 +1,6 @@
 ﻿@model QuanLyHocSinhDuHoc.Models.Entities.CMT
 @{
-    var id_hs = Request.Url.Segments.Last();
+    var id_hs = Request["id"];
 
     if (Model == null)
     {
@@ -121,6 +121,14 @@
                         <a class="btn btn-success" href="@Url.Action("TestPdf", "XuLyHocSinh", new { @url = @Model.fileCMT })" target="iframe_a" id="clickHien">Hiện thị file</a>
                         <iframe allowfullscreen height="450px" width="100%" name="iframe_a" hidden id="hien"></iframe>
                     }
+                    else
+                    {
+                        <div class=" item form-group">
+                            <button id="btn_fileCMTCN" type="button" onclick="$('#filecmtCapNhat').click()" class="btn btn-sm btn-primary" style="width:230px;">Cập nhật file</button>
+                            <input type="file" id="filecmtCapNhat" name="filecmtCapNhat" style="display: none;" class="form-control">
+                        </div>
+                    }
+                    
                 </div>           
             </div>        
         </div>
@@ -273,7 +281,10 @@
                     }
                     else
                     {
-                        <a class="btn btn-success" href="#" target="_blank">Cập nhật file</a>
+                        <div class=" item form-group">
+                            <button type="button" onclick="$('#filecmtCapNhat').click()" class="btn btn-sm btn-primary" style="width:230px;">Cập nhật file</button>
+                            <input type="file" id="filecmtCapNhat" name="filecmtCapNhat" style="display: none;" class="form-control">
+                        </div>
                     }
 
 
@@ -427,6 +438,13 @@
                         <a class="btn btn-success" href="@Url.Action("TestPdf", "XuLyHocSinh", new { @url = @Model.fileCMT })" target="iframe_a" id="clickHien">Hiện thị file</a>
                         <iframe allowfullscreen height="540px" width="100%" name="iframe_a" hidden id="hien"></iframe>
                     }
+                    else
+                    {
+                        <div class=" item form-group">
+                            <button  type="button" onclick="$('#filecmtCapNhat').click()" class="btn btn-sm btn-primary" style="width:230px;">Cập nhật file</button>
+                            <input type="file" id="filecmtCapNhat" name="filecmtCapNhat" style="display: none;" class="form-control">
+                        </div>
+                    }
                 </div>  
             </div>
         </div>
@@ -438,4 +456,27 @@
     $("#clickHien").click(function () {
         $("#hien").show();
     });
+
+    $("#filecmtCapNhat").change(function () {
+        var data = new FormData();
+        var files = $("#filecmtCapNhat").get(0).files;
+        if (files.length > 0) {
+            data.append("HelpSectionFile", files[0]);
+        }
+        $.ajax({
+            url: "/CMT/UpLoadFileCMT",
+            type: "POST",
+            processData: false,
+            contentType: false,
+            data: data,
+            success: function (data) {
+                window.location.href = "?id=" + data;
+            },
+            error: function (er) {
+                alert(er);
+            }
+
+        });
+    });
+
 </script>

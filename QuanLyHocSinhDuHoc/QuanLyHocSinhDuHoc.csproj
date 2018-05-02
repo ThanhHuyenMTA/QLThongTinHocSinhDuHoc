@@ -91,6 +91,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\css\bootstrap.min.css" />
+    <Content Include="Content\css\bootstrap3.7.min.css" />
     <Content Include="Content\css\custom.css" />
     <Content Include="Content\css\font-awesome.min.css" />
     <Content Include="Content\css\gentelella-custom.min.css" />
@@ -249,6 +250,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KyHocController.cs" />
     <Compile Include="Controllers\NamHocController.cs" />
+    <Compile Include="Controllers\NguoiDungController.cs" />
     <Compile Include="Controllers\NguoiGiamHoController.cs" />
     <Compile Include="Controllers\SharesController.cs" />
     <Compile Include="Controllers\XulyHocSinhController.cs" />
@@ -276,10 +278,16 @@
     <Compile Include="Models\Entities\GIAYKHAISINH.cs">
       <DependentUpon>HoSoDuHocEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Entities\GiayNhapHoc.cs">
+      <DependentUpon>HoSoDuHocEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Entities\HOCBA.cs">
       <DependentUpon>HoSoDuHocEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Entities\HOCSINH.cs">
+      <DependentUpon>HoSoDuHocEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\HoKhau.cs">
       <DependentUpon>HoSoDuHocEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Entities\HOPDONG.cs">
@@ -321,7 +329,13 @@
     <Compile Include="Models\Entities\PHANQUYEN.cs">
       <DependentUpon>HoSoDuHocEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Entities\PhanTrangLoi_Result.cs">
+      <DependentUpon>HoSoDuHocEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Entities\PhanTrang_Result.cs">
+      <DependentUpon>HoSoDuHocEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\QUYEN.cs">
       <DependentUpon>HoSoDuHocEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Entities\QUYENTRUYCAP.cs">
@@ -386,7 +400,6 @@
     <Content Include="Views\XulyHocSinh\ChinhSuaLoiGioiTinh.cshtml" />
     <Content Include="Views\XulyHocSinh\ChinhSuaLoiDanToc.cshtml" />
     <Content Include="Views\DangNhap\Dangnhap.cshtml" />
-    <Content Include="Views\GiayTo\Giaynhaphoc.cshtml" />
     <Content Include="Views\CMT\ThemmoiR.cshtml" />
     <Content Include="Views\BangTotNghiep\ThemmoiR.cshtml" />
     <Content Include="Views\GiayKhaiSinh\ThemmoiR.cshtml" />
@@ -403,6 +416,15 @@
     <Content Include="Content\filePDF\BTN.pdf" />
     <Content Include="Content\filePDF\HB.pdf" />
     <Content Include="Content\filePDF\SHK.pdf" />
+    <Content Include="Views\GiayTo\Giaynhaphoc.cshtml" />
+    <Content Include="Views\GiayTo\Suagiaynhaphoc.cshtml" />
+    <Content Include="Views\XulyHocSinh\IndexTbXanh.cshtml" />
+    <Content Include="Views\XulyHocSinh\IndexTbVang.cshtml" />
+    <Content Include="Views\XulyHocSinh\IndexTbDo.cshtml" />
+    <Content Include="Views\XulyHocSinh\SearchLoi.cshtml" />
+    <Content Include="Views\NguoiDung\Index.cshtml" />
+    <Content Include="Views\NguoiDung\Themmoi.cshtml" />
+    <Content Include="Views\NguoiDung\SuaNguoiDung.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

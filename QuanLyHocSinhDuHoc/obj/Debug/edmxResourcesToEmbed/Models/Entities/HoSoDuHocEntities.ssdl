@@ -106,6 +106,66 @@
     <Property Name="NgayLap" Type="datetime" Nullable="false" />
     <Property Name="fileGKS" Type="ntext" />
   </EntityType>
+  <EntityType Name="GiayNhapHoc">
+    <Key>
+      <PropertyRef Name="id_gnh" />
+    </Key>
+    <Property Name="id_gnh" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Ten" Type="nvarchar" MaxLength="200" />
+    <Property Name="TinhTrangHn" Type="nvarchar" MaxLength="50" />
+    <Property Name="GioiTinh" Type="nvarchar" MaxLength="5" />
+    <Property Name="HoChieu" Type="int" />
+    <Property Name="NamHc" Type="int" />
+    <Property Name="ThangHc" Type="int" />
+    <Property Name="NgayHc" Type="int" />
+    <Property Name="NoiOHienTai" Type="nvarchar" MaxLength="200" />
+    <Property Name="TruongC1" Type="nvarchar" MaxLength="200" />
+    <Property Name="DiaChiC1" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="Ngaybd1" Type="nvarchar" MaxLength="50" />
+    <Property Name="Ngaykt1" Type="nvarchar" MaxLength="50" />
+    <Property Name="Tong1" Type="int" />
+    <Property Name="TruongC2" Type="nvarchar" MaxLength="200" />
+    <Property Name="DiaChiC2" Type="nvarchar" MaxLength="200" />
+    <Property Name="Ngaybd2" Type="nvarchar" MaxLength="50" />
+    <Property Name="Ngaykt2" Type="nvarchar" MaxLength="50" />
+    <Property Name="Tong2" Type="int" />
+    <Property Name="TruongC3" Type="nvarchar" MaxLength="200" />
+    <Property Name="DiaChiC3" Type="nvarchar" MaxLength="200" />
+    <Property Name="Ngaybd3" Type="nvarchar" MaxLength="50" />
+    <Property Name="Ngaykt3" Type="nvarchar" MaxLength="50" />
+    <Property Name="Tong3" Type="int" />
+    <Property Name="TenTrungTam1" Type="nvarchar" MaxLength="200" />
+    <Property Name="DiaChitt1" Type="nvarchar" MaxLength="200" />
+    <Property Name="NgayNhapHoc1" Type="nvarchar" MaxLength="50" />
+    <Property Name="NgayThoiHoc1" Type="nvarchar" MaxLength="50" />
+    <Property Name="TenTrungTam2" Type="nvarchar" MaxLength="200" />
+    <Property Name="DiaChitt2" Type="nvarchar" MaxLength="200" />
+    <Property Name="NgayNhapHoc2" Type="nvarchar" MaxLength="50" />
+    <Property Name="NgayThoiHoc2" Type="nvarchar" MaxLength="50" />
+    <Property Name="TenTrungTam3" Type="nvarchar" MaxLength="200" />
+    <Property Name="Diachitt3" Type="nvarchar" MaxLength="200" />
+    <Property Name="NgayNhapHoc3" Type="nvarchar" MaxLength="50" />
+    <Property Name="NgayThoiHoc3" Type="nvarchar" MaxLength="50" />
+    <Property Name="TenCty" Type="nvarchar" MaxLength="200" />
+    <Property Name="DiaChiCty" Type="nvarchar" MaxLength="200" />
+    <Property Name="NgayVaoCty" Type="nvarchar" MaxLength="50" />
+    <Property Name="NgayRaCty" Type="nvarchar" MaxLength="50" />
+    <Property Name="NgayNhapCanh" Type="nvarchar" MaxLength="50" />
+    <Property Name="NgayKhoiHanh" Type="nvarchar" MaxLength="50" />
+    <Property Name="TinhTrang" Type="nvarchar" MaxLength="50" />
+    <Property Name="MucDichNhapCanh" Type="nvarchar" MaxLength="200" />
+    <Property Name="MucDichDuHoc" Type="nvarchar" MaxLength="200" />
+    <Property Name="KeHoachSauHoc" Type="nvarchar" MaxLength="100" />
+    <Property Name="ThoiLuongHoc" Type="nvarchar" MaxLength="50" />
+    <Property Name="TinhTrangBiTuChoi" Type="nvarchar" MaxLength="50" />
+    <Property Name="TinhTrangXinVisa" Type="nvarchar" MaxLength="50" />
+    <Property Name="ViPham" Type="nvarchar" MaxLength="50" />
+    <Property Name="NgayLap" Type="int" />
+    <Property Name="ThangLap" Type="int" />
+    <Property Name="NamLap" Type="int" />
+    <Property Name="NguoiLap" Type="nvarchar" MaxLength="100" />
+    <Property Name="id_hs" Type="int" />
+  </EntityType>
   <EntityType Name="HOCBA">
     <Key>
       <PropertyRef Name="id" />
@@ -140,6 +200,19 @@
     <Property Name="id_BTN" Type="int" />
     <Property Name="id_HB" Type="int" />
     <Property Name="timeStart" Type="varchar" MaxLength="4" />
+  </EntityType>
+  <EntityType Name="HoKhau">
+    <Key>
+      <PropertyRef Name="id_hokhau" />
+    </Key>
+    <Property Name="id_hokhau" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="HoTen" Type="nvarchar" MaxLength="200" />
+    <Property Name="QuocTich" Type="nvarchar" MaxLength="200" />
+    <Property Name="Tuoi" Type="int" />
+    <Property Name="DiaChi" Type="nvarchar" MaxLength="200" />
+    <Property Name="NgheNghiep" Type="nvarchar" MaxLength="200" />
+    <Property Name="QuanHe" Type="nvarchar" MaxLength="200" />
+    <Property Name="id_hs" Type="int" />
   </EntityType>
   <EntityType Name="HOPDONG">
     <Key>
@@ -237,22 +310,31 @@
     <Property Name="SoDT" Type="nvarchar" MaxLength="50" />
     <Property Name="TenDangNhap" Type="nvarchar" MaxLength="50" />
     <Property Name="MatKhau" Type="text" />
+    <Property Name="id_Quyen" Type="int" />
   </EntityType>
   <EntityType Name="PHANQUYEN">
     <Key>
-      <PropertyRef Name="id_nv" />
       <PropertyRef Name="id_quyen" />
+      <PropertyRef Name="id_truycap" />
     </Key>
-    <Property Name="id_nv" Type="int" Nullable="false" />
     <Property Name="id_quyen" Type="int" Nullable="false" />
+    <Property Name="id_truycap" Type="int" Nullable="false" />
     <Property Name="MoTa" Type="ntext" />
+  </EntityType>
+  <EntityType Name="QUYEN">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Ten" Type="nvarchar" MaxLength="150" />
+    <Property Name="MoTa" Type="nvarchar" MaxLength="200" />
   </EntityType>
   <EntityType Name="QUYENTRUYCAP">
     <Key>
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="TenQuyen" Type="nvarchar" MaxLength="50" />
+    <Property Name="Ten" Type="nvarchar" MaxLength="150" />
     <Property Name="LinkTruy Cap" Type="ntext" />
   </EntityType>
   <EntityType Name="TABLE_LOI">
@@ -268,8 +350,13 @@
     <Property Name="TypeLOI" Type="nvarchar" MaxLength="150" />
     <Property Name="TimeStart" Type="datetime" />
     <Property Name="TimeEnd" Type="datetime" />
+    <Property Name="TrangThai" Type="varchar" MaxLength="20" />
   </EntityType>
   <Function Name="PhanTrang" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="LineStart" Type="int" Mode="In" />
+    <Parameter Name="soBanGhi" Type="int" Mode="In" />
+  </Function>
+  <Function Name="PhanTrangLoi" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="LineStart" Type="int" Mode="In" />
     <Parameter Name="soBanGhi" Type="int" Mode="In" />
   </Function>
@@ -281,8 +368,10 @@
     <EntitySet Name="CT_LOTRINH" EntityType="Self.CT_LOTRINH" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="GIAYCHUNGTHUC" EntityType="Self.GIAYCHUNGTHUC" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="GIAYKHAISINH" EntityType="Self.GIAYKHAISINH" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GiayNhapHoc" EntityType="Self.GiayNhapHoc" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="HOCBA" EntityType="Self.HOCBA" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="HOCSINH" EntityType="Self.HOCSINH" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HoKhau" EntityType="Self.HoKhau" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="HOPDONG" EntityType="Self.HOPDONG" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="HOSOHS" EntityType="Self.HOSOHS" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="KIHOC" EntityType="Self.KIHOC" Schema="dbo" store:Type="Tables" />
@@ -291,6 +380,7 @@
     <EntitySet Name="NGUOIGIAMHO" EntityType="Self.NGUOIGIAMHO" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="NHANVIEN" EntityType="Self.NHANVIEN" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PHANQUYEN" EntityType="Self.PHANQUYEN" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="QUYEN" EntityType="Self.QUYEN" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="QUYENTRUYCAP" EntityType="Self.QUYENTRUYCAP" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TABLE_LOI" EntityType="Self.TABLE_LOI" Schema="dbo" store:Type="Tables" />
   </EntityContainer>

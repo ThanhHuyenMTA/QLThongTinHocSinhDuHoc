@@ -44,6 +44,14 @@
                                 <i class="fa fa-edit"></i>Hệ thống<span class="fa fa-chevron-down"></span>
                             </a>
                             <ul class="nav child_menu">
+                                @{
+                                    if (Session["NguoiDung"] != null && Session["NguoiDung"].ToString() =="Admin")
+                                    {
+                                        <li>
+                                            <a href="@Url.Content("/NguoiDung/Index")">Người dùng</a>
+                                        </li>
+                                    }
+                                }
                                 <li>
                                     <a href="@Url.Content("/HoSo/Index")">Hồ Sơ</a>
                                 </li>
@@ -98,32 +106,70 @@
 
                 <li role="presentation" class="dropdown">
                     <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
-                        <i class="fa fa-envelope-o"></i>
+                        <i class="fa fa-bell-o"></i>
                         <span class="badge bg-green">1</span>
                     </a>
                     <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
                         <li>
-                            <a>
-                                <span class="image">
-                                    <img src="~/Content/images/logo.png" alt="Profile Image" />
+                            <a href="@Url.Action("IndexTbDo","XulyHocSinh")" target="_blank">
+                                <span class="image">                                    
+                                    <i class=" fa fa-snapchat" style="color:#ff0000;"></i>
                                 </span>
                                 <span>
-                                    <span>Amin</span>
-                                    <span class="time">3 phút trước</span>
+                                    <span >Thông báo Lỗi</span>
+                                    @{
+                                        var listDo = Session["ThongBaoDo"] as List<QuanLyHocSinhDuHoc.Models.Entities.TABLE_LOI>;
+                                        <span class="time">@listDo.Count</span>
+                                    }                                                
+                                   
                                 </span>
-                                <span class="message">
-                                    Film festivals used to be do-or-die moments for movie makers. They were where...
-                                </span>
+                               <span class="message">
+                                    Rất quan trọng   </span>
                             </a>
                         </li>
                         <li>
+                            <a href="@Url.Action("IndexTbVang","XulyHocSinh")" target="_blank">
+                                <span class="image">
+                                    <i class=" fa fa-snapchat" style="color:#ffd800;"></i>
+                                </span>
+                                @{
+                                    var listVang = Session["ThongBaoVang"] as List<QuanLyHocSinhDuHoc.Models.Entities.TABLE_LOI>;
+                                }
+                                <span>
+                                    <span>Thông báo Lỗi</span>
+                                    <span class="time">@listVang.Count</span>
+                                </span>
+                                <span class="message">
+                                    Quan trọng
+                                </span>
+                            </a>
+
+                        </li>
+                        <li>
+                            <a href="@Url.Action("IndexTbXanh","XulyHocSinh")" target="_blank">
+                                <span class="image">
+                                    <i class=" fa fa-snapchat" style="color:#00ff21;"></i>
+                                </span>
+                                @{
+                                    var listXanh = Session["ThongBaoXanh"] as List<QuanLyHocSinhDuHoc.Models.Entities.TABLE_LOI>;
+                                }
+                                <span>
+                                    <span>Thông báo Lỗi</span>
+                                    <span class="time">@listXanh.Count</span>
+                                </span>
+                                <span class="message">
+                                    Khá quan trọng
+                                </span>
+                            </a>
+                        </li>
+                        @*<li>
                             <div class="text-center">
                                 <a>
                                     <strong>Xem tất cả cảnh báo</strong>
                                     <i class="fa fa-angle-right"></i>
                                 </a>
                             </div>
-                        </li>
+                        </li>*@
                     </ul>
                 </li>
             </ul>

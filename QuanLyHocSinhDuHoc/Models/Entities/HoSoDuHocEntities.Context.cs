@@ -43,9 +43,12 @@ namespace QuanLyHocSinhDuHoc.Models.Entities
         public virtual DbSet<NGUOIGIAMHO> NGUOIGIAMHOes { get; set; }
         public virtual DbSet<TABLE_LOI> TABLE_LOI { get; set; }
         public virtual DbSet<HOCSINH> HOCSINHs { get; set; }
-        public virtual DbSet<QUYENTRUYCAP> QUYENTRUYCAPs { get; set; }
+        public virtual DbSet<HoKhau> HoKhaus { get; set; }
+        public virtual DbSet<GiayNhapHoc> GiayNhapHocs { get; set; }
         public virtual DbSet<NHANVIEN> NHANVIENs { get; set; }
         public virtual DbSet<PHANQUYEN> PHANQUYENs { get; set; }
+        public virtual DbSet<QUYEN> QUYENs { get; set; }
+        public virtual DbSet<QUYENTRUYCAP> QUYENTRUYCAPs { get; set; }
     
         public virtual ObjectResult<PhanTrang_Result> PhanTrang(Nullable<int> lineStart, Nullable<int> soBanGhi)
         {
@@ -58,6 +61,19 @@ namespace QuanLyHocSinhDuHoc.Models.Entities
                 new ObjectParameter("soBanGhi", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PhanTrang_Result>("PhanTrang", lineStartParameter, soBanGhiParameter);
+        }
+    
+        public virtual ObjectResult<PhanTrangLoi_Result> PhanTrangLoi(Nullable<int> lineStart, Nullable<int> soBanGhi)
+        {
+            var lineStartParameter = lineStart.HasValue ?
+                new ObjectParameter("LineStart", lineStart) :
+                new ObjectParameter("LineStart", typeof(int));
+    
+            var soBanGhiParameter = soBanGhi.HasValue ?
+                new ObjectParameter("soBanGhi", soBanGhi) :
+                new ObjectParameter("soBanGhi", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PhanTrangLoi_Result>("PhanTrangLoi", lineStartParameter, soBanGhiParameter);
         }
     }
 }

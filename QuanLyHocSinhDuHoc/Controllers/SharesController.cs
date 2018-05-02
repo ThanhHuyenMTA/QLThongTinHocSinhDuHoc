@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace PaymentSystem.Controllers
 {
-    public class SharesController : Controller
+    public class SharesController : BaseController
     {
         //
         // GET: /Partials/Banner
