@@ -39,33 +39,34 @@
                                 </li>
                             </ul>
                         </li>
-                        <li>
-                            <a>
-                                <i class="fa fa-edit"></i>Hệ thống<span class="fa fa-chevron-down"></span>
-                            </a>
-                            <ul class="nav child_menu">
-                                @{
-                                    if (Session["NguoiDung"] != null && Session["NguoiDung"].ToString() =="Admin")
-                                    {
-                                        <li>
-                                            <a href="@Url.Content("/NguoiDung/Index")">Người dùng</a>
-                                        </li>
-                                    }
-                                }
-                                <li>
-                                    <a href="@Url.Content("/HoSo/Index")">Hồ Sơ</a>
-                                </li>
-                                <li>
-                                    <a href="@Url.Content("/HopDong/Index")">Hợp đồng</a>
-                                </li>
-                                <li>
-                                    <a href="@Url.Content("/LoTrinh/Index")">Lộ trình</a>
-                                </li>
-                                <li>
-                                    <a href="@Url.Content("/BaoCaoThongKe/Index")">Báo cáo thống kê</a>
-                                </li>
-                            </ul>
-                        </li>
+                      @{
+                          if (Session["NguoiDung"] != null && Session["NguoiDung"].ToString() == "Admin")
+                          {
+                            <li>
+                                <a>
+                                    <i class="fa fa-edit"></i>Hệ thống<span class="fa fa-chevron-down"></span>
+                                </a>
+                                <ul class="nav child_menu">
+                                    <li>
+                                        <a href="@Url.Content("/NguoiDung/Index")">Người dùng</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Content("/Quyen/Index")">Quyền hạn</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Content("/QuyenTruyCap/Index")">Quyền truy cập</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Content("/PhanQuyen/Index")">Phân quyền</a>
+                                    </li>                                   
+                                </ul>
+                            </li>
+
+                          }
+                    }
+
+
+                      
                 </ul>
             </div>
         </div>
