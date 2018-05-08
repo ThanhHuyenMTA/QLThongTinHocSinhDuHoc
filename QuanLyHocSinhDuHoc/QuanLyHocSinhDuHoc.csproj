@@ -260,6 +260,7 @@
     <Compile Include="Controllers\QuyenController.cs" />
     <Compile Include="Controllers\QuyenTruyCapController.cs" />
     <Compile Include="Controllers\SharesController.cs" />
+    <Compile Include="Controllers\SoHoKhauController.cs" />
     <Compile Include="Controllers\XulyHocSinhController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -435,6 +436,10 @@
     <Content Include="Views\NguoiDung\Index.cshtml" />
     <Content Include="Views\NguoiDung\Themmoi.cshtml" />
     <Content Include="Views\NguoiDung\SuaNguoiDung.cshtml" />
+<<<<<<< HEAD
+    <Content Include="Views\SoHoKhau\Themmoi.cshtml" />
+    <Content Include="Views\SoHoKhau\Sua.cshtml" />
+=======
     <Content Include="Views\Quyen\Index.cshtml" />
     <Content Include="Views\Quyen\Themmoi.cshtml" />
     <Content Include="Views\Quyen\SuaQuyen.cshtml" />
@@ -444,6 +449,7 @@
     <Content Include="Views\PhanQuyen\Index.cshtml" />
     <Content Include="Views\PhanQuyen\Themmoi.cshtml" />
     <Content Include="Views\PhanQuyen\SuaPhanQuyen.cshtml" />
+>>>>>>> 5fd4db12fafab0972474c9286fa3d7258367fec2
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
