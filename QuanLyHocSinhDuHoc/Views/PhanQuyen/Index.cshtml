@@ -52,9 +52,9 @@
                                                         <td><div class="word-wrap">@quyenTC.LinkTruy_Cap</div></td>
                                                         <td><div class="word-wrap">@item.MoTa</div></td>
                                                         <td class="actions">
-                                                            <a data-toggle="tooltip" data-placement="bottom" target="_blank" title="Sửa" href="@Url.Action("SuaPhanQuyen", "PhanQuyen", new { @id_quyen = @item.id_quyen, @id_truycap = @item.id_truycap })">
+                                                            @*<a data-toggle="tooltip" data-placement="bottom" target="_blank" title="Sửa" href="@Url.Action("SuaPhanQuyen", "PhanQuyen", new { @id_quyen = @item.id_quyen, @id_truycap = @item.id_truycap })">
                                                                 <i class="fa fa-edit"></i>
-                                                            </a>
+                                                            </a>*@
                                                             <a id="deleteND" href="#" title="Xóa" onclick="Delete(@item.id_quyen,@item.id_truycap);return false;">
                                                                 <i class="fa fa-close"></i>
                                                             </a>

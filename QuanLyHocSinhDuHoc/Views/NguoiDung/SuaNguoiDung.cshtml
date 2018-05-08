@@ -15,7 +15,6 @@
                     <h2>Cập nhật người dùng</h2>
                     <div class="clearfix"></div>
                 </div>
-
                 <div class="x_content">
                     <form class="form-horizontal form-label-left" method="post" id="formAddND">
                         <div class="row">
@@ -43,14 +42,15 @@
                                     </label>
                                     <div class="col-md-9 col-sm-9 col-xs-12">
                                         <input class="form-control col-md-7 col-xs-12" id="SoDT" name="SoDT" type="text" value="@Model.SoDT" placeholder="Số điện thoại" />
-                                    </div>
+                                        <p id="messphone" style="color:red;font-weight:bold;"></p>
+                                     </div>
                                 </div>
                                 <div class="item form-group">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12">
                                         Tên đăng nhập
                                     </label>
                                     <div class="col-md-9 col-sm-9 col-xs-12">
-                                        <input class="form-control col-md-7 col-xs-12" id="TenDangNhap" name="TenDangNhap" value="@Model.TenDangNhap" required="required" placeholder="Tên đăng nhập" type="text" />
+                                        <input class="form-control col-md-7 col-xs-12" id="TenDangNhap" disabled name="TenDangNhap" value="@Model.TenDangNhap" required="required" placeholder="Tên đăng nhập" type="text" />
                                     </div>
                                 </div>                               
                                 <div class="item form-group">
@@ -116,3 +116,56 @@
     </div>
 </div>
 
+<script type="text/javascript">
+    $("#SoDT").blur(function () {
+        var sodt = $("#SoDT").val();
+        if (sodt != "") {
+            if (validatePhone("SoDT") == false)
+                $("#messphone").text("Nhập lại số điện thoại");
+            else {
+                $.ajax({
+                    url: "/NguoiDung/CheckSoDT",
+                    type: "POST",
+                    dataType: "json",
+                    data: JSON.stringify({ SoDT: sodt }),
+                    contentType: "application/json; charset=utf-8",
+                    success: function (data) {
+                        if (data == "Yes") {
+                            $("#messphone").text("Đã tồn tại số điện thoại này!!!");
+                            $("#SoDT").val("");
+                        } else {
+                            $("#messphone").text("");
+                        }
+                    },
+                    error: function (er) {
+                        alert(er);
+                    }
+                });
+            }
+            
+        }
+    });
+    $("#SoDT").focus(function () {
+        $("#messphone").text("");
+    });
+
+    $("#Sublmit").click(function(){
+        if (validatePhone("SoDT") == false)
+        {
+            $("#messphone").text("Nhập lại số điện thoại");
+            return false;
+        }
+        else $("#messphone").text("");
+
+    });
+    function validatePhone(txtPhone) {
+        var a = document.getElementById(txtPhone).value;
+        var filter = /^[0-9-+]+$/;
+        if (filter.test(a)) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+</script>

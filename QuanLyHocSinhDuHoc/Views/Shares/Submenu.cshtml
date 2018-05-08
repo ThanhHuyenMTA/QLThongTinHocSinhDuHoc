@@ -1,4 +1,8 @@
-﻿<div class="col-md-3 left_col">
+﻿@{
+        QuanLyHocSinhDuHoc.CommonXuLy.ModelQuyenNguoiDung modelND = Session["QuyenNguoiDung"] as QuanLyHocSinhDuHoc.CommonXuLy.ModelQuyenNguoiDung; 
+}
+
+<div class="col-md-3 left_col">
     <div class="left_col scroll-view">
         <div class="navbar nav_title" style="border: 0;">
             <a href="#" class="site_title"><i class="fa fa-cloud"></i><span style="margin-left: 5px;"></span></a>
@@ -40,33 +44,33 @@
                             </ul>
                         </li>
                       @{
-                          if (Session["NguoiDung"] != null && Session["NguoiDung"].ToString() == "Admin")
+                          if(modelND !=null)
                           {
-                            <li>
-                                <a>
-                                    <i class="fa fa-edit"></i>Hệ thống<span class="fa fa-chevron-down"></span>
-                                </a>
-                                <ul class="nav child_menu">
-                                    <li>
-                                        <a href="@Url.Content("/NguoiDung/Index")">Người dùng</a>
-                                    </li>
-                                    <li>
-                                        <a href="@Url.Content("/Quyen/Index")">Quyền hạn</a>
-                                    </li>
-                                    <li>
-                                        <a href="@Url.Content("/QuyenTruyCap/Index")">Quyền truy cập</a>
-                                    </li>
-                                    <li>
-                                        <a href="@Url.Content("/PhanQuyen/Index")">Phân quyền</a>
-                                    </li>                                   
-                                </ul>
-                            </li>
+                              if (modelND.Quyen.Ten =="Admin")
+                              {
+                                <li>
+                                    <a>
+                                        <i class="fa fa-edit"></i>Hệ thống<span class="fa fa-chevron-down"></span>
+                                    </a>
+                                    <ul class="nav child_menu">
+                                        <li>
+                                            <a href="@Url.Content("/NguoiDung/Index")">Người dùng</a>
+                                        </li>
+                                        <li>
+                                            <a href="@Url.Content("/Quyen/Index")">Quyền hạn</a>
+                                        </li>
+                                        @*<li>
+                                            <a href="@Url.Content("/QuyenTruyCap/Index")">Quyền truy cập</a>
+                                        </li>
+                                        <li>
+                                            <a href="@Url.Content("/PhanQuyen/Index")">Phân quyền</a>
+                                        </li>*@
+                                    </ul>
+                                </li>
 
+                              }
                           }
-                    }
-
-
-                      
+                    }           
                 </ul>
             </div>
         </div>
@@ -106,7 +110,7 @@
                 </li>
 
                 <li role="presentation" class="dropdown">
-                    <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+                    <a href="javascript:;" title="Thông báo lỗi" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
                         <i class="fa fa-bell-o"></i>
                         <span class="badge bg-green">1</span>
                     </a>

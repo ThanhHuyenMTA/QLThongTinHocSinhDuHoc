@@ -85,6 +85,61 @@
     </div>
 </div>
 
+@*phan trang*@
+<div id="phantrang">
+    <div class="pagination-container">
+        <ul class="pagination" style="margin-top:-20px;">
+
+            @{
+                int? page;
+                page = (int)Session["trangdangload"];
+                int currentPage = page ?? 1;
+                QuanLyHocSinhDuHoc.CommonXuLy.Paging paging = new QuanLyHocSinhDuHoc.CommonXuLy.Paging(currentPage, (int)Session["chiasotrang"]);
+
+                if (paging.hasPrev2)
+                {
+                    <li><a class="fa fa-angle-double-left" href="/NguoiDung/Index?page=1"></a></li>
+                }
+                if (paging.hasPrev1)
+                {
+                    <li><a class="fa fa-angle-left" href="#" onclick="Quaylai(@Session["trangdangload"])"></a></li>
+                }
+                if (paging.prevPage2 > 0)
+                {
+                    <li><a href="/NguoiDung/Index?page=@paging.prevPage2"> @paging.prevPage2</a></li>
+                }
+                if (paging.prevPage1 > 0)
+                {
+                    <li><a href="/NguoiDung/Index?page=@paging.prevPage1"> @paging.prevPage1</a></li>
+                }
+                if (paging.currentPage > 0)
+                {
+                    <li><a href="/NguoiDung/Index?page=@paging.currentPage" style="font-weight:bold;color:red"> @paging.currentPage</a></li>
+                }
+                if (paging.nextPage1 > 0 & paging.nextPage1 <= (int)Session["chiasotrang"])
+                {
+                    <li><a href="/NguoiDung/Index?page=@paging.nextPage1"> @paging.nextPage1</a></li>
+                }
+                if (paging.nextPage2 > 0 & paging.nextPage2 <= (int)Session["chiasotrang"])
+                {
+                    <li><a href="/NguoiDung/Index?page=@paging.nextPage2"> @paging.nextPage2</a></li>
+                }
+
+                if (paging.hasNext1 & paging.nextPage2 != (int)Session["chiasotrang"])
+                {
+                    <li><a class="fa fa-angle-right" onclick="Tieptheo(@Session["trangdangload"])"></a></li>
+                }
+
+                if (paging.hasNext2 & paging.nextPage2 != (int)Session["chiasotrang"])
+                {
+                    <li><a class="fa fa-angle-double-right" href="#" onclick="CuoiCung()"></a></li>
+
+                }
+            }
+        </ul>
+    </div>
+</div>
+
 <script type="text/javascript">
     function Delete(id_nd)
     {
@@ -110,6 +165,36 @@
             });
         }
     }
-   
+    //phân trang
+    function Tieptheo(page) {
+        var pagecuoi = page + 1;
+        window.location.href = '/NguoiDung/Index?page=' + pagecuoi;
+    };
+    function Quaylai(page) {
+        var pagecuoi = 1;
+        if (page == 1 || page == 0)
+            pagecuoi = 1;
+        else
+            pagecuoi = page - 1;
+        window.location.href = '/NguoiDung/Index?page=' + pagecuoi;
+    };
+    function CuoiCung() {
+        $.ajax({
+            type: "GET",
+            url: "/NguoiDung/XulyPhanTrangVeCuoiCung",
+            datatype: "json",
+            data: {},
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+
+                window.location.href = '/NguoiDung/Index?page=' + data;
+            },
+            error: function (err) {
+                alert("Error: " + err.responseText);
+            }
+        });
+    };
+
+
 </script>
 

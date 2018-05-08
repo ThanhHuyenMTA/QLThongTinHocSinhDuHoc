@@ -191,15 +191,17 @@
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="TenHS" Type="nvarchar" MaxLength="50" />
+    <Property Name="TenHS" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="SoCMT" Type="varchar" MaxLength="20" />
-    <Property Name="sdt" Type="varchar" MaxLength="20" />
+    <Property Name="sdt" Type="varchar" MaxLength="20" Nullable="false" />
     <Property Name="email" Type="text" />
     <Property Name="anh" Type="text" />
     <Property Name="id_GKS" Type="int" />
     <Property Name="id_BTN" Type="int" />
     <Property Name="id_HB" Type="int" />
-    <Property Name="timeStart" Type="varchar" MaxLength="4" />
+    <Property Name="id_NgGiamHo" Type="varchar" MaxLength="20" />
+    <Property Name="timeStart" Type="varchar" MaxLength="4" Nullable="false" />
+    <Property Name="NguoiTao" Type="int" />
   </EntityType>
   <EntityType Name="HoKhau">
     <Key>
@@ -284,8 +286,8 @@
     </Key>
     <Property Name="SoCMT" Type="varchar" MaxLength="20" Nullable="false" />
     <Property Name="HoTen" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="TenGoiKhac" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="NgaySinh" Type="datetime" />
+    <Property Name="TenGoiKhac" Type="nvarchar" MaxLength="50" />
+    <Property Name="NgaySinh" Type="datetime" Nullable="false" />
     <Property Name="GioiTinh" Type="nvarchar" MaxLength="3" />
     <Property Name="QuocTich" Type="nvarchar" MaxLength="50" />
     <Property Name="QueQuan" Type="nvarchar" MaxLength="200" Nullable="false" />
@@ -293,11 +295,11 @@
     <Property Name="GiaTriDen" Type="datetime" />
     <Property Name="DanToc" Type="nvarchar" MaxLength="50" />
     <Property Name="TonGiao" Type="nvarchar" MaxLength="50" />
-    <Property Name="DauVetRieng" Type="ntext" Nullable="false" />
+    <Property Name="DauVetRieng" Type="ntext" />
     <Property Name="NgayCap" Type="datetime" Nullable="false" />
-    <Property Name="NoiCap" Type="nvarchar" MaxLength="200" />
-    <Property Name="LoaiCMT" Type="int" />
-    <Property Name="id_HSinh" Type="int" />
+    <Property Name="NoiCap" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="LoaiCMT" Type="int" Nullable="false" />
+    <Property Name="file_CMTNGH" Type="ntext" />
   </EntityType>
   <EntityType Name="NHANVIEN">
     <Key>
@@ -305,12 +307,14 @@
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="HoTen" Type="nvarchar" MaxLength="50" />
-    <Property Name="GioiTinh" Type="nvarchar" MaxLength="3" />
+    <Property Name="Email" Type="text" />
     <Property Name="DiaChi" Type="nvarchar" MaxLength="200" />
     <Property Name="SoDT" Type="nvarchar" MaxLength="50" />
     <Property Name="TenDangNhap" Type="nvarchar" MaxLength="50" />
     <Property Name="MatKhau" Type="text" />
     <Property Name="id_Quyen" Type="int" />
+    <Property Name="NguoiTao" Type="int" />
+    <Property Name="NgayTao" Type="date" />
   </EntityType>
   <EntityType Name="PHANQUYEN">
     <Key>
@@ -353,10 +357,15 @@
     <Property Name="TrangThai" Type="varchar" MaxLength="20" />
   </EntityType>
   <Function Name="PhanTrang" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="NguoiTao" Type="int" Mode="In" />
     <Parameter Name="LineStart" Type="int" Mode="In" />
     <Parameter Name="soBanGhi" Type="int" Mode="In" />
   </Function>
   <Function Name="PhanTrangLoi" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="LineStart" Type="int" Mode="In" />
+    <Parameter Name="soBanGhi" Type="int" Mode="In" />
+  </Function>
+  <Function Name="PhanTrangNguoiDung" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="LineStart" Type="int" Mode="In" />
     <Parameter Name="soBanGhi" Type="int" Mode="In" />
   </Function>

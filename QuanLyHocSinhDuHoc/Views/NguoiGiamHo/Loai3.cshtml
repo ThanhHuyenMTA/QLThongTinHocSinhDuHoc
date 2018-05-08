@@ -9,12 +9,16 @@
                 </div>
                 <div class="x_content">
                     <form class="form-horizontal form-label-left" method="post">
-                        <div class="item form-group" hidden="hidden">
+                        <div class=" item form-group">
+                            <button id="btn_fileCMT3" type="button" onclick="$('#fileCMT3').click()" class="btn btn-sm btn-primary" style="width:230px;">Chọn file</button>
+                            <input type="file" id="fileCMT3" name="fileCMT3" style="display: none;" class="form-control">
+                        </div>
+                        <div class="item form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12">
                                 Số chứng minh <span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input class="form-control col-md-7 col-xs-12" name="SoCMT" type="text" />
+                                <input class="form-control col-md-7 col-xs-12" id="SoCMT3" name="SoCMT" type="text" />
                             </div>
                         </div>
                         <div class="item form-group">
@@ -22,7 +26,7 @@
                                 Họ tên <span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input class="form-control col-md-7 col-xs-12" name="HoTen" required="required" placeholder="Họ tên" type="text" />
+                                <input class="form-control col-md-7 col-xs-12" id="HoTen" name="HoTen3" required="required" placeholder="Họ tên" type="text" />
                             </div>
                         </div>
                         <div class="item form-group">
@@ -30,7 +34,7 @@
                                 Tên gọi khác <span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input class="form-control col-md-7 col-xs-12" name="TenGoiKhac" required="required" placeholder="Tên gọi khác" type="text" />
+                                <input class="form-control col-md-7 col-xs-12" id="TenGoiKhac3" name="TenGoiKhac" required="required" placeholder="Tên gọi khác" type="text" />
                             </div>
                         </div>
                         <div class="item form-group">
@@ -38,7 +42,7 @@
                                 Ngày sinh <span class="required"></span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input class="form-control has-feedback-left active" name="NgaySinh" id="dtpNgaySinh3NGH" type="date" /><span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
+                                <input class="form-control has-feedback-left active" name="NgaySinh" id="dtpNgaySinh3" type="date" /><span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
                             </div>
                         </div>
                         <div class="item form-group">
@@ -46,7 +50,7 @@
                                 Quê quán
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input class="form-control col-md-7 col-xs-12" name="QueQuan" placeholder="Quê quán" type="text" />
+                                <input class="form-control col-md-7 col-xs-12" id="QueQuan3" name="QueQuan" placeholder="Quê quán" type="text" />
                             </div>
                         </div>
                         <div class="item form-group">
@@ -54,7 +58,7 @@
                                 Nơi thường trú
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input class="form-control col-md-7 col-xs-12" name="NoiThuongTru" placeholder="Nơi thường trú" type="text" />
+                                <input class="form-control col-md-7 col-xs-12" id="NoiThuongTru3" name="NoiThuongTru" placeholder="Nơi thường trú" type="text" />
                             </div>
                         </div>
                         <div class="item form-group">
@@ -63,10 +67,10 @@
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 <label class="radio-inline">
-                                    <input type="radio" name="GioiTinh" id="GioiTinh1" value="Nam" /> Nam
+                                    <input type="radio" name="GioiTinh" value="Nam" /> Nam
                                 </label>
                                 <label class="radio-inline">
-                                    <input type="radio" name="GioiTinh" id="GioiTinh2" value="Nữ" /> Nữ
+                                    <input type="radio" name="GioiTinh" value="Nữ" /> Nữ
                                 </label>
                             </div>
                         </div>
@@ -75,7 +79,7 @@
                                 Quốc tịch
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input id="name" class="form-control col-md-7 col-xs-12" name="QuocTich" type="text" placeholder="Quốc tịch" />
+                                <input id="QuocTich3" class="form-control col-md-7 col-xs-12" name="QuocTich" type="text" placeholder="Quốc tịch" />
                             </div>
                         </div>
                         <div class="item form-group">
@@ -83,7 +87,7 @@
                                 Gía trị đến <span class="required"></span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input class="form-control has-feedback-left active" name="GiaTriDen" id="dtpGiaTriDen3NGH" type="date" /><span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
+                                <input class="form-control has-feedback-left active" name="GiaTriDen" id="dtpGiaTriDen3" type="date" /><span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
                             </div>
                         </div>
                         <div class="item form-group">
@@ -91,7 +95,7 @@
                                 Dấu vết riêng
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <textarea id="textarea" name="DauVetRieng" placeholder="Dấu vết riêng" class="form-control col-md-7 col-xs-12"></textarea>
+                                <textarea id="DauVetRieng3" name="DauVetRieng" placeholder="Dấu vết riêng" class="form-control col-md-7 col-xs-12"></textarea>
                             </div>
                         </div>
                         <div class="item form-group">
@@ -99,7 +103,7 @@
                                 Ngày cấp <span class="required"></span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input class="form-control has-feedback-left active" name="NgayCap" id="dtpNgayCap3NGH" type="date" /><span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
+                                <input class="form-control has-feedback-left active" name="NgayCap" id="dtpNgayCap3" type="date" /><span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
                             </div>
                         </div>
                         <div class="item form-group">
@@ -107,14 +111,14 @@
                                 Nơi cấp
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input id="name" class="form-control col-md-7 col-xs-12" name="NoiCap" placeholder="Nơicấp" type="text" />
+                                <input id="NoiCap3" class="form-control col-md-7 col-xs-12" name="NoiCap" placeholder="Nơicấp" type="text" />
                             </div>
                         </div>
-
+                        <p id="messThemCMT3" style="color:red;font-weight:bold;"></p>
                         <div class="ln_solid"></div>
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-3">
-                                <button class="btn btn-success" onclick="return confirm('Bạn có muốn thêm mới thông tin chứng minh thư ?')">Thêm mới</button>
+                                <button class="btn btn-success" type="button" onclick="SaveCMT3NGH()">Thêm mới</button>
                                 <a href="#" class="btn btn-primary">Huỷ</a>
                             </div>
                         </div>
@@ -124,3 +128,51 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    function SaveCMT3NGH() {
+        if ($("#SoCMT3").val() == "" || $("#HoTen3").val() == "" || $("#dtpNgaySinh3").val() == "" || $("#QueQuan3").val() == "" ||
+            $("#NoiThuongTru3").val() == "" || $("#QuocTich3").val() == "" || $("#dtpGiaTriDen3").val() == "" || $("#DanToc3").val() == "" ||
+            $("#DauVetRieng3").val() == "" || $("#dtpNgayCap3").val() == "" || $("#NoiCap3").val() == "")
+            $("#messThemCMT3").text("Thông tin không được để trống");
+        else {
+            $("#messThemCMT3").text("");
+            var cmt3 = {
+                SoCMT: $("#SoCMT3").val(),
+                HoTen: $("#HoTen3").val(),
+                TenGoiKhac: $("#TenGoiKhac3").val(),
+                NgaySinh: $("#dtpNgaySinh3").val(),
+                QueQuan: $("#QueQuan3").val(),
+                NoiThuongTru: $("#NoiThuongTru3").val(),
+                GioiTinh: $('[name="GioiTinh"]:radio:checked').val(),
+                QuocTich: $("#QuocTich3").val(),
+                GiaTriDen: $("#dtpGiaTriDen3").val(),
+                DanToc: $("#DanToc3").val(),
+                DauVetRieng: $("#DauVetRieng3").val(),
+                NgayCap: $("#dtpNgayCap3").val(),
+                NoiCap: $("#NoiCap3").val(),
+                LoaiCMT: 3
+            };
+            $.ajax({
+                type: "POST",
+                url: "/NguoiGiamHo/Themmoi3",
+                dataType: "json",
+                data: JSON.stringify(cmt3),
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    alert(data);
+                    $("#ClassCMT").css("display", "none");
+                    $("#Loai1").css("display", "none");
+                    $("#Loai2").css("display", "none");
+                    $("#Loai3").css("display", "none");
+                    var row = '';
+                    row += "<h2 style='color:#0070e2;'><strong>Đã thêm thành công</strong></h2>"
+                    $("#ThongbaoCMT").html(row);
+                },
+                error: function (err) {
+                    alert("Error: " + err.responseText);
+                }
+            });
+        }
+    }
+</script>

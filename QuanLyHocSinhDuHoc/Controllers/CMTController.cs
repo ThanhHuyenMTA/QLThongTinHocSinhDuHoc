@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using QuanLyHocSinhDuHoc.Models.Entities;
 using System.IO;
 using PaymentSystem.Controllers;
+using QuanLyHocSinhDuHoc.CommonXuLy;
 
 namespace QuanLyHocSinhDuHoc.Controllers
 {
@@ -15,15 +16,23 @@ namespace QuanLyHocSinhDuHoc.Controllers
         // GET: CMT
         public ActionResult Themmoi(int? id_hs)
         {
-            Session["file"] = null;
-            return View();
+            ModelQuyenNguoiDung quyenNguoiDung = Session["QuyenNguoiDung"] as ModelQuyenNguoiDung;
+            if (quyenNguoiDung != null && (quyenNguoiDung.Quyen.Ten == "QuanLyThongTinHocSinh" || quyenNguoiDung.Quyen.Ten == "Admin"))
+            {
+                Session["file"] = null;
+                return View();
+            } return RedirectToAction("Index", "Home");
         }
         public ActionResult ThemmoiR(int? id_hs)
         {
-            Session["file"] = null;
-            Session["chuyenTab"] = 2;
-            Session["id_HS"] = id_hs;
-            return View(id_hs);
+            ModelQuyenNguoiDung quyenNguoiDung = Session["QuyenNguoiDung"] as ModelQuyenNguoiDung;
+            if (quyenNguoiDung != null && (quyenNguoiDung.Quyen.Ten == "QuanLyThongTinHocSinh" || quyenNguoiDung.Quyen.Ten == "Admin"))
+            {
+                Session["file"] = null;
+                Session["chuyenTab"] = 2;
+                Session["id_HS"] = id_hs;
+                return View(id_hs);
+            } return RedirectToAction("Index", "Home");
         }
 
         [HttpPost]
@@ -36,11 +45,14 @@ namespace QuanLyHocSinhDuHoc.Controllers
                 db.CMTs.Add(cmt1);
                 db.SaveChanges();
                 //Cập nhật lại bảng học sinh
-                int id_HS = (int)Session["id_HS"];
-                HOCSINH hocsinh = db.HOCSINHs.Find(id_HS);
-                hocsinh.SoCMT = cmt1.SoCMT;
-                db.Entry(hocsinh).State = System.Data.Entity.EntityState.Modified;
-                db.SaveChanges();
+                if (Session["id_HS"] != null)
+                {
+                    int id_HS = (int)Session["id_HS"];
+                    HOCSINH hocsinh = db.HOCSINHs.Find(id_HS);
+                    hocsinh.id_NgGiamHo = cmt1.SoCMT;
+                    db.Entry(hocsinh).State = System.Data.Entity.EntityState.Modified;
+                    db.SaveChanges();
+                }
                 return Json("Thêm thành công!", JsonRequestBehavior.AllowGet);
             }
             return Json("Thêm thất bại!", JsonRequestBehavior.AllowGet);
@@ -55,11 +67,14 @@ namespace QuanLyHocSinhDuHoc.Controllers
                 db.CMTs.Add(cmt2);
                  db.SaveChanges();
                  //Cập nhật lại bảng học sinh
-                 int id_HS = (int)Session["id_HS"];
-                 HOCSINH hocsinh = db.HOCSINHs.Find(id_HS);
-                 hocsinh.SoCMT = cmt2.SoCMT;
-                 db.Entry(hocsinh).State = System.Data.Entity.EntityState.Modified;
-                 db.SaveChanges();
+                 if (Session["id_HS"] != null)
+                 {
+                     int id_HS = (int)Session["id_HS"];
+                     HOCSINH hocsinh = db.HOCSINHs.Find(id_HS);
+                     hocsinh.id_NgGiamHo = cmt2.SoCMT;
+                     db.Entry(hocsinh).State = System.Data.Entity.EntityState.Modified;
+                     db.SaveChanges();
+                 }
                 return Json("Thêm thành công!", JsonRequestBehavior.AllowGet);
             }
             return Json("Thêm thất bại!", JsonRequestBehavior.AllowGet);
@@ -74,11 +89,14 @@ namespace QuanLyHocSinhDuHoc.Controllers
                 db.CMTs.Add(cmt3);
                  db.SaveChanges();
                  //Cập nhật lại bảng học sinh
-                 int id_HS = (int)Session["id_HS"];
-                 HOCSINH hocsinh = db.HOCSINHs.Find(id_HS);
-                 hocsinh.SoCMT = cmt3.SoCMT;
-                 db.Entry(hocsinh).State = System.Data.Entity.EntityState.Modified;
-                 db.SaveChanges();
+                 if (Session["id_HS"] != null)
+                 {
+                     int id_HS = (int)Session["id_HS"];
+                     HOCSINH hocsinh = db.HOCSINHs.Find(id_HS);
+                     hocsinh.id_NgGiamHo = cmt3.SoCMT;
+                     db.Entry(hocsinh).State = System.Data.Entity.EntityState.Modified;
+                     db.SaveChanges();
+                 }
                 return Json("Thêm thành công!", JsonRequestBehavior.AllowGet);
             }
             return Json("Thêm thất bại!", JsonRequestBehavior.AllowGet);
@@ -86,49 +104,73 @@ namespace QuanLyHocSinhDuHoc.Controllers
         
         public ActionResult Loai1()
         {
-            return View();
+            ModelQuyenNguoiDung quyenNguoiDung = Session["QuyenNguoiDung"] as ModelQuyenNguoiDung;
+            if (quyenNguoiDung != null && (quyenNguoiDung.Quyen.Ten == "QuanLyThongTinHocSinh" || quyenNguoiDung.Quyen.Ten == "Admin"))
+            {
+                return View();
+            } return RedirectToAction("Index", "Home");
         }
         public ActionResult Loai2()
         {
-            return View();
+            ModelQuyenNguoiDung quyenNguoiDung = Session["QuyenNguoiDung"] as ModelQuyenNguoiDung;
+            if (quyenNguoiDung != null && (quyenNguoiDung.Quyen.Ten == "QuanLyThongTinHocSinh" || quyenNguoiDung.Quyen.Ten == "Admin"))
+            {
+                return View();
+            } return RedirectToAction("Index", "Home");
         }
         public ActionResult Loai3()
         {
-            return View();
+            ModelQuyenNguoiDung quyenNguoiDung = Session["QuyenNguoiDung"] as ModelQuyenNguoiDung;
+            if (quyenNguoiDung != null && (quyenNguoiDung.Quyen.Ten == "QuanLyThongTinHocSinh" || quyenNguoiDung.Quyen.Ten == "Admin"))
+            {
+                return View();
+            } return RedirectToAction("Index", "Home");
         }
         public ActionResult Detail()
         {
-            int id_hs = (int)Session["id_hsDetail"];
-            HOCSINH hocsinh = db.HOCSINHs.Find(id_hs);
-            CMT cmt = db.CMTs.SingleOrDefault(n => n.SoCMT == hocsinh.SoCMT);
-            return View(cmt);
+            ModelQuyenNguoiDung quyenNguoiDung = Session["QuyenNguoiDung"] as ModelQuyenNguoiDung;
+            if (quyenNguoiDung != null && (quyenNguoiDung.Quyen.Ten == "QuanLyThongTinHocSinh" || quyenNguoiDung.Quyen.Ten == "Admin"))
+            {
+                int id_hs = (int)Session["id_hsDetail"];
+                HOCSINH hocsinh = db.HOCSINHs.Find(id_hs);
+                CMT cmt = db.CMTs.SingleOrDefault(n => n.SoCMT == hocsinh.SoCMT);
+                return View(cmt);
+            } return RedirectToAction("Index", "Home");
         }
         public ActionResult SuaCMT(string soCMT,int loaiCMT)
         {
-            Session["file"] = null;
-            CMT cmt = db.CMTs.Find(soCMT);
-            ViewBag.LoaiCMT = loaiCMT;
-            HOCSINH hs = db.HOCSINHs.SingleOrDefault(n => n.SoCMT == soCMT);
-            ViewBag.id_hs = hs.id;
-            Session["chuyenTab"] = 2;
-            return View(cmt);
+            ModelQuyenNguoiDung quyenNguoiDung = Session["QuyenNguoiDung"] as ModelQuyenNguoiDung;
+            if (quyenNguoiDung != null && (quyenNguoiDung.Quyen.Ten == "QuanLyThongTinHocSinh" || quyenNguoiDung.Quyen.Ten == "Admin"))
+            {
+                Session["file"] = null;
+                CMT cmt = db.CMTs.Find(soCMT);
+                ViewBag.LoaiCMT = loaiCMT;
+                HOCSINH hs = db.HOCSINHs.SingleOrDefault(n => n.SoCMT == soCMT);
+                ViewBag.id_hs = hs.id;
+                Session["chuyenTab"] = 2;
+                return View(cmt);
+            }
+            return RedirectToAction("Index", "Home");
         }
         [HttpPost]
         public ActionResult SuaCMT(CMT cmt)
         {
-            
-            if (ModelState.IsValid)
+            ModelQuyenNguoiDung quyenNguoiDung = Session["QuyenNguoiDung"] as ModelQuyenNguoiDung;
+            if (quyenNguoiDung != null && (quyenNguoiDung.Quyen.Ten == "QuanLyThongTinHocSinh" || quyenNguoiDung.Quyen.Ten == "Admin"))
             {
-                if (Session["file"] != null)
-                    cmt.fileCMT = (string)Session["file"];
-                HOCSINH hs = db.HOCSINHs.SingleOrDefault(n => n.SoCMT == cmt.SoCMT);
-                db.Entry(cmt).State = System.Data.Entity.EntityState.Modified;
-                db.SaveChanges();
-                Session["chuyenTab"] = 2;
-                return RedirectToAction("DetailChung/" + hs.id,"HocSinh");
+                if (ModelState.IsValid)
+                {
+                    if (Session["file"] != null)
+                        cmt.fileCMT = (string)Session["file"];
+                    HOCSINH hs = db.HOCSINHs.SingleOrDefault(n => n.SoCMT == cmt.SoCMT);
+                    db.Entry(cmt).State = System.Data.Entity.EntityState.Modified;
+                    db.SaveChanges();
+                    Session["chuyenTab"] = 2;
+                    return RedirectToAction("DetailChung/" + hs.id, "HocSinh");
 
-            }
-            return View(cmt);
+                }
+                return View(cmt);
+            } return RedirectToAction("Index", "Home");
         }
         //upload File -> them file trong phan chi tiet
         [HttpPost]

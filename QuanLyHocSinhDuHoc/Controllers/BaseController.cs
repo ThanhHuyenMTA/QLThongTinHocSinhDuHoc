@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using QuanLyHocSinhDuHoc.Models.Entities;
+using QuanLyHocSinhDuHoc.CommonXuLy;
 namespace PaymentSystem.Controllers
 {
     public class BaseController : Controller

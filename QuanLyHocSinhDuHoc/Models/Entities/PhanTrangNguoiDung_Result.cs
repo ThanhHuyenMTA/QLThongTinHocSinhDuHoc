@@ -10,19 +10,16 @@
 namespace QuanLyHocSinhDuHoc.Models.Entities
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class NHANVIEN
+    public partial class PhanTrangNguoiDung_Result
     {
         public int id { get; set; }
         public string HoTen { get; set; }
-        public string Email { get; set; }
+        public string GioiTinh { get; set; }
         public string DiaChi { get; set; }
         public string SoDT { get; set; }
         public string TenDangNhap { get; set; }
         public string MatKhau { get; set; }
         public Nullable<int> id_Quyen { get; set; }
-        public Nullable<int> NguoiTao { get; set; }
-        public Nullable<System.DateTime> NgayTao { get; set; }
     }
 }

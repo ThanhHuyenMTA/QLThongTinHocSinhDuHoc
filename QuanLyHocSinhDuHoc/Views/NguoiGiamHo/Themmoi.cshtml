@@ -21,6 +21,9 @@
 <div class="row" id="Loai3NGH" style="display:none;">
     @Html.Action("Loai3", "NguoiGiamHo")
 </div>
+<div id="ThongbaoCMTNGH" style="padding:10% 10%">
+
+</div>
 <style>
     .loaicmt {
         color: #0094ff;
@@ -30,6 +33,76 @@
 </style>
 
 <script type="text/javascript">
+    $(document).ready(function () {
+        $("#fileCMT1").change(function () {
+            debugger;
+            var data = new FormData();
+            var files = $("#fileCMT1").get(0).files;
+            if (files.length > 0) {
+                data.append("HelpSectionFile", files[0]);
+            }
+            $.ajax({
+                url: "/XuLyHocSinh/UpLoadFile",
+                type: "POST",
+                processData: false,
+                contentType: false,
+                data: data,
+                success: function (data) {
+                    console.log(data);
+                },
+                error: function (er) {
+                    alert(er);
+                }
+
+            });
+        });
+        $("#fileCMT2").change(function () {
+            debugger;
+            var data = new FormData();
+            var files = $("#fileCMT2").get(0).files;
+            if (files.length > 0) {
+                data.append("HelpSectionFile", files[0]);
+            }
+            $.ajax({
+                url: "/XuLyHocSinh/UpLoadFile",
+                type: "POST",
+                processData: false,
+                contentType: false,
+                data: data,
+                success: function (data) {
+                    console.log(data);
+                },
+                error: function (er) {
+                    alert(er);
+                }
+
+            });
+        });
+        $("#fileCMT3").change(function () {
+            debugger;
+            var data = new FormData();
+            var files = $("#fileCMT3").get(0).files;
+            if (files.length > 0) {
+                data.append("HelpSectionFile", files[0]);
+            }
+            $.ajax({
+                url: "/XuLyHocSinh/UpLoadFile",
+                type: "POST",
+                processData: false,
+                contentType: false,
+                data: data,
+                success: function (data) {
+                    console.log(data);
+                },
+                error: function (er) {
+                    alert(er);
+                }
+
+            });
+        });
+
+
+    });
     function LoaiCMTNGH(id)
     {
         debugger;

@@ -16,47 +16,59 @@ namespace QuanLyHocSinhDuHoc.Controllers
         // GET: GiayTo
         public ActionResult Giaynhaphoc(int id)
         {
-            Session["chuyenTab"] = null;
-            HOCSINH hs = db.HOCSINHs.Find(id);
-            ViewBag.id_hsss = hs.id;
-            ViewBag.sdt = hs.sdt;
-            CMT cmt = db.CMTs.Find(hs.SoCMT);
-            HOCBA hb = db.HOCBAs.Find(hs.id_HB);
-            if(cmt!=null)
+            ModelQuyenNguoiDung quyenNguoiDung = Session["QuyenNguoiDung"] as ModelQuyenNguoiDung;
+            if (quyenNguoiDung != null && (quyenNguoiDung.Quyen.Ten == "QuanLyHoSo"|| quyenNguoiDung.Quyen.Ten=="Admin"))
             {
-                ViewBag.tenhs = dich.ReplaceUnicode(cmt.HoTen);
-                ViewBag.noisinh = dich.ReplaceUnicode(cmt.QueQuan);
-                ViewBag.noithuongtru = dich.ReplaceUnicode(cmt.NoiThuongTru);
+            
+                Session["chuyenTab"] = null;
+                HOCSINH hs = db.HOCSINHs.Find(id);
+                ViewBag.id_hsss = hs.id;
+                ViewBag.sdt = hs.sdt;
+                CMT cmt = db.CMTs.Find(hs.SoCMT);
+                HOCBA hb = db.HOCBAs.Find(hs.id_HB);
+                if (cmt != null)
+                {
+                    ViewBag.tenhs = dich.ReplaceUnicode(cmt.HoTen);
+                    ViewBag.noisinh = dich.ReplaceUnicode(cmt.QueQuan);
+                    ViewBag.noithuongtru = dich.ReplaceUnicode(cmt.NoiThuongTru);
+                }
+                if (hb != null)
+                {
+                    ViewBag.noisonghientai = dich.ReplaceUnicode(hb.NoiSongHienTai);
+                    ViewBag.gioiTinh = hb.GioiTinh;
+                    ViewBag.ngaySinh = hb.NgaySinh;
+                }
+
+                // dua ra danh sach thanh vien gia dinh
+                List<HoKhau> listHK = db.HoKhaus.Where(n => n.id_hs == id).ToList();
+                ViewBag.dstv = listHK;
+                //giay nhap hoc
+                GiayNhapHoc giaynhaphoc = db.GiayNhapHocs.SingleOrDefault(n => n.id_hs == hs.id);
+                if (giaynhaphoc != null)
+                {
+                    View(giaynhaphoc);
+                }
+                return View();
             }
-            if(hb!=null)
-            {
-                ViewBag.noisonghientai = dich.ReplaceUnicode(hb.NoiSongHienTai);
-                ViewBag.gioiTinh = hb.GioiTinh;
-                ViewBag.ngaySinh = hb.NgaySinh;
-            }
-                          
-            // dua ra danh sach thanh vien gia dinh
-            List<HoKhau> listHK = db.HoKhaus.Where(n => n.id_hs == id).ToList();
-            ViewBag.dstv = listHK;
-            //giay nhap hoc
-             GiayNhapHoc giaynhaphoc = db.GiayNhapHocs.SingleOrDefault(n => n.id_hs == hs.id);
-            if(giaynhaphoc!=null)
-            {
-                View(giaynhaphoc);
-            }          
-            return View();
+
+            return RedirectToAction("Index", "Home");
         }
 
         [HttpPost]
         public ActionResult Giaynhaphoc(GiayNhapHoc gnh)
         {
-            if(ModelState.IsValid)
+            ModelQuyenNguoiDung quyenNguoiDung = Session["QuyenNguoiDung"] as ModelQuyenNguoiDung;
+            if (quyenNguoiDung != null && (quyenNguoiDung.Quyen.Ten == "QuanLyHoSo" || quyenNguoiDung.Quyen.Ten == "Admin"))
             {
-                db.GiayNhapHocs.Add(gnh);
-                db.SaveChanges();
-                return RedirectToAction("Giaynhaphoc/"+gnh.id_hs);
+                if (ModelState.IsValid)
+                {
+                    db.GiayNhapHocs.Add(gnh);
+                    db.SaveChanges();
+                    return RedirectToAction("Giaynhaphoc/" + gnh.id_hs);
+                }
+                return View(gnh);
             }
-            return View(gnh);
+            return RedirectToAction("Index", "Home");
         }
 
     }

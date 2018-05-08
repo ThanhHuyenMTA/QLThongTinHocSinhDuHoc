@@ -239,7 +239,9 @@
     <Compile Include="CommonXuLy\DichTuDong.cs" />
     <Compile Include="CommonXuLy\DiemKyHoc.cs" />
     <Compile Include="CommonXuLy\LoiModel.cs" />
+    <Compile Include="CommonXuLy\ModelQuyenNguoiDung.cs" />
     <Compile Include="CommonXuLy\Paging.cs" />
+    <Compile Include="CommonXuLy\Senmail.cs" />
     <Compile Include="CommonXuLy\Xuly.cs" />
     <Compile Include="Controllers\BangTotNghiepController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
@@ -335,6 +337,9 @@
       <DependentUpon>HoSoDuHocEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Entities\PhanTrangLoi_Result.cs">
+      <DependentUpon>HoSoDuHocEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\PhanTrangNguoiDung_Result.cs">
       <DependentUpon>HoSoDuHocEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Entities\PhanTrang_Result.cs">

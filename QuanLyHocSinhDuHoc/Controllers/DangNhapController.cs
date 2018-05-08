@@ -27,13 +27,17 @@ namespace QuanLyHocSinhDuHoc.Controllers
 
             if (nv !=null)
             {
-                if(nv.MatKhau ==matKhauNew)
+                if(nv.MatKhau ==matKhauNew) 
                 {
+                    List<PHANQUYEN> listPQ = db.PHANQUYENs.Where(n => n.id_quyen == nv.id_Quyen).ToList();
+                    QUYEN quyen = db.QUYENs.Find(nv.id_Quyen);
+                    ModelQuyenNguoiDung QuyenNguoiDung = new ModelQuyenNguoiDung(nv,quyen);
+                    Session["QuyenNguoiDung"] = QuyenNguoiDung;
+
                     Session["DangNhap"] = "OK";
-                    Session["thongbaoDN"] = null;
-                   
+                    Session["thongbaoDN"] = null;                   
                     Session["NguoiDung"] = nv.TenDangNhap;
-                 
+                    Session["NguoiDungHT"] = nv;
                     listTb();
                     return RedirectToAction("Index", "Home");
 
@@ -51,7 +55,11 @@ namespace QuanLyHocSinhDuHoc.Controllers
                
             }         
         }
-
+        public ActionResult DangXuat()
+        {
+            Session.RemoveAll();
+            return RedirectToAction("Dangnhap", "DangNhap");
+        }
         public void listTb()
         {
             List<TABLE_LOI> listVang = new List<TABLE_LOI>();

@@ -18,15 +18,15 @@
         <EntityTypeShape EntityType="dbXulyTThsModel.KIHOC" Width="1.5" PointX="8.75" PointY="8.75" IsExpanded="true" />
         <EntityTypeShape EntityType="dbXulyTThsModel.LOTRINH" Width="1.5" PointX="4.75" PointY="9.75" IsExpanded="true" />
         <EntityTypeShape EntityType="dbXulyTThsModel.NAMHOC" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="dbXulyTThsModel.NGUOIGIAMHO" Width="1.5" PointX="10.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="dbXulyTThsModel.TABLE_LOI" Width="1.5" PointX="2.75" PointY="12.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="dbXulyTThsModel.HOCSINH" Width="1.5" PointX="5.375" PointY="12.75" />
         <EntityTypeShape EntityType="dbXulyTThsModel.HoKhau" Width="1.5" PointX="7.375" PointY="14.75" />
         <EntityTypeShape EntityType="dbXulyTThsModel.GiayNhapHoc" Width="1.5" PointX="13.375" PointY="3.75" />
-        <EntityTypeShape EntityType="dbXulyTThsModel.NHANVIEN" Width="1.5" PointX="9.375" PointY="14.75" />
         <EntityTypeShape EntityType="dbXulyTThsModel.PHANQUYEN" Width="1.5" PointX="13.375" PointY="0.75" />
         <EntityTypeShape EntityType="dbXulyTThsModel.QUYEN" Width="1.5" PointX="15.375" PointY="0.75" />
         <EntityTypeShape EntityType="dbXulyTThsModel.QUYENTRUYCAP" Width="1.5" PointX="15.375" PointY="3.75" />
+        <EntityTypeShape EntityType="dbXulyTThsModel.NHANVIEN" Width="1.5" PointX="15.375" PointY="6.75" />
+        <EntityTypeShape EntityType="dbXulyTThsModel.NGUOIGIAMHO" Width="1.5" PointX="15.375" PointY="10.75" />
+        <EntityTypeShape EntityType="dbXulyTThsModel.HOCSINH" Width="1.5" PointX="9.375" PointY="14.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

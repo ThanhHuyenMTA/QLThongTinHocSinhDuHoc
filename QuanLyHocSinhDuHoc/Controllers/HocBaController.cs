@@ -15,15 +15,23 @@ namespace QuanLyHocSinhDuHoc.Controllers
         // GET: HocBa
         public ActionResult Themmoi(int? id_hs)
         {
-            Session["file"] = null;
-            return View();
+            ModelQuyenNguoiDung quyenNguoiDung = Session["QuyenNguoiDung"] as ModelQuyenNguoiDung;
+            if (quyenNguoiDung != null && (quyenNguoiDung.Quyen.Ten == "QuanLyThongTinHocSinh" || quyenNguoiDung.Quyen.Ten == "Admin"))
+            {
+                Session["file"] = null;
+                return View();
+            } return RedirectToAction("Index", "Home");
         }
         public ActionResult ThemmoiR(int? id_hs)
         {
-            Session["file"] = null;
-            Session["chuyenTab"] = 5;
-            Session["id_HS"] = id_hs;
-            return View(id_hs);
+            ModelQuyenNguoiDung quyenNguoiDung = Session["QuyenNguoiDung"] as ModelQuyenNguoiDung;
+            if (quyenNguoiDung != null && (quyenNguoiDung.Quyen.Ten == "QuanLyThongTinHocSinh" || quyenNguoiDung.Quyen.Ten == "Admin"))
+            {
+                Session["file"] = null;
+                Session["chuyenTab"] = 5;
+                Session["id_HS"] = id_hs;
+                return View(id_hs);
+            } return RedirectToAction("Index", "Home");
         }
         [HttpPost]
         public JsonResult Themmoi(HOCBA hocba)
@@ -49,54 +57,66 @@ namespace QuanLyHocSinhDuHoc.Controllers
 
         public ActionResult DetailHB()
         {
-            int id_hs = (int)Session["id_hsDetail"];
-            HOCSINH hocsinh = db.HOCSINHs.Find(id_hs);
-            if (hocsinh.id_HB > 0)
+            ModelQuyenNguoiDung quyenNguoiDung = Session["QuyenNguoiDung"] as ModelQuyenNguoiDung;
+            if (quyenNguoiDung != null && (quyenNguoiDung.Quyen.Ten == "QuanLyThongTinHocSinh" || quyenNguoiDung.Quyen.Ten == "Admin"))
             {
-                ViewBag.ThongbaoHB = "OK";
-                HOCBA hb = db.HOCBAs.Find(hocsinh.id_HB);
-                List<NAMHOC> listNamHoc = db.NAMHOCs.Where(n => n.id_HB == hocsinh.id_HB).ToList();
-                ViewBag.listNamHoc = listNamHoc; //load nam hoc               
-                List<DiemKyHoc> listDiem = new List<DiemKyHoc>();
-                if(listNamHoc.Count >0)
+                int id_hs = (int)Session["id_hsDetail"];
+                HOCSINH hocsinh = db.HOCSINHs.Find(id_hs);
+                if (hocsinh.id_HB > 0)
                 {
-                    foreach(var item in listNamHoc)
+                    ViewBag.ThongbaoHB = "OK";
+                    HOCBA hb = db.HOCBAs.Find(hocsinh.id_HB);
+                    List<NAMHOC> listNamHoc = db.NAMHOCs.Where(n => n.id_HB == hocsinh.id_HB).ToList();
+                    ViewBag.listNamHoc = listNamHoc; //load nam hoc               
+                    List<DiemKyHoc> listDiem = new List<DiemKyHoc>();
+                    if (listNamHoc.Count > 0)
                     {
-                        List<KIHOC> listKH = db.KIHOCs.Where(n => n.id_NAMHOC == item.id).ToList();
-                        if (listKH.Count >0)
+                        foreach (var item in listNamHoc)
                         {
-                            DiemKyHoc a = new DiemKyHoc(item,listKH);
-                            listDiem.Add(a);
+                            List<KIHOC> listKH = db.KIHOCs.Where(n => n.id_NAMHOC == item.id).ToList();
+                            if (listKH.Count > 0)
+                            {
+                                DiemKyHoc a = new DiemKyHoc(item, listKH);
+                                listDiem.Add(a);
+                            }
                         }
                     }
-                }
-                ViewBag.listKiHoc = listDiem;
-                return View(hb);
+                    ViewBag.listKiHoc = listDiem;
+                    return View(hb);
 
-            }
-            ViewBag.ThongbaoHB = "NO";
-            return View();
+                }
+                ViewBag.ThongbaoHB = "NO";
+                return View();
+            } return RedirectToAction("Index", "Home");
         }
         public ActionResult SuaHB(int id)
         {
-            HOCBA hb = db.HOCBAs.Find(id);
-            HOCSINH hs = db.HOCSINHs.SingleOrDefault(n => n.id_HB == id);
-            ViewBag.id_hs = hs.id;
-            Session["chuyenTab"] = 5;			
-            return View(hb);
+            ModelQuyenNguoiDung quyenNguoiDung = Session["QuyenNguoiDung"] as ModelQuyenNguoiDung;
+            if (quyenNguoiDung != null && (quyenNguoiDung.Quyen.Ten == "QuanLyThongTinHocSinh" || quyenNguoiDung.Quyen.Ten == "Admin"))
+            {
+                HOCBA hb = db.HOCBAs.Find(id);
+                HOCSINH hs = db.HOCSINHs.SingleOrDefault(n => n.id_HB == id);
+                ViewBag.id_hs = hs.id;
+                Session["chuyenTab"] = 5;
+                return View(hb);
+            } return RedirectToAction("Index", "Home");
         }
         [HttpPost]
         public ActionResult SuaHB(HOCBA hb)
         {
-            if (ModelState.IsValid)
+            ModelQuyenNguoiDung quyenNguoiDung = Session["QuyenNguoiDung"] as ModelQuyenNguoiDung;
+            if (quyenNguoiDung != null && (quyenNguoiDung.Quyen.Ten == "QuanLyThongTinHocSinh" || quyenNguoiDung.Quyen.Ten == "Admin"))
             {
-                HOCSINH hs = db.HOCSINHs.SingleOrDefault(n => n.id_HB == hb.id);
-                db.Entry(hb).State = System.Data.Entity.EntityState.Modified;
-                db.SaveChanges();
-                Session["chuyenTab"] = 5;
-                return RedirectToAction("DetailChung/" + hs.id, "HocSinh");
-            }
-            return View(hb);
+                if (ModelState.IsValid)
+                {
+                    HOCSINH hs = db.HOCSINHs.SingleOrDefault(n => n.id_HB == hb.id);
+                    db.Entry(hb).State = System.Data.Entity.EntityState.Modified;
+                    db.SaveChanges();
+                    Session["chuyenTab"] = 5;
+                    return RedirectToAction("DetailChung/" + hs.id, "HocSinh");
+                }
+                return View(hb);
+            } return RedirectToAction("Index", "Home");
         }
     }
 }

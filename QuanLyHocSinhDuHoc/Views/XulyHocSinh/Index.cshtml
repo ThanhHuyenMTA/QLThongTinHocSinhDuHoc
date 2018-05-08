@@ -131,7 +131,11 @@
 
             @{
                 int? page;
-                page = (int)Session["trangdangload"];
+                if (Session["trangdangload"]!=null)
+                {
+                    page = (int)Session["trangdangload"];
+                }
+                else { page = 1; }            
                 int currentPage = page ?? 1;
                 Paging paging = new Paging(currentPage, (int)Session["chiasotrang"]);
 

@@ -15,6 +15,7 @@ namespace QuanLyHocSinhDuHoc.Controllers
 
     public class XulyHocSinhController : BaseController
     {
+        
         dbXulyTThsEntities db = new dbXulyTThsEntities();
         List<string> list = new List<string>();
         // GET: XulyHocSinh
@@ -48,8 +49,6 @@ namespace QuanLyHocSinhDuHoc.Controllers
             Session["file"] = null;
             return Json("Khong", JsonRequestBehavior.AllowGet);
         }
-
-
         //load file 
         public ActionResult TestPdf(string url)
         {
@@ -64,61 +63,67 @@ namespace QuanLyHocSinhDuHoc.Controllers
             else return View();
         }
         public ActionResult Index(int? page)
-        {
-            List<TABLE_LOI> listVang = new List<TABLE_LOI>();
-            List<TABLE_LOI> listDo = new List<TABLE_LOI>();
-            List<TABLE_LOI> listXanh = new List<TABLE_LOI>();
-            DateTime today = DateTime.Now;
-            var listLoi = db.TABLE_LOI.ToList();
-            foreach (var i in listLoi)
+        {           
+            ModelQuyenNguoiDung quyenNguoiDung = Session["QuyenNguoiDung"] as ModelQuyenNguoiDung;
+            if (quyenNguoiDung != null && (quyenNguoiDung.Quyen.Ten == "QuanLyThongTinHocSinh"|| quyenNguoiDung.Quyen.Ten=="Admin"))
             {
-                if (i.TimeEnd > today)
+                List<TABLE_LOI> listVang = new List<TABLE_LOI>();
+                List<TABLE_LOI> listDo = new List<TABLE_LOI>();
+                List<TABLE_LOI> listXanh = new List<TABLE_LOI>();
+                DateTime today = DateTime.Now;
+                var listLoi = db.TABLE_LOI.ToList();
+                foreach (var i in listLoi)
                 {
-                    TimeSpan a = ((DateTime)i.TimeEnd).Subtract(today);
-                    double day = a.TotalDays;
-                    if (day > 5)
+                    if (i.TimeEnd > today)
                     {
-                        i.TrangThai = "1"; //mức xanh
-                        listXanh.Add(i);
+                        TimeSpan a = ((DateTime)i.TimeEnd).Subtract(today);
+                        double day = a.TotalDays;
+                        if (day > 5)
+                        {
+                            i.TrangThai = "1"; //mức xanh
+                            listXanh.Add(i);
+                        }
+                        else
+                        {
+                            i.TrangThai = "2";//mức vàng
+                            listVang.Add(i);
+                        }
                     }
                     else
                     {
-                        i.TrangThai = "2";//mức vàng
-                        listVang.Add(i);
+                        i.TrangThai = "3"; //mức đỏ
+                        listDo.Add(i);
                     }
                 }
-                else
+                Session["ThongBaoVang"] = listVang;
+                Session["ThongBaoDo"] = listDo;
+                Session["ThongBaoXanh"] = listXanh;
+                db.SaveChanges();
+
+
+                int count = db.TABLE_LOI.ToList().Count;
+                ViewBag.All = count;
+                Session["chiasotrang"] = count % 10 == 0 ? count / 10 : count / 10 + 1;
+                page = page ?? 1;
+                int lineStart = (int)(page - 1) * 10; //dòng bắt đầu
+                int soBanGhi = 10; //số bản ghi cần hiện thị mỗi trang
+                Session["trangdangload"] = page;
+
+                var idParam1 = new SqlParameter
                 {
-                    i.TrangThai = "3"; //mức đỏ
-                    listDo.Add(i);
-                }
+                    ParameterName = "LineStart",
+                    Value = lineStart
+                };
+                var idParam2 = new SqlParameter
+                {
+                    ParameterName = "soBanGhi",
+                    Value = soBanGhi
+                };
+                var list = db.Database.SqlQuery<TABLE_LOI>("exec PhanTrangLoi @LineStart,@soBanGhi ", idParam1, idParam2).ToList<TABLE_LOI>();
+                return View(list);
             }
-            Session["ThongBaoVang"] = listVang;
-            Session["ThongBaoDo"] = listDo;
-            Session["ThongBaoXanh"] = listXanh;
-            db.SaveChanges();
-
-
-            int count = db.TABLE_LOI.ToList().Count;
-            ViewBag.All = count;
-            Session["chiasotrang"] = count % 10 == 0 ? count / 10 : count / 10 + 1;
-            page = page ?? 1;
-            int lineStart = (int)(page - 1) * 10; //dòng bắt đầu
-            int soBanGhi = 10; //số bản ghi cần hiện thị mỗi trang
-            Session["trangdangload"] = page;
-
-            var idParam1 = new SqlParameter
-            {
-                ParameterName = "LineStart",
-                Value = lineStart
-            };
-            var idParam2 = new SqlParameter
-            {
-                ParameterName = "soBanGhi",
-                Value = soBanGhi
-            };
-            var list = db.Database.SqlQuery<TABLE_LOI>("exec PhanTrangLoi @LineStart,@soBanGhi ", idParam1, idParam2).ToList<TABLE_LOI>();
-            return View(list);
+            return RedirectToAction("Index", "Home");   
+            
         }
         //xử lý phân trang ve cuoi cung     
         public JsonResult XulyPhanTrangVeCuoicung()
@@ -128,222 +133,266 @@ namespace QuanLyHocSinhDuHoc.Controllers
         }
         public ActionResult IndexTbXanh()
         {
-            return View(db.TABLE_LOI.Where(n => n.TrangThai == "1").ToList());
+            ModelQuyenNguoiDung quyenNguoiDung = Session["QuyenNguoiDung"] as ModelQuyenNguoiDung;
+            if (quyenNguoiDung != null && (quyenNguoiDung.Quyen.Ten == "QuanLyThongTinHocSinh" || quyenNguoiDung.Quyen.Ten == "Admin"))
+            {
+                return View(db.TABLE_LOI.Where(n => n.TrangThai == "1").ToList());
+            }
+            return RedirectToAction("Index", "Home");
         }
         public ActionResult IndexTbVang()
         {
-            return View(db.TABLE_LOI.Where(n=>n.TrangThai =="2").ToList());
+            ModelQuyenNguoiDung quyenNguoiDung = Session["QuyenNguoiDung"] as ModelQuyenNguoiDung;
+            if (quyenNguoiDung != null && (quyenNguoiDung.Quyen.Ten == "QuanLyThongTinHocSinh" || quyenNguoiDung.Quyen.Ten == "Admin"))
+            {
+                return View(db.TABLE_LOI.Where(n => n.TrangThai == "2").ToList());
+            }
+            return RedirectToAction("Index", "Home");
+            
         }
         public ActionResult IndexTbDo()
         {
-            return View(db.TABLE_LOI.Where(n => n.TrangThai == "3").ToList());
+            ModelQuyenNguoiDung quyenNguoiDung = Session["QuyenNguoiDung"] as ModelQuyenNguoiDung;
+            if (quyenNguoiDung != null && (quyenNguoiDung.Quyen.Ten == "QuanLyThongTinHocSinh" || quyenNguoiDung.Quyen.Ten == "Admin"))
+            {
+                return View(db.TABLE_LOI.Where(n => n.TrangThai == "3").ToList());
+            }
+            return RedirectToAction("Index", "Home");
+           
         }
         public ActionResult ChinhSua (int id) //id -- mã bên lỗi
         {
-            LoiModel chitietLoi =new LoiModel();
-            TABLE_LOI tableLoi = db.TABLE_LOI.Find(id);
-            string typeLoi = tableLoi.TypeLOI;
-            ViewBag.typeLoi = typeLoi;
-           
-            if (typeLoi == "HoTen")
+            ModelQuyenNguoiDung quyenNguoiDung = Session["QuyenNguoiDung"] as ModelQuyenNguoiDung;
+            if (quyenNguoiDung != null && (quyenNguoiDung.Quyen.Ten == "QuanLyThongTinHocSinh" || quyenNguoiDung.Quyen.Ten == "Admin"))
             {
-                return RedirectToAction("ChinhSuaLoiHoTen",new { id = id });
-            }
-            if (typeLoi == "NgaySinh")
-            {
+                LoiModel chitietLoi = new LoiModel();
+                TABLE_LOI tableLoi = db.TABLE_LOI.Find(id);
+                string typeLoi = tableLoi.TypeLOI;
+                ViewBag.typeLoi = typeLoi;
 
-                return RedirectToAction("ChinhSuaLoiNgaySinh", new { id = id });
-            }
-            if (typeLoi == "NoiSinh")
-            {
+                if (typeLoi == "HoTen")
+                {
+                    return RedirectToAction("ChinhSuaLoiHoTen", new { id = id });
+                }
+                if (typeLoi == "NgaySinh")
+                {
 
-                return RedirectToAction("ChinhSuaLoiNoiSinh", new { id = id });
-            }
-            if (typeLoi == "QueQuan")
-            {
-                return RedirectToAction("ChinhSuaLoiQueQuan", new { id = id });
-            }
-            if (typeLoi == "GioiTinh")
-            {
-                return RedirectToAction("ChinhSuaLoiGioiTinh", new { id = id });
-            }
-            if (typeLoi == "DanToc")
-            {
+                    return RedirectToAction("ChinhSuaLoiNgaySinh", new { id = id });
+                }
+                if (typeLoi == "NoiSinh")
+                {
 
-                return RedirectToAction("ChinhSuaLoiDanToc", new { id = id });
+                    return RedirectToAction("ChinhSuaLoiNoiSinh", new { id = id });
+                }
+                if (typeLoi == "QueQuan")
+                {
+                    return RedirectToAction("ChinhSuaLoiQueQuan", new { id = id });
+                }
+                if (typeLoi == "GioiTinh")
+                {
+                    return RedirectToAction("ChinhSuaLoiGioiTinh", new { id = id });
+                }
+                if (typeLoi == "DanToc")
+                {
+                    return RedirectToAction("ChinhSuaLoiDanToc", new { id = id });
+                }
             }
-            return View();
+            return RedirectToAction("Index", "Home");
         }
         public ActionResult ChinhSuaLoiHoTen(int id)
         {
-            LoiModel chitietLoi = new LoiModel();
-            TABLE_LOI tableLoi = db.TABLE_LOI.Find(id);
-            string typeLoi = tableLoi.TypeLOI;
-            ViewBag.typeLoi = typeLoi;
-            ViewBag.idLoi = id;
-            Xuly xuly = new Xuly();
-            ViewBag.HocSinhLoi = xuly.ReturnHoten(id);
-            int id_HS = tableLoi.id_HS ?? 0;
-            int id_GKS = tableLoi.id_GKS ?? 0;
-            int id_BTN = tableLoi.id_BTN ?? 0;
-            int id_HB = tableLoi.id_HB ?? 0;
-            string so_CMT = tableLoi.So_CMT ?? null;
-            if (check(id_HS))
+            ModelQuyenNguoiDung quyenNguoiDung = Session["QuyenNguoiDung"] as ModelQuyenNguoiDung;
+            if (quyenNguoiDung != null && (quyenNguoiDung.Quyen.Ten == "QuanLyThongTinHocSinh" || quyenNguoiDung.Quyen.Ten == "Admin"))
             {
-                chitietLoi.Hocsinh = db.HOCSINHs.Find(id_HS);
+                LoiModel chitietLoi = new LoiModel();
+                TABLE_LOI tableLoi = db.TABLE_LOI.Find(id);
+                string typeLoi = tableLoi.TypeLOI;
+                ViewBag.typeLoi = typeLoi;
+                ViewBag.idLoi = id;
+                Xuly xuly = new Xuly();
+                ViewBag.HocSinhLoi = xuly.ReturnHoten(id);
+                int id_HS = tableLoi.id_HS ?? 0;
+                int id_GKS = tableLoi.id_GKS ?? 0;
+                int id_BTN = tableLoi.id_BTN ?? 0;
+                int id_HB = tableLoi.id_HB ?? 0;
+                string so_CMT = tableLoi.So_CMT ?? null;
+                if (check(id_HS))
+                {
+                    chitietLoi.Hocsinh = db.HOCSINHs.Find(id_HS);
+                }
+                if (check(id_GKS))
+                {
+                    chitietLoi.Giaykhaisinh = db.GIAYKHAISINHs.Find(id_GKS);
+                }
+                if (check(id_BTN))
+                {
+                    chitietLoi.Bangtotnghiep = db.BANGTOTNGHIEPs.Find(id_BTN);
+                }
+                if (check(id_HB))
+                {
+                    chitietLoi.Hocba = db.HOCBAs.Find(id_HB);
+                }
+                if (so_CMT != null)
+                {
+                    chitietLoi.Cmt = db.CMTs.Find(so_CMT);
+                }
             }
-            if (check(id_GKS))
-            {
-                chitietLoi.Giaykhaisinh = db.GIAYKHAISINHs.Find(id_GKS);
-            }
-            if (check(id_BTN))
-            {
-                chitietLoi.Bangtotnghiep = db.BANGTOTNGHIEPs.Find(id_BTN);
-            }
-            if (check(id_HB))
-            {
-                chitietLoi.Hocba = db.HOCBAs.Find(id_HB);
-            }
-            if (so_CMT != null)
-            {
-                chitietLoi.Cmt = db.CMTs.Find(so_CMT);
-            }
-            return View(chitietLoi);
+            return RedirectToAction("Index", "Home");
         }
         public ActionResult ChinhSuaLoiNgaySinh(int id)
         {
-            LoiModel chitietLoi = new LoiModel();
-            TABLE_LOI tableLoi = db.TABLE_LOI.Find(id);
-            string typeLoi = tableLoi.TypeLOI;
-            ViewBag.typeLoi = typeLoi;
-            Xuly xuly = new Xuly();
-            ViewBag.HocSinhLoi = xuly.ReturnHoten(id);
-            ViewBag.idLoi = id;   
-            int id_GKS = tableLoi.id_GKS ?? 0;
-            int id_BTN = tableLoi.id_BTN ?? 0;
-            int id_HB = tableLoi.id_HB ?? 0;
-            string so_CMT = tableLoi.So_CMT ?? null;
-            if (check(id_GKS))
+            ModelQuyenNguoiDung quyenNguoiDung = Session["QuyenNguoiDung"] as ModelQuyenNguoiDung;
+            if (quyenNguoiDung != null && (quyenNguoiDung.Quyen.Ten == "QuanLyThongTinHocSinh" || quyenNguoiDung.Quyen.Ten == "Admin"))
             {
-                chitietLoi.Giaykhaisinh = db.GIAYKHAISINHs.Find(id_GKS);
+                LoiModel chitietLoi = new LoiModel();
+                TABLE_LOI tableLoi = db.TABLE_LOI.Find(id);
+                string typeLoi = tableLoi.TypeLOI;
+                ViewBag.typeLoi = typeLoi;
+                Xuly xuly = new Xuly();
+                ViewBag.HocSinhLoi = xuly.ReturnHoten(id);
+                ViewBag.idLoi = id;
+                int id_GKS = tableLoi.id_GKS ?? 0;
+                int id_BTN = tableLoi.id_BTN ?? 0;
+                int id_HB = tableLoi.id_HB ?? 0;
+                string so_CMT = tableLoi.So_CMT ?? null;
+                if (check(id_GKS))
+                {
+                    chitietLoi.Giaykhaisinh = db.GIAYKHAISINHs.Find(id_GKS);
+                }
+                if (check(id_BTN))
+                {
+                    chitietLoi.Bangtotnghiep = db.BANGTOTNGHIEPs.Find(id_BTN);
+                }
+                if (check(id_HB))
+                {
+                    chitietLoi.Hocba = db.HOCBAs.Find(id_HB);
+                }
+                if (so_CMT != null)
+                {
+                    chitietLoi.Cmt = db.CMTs.Find(so_CMT);
+                }
             }
-            if (check(id_BTN))
-            {
-                chitietLoi.Bangtotnghiep = db.BANGTOTNGHIEPs.Find(id_BTN);
-            }
-            if (check(id_HB))
-            {
-                chitietLoi.Hocba = db.HOCBAs.Find(id_HB);
-            }
-            if (so_CMT != null)
-            {
-                chitietLoi.Cmt = db.CMTs.Find(so_CMT);
-            }
-            return View(chitietLoi);
+            return RedirectToAction("Index", "Home");
         }
         public ActionResult ChinhSuaLoiNoiSinh(int id)
         {
-            LoiModel chitietLoi = new LoiModel();
-            TABLE_LOI tableLoi = db.TABLE_LOI.Find(id);
-            string typeLoi = tableLoi.TypeLOI;
-            ViewBag.idLoi = id;   
-            ViewBag.typeLoi = typeLoi;
-            Xuly xuly = new Xuly();
-            ViewBag.HocSinhLoi = xuly.ReturnHoten(id);
-            int id_GKS = tableLoi.id_GKS ?? 0;
-            int id_BTN = tableLoi.id_BTN ?? 0;
-            int id_HB = tableLoi.id_HB ?? 0;
-            if (check(id_GKS))
+            ModelQuyenNguoiDung quyenNguoiDung = Session["QuyenNguoiDung"] as ModelQuyenNguoiDung;
+            if (quyenNguoiDung != null && (quyenNguoiDung.Quyen.Ten == "QuanLyThongTinHocSinh" || quyenNguoiDung.Quyen.Ten == "Admin"))
             {
-                chitietLoi.Giaykhaisinh = db.GIAYKHAISINHs.Find(id_GKS);
+                LoiModel chitietLoi = new LoiModel();
+                TABLE_LOI tableLoi = db.TABLE_LOI.Find(id);
+                string typeLoi = tableLoi.TypeLOI;
+                ViewBag.idLoi = id;
+                ViewBag.typeLoi = typeLoi;
+                Xuly xuly = new Xuly();
+                ViewBag.HocSinhLoi = xuly.ReturnHoten(id);
+                int id_GKS = tableLoi.id_GKS ?? 0;
+                int id_BTN = tableLoi.id_BTN ?? 0;
+                int id_HB = tableLoi.id_HB ?? 0;
+                if (check(id_GKS))
+                {
+                    chitietLoi.Giaykhaisinh = db.GIAYKHAISINHs.Find(id_GKS);
+                }
+                if (check(id_BTN))
+                {
+                    chitietLoi.Bangtotnghiep = db.BANGTOTNGHIEPs.Find(id_BTN);
+                }
+                if (check(id_HB))
+                {
+                    chitietLoi.Hocba = db.HOCBAs.Find(id_HB);
+                }
             }
-            if (check(id_BTN))
-            {
-                chitietLoi.Bangtotnghiep = db.BANGTOTNGHIEPs.Find(id_BTN);
-            }
-            if (check(id_HB))
-            {
-                chitietLoi.Hocba = db.HOCBAs.Find(id_HB);
-            }
-            return View(chitietLoi);
+            return RedirectToAction("Index", "Home");
         }
         public ActionResult ChinhSuaLoiQueQuan(int id)
         {
-            LoiModel chitietLoi = new LoiModel();
-            TABLE_LOI tableLoi = db.TABLE_LOI.Find(id);
-            string typeLoi = tableLoi.TypeLOI;
-            ViewBag.idLoi = id;   
-            ViewBag.typeLoi = typeLoi;
-            Xuly xuly = new Xuly();
-            ViewBag.HocSinhLoi = xuly.ReturnHoten(id);
-            int id_GKS = tableLoi.id_GKS ?? 0;
-            string so_CMT = tableLoi.So_CMT ?? null;
-            if (check(id_GKS))
+            ModelQuyenNguoiDung quyenNguoiDung = Session["QuyenNguoiDung"] as ModelQuyenNguoiDung;
+            if (quyenNguoiDung != null && (quyenNguoiDung.Quyen.Ten == "QuanLyThongTinHocSinh" || quyenNguoiDung.Quyen.Ten == "Admin"))
             {
-                chitietLoi.Giaykhaisinh = db.GIAYKHAISINHs.Find(id_GKS);
+                LoiModel chitietLoi = new LoiModel();
+                TABLE_LOI tableLoi = db.TABLE_LOI.Find(id);
+                string typeLoi = tableLoi.TypeLOI;
+                ViewBag.idLoi = id;
+                ViewBag.typeLoi = typeLoi;
+                Xuly xuly = new Xuly();
+                ViewBag.HocSinhLoi = xuly.ReturnHoten(id);
+                int id_GKS = tableLoi.id_GKS ?? 0;
+                string so_CMT = tableLoi.So_CMT ?? null;
+                if (check(id_GKS))
+                {
+                    chitietLoi.Giaykhaisinh = db.GIAYKHAISINHs.Find(id_GKS);
+                }
+                if (so_CMT != null)
+                {
+                    chitietLoi.Cmt = db.CMTs.Find(so_CMT);
+                }
             }
-            if (so_CMT != null)
-            {
-                chitietLoi.Cmt = db.CMTs.Find(so_CMT);
-            }
-            return View(chitietLoi);
+            return RedirectToAction("Index", "Home");
         }
         public ActionResult ChinhSuaLoiGioiTinh(int id)
         {
-            LoiModel chitietLoi = new LoiModel();
-            TABLE_LOI tableLoi = db.TABLE_LOI.Find(id);
-            string typeLoi = tableLoi.TypeLOI;
-            ViewBag.typeLoi = typeLoi;
-            ViewBag.idLoi = id;
-            Xuly xuly = new Xuly();
-            ViewBag.HocSinhLoi = xuly.ReturnHoten(id);
-            int id_GKS = tableLoi.id_GKS ?? 0;
-            int id_BTN = tableLoi.id_BTN ?? 0;
-            int id_HB = tableLoi.id_HB ?? 0;
-            string so_CMT = tableLoi.So_CMT ?? null;
-            if (check(id_GKS))
+            ModelQuyenNguoiDung quyenNguoiDung = Session["QuyenNguoiDung"] as ModelQuyenNguoiDung;
+            if (quyenNguoiDung != null && (quyenNguoiDung.Quyen.Ten == "QuanLyThongTinHocSinh" || quyenNguoiDung.Quyen.Ten == "Admin"))
             {
-                chitietLoi.Giaykhaisinh = db.GIAYKHAISINHs.Find(id_GKS);
+                LoiModel chitietLoi = new LoiModel();
+                TABLE_LOI tableLoi = db.TABLE_LOI.Find(id);
+                string typeLoi = tableLoi.TypeLOI;
+                ViewBag.typeLoi = typeLoi;
+                ViewBag.idLoi = id;
+                Xuly xuly = new Xuly();
+                ViewBag.HocSinhLoi = xuly.ReturnHoten(id);
+                int id_GKS = tableLoi.id_GKS ?? 0;
+                int id_BTN = tableLoi.id_BTN ?? 0;
+                int id_HB = tableLoi.id_HB ?? 0;
+                string so_CMT = tableLoi.So_CMT ?? null;
+                if (check(id_GKS))
+                {
+                    chitietLoi.Giaykhaisinh = db.GIAYKHAISINHs.Find(id_GKS);
+                }
+                if (check(id_BTN))
+                {
+                    chitietLoi.Bangtotnghiep = db.BANGTOTNGHIEPs.Find(id_BTN);
+                }
+                if (check(id_HB))
+                {
+                    chitietLoi.Hocba = db.HOCBAs.Find(id_HB);
+                }
+                if (so_CMT != null)
+                {
+                    chitietLoi.Cmt = db.CMTs.Find(so_CMT);
+                }
             }
-            if (check(id_BTN))
-            {
-                chitietLoi.Bangtotnghiep = db.BANGTOTNGHIEPs.Find(id_BTN);
-            }
-            if (check(id_HB))
-            {
-                chitietLoi.Hocba = db.HOCBAs.Find(id_HB);
-            }
-            if (so_CMT != null)
-            {
-                chitietLoi.Cmt = db.CMTs.Find(so_CMT);
-            }
-            return View(chitietLoi);
+            return RedirectToAction("Index", "Home");
         }
         public ActionResult ChinhSuaLoiDanToc(int id)
         {
-            LoiModel chitietLoi = new LoiModel();
-            TABLE_LOI tableLoi = db.TABLE_LOI.Find(id);
-            string typeLoi = tableLoi.TypeLOI;
-            ViewBag.typeLoi = typeLoi;
-            ViewBag.idLoi = id;
-            Xuly xuly = new Xuly();
-            ViewBag.HocSinhLoi = xuly.ReturnHoten(id);
-            int id_GKS = tableLoi.id_GKS ?? 0;
-            int id_BTN = tableLoi.id_BTN ?? 0;
-            int id_HB = tableLoi.id_HB ?? 0;
-            if (check(id_GKS))
+            ModelQuyenNguoiDung quyenNguoiDung = Session["QuyenNguoiDung"] as ModelQuyenNguoiDung;
+            if (quyenNguoiDung != null && (quyenNguoiDung.Quyen.Ten == "QuanLyThongTinHocSinh" || quyenNguoiDung.Quyen.Ten == "Admin"))
             {
-                chitietLoi.Giaykhaisinh = db.GIAYKHAISINHs.Find(id_GKS);
+                LoiModel chitietLoi = new LoiModel();
+                TABLE_LOI tableLoi = db.TABLE_LOI.Find(id);
+                string typeLoi = tableLoi.TypeLOI;
+                ViewBag.typeLoi = typeLoi;
+                ViewBag.idLoi = id;
+                Xuly xuly = new Xuly();
+                ViewBag.HocSinhLoi = xuly.ReturnHoten(id);
+                int id_GKS = tableLoi.id_GKS ?? 0;
+                int id_BTN = tableLoi.id_BTN ?? 0;
+                int id_HB = tableLoi.id_HB ?? 0;
+                if (check(id_GKS))
+                {
+                    chitietLoi.Giaykhaisinh = db.GIAYKHAISINHs.Find(id_GKS);
+                }
+                if (check(id_BTN))
+                {
+                    chitietLoi.Bangtotnghiep = db.BANGTOTNGHIEPs.Find(id_BTN);
+                }
+                if (check(id_HB))
+                {
+                    chitietLoi.Hocba = db.HOCBAs.Find(id_HB);
+                }
             }
-            if (check(id_BTN))
-            {
-                chitietLoi.Bangtotnghiep = db.BANGTOTNGHIEPs.Find(id_BTN);
-            }
-            if (check(id_HB))
-            {
-                chitietLoi.Hocba = db.HOCBAs.Find(id_HB);
-            }
-            return View(chitietLoi);
+            return RedirectToAction("Index", "Home");
         }
 
         public bool check(int a)

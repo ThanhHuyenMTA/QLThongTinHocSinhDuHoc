@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using QuanLyHocSinhDuHoc.Models.Entities;
 using PaymentSystem.Controllers;
+using QuanLyHocSinhDuHoc.CommonXuLy;
 
 namespace QuanLyHocSinhDuHoc.Controllers
 {
@@ -14,12 +15,20 @@ namespace QuanLyHocSinhDuHoc.Controllers
         // GET: NamHoc
         public ActionResult Themmoi()
         {
-            return View();
+            ModelQuyenNguoiDung quyenNguoiDung = Session["QuyenNguoiDung"] as ModelQuyenNguoiDung;
+            if (quyenNguoiDung != null && (quyenNguoiDung.Quyen.Ten == "QuanLyThongTinHocSinh" || quyenNguoiDung.Quyen.Ten == "Admin"))
+            {
+                return View();
+            } return RedirectToAction("Index", "Home");
         }
         public ActionResult ThemmoiR(int id_hb)
         {
-            Session["id_hocba"] = id_hb;
-            return View(id_hb);
+            ModelQuyenNguoiDung quyenNguoiDung = Session["QuyenNguoiDung"] as ModelQuyenNguoiDung;
+            if (quyenNguoiDung != null && (quyenNguoiDung.Quyen.Ten == "QuanLyThongTinHocSinh" || quyenNguoiDung.Quyen.Ten == "Admin"))
+            {
+                Session["id_hocba"] = id_hb;
+                return View(id_hb);
+            } return RedirectToAction("Index", "Home");
         }
         [HttpPost]
         public JsonResult ThemNamhoc(NAMHOC namhoc)
@@ -35,8 +44,12 @@ namespace QuanLyHocSinhDuHoc.Controllers
         }
         public ActionResult listNamHoc(int id_hb)
         {
-            var model = db.NAMHOCs.Where(n => n.id_HB == id_hb).ToList();
-            return View(model);
+            ModelQuyenNguoiDung quyenNguoiDung = Session["QuyenNguoiDung"] as ModelQuyenNguoiDung;
+            if (quyenNguoiDung != null && (quyenNguoiDung.Quyen.Ten == "QuanLyThongTinHocSinh" || quyenNguoiDung.Quyen.Ten == "Admin"))
+            {
+                var model = db.NAMHOCs.Where(n => n.id_HB == id_hb).ToList();
+                return View(model);
+            } return RedirectToAction("Index", "Home");
         }
     }
 }

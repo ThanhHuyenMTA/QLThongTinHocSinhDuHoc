@@ -42,6 +42,15 @@
                                         <input class="form-control col-md-7 col-xs-12" id="SoDT" name="SoDT" type="text" placeholder="Số điện thoại" />
                                         <p id="messphone" style="color:red;font-weight:bold;"></p>
                                     </div>
+                                </div>                               
+                                <div class="item form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                        Email
+                                    </label>
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
+                                        <input class="form-control col-md-7 col-xs-12" id="Email" name="Email" required="required" placeholder="Email" type="email" />
+                                        <p id="messEmail" style="color:red;font-weight:bold;"></p>
+                                    </div>
                                 </div>
                                 <div class="item form-group">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12">
@@ -49,9 +58,10 @@
                                     </label>
                                     <div class="col-md-9 col-sm-9 col-xs-12">
                                         <input class="form-control col-md-7 col-xs-12" id="TenDangNhap" name="TenDangNhap" required="required" placeholder="Tên đăng nhập" type="text" />
+                                        <p id="messTenDN" style="color:red;font-weight:bold;"></p>
                                     </div>
                                 </div>
-                                <div class="item form-group">
+                                @*<div class="item form-group">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12">
                                         Mật khẩu
                                     </label>
@@ -67,7 +77,7 @@
                                         <input class="form-control col-md-7 col-xs-12  validate[required,custom[password]]" id="MatKhauNDNL" name="MatKhauNL" required="required" placeholder="Mật khẩu" type="password" />
                                     </div>
                                     <label class="control-label col-md-1 col-sm-1 col-xs-12"><i id="CheckMK"></i></label>
-                                </div>
+                                </div>*@
                                 <div class="item form-group">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12">
                                         Nhóm quyền
@@ -109,28 +119,110 @@
     </div>
 </div>
 <script type="text/javascript">
-    $("#MatKhauNDNL").blur(function () {
-        var mkOld = $("#MatKhauND").val();
-        var mkNew = $("#MatKhauNDNL").val();
-        if(mkOld ==mkNew)
-        {
-            $("#CheckMK").removeClass("fa fa-close");           
-            $("#CheckMK").addClass("fa fa-check");
-            $("#CheckMK").css("color", "blue");
-        } else {
-            $("#CheckMK").removeClass("fa fa-check");
-            $("#CheckMK").addClass("fa fa-close");
-            $("#CheckMK").css("color", "red");
+    $("#Email").blur(function () {
+        var Email = $("#Email").val();
+        if (Email != "") {
+            $.ajax({
+                url: "/NguoiDung/CheckEmail",
+                type: "POST",
+                dataType: "json",
+                data: JSON.stringify({ email: Email }),
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    if (data == "Yes") {
+                        $("#messEmail").text("Đã tồn tại Email này !!!");
+                        $("#Email").val("");
+                    } else {
+                        $("#messEmail").text("");
+                    }
+                },
+                error: function (er) {
+                    alert(er);
+                }
+            });
         }
     });
-    $("#Sublmit").click(function(){
-        if (validatePhone("SoDT") == false)
-        {
+    $("#Email").focus(function () {
+        $("#messEmail").text("");
+    });
+    $("#TenDangNhap").blur(function () {
+        var tendangnhap = $("#TenDangNhap").val();
+        if (tendangnhap != "") {
+            $.ajax({
+                url: "/NguoiDung/CheckTenDN",
+                type: "POST",
+                dataType: "json",
+                data: JSON.stringify({ tenDN: tendangnhap }),
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    if (data == "Yes") {
+                        $("#messTenDN").text("Đã tồn tại tên đăng nhập này !!!");
+                        $("#TenDangNhap").val("");
+                    } else {
+                        $("#messTenDN").text("");
+                    }
+                },
+                error: function (er) {
+                    alert(er);
+                }
+            });
+        }
+    });
+    $("#TenDangNhap").focus(function () {
+        $("#messTenDN").text("");
+    });
+    $("#SoDT").blur(function () {
+        var sodt = $("#SoDT").val();
+
+        if (sodt != "") {
+            if (validatePhone("SoDT") == false)
+                $("#messphone").text("Nhập lại số điện thoại");
+            else {
+                $.ajax({
+                    url: "/NguoiDung/CheckSoDT",
+                    type: "POST",
+                    dataType: "json",
+                    data: JSON.stringify({ SoDT: sodt }),
+                    contentType: "application/json; charset=utf-8",
+                    success: function (data) {
+                        if (data == "Yes") {
+                            $("#messphone").text("Đã tồn tại số điện thoại này!!!");
+                            $("#SoDT").val("");
+                        } else {
+                            $("#messphone").text("");
+                        }
+                    },
+                    error: function (er) {
+                        alert(er);
+                    }
+                });
+            }
+        }
+    });
+    $("#SoDT").focus(function () {
+        $("#messphone").text("");
+    });
+
+    //$("#MatKhauNDNL").blur(function () {
+    //    var mkOld = $("#MatKhauND").val();
+    //    var mkNew = $("#MatKhauNDNL").val();
+    //    if (mkOld == mkNew) {
+    //        $("#CheckMK").removeClass("fa fa-close");
+    //        $("#CheckMK").addClass("fa fa-check");
+    //        $("#CheckMK").css("color", "blue");
+    //    } else {
+    //        $("#CheckMK").removeClass("fa fa-check");
+    //        $("#CheckMK").addClass("fa fa-close");
+    //        $("#CheckMK").css("color", "red");
+    //    }
+    //});
+    $("#Sublmit").click(function () {
+        if (validatePhone("SoDT") == false) {
             $("#messphone").text("Nhập lại số điện thoại");
             return false;
-        }           
+        }
         else $("#messphone").text("");
-       
+
     });
     function validatePhone(txtPhone) {
         var a = document.getElementById(txtPhone).value;

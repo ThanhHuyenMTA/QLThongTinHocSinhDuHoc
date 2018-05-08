@@ -17,19 +17,29 @@ namespace QuanLyHocSinhDuHoc.Controllers
         // GET: BangTotNghiep
         public ActionResult Themmoi(int? id_hs)
         {
-            Session["file"] = null;
-            return View();
+             ModelQuyenNguoiDung quyenNguoiDung = Session["QuyenNguoiDung"] as ModelQuyenNguoiDung;
+             if (quyenNguoiDung != null && (quyenNguoiDung.Quyen.Ten == "QuanLyThongTinHocSinh" || quyenNguoiDung.Quyen.Ten == "Admin"))
+             {
+                 Session["file"] = null;
+                 return View();
+             }
+             return RedirectToAction("Index", "Home");
         }
         public ActionResult ThemmoiR(int? id_hs)
         {
-            Session["file"] = null;
-            Session["chuyenTab"] = 4;
-            Session["id_HS"] = id_hs;
-            return View(id_hs);
+             ModelQuyenNguoiDung quyenNguoiDung = Session["QuyenNguoiDung"] as ModelQuyenNguoiDung;
+             if (quyenNguoiDung != null && (quyenNguoiDung.Quyen.Ten == "QuanLyThongTinHocSinh" || quyenNguoiDung.Quyen.Ten == "Admin"))
+             {
+                 Session["file"] = null;
+                 Session["chuyenTab"] = 4;
+                 Session["id_HS"] = id_hs;
+                 return View(id_hs);
+             } return RedirectToAction("Index", "Home");
         }
         [HttpPost]
         public JsonResult Themmoi(BANGTOTNGHIEP btn)
         {
+
             if (ModelState.IsValid)
             {
                 if (Session["file"] != null)
@@ -48,16 +58,20 @@ namespace QuanLyHocSinhDuHoc.Controllers
         }
         public ActionResult DetailBTN()
         {
-            int id_hs = (int)Session["id_hsDetail"];
-            HOCSINH hocsinh = db.HOCSINHs.Find(id_hs);
-            if (hocsinh.id_BTN > 0)
-            {
-                ViewBag.ThongbaoBTN = "OK";
-                BANGTOTNGHIEP btn = db.BANGTOTNGHIEPs.SingleOrDefault(n => n.id == hocsinh.id_BTN);
-                return View(btn);
-            }
-            ViewBag.ThongbaoBTN = "NO";
-            return View();
+             ModelQuyenNguoiDung quyenNguoiDung = Session["QuyenNguoiDung"] as ModelQuyenNguoiDung;
+             if (quyenNguoiDung != null && (quyenNguoiDung.Quyen.Ten == "QuanLyThongTinHocSinh" || quyenNguoiDung.Quyen.Ten == "Admin"))
+             {
+                 int id_hs = (int)Session["id_hsDetail"];
+                 HOCSINH hocsinh = db.HOCSINHs.Find(id_hs);
+                 if (hocsinh.id_BTN > 0)
+                 {
+                     ViewBag.ThongbaoBTN = "OK";
+                     BANGTOTNGHIEP btn = db.BANGTOTNGHIEPs.SingleOrDefault(n => n.id == hocsinh.id_BTN);
+                     return View(btn);
+                 }
+                 ViewBag.ThongbaoBTN = "NO";
+                 return View();
+             } return RedirectToAction("Index", "Home");
         }
         //upload File -> them file trong phan chi tiet
         [HttpPost]
@@ -103,32 +117,38 @@ namespace QuanLyHocSinhDuHoc.Controllers
         }
         public ActionResult SuaBTN(int id)
         {
-            Session["file"] = null;
-            BANGTOTNGHIEP btn = db.BANGTOTNGHIEPs.Find(id);
-            HOCSINH hs = db.HOCSINHs.SingleOrDefault(n => n.id_BTN == btn.id);
-            ViewBag.id_hs = hs.id;
-            Session["chuyenTab"] = 4;
-            return View(btn);
+             ModelQuyenNguoiDung quyenNguoiDung = Session["QuyenNguoiDung"] as ModelQuyenNguoiDung;
+             if (quyenNguoiDung != null && (quyenNguoiDung.Quyen.Ten == "QuanLyThongTinHocSinh" || quyenNguoiDung.Quyen.Ten == "Admin"))
+             {
+                 Session["file"] = null;
+                 BANGTOTNGHIEP btn = db.BANGTOTNGHIEPs.Find(id);
+                 HOCSINH hs = db.HOCSINHs.SingleOrDefault(n => n.id_BTN == btn.id);
+                 ViewBag.id_hs = hs.id;
+                 Session["chuyenTab"] = 4;
+                 return View(btn);
+             } return RedirectToAction("Index", "Home");
         }
         [HttpPost]
         public ActionResult SuaBTN(BANGTOTNGHIEP btn)
         {
-
-            if (ModelState.IsValid)
+            ModelQuyenNguoiDung quyenNguoiDung = Session["QuyenNguoiDung"] as ModelQuyenNguoiDung;
+            if (quyenNguoiDung != null && (quyenNguoiDung.Quyen.Ten == "QuanLyThongTinHocSinh" || quyenNguoiDung.Quyen.Ten == "Admin"))
             {
-                if( Session["file"] != null)
-                    btn.fileBTN = (string)Session["file"];
-                HOCSINH hs = db.HOCSINHs.SingleOrDefault(n => n.id_BTN == btn.id);
-                db.Entry(btn).State = System.Data.Entity.EntityState.Modified;
-                db.SaveChanges();
-                Session["chuyenTab"] = 4;
-                return RedirectToAction("DetailChung/" + hs.id, "HocSinh");
 
-            }
-            return View(btn);
+                if (ModelState.IsValid)
+                {
+                    if (Session["file"] != null)
+                        btn.fileBTN = (string)Session["file"];
+                    HOCSINH hs = db.HOCSINHs.SingleOrDefault(n => n.id_BTN == btn.id);
+                    db.Entry(btn).State = System.Data.Entity.EntityState.Modified;
+                    db.SaveChanges();
+                    Session["chuyenTab"] = 4;
+                    return RedirectToAction("DetailChung/" + hs.id, "HocSinh");
+
+                }
+                return View(btn);
+            } return RedirectToAction("Index", "Home");
         }
-
-
 
     }
 }

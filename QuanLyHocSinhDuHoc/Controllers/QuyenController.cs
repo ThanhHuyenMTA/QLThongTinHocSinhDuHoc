@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using QuanLyHocSinhDuHoc.Models.Entities;
 using PaymentSystem.Controllers;
+using QuanLyHocSinhDuHoc.CommonXuLy;
 
 namespace QuanLyHocSinhDuHoc.Controllers
 {
@@ -14,43 +15,63 @@ namespace QuanLyHocSinhDuHoc.Controllers
         // GET: List Quyền
         public ActionResult Index()
         {
-            return View(db.QUYENs.ToList());
+            ModelQuyenNguoiDung quyenNguoiDung = Session["QuyenNguoiDung"] as ModelQuyenNguoiDung;
+            if (quyenNguoiDung != null && quyenNguoiDung.Quyen.Ten == "Admin")
+            {
+                return View(db.QUYENs.ToList());
+            } return RedirectToAction("Index", "Home");
         }
         //GET: Thêm quyền
         public ActionResult Themmoi()
         {
-            return View();
+             ModelQuyenNguoiDung quyenNguoiDung = Session["QuyenNguoiDung"] as ModelQuyenNguoiDung;
+             if (quyenNguoiDung != null && quyenNguoiDung.Quyen.Ten == "Admin")
+             {
+                 return View();
+             } return RedirectToAction("Index", "Home");
         }
         [HttpPost]
         public ActionResult Themmoi(QUYEN quyen)
-        {           
-            if (ModelState.IsValid)
-            {
-                db.QUYENs.Add(quyen);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View();
+        {    
+             ModelQuyenNguoiDung quyenNguoiDung = Session["QuyenNguoiDung"] as ModelQuyenNguoiDung;
+             if (quyenNguoiDung != null && quyenNguoiDung.Quyen.Ten == "Admin")
+             {
+                 if (ModelState.IsValid)
+                 {
+                     db.QUYENs.Add(quyen);
+                     db.SaveChanges();
+                     return RedirectToAction("Index");
+                 }
+                 return View();
+             } return RedirectToAction("Index", "Home");
         }
         //GET: Cập nhật quyền
 
         public ActionResult SuaQuyen(int id)
         {
-            return View(db.QUYENs.Find(id));
+             ModelQuyenNguoiDung quyenNguoiDung = Session["QuyenNguoiDung"] as ModelQuyenNguoiDung;
+             if (quyenNguoiDung != null && quyenNguoiDung.Quyen.Ten == "Admin")
+             {
+                 return View(db.QUYENs.Find(id));
+             } return RedirectToAction("Index", "Home");
         }
         [HttpPost]
         public ActionResult SuaQuyen(QUYEN quyen)
         {
-            if (ModelState.IsValid)
-            {
-                QUYEN quyenUpdate = db.QUYENs.Find(quyen.Id);
-                quyenUpdate.Ten = quyen.Ten;
-                quyenUpdate.MoTa = quyen.MoTa;
-                db.Entry(quyenUpdate).State = System.Data.Entity.EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View();
+             ModelQuyenNguoiDung quyenNguoiDung = Session["QuyenNguoiDung"] as ModelQuyenNguoiDung;
+             if (quyenNguoiDung != null && quyenNguoiDung.Quyen.Ten == "Admin")
+             {
+                 if (ModelState.IsValid)
+                 {
+                     QUYEN quyenUpdate = db.QUYENs.Find(quyen.Id);
+                     quyenUpdate.Ten = quyen.Ten;
+                     quyenUpdate.MoTa = quyen.MoTa;
+                     db.Entry(quyenUpdate).State = System.Data.Entity.EntityState.Modified;
+                     db.SaveChanges();
+                     return RedirectToAction("Index");
+                 }
+                 return View();
+             } return RedirectToAction("Index", "Home");
         }
 
         //GET: Xóa quyền

@@ -202,28 +202,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="NGUOIGIAMHOes">
-      <EntityTypeMapping TypeName="dbXulyTThsModel.NGUOIGIAMHO">
-        <MappingFragment StoreEntitySet="NGUOIGIAMHO">
-          <ScalarProperty Name="SoCMT" ColumnName="SoCMT" />
-          <ScalarProperty Name="HoTen" ColumnName="HoTen" />
-          <ScalarProperty Name="TenGoiKhac" ColumnName="TenGoiKhac" />
-          <ScalarProperty Name="NgaySinh" ColumnName="NgaySinh" />
-          <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
-          <ScalarProperty Name="QuocTich" ColumnName="QuocTich" />
-          <ScalarProperty Name="QueQuan" ColumnName="QueQuan" />
-          <ScalarProperty Name="NoiThuongTru" ColumnName="NoiThuongTru" />
-          <ScalarProperty Name="GiaTriDen" ColumnName="GiaTriDen" />
-          <ScalarProperty Name="DanToc" ColumnName="DanToc" />
-          <ScalarProperty Name="TonGiao" ColumnName="TonGiao" />
-          <ScalarProperty Name="DauVetRieng" ColumnName="DauVetRieng" />
-          <ScalarProperty Name="NgayCap" ColumnName="NgayCap" />
-          <ScalarProperty Name="NoiCap" ColumnName="NoiCap" />
-          <ScalarProperty Name="LoaiCMT" ColumnName="LoaiCMT" />
-          <ScalarProperty Name="id_HSinh" ColumnName="id_HSinh" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="TABLE_LOI">
       <EntityTypeMapping TypeName="dbXulyTThsModel.TABLE_LOI">
         <MappingFragment StoreEntitySet="TABLE_LOI">
@@ -237,22 +215,6 @@
           <ScalarProperty Name="TypeLOI" ColumnName="TypeLOI" />
           <ScalarProperty Name="TimeStart" ColumnName="TimeStart" />
           <ScalarProperty Name="TimeEnd" ColumnName="TimeEnd" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="HOCSINHs">
-      <EntityTypeMapping TypeName="dbXulyTThsModel.HOCSINH">
-        <MappingFragment StoreEntitySet="HOCSINH">
-          <ScalarProperty Name="timeStart" ColumnName="timeStart" />
-          <ScalarProperty Name="id_HB" ColumnName="id_HB" />
-          <ScalarProperty Name="id_BTN" ColumnName="id_BTN" />
-          <ScalarProperty Name="id_GKS" ColumnName="id_GKS" />
-          <ScalarProperty Name="anh" ColumnName="anh" />
-          <ScalarProperty Name="email" ColumnName="email" />
-          <ScalarProperty Name="sdt" ColumnName="sdt" />
-          <ScalarProperty Name="SoCMT" ColumnName="SoCMT" />
-          <ScalarProperty Name="TenHS" ColumnName="TenHS" />
-          <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -363,20 +325,6 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <EntitySetMapping Name="NHANVIENs">
-      <EntityTypeMapping TypeName="dbXulyTThsModel.NHANVIEN">
-        <MappingFragment StoreEntitySet="NHANVIEN">
-          <ScalarProperty Name="id_Quyen" ColumnName="id_Quyen" />
-          <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
-          <ScalarProperty Name="TenDangNhap" ColumnName="TenDangNhap" />
-          <ScalarProperty Name="SoDT" ColumnName="SoDT" />
-          <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
-          <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
-          <ScalarProperty Name="HoTen" ColumnName="HoTen" />
-          <ScalarProperty Name="id" ColumnName="id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="PHANQUYENs">
       <EntityTypeMapping TypeName="dbXulyTThsModel.PHANQUYEN">
         <MappingFragment StoreEntitySet="PHANQUYEN">
@@ -400,6 +348,76 @@
         <MappingFragment StoreEntitySet="QUYENTRUYCAP">
           <ScalarProperty Name="LinkTruy_Cap" ColumnName="LinkTruy Cap" />
           <ScalarProperty Name="Ten" ColumnName="Ten" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="PhanTrangNguoiDung" FunctionName="dbXulyTThsModel.Store.PhanTrangNguoiDung">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="dbXulyTThsModel.PhanTrangNguoiDung_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="HoTen" ColumnName="HoTen" />
+          <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
+          <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+          <ScalarProperty Name="SoDT" ColumnName="SoDT" />
+          <ScalarProperty Name="TenDangNhap" ColumnName="TenDangNhap" />
+          <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
+          <ScalarProperty Name="id_Quyen" ColumnName="id_Quyen" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="NHANVIENs">
+      <EntityTypeMapping TypeName="dbXulyTThsModel.NHANVIEN">
+        <MappingFragment StoreEntitySet="NHANVIEN">
+          <ScalarProperty Name="NgayTao" ColumnName="NgayTao" />
+          <ScalarProperty Name="NguoiTao" ColumnName="NguoiTao" />
+          <ScalarProperty Name="id_Quyen" ColumnName="id_Quyen" />
+          <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
+          <ScalarProperty Name="TenDangNhap" ColumnName="TenDangNhap" />
+          <ScalarProperty Name="SoDT" ColumnName="SoDT" />
+          <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="HoTen" ColumnName="HoTen" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NGUOIGIAMHOes">
+      <EntityTypeMapping TypeName="dbXulyTThsModel.NGUOIGIAMHO">
+        <MappingFragment StoreEntitySet="NGUOIGIAMHO">
+          <ScalarProperty Name="file_CMTNGH" ColumnName="file_CMTNGH" />
+          <ScalarProperty Name="LoaiCMT" ColumnName="LoaiCMT" />
+          <ScalarProperty Name="NoiCap" ColumnName="NoiCap" />
+          <ScalarProperty Name="NgayCap" ColumnName="NgayCap" />
+          <ScalarProperty Name="DauVetRieng" ColumnName="DauVetRieng" />
+          <ScalarProperty Name="TonGiao" ColumnName="TonGiao" />
+          <ScalarProperty Name="DanToc" ColumnName="DanToc" />
+          <ScalarProperty Name="GiaTriDen" ColumnName="GiaTriDen" />
+          <ScalarProperty Name="NoiThuongTru" ColumnName="NoiThuongTru" />
+          <ScalarProperty Name="QueQuan" ColumnName="QueQuan" />
+          <ScalarProperty Name="QuocTich" ColumnName="QuocTich" />
+          <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
+          <ScalarProperty Name="NgaySinh" ColumnName="NgaySinh" />
+          <ScalarProperty Name="TenGoiKhac" ColumnName="TenGoiKhac" />
+          <ScalarProperty Name="HoTen" ColumnName="HoTen" />
+          <ScalarProperty Name="SoCMT" ColumnName="SoCMT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HOCSINHs">
+      <EntityTypeMapping TypeName="dbXulyTThsModel.HOCSINH">
+        <MappingFragment StoreEntitySet="HOCSINH">
+          <ScalarProperty Name="NguoiTao" ColumnName="NguoiTao" />
+          <ScalarProperty Name="timeStart" ColumnName="timeStart" />
+          <ScalarProperty Name="id_NgGiamHo" ColumnName="id_NgGiamHo" />
+          <ScalarProperty Name="id_HB" ColumnName="id_HB" />
+          <ScalarProperty Name="id_BTN" ColumnName="id_BTN" />
+          <ScalarProperty Name="id_GKS" ColumnName="id_GKS" />
+          <ScalarProperty Name="anh" ColumnName="anh" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="sdt" ColumnName="sdt" />
+          <ScalarProperty Name="SoCMT" ColumnName="SoCMT" />
+          <ScalarProperty Name="TenHS" ColumnName="TenHS" />
           <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>

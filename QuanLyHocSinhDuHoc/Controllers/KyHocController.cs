@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using QuanLyHocSinhDuHoc.Models.Entities;
 using PaymentSystem.Controllers;
+using QuanLyHocSinhDuHoc.CommonXuLy;
 
 namespace QuanLyHocSinhDuHoc.Controllers
 {
@@ -33,9 +34,14 @@ namespace QuanLyHocSinhDuHoc.Controllers
         }
         public ActionResult ThemmoiDiem(int id_hb)
         {
-            var model = db.NAMHOCs.Where(n => n.id_HB == id_hb).ToList();
-            if (model.Count > 0) return View(model);
-            else return RedirectToAction("ThemmoiR", "NamHoc", id_hb);
+            ModelQuyenNguoiDung quyenNguoiDung = Session["QuyenNguoiDung"] as ModelQuyenNguoiDung;
+            if (quyenNguoiDung != null && (quyenNguoiDung.Quyen.Ten == "QuanLyThongTinHocSinh" || quyenNguoiDung.Quyen.Ten == "Admin"))
+            {
+                var model = db.NAMHOCs.Where(n => n.id_HB == id_hb).ToList();
+                if (model.Count > 0) return View(model);
+                else return RedirectToAction("ThemmoiR", "NamHoc", id_hb);
+
+            } return RedirectToAction("Index", "Home");
         }
     }
 }
