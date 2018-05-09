@@ -253,6 +253,7 @@
     <Compile Include="Controllers\NguoiDungController.cs" />
     <Compile Include="Controllers\NguoiGiamHoController.cs" />
     <Compile Include="Controllers\SharesController.cs" />
+    <Compile Include="Controllers\SoHoKhauController.cs" />
     <Compile Include="Controllers\XulyHocSinhController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -425,6 +426,8 @@
     <Content Include="Views\NguoiDung\Index.cshtml" />
     <Content Include="Views\NguoiDung\Themmoi.cshtml" />
     <Content Include="Views\NguoiDung\SuaNguoiDung.cshtml" />
+    <Content Include="Views\SoHoKhau\Themmoi.cshtml" />
+    <Content Include="Views\SoHoKhau\Sua.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
