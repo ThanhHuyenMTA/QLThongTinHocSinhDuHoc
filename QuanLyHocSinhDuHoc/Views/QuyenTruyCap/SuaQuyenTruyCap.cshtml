@@ -1,0 +1,79 @@
+﻿@model QuanLyHocSinhDuHoc.Models.Entities.QUYENTRUYCAP
+            
+@{
+    ViewBag.Title = "Cập nhật quyền truy cập";
+    Layout = "~/Views/Share/_LayoutTrangChu.cshtml";
+}
+<div class="">
+    <div class="clearfix"></div>
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Thêm mới quyền truy cập</h2>
+                    <div class="clearfix"></div>
+                </div>
+                @{
+                    if (Model != null)
+                    {
+                        <div class="x_content">
+                            <form class="form-horizontal form-label-left" method="post" id="formAddND">
+                                <div class="row">
+                                    <div class="col-md-10 col-sm-10 col-xs-10">
+                                        <br /><br />
+                                        <div class="item form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                                Tên quyền truy cập <span class="required">*</span>
+                                            </label>
+                                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                                <input class="form-control col-md-7 col-xs-12" id="TenQuyenTC" name="Ten" value="@Model.Ten" type="text" />
+                                            </div>
+                                        </div>
+                                        <p id="messThemQTC" style="color:red;font-weight:bold;"></p>
+                                        <div class="item form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                                Link truy cập
+                                            </label>
+                                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                                <input class="form-control col-md-7 col-xs-12" id="LinkTruyCap" name="LinkTruy_Cap" type="text" value="@Model.LinkTruy_Cap"/>
+                                            </div>
+                                        </div>
+                                        <p id="messThemQTCLink" style="color:red;font-weight:bold;"></p>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="ln_solid"></div>
+                                    @*chức năng*@
+                                    <div class="form-group">
+                                        <div class="col-md-6 col-md-offset-3">
+                                            <button class="btn btn-success" id="Sublmit" type="submit" style="margin-left:30%;">Cập nhật</button>
+                                            <a href="/QuyenTruyCap/Index" class="btn btn-primary">Huỷ</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    }
+                }
+               
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $("#Sublmit").click(function () {
+        if ($("#TenQuyenTC").val == "") {
+            $("#messThemQTC").text("Tên quyền không được để trống!");
+            return false;
+        }
+        if ($("#LinkTruyCap").val == "") {
+            $("#messThemQTCLink").text("Link truy cập không được để trống!");
+            return false;
+        }
+        $("#messThemQTC").text("");
+        $("#messThemQTCLink").text("");
+    });
+</script>
+

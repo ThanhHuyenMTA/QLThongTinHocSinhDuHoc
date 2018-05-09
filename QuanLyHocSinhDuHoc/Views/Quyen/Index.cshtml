@@ -1,8 +1,6 @@
-﻿@model  IEnumerable<QuanLyHocSinhDuHoc.Models.Entities.NHANVIEN>
-@using QuanLyHocSinhDuHoc.Models.Entities
-
+﻿@model IEnumerable<QuanLyHocSinhDuHoc.Models.Entities.QUYEN>
 @{
-    ViewBag.Title = "Danh sách người dùng";
+    ViewBag.Title = "Danh sách quyền hạn";
     Layout = "~/Views/Share/_LayoutTrangChu.cshtml";
 }
 <div class="">
@@ -10,15 +8,15 @@
         <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="x_panel">
                 <div class="x_title">
-                    <h2>Danh sách người dùng</h2>
+                    <h2>Danh sách quyền hạn</h2>
                     <ul class="nav navbar-right panel_toolbox">
-                        <li><a title="Thêm" data-toggle="tooltip" data-placement="bottom" class="dropdown-toggle" href="@Url.Content("/NguoiDung/Themmoi")"><i class="fa fa-plus"></i></a></li>
+                        <li><a title="Thêm" data-toggle="tooltip" data-placement="bottom" class="dropdown-toggle" href="@Url.Content("/Quyen/Themmoi")"><i class="fa fa-plus"></i></a></li>
                     </ul>
                     <div class="clearfix"></div>
                 </div>
                 <div class="x_content">
                     <div id="datatable_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
-                      
+
                         <!-- Bảng dữ liệu -->
                         <div class="row">
                             <div class="col-sm-12">
@@ -27,10 +25,8 @@
                                     <thead>
                                         <tr>
                                             <th><div class="word-wrap">STT</div></th>
-                                            <th><div class="word-wrap">Tên người dùng</div></th>
-                                            <th><div class="word-wrap">Tên đăng nhập</div></th>
-                                            <th><div class="word-wrap">Số điện thoại</div></th>
                                             <th><div class="word-wrap">Tên quyền</div></th>
+                                            <th><div class="word-wrap">Mô tả</div></th>                                          
                                             <th></th>
                                         </tr>
                                     </thead>
@@ -40,31 +36,19 @@
                                             if (Model != null)
                                             {
                                                 //var i = ((int)Session["trangdangload"] - 1) * 10 + 1;
-                                                var i=1;
+                                                var i = 1;
                                                 foreach (var item in Model)
                                                 {
                                                     <tr>
                                                         <td><div class="word-wrap">@i</div></td>
-                                                        <td><div class="word-wrap">@item.HoTen</div></td>
-                                                        <td><div class="word-wrap">@item.TenDangNhap</div></td>
-                                                        <td><div class="word-wrap">@item.SoDT</div></td> 
-                                                        @{
-                                                            if (@item.id_Quyen != null)
-                                                            {                                                                                                                         
-                                                                dbXulyTThsEntities db = new dbXulyTThsEntities();
-                                                                QUYEN quyen = db.QUYENs.Find((int)@item.id_Quyen);
-                                                                <td><div class="word-wrap">@quyen.Ten</div></td>
-                                                            }
-                                                            else
-                                                            {
-                                                            <td><div class="word-wrap"></div></td> }
-                                                        }
-                                                                                                          
+                                                        <td><div class="word-wrap">@item.Ten</div></td>
+                                                        <td><div class="word-wrap">@item.MoTa</div></td>                                                      
+                                                        
                                                         <td class="actions">
-                                                            <a data-toggle="tooltip" data-placement="bottom" target="_blank" title="Sửa" href="@Url.Action("SuaNguoiDung", "NguoiDung", new { @id = @item.id })">
+                                                            <a data-toggle="tooltip" data-placement="bottom" target="_blank" title="Sửa" href="@Url.Action("SuaQuyen", "Quyen", new { @id = @item.Id })">
                                                                 <i class="fa fa-edit"></i>
-                                                            </a>                                                         
-                                                            <a id="deleteND" href="#" title="Xóa" onclick="Delete(@item.id);return false;">
+                                                            </a>
+                                                            <a id="deleteND" href="#" title="Xóa" onclick="Delete(@item.Id);return false;">
                                                                 <i class="fa fa-close"></i>
                                                             </a>
                                                         </td>
@@ -86,20 +70,20 @@
 </div>
 
 <script type="text/javascript">
-    function Delete(id_nd)
+    function Delete(id_quyen)
     {
         var yes =confirm('Bạn có thực sự muốn xóa không ???');
         if(yes ==true)
         {
             $.ajax({
-                url: "/NguoiDung/XoaNguoiDung",
+                url: "/Quyen/XoaQuyen",
                 type: "POST",
                 dataType: "json",
-                data: "{id:" + id_nd + "}",
+                data: "{id:" + id_quyen + "}",
                 contentType: "application/json; charset=utf-8",
                 success: function (data) {
                     if (data == "Yes")
-                        window.location.href = "/NguoiDung/Index";
+                        window.location.href = "/Quyen/Index";
                     else
                         alert("Xóa thất bại!");
                 },
@@ -110,6 +94,8 @@
             });
         }
     }
-   
+
 </script>
+
+
 

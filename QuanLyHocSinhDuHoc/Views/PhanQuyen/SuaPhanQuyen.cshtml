@@ -1,0 +1,115 @@
+﻿@model QuanLyHocSinhDuHoc.Models.Entities.PHANQUYEN
+@using QuanLyHocSinhDuHoc.Models.Entities
+
+@{
+    ViewBag.Title = "Cập nhật phân quyền";
+    Layout = "~/Views/Share/_LayoutTrangChu.cshtml";
+}
+<div class="">
+    <div class="clearfix"></div>
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Phân quyền</h2>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <form class="form-horizontal form-label-left" method="post" id="formAddND">
+                        @{
+                            dbXulyTThsEntities db = new dbXulyTThsEntities();
+                           
+                              QUYEN quyen = db.QUYENs.Find(@Model.id_quyen);
+                              QUYENTRUYCAP quyenTC = db.QUYENTRUYCAPs.Find(@Model.id_truycap);
+                            <div class="row">
+                                <div class="col-md-10 col-sm-10 col-xs-10">
+                                    <br /><br />
+                                    <div class="item form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                            Quyền hạn <span class="required">*</span>
+                                        </label>
+                                        <div class="col-md-9 col-sm-9 col-xs-12">
+                                            <select id="id_quyen" name="id_quyen" class="form-control col-md-7 col-xs-12">
+
+
+                                                <option value="@Model.id_quyen">@quyen.Ten</option>
+                                                @{
+                                                    if (ViewBag.Quyen != null)
+                                                    {
+                                                        foreach (var item in ViewBag.Quyen)
+                                                        {
+                                                            if (@item.Id != @Model.id_quyen)
+                                                            {
+                                                                <option value=@item.Id>@item.Ten</option>
+                                                            }
+
+                                                        }
+                                                    }
+                                                }
+
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <p id="messThemPQQ" style="color:red;font-weight:bold;"></p>
+                                    <div class="item form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                            Link truy cập
+                                        </label>
+                                        <div class="col-md-9 col-sm-9 col-xs-12">
+                                            <select id="id_truycap" name="id_truycap" class="form-control col-md-7 col-xs-12">
+                                                <option value="@Model.id_truycap">@quyenTC.LinkTruy_Cap</option>
+                                                @{
+                                                    if (ViewBag.QuyenTC != null)
+                                                    {
+                                                        foreach (var item in ViewBag.QuyenTC)
+                                                        {
+                                                            if (@item.id != @Model.id_truycap)
+                                                            {
+                                                                <option value=@item.id>@item.LinkTruy_Cap</option>
+                                                            }
+                                                        }
+                                                    }
+                                                }
+
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <p id="messThemPQTC" style="color:red;font-weight:bold;"></p>
+                                </div>
+                            </div>
+                        }
+
+
+
+                        <div class="row">
+                            <div class="ln_solid"></div>
+                            @*chức năng*@
+                            <div class="form-group">
+                                <div class="col-md-6 col-md-offset-3">
+                                    <button class="btn btn-success" id="Sublmit" type="submit" style="margin-left:30%;">Thêm mới</button>
+                                    <a href="/PhanQuyen/Index" class="btn btn-primary">Huỷ</a>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $("#Sublmit").click(function () {
+        if ($("#id_quyen").val == "") {
+            $("#messThemPQQ").text("Quyền không được để trống!");
+            return false;
+        }
+        if ($("#id_truycap").val == "") {
+            $("#messThemPQTC").text("Quyền truy cập không được để trống!");
+            return false;
+        }
+        $("#messThemQTC").text("");
+        $("#messThemQTCLink").text("");
+    });
+</script>
+
+
